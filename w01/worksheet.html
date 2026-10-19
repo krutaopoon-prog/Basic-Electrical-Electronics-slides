@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ใบงานที่ 1.1 สำรวจอุปกรณ์ป้องกันภัย</title>
+<meta name="description" content="ใบงานที่ 1.1 การสำรวจอุปกรณ์ป้องกันภัยและเครื่องมือช่างไฟฟ้า วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น สำหรับพิมพ์ A4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+    .ws h2 { font-size: 20px; margin: 18px 0 6px; color: var(--teal); }
+    .ws h3 { font-size: 17px; margin: 12px 0 4px; }
+    .ws p, .ws li { margin: 2px 0; }
+    .ws ol, .ws ul { margin: 2px 0 6px; padding-left: 26px; }
+    .ws table.grid { width: 100%; border-collapse: collapse; margin: 6px 0 10px; background: #fff; }
+    .ws table.grid th, .ws table.grid td { border: 1px solid #555; padding: 4px 8px; vertical-align: top; }
+    .ws table.grid th { background: var(--cream); font-family: var(--font-display); font-weight: 500; text-align: center; }
+    .ws table.grid td.n { text-align: center; width: 2.4em; }
+    .ws table.grid.blank td { height: 12mm; }
+    .ws table.score td:nth-child(3), .ws table.score td:nth-child(4) { text-align: center; width: 6em; }
+    .ws .lines div { border-bottom: 1px dotted #000; height: 9mm; }
+    .ws .head { border: 1.5px solid #000; padding: 8px 12px; margin-bottom: 10px; background: #fff; }
+    .ws .head .line { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .ws .head .line span { white-space: nowrap; }
+    .ws .warn { border-left: 4px solid var(--rose); background: var(--rose-soft); padding: 6px 12px; border-radius: 0 10px 10px 0; }
+    @media print {
+        .ws h2 { color: #000; font-size: 14.5pt; margin: 4mm 0 1.5mm; }
+        .ws h3 { font-size: 13.5pt; }
+        .ws table.grid th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .ws table.grid th, .ws table.grid td { border-color: #000; font-size: 12.5pt; }
+        .ws .warn { background: none; border: 1px solid #000; border-radius: 0; }
+        body.doc { font-size: 12pt; line-height: 1.4; }
+        .ws .avoid { break-inside: avoid; }
+        .ws table.grid.blank td { height: 10mm; }
+        .ws .lines div { height: 8mm; }
+        .ws .head { font-size: 11.5pt; }
+    }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="exercises.html">แบบฝึกหัด</a> · <a href="quiz.html">แบบทดสอบ</a>
+    </nav>
+
+    <section class="card no-print">
+        <span class="chip orange">สัปดาห์ที่ 1 · ปฏิบัติ 3 ชั่วโมง</span>
+        <h1 style="margin-top:8px">ใบงานที่ 1.1 สำหรับพิมพ์</h1>
+        <p class="muted" style="margin:0 0 10px">พิมพ์กลุ่มละ 1 ชุด (กลุ่มละ 4–5 คน) บันทึกผลในโรงฝึกงาน แล้วส่งครู</p>
+        <div class="btn-row"><button class="btn" type="button" onclick="window.print()">🖨 พิมพ์ใบงาน (A4)</button></div>
+    </section>
+
+    <main class="ws card">
+        <div class="head">
+            <b>ใบงานที่ 1.1 การสำรวจอุปกรณ์ป้องกันภัยและเครื่องมือช่างไฟฟ้า</b><br>
+            วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) · หน่วยที่ 1 · สอนครั้งที่ 1 (ทฤษฎี 1 ชม. ปฏิบัติ 3 ชม.)
+            <div class="line" style="margin-top:4px"><span>กลุ่มที่ ........</span><span>ชั้น ...............</span><span>วันที่ ......../......../........</span><span>คะแนน ............ / 25</span></div>
+            <div class="line"><span>สมาชิก (ชื่อ-เลขที่)</span><span>1. ..................................................</span><span>2. ..................................................</span></div>
+            <div class="line"><span>3. ..................................................</span><span>4. ..................................................</span><span>5. ..................................................</span></div>
+        </div>
+
+        <h2>1. ผลลัพธ์การเรียนรู้จากการปฏิบัติงาน</h2>
+        <p>จำแนกชนิดของอุปกรณ์ป้องกันภัยส่วนบุคคลและเครื่องมือช่างไฟฟ้า ตรวจสอบสภาพความพร้อมก่อนใช้งาน และเลือกใช้ให้เหมาะสมกับลักษณะงานได้อย่างถูกต้องปลอดภัย</p>
+
+        <h2>2. จุดประสงค์เชิงพฤติกรรม</h2>
+        <p>4.3 บอกข้อควรปฏิบัติในการใช้ไฟฟ้าอย่างถูกต้องปลอดภัยได้ (K1) · 4.7 เตรียมวัสดุอุปกรณ์ให้สอดคล้องกับงาน และปฏิบัติงานด้วยความรับผิดชอบ ตรงต่อเวลา ตามหลักปรัชญาของเศรษฐกิจพอเพียง (A2, Ap1)</p>
+
+        <h2>3. เครื่องมือ วัสดุ และอุปกรณ์</h2>
+        <ul>
+            <li>อุปกรณ์ป้องกันภัยส่วนบุคคล: ถุงมือยาง แว่นตานิรภัย หมวกนิรภัย รองเท้านิรภัย</li>
+            <li>เครื่องมือช่างไฟฟ้าด้ามหุ้มฉนวน: ไขควงแบน ไขควงแฉก คีมตัด คีมปากจิ้งจก</li>
+            <li>ไขควงลองไฟ และมัลติมิเตอร์ · ใบงานที่ 1.1 และเครื่องเขียน</li>
+        </ul>
+
+        <h2>4. คำแนะนำ / ข้อควรระวัง</h2>
+        <div class="warn avoid">
+            <ol style="margin:0">
+                <li>แต่งกายให้ถูกต้องตามระเบียบก่อนเข้าปฏิบัติงานในโรงฝึกงานทุกครั้ง</li>
+                <li>ห้ามนำเครื่องมือที่ฉนวนชำรุดหรือแตกร้าวไปใช้งานโดยเด็ดขาด</li>
+                <li>ไม่ทดลองต่อวงจรกับแหล่งจ่ายไฟฟ้าจริง ใบงานนี้เป็นการสำรวจและตรวจสภาพเท่านั้น</li>
+                <li>เก็บเครื่องมือเข้าที่ให้เรียบร้อยทุกครั้งหลังปฏิบัติงานเสร็จ</li>
+            </ol>
+        </div>
+
+        <h2>5. ขั้นตอนการปฏิบัติงาน</h2>
+        <div class="avoid">
+            <h3>ตอนที่ 1 การสำรวจอุปกรณ์ป้องกันภัยส่วนบุคคล</h3>
+            <ol>
+                <li>แบ่งกลุ่ม กลุ่มละ 4–5 คน รับอุปกรณ์ป้องกันภัยจากครูผู้สอน</li>
+                <li>สำรวจอุปกรณ์แต่ละชนิด บันทึกชื่อ หน้าที่ และลักษณะการใช้งานลงในตาราง</li>
+                <li>ตรวจสอบสภาพความพร้อมของอุปกรณ์แต่ละชิ้น ระบุว่าใช้งานได้หรือชำรุด</li>
+            </ol>
+            <table class="grid blank">
+                <tr><th>ที่</th><th style="width:22%">ชื่ออุปกรณ์</th><th>หน้าที่ / ป้องกันอันตรายใด</th><th style="width:13%">สภาพ</th><th style="width:16%">หมายเหตุ</th></tr>
+                <tr><td class="n">1</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">2</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">3</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">4</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">5</td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 2 การสำรวจและตรวจสภาพเครื่องมือช่างไฟฟ้า</h3>
+            <ol>
+                <li>สำรวจเครื่องมือช่างไฟฟ้าที่ได้รับ บันทึกชื่อและหน้าที่การใช้งาน</li>
+                <li>ตรวจสอบสภาพด้ามจับหุ้มฉนวนว่ามีรอยแตกร้าวหรือชำรุดหรือไม่</li>
+                <li>บันทึกผลลงในตาราง พร้อมระบุเหตุผลว่าเหตุใดจึงใช้งานได้หรือใช้งานไม่ได้</li>
+            </ol>
+            <table class="grid blank">
+                <tr><th>ที่</th><th style="width:20%">ชื่อเครื่องมือ</th><th>หน้าที่การใช้งาน</th><th style="width:14%">สภาพฉนวน</th><th style="width:24%">เหตุผลประกอบ</th></tr>
+                <tr><td class="n">1</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">2</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">3</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">4</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td class="n">5</td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+
+        <div class="avoid">
+            <h3>ตอนที่ 3 การสรุปข้อควรปฏิบัติในการใช้ไฟฟ้าอย่างปลอดภัย</h3>
+            <p>แต่ละกลุ่มร่วมกันสรุปข้อควรปฏิบัติอย่างน้อย 5 ข้อ แล้วนำเสนอหน้าชั้นเรียน กลุ่มละไม่เกิน 5 นาที</p>
+            <div class="lines"><div>1.</div><div>2.</div><div>3.</div><div>4.</div><div>5.</div></div>
+        </div>
+
+        <div class="avoid">
+            <h2>6. สรุปและวิจารณ์ผล</h2>
+            <div class="lines"><div></div><div></div><div></div></div>
+        </div>
+
+        <div class="avoid">
+            <h2>7. การประเมินผล (คะแนนเต็ม 25 ผ่านที่ 20 คะแนน ร้อยละ 80)</h2>
+            <table class="grid score">
+                <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+                <tr><td class="n">1</td><td>บันทึกชื่อและหน้าที่ของอุปกรณ์ป้องกันภัยได้ถูกต้อง (ตอนที่ 1)</td><td>5</td><td></td></tr>
+                <tr><td class="n">2</td><td>ระบุสภาพความพร้อมของอุปกรณ์ป้องกันภัยได้ถูกต้อง (ตอนที่ 1)</td><td>5</td><td></td></tr>
+                <tr><td class="n">3</td><td>บันทึกชื่อและหน้าที่ของเครื่องมือช่างไฟฟ้าได้ถูกต้อง (ตอนที่ 2)</td><td>5</td><td></td></tr>
+                <tr><td class="n">4</td><td>สรุปข้อควรปฏิบัติในการใช้ไฟฟ้าอย่างปลอดภัยได้ครบถ้วน (ตอนที่ 3)</td><td>5</td><td></td></tr>
+                <tr><td class="n">5</td><td>ความละเอียดรอบคอบ และส่งงานตรงเวลา</td><td>5</td><td></td></tr>
+                <tr><th colspan="2" style="text-align:right">รวม</th><td><b>25</b></td><td></td></tr>
+            </table>
+            <p class="muted" style="font-size:13px">ที่มา: ใบงานที่ 1.1 ในแผนการจัดการเรียนรู้ วิชา 20100-1005 (นายจิรกิตติ์ วราภรณ์)</p>
+        </div>
+    </main>
+</div>
+</body>
+</html>

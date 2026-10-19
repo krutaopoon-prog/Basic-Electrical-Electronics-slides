@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สัปดาห์ที่ 1 อันตรายของไฟฟ้าและการปฏิบัติงานที่ปลอดภัย</title>
+<meta name="description" content="สไลด์ประกอบการสอน วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) สัปดาห์ที่ 1 หน่วยที่ 1 อันตรายของไฟฟ้าและการปฏิบัติงานที่ปลอดภัย ระดับ ปวช.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/deck.css">
+<style>
+    /* ส่วนเพิ่มเฉพาะสัปดาห์นี้ */
+    .cover .hazard { position: absolute; right: 170px; top: 250px; width: 470px; }
+    .tile { text-align: center; padding: 26px 22px; }
+    .tile .icon { margin-bottom: 6px; }
+    .tile h3 { margin: 0 0 6px; }
+    .tile p { font-size: 30px; line-height: 1.4; margin: 0; color: var(--ink-soft); }
+    .diagram svg text { font-family: 'Kanit', sans-serif; }
+    table.t td.sev { width: 34px; padding: 0; }
+    table.t td.sev i { display: block; width: 26px; height: 26px; border-radius: 50%; margin: 0 auto; }
+    table.cur td:first-child { font-family: var(--font-mono); white-space: nowrap; }
+    .bignum { font: 700 64px/1.1 var(--font-mono); }
+    .ppe img.sign { width: 92px; height: 92px; display: block; margin: 0 auto 8px; }
+    .ppe .photo { padding: 10px; box-shadow: none; }
+    .ppe h3 { font-size: 36px; text-align: center; margin: 10px 0 4px; }
+    .ppe p { font-size: 27px; line-height: 1.35; text-align: center; margin: 0; }
+    .chk li { margin-bottom: 14px !important; }
+    .wk { font-family: var(--font-mono); color: var(--ink-soft); font-size: 26px; }
+    table.units td, table.units th { font-size: 27px; padding: 7px 16px; }
+</style>
+</head>
+<body>
+<!--
+  วิธีใช้: ← → / Space เลื่อนสไลด์และแสดงทีละขั้น · T สารบัญ · F เต็มจอ · ลิงก์ #หมายเลข ไปสไลด์นั้น
+  ป้าย "เสริม" = เนื้อหาเพิ่มจากแหล่งภายนอก มีเลขอ้างอิง [n] ลิงก์ไปสไลด์เอกสารอ้างอิง
+-->
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage" data-head="สัปดาห์ที่ 1 · หน่วยที่ 1" data-foot="">
+
+<!-- ============ เปิดบทเรียน ============ -->
+<section class="slide cover" data-title="ปก: สัปดาห์ที่ 1">
+  <div class="body center" style="top:0;bottom:0">
+    <div class="chapter reveal d1">สัปดาห์ที่ 1 · หน่วยที่ 1</div>
+    <h1 class="reveal d2">อันตรายของไฟฟ้า<br>และการปฏิบัติงาน<br>ที่ปลอดภัย</h1>
+    <div class="sub reveal d3">วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) · ระดับ ปวช.</div>
+    <div class="tiny reveal d4" style="margin-top:40px">เรียบเรียงจากแผนการจัดการเรียนรู้ ใบความรู้ที่ 1.1 และใบงานที่ 1.1 และแหล่งอ้างอิงท้ายสไลด์</div>
+  </div>
+  <img class="hazard reveal d3" src="../assets/img/iso-w012-electricity.png" alt="ป้ายเตือนอันตรายจากไฟฟ้า">
+</section>
+
+<section class="slide sec-0" data-tag="แนะนำรายวิชา" data-title="แนะนำรายวิชา">
+  <div class="body">
+    <div class="kicker reveal">แนะนำรายวิชา</div>
+    <h2 class="title reveal d1">งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น</h2>
+    <div class="grid g3 reveal d2" style="margin-top:10px">
+      <div class="box tint tile"><div class="icon">📘</div><h3>20100-1005</h3><p>วิชาพื้นฐาน<br>ทุกสาขา ประเภทวิชาอุตสาหกรรม</p></div>
+      <div class="box sun tile"><div class="icon">⏱️</div><h3>ท 1 · ป 3</h3><p>ทฤษฎี 1 ชม. ปฏิบัติ 3 ชม.<br>ต่อสัปดาห์ · 2 หน่วยกิต</p></div>
+      <div class="box orange tile"><div class="icon">📅</div><h3>18 สัปดาห์</h3><p>11 หน่วยการเรียนรู้<br>+ ประเมินรวมสัปดาห์สุดท้าย</p></div>
+    </div>
+    <p class="small reveal d3" style="margin-top:34px">เป้าหมาย: <b>วัด ทดสอบ ประกอบวงจร</b>ไฟฟ้าและอิเล็กทรอนิกส์ และใช้เครื่องมือวัด <span class="hl">ตามหลักความปลอดภัย</span></p>
+    <div class="src">ที่มา: หลักสูตรรายวิชาในแผนการจัดการเรียนรู้ <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="แผนการเรียน 18 สัปดาห์">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">แผนการเรียนทั้งภาคเรียน</div>
+    <h2 class="title reveal d1" style="font-size:60px;margin-bottom:12px">11 หน่วย ใน 18 สัปดาห์</h2>
+    <div class="grid g2 reveal d2" style="gap:24px">
+      <table class="t left units">
+        <tr><th>สัปดาห์</th><th>หน่วยการเรียนรู้</th></tr>
+        <tr class="hit"><td class="wk">1–2</td><td><b>1</b> ความปลอดภัยในงานไฟฟ้าฯ</td></tr>
+        <tr><td class="wk">3–4</td><td><b>2</b> อ่านสัญลักษณ์ไฟฟ้าฯ</td></tr>
+        <tr><td class="wk">5–6</td><td><b>3</b> ประกอบวงจร คำนวณพลังงาน</td></tr>
+        <tr><td class="wk">7–8</td><td><b>4</b> ควบคุมมอเตอร์ อุปกรณ์ป้องกัน</td></tr>
+        <tr><td class="wk">9–10</td><td><b>5</b> หม้อแปลง รีเลย์ ไมค์ ลำโพง</td></tr>
+        <tr><td class="wk">11–12</td><td><b>6</b> ตัวต้านทาน ตัวเก็บประจุ ขดลวด</td></tr>
+      </table>
+      <table class="t left units">
+        <tr><th>สัปดาห์</th><th>หน่วยการเรียนรู้</th></tr>
+        <tr><td class="wk">13</td><td><b>7</b> ตรวจสอบสารกึ่งตัวนำ</td></tr>
+        <tr><td class="wk">14</td><td><b>8</b> แหล่งจ่ายไฟกระแสตรง</td></tr>
+        <tr><td class="wk">15</td><td><b>9</b> ใช้มัลติมิเตอร์</td></tr>
+        <tr><td class="wk">16</td><td><b>10</b> เครื่องกำเนิดสัญญาณ ออสซิลโลสโคป</td></tr>
+        <tr><td class="wk">17</td><td><b>11</b> ประกอบ วัด ทดสอบวงจร</td></tr>
+        <tr><td class="wk">18</td><td><b>ประเมินผลลัพธ์รายวิชา</b></td></tr>
+      </table>
+    </div>
+    <div class="src">ที่มา: ตารางหน่วยการเรียนรู้และเวลาเรียน <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="การวัดผลและเกณฑ์ผ่าน">
+  <div class="body">
+    <div class="kicker reveal">การวัดผล</div>
+    <h2 class="title reveal d1">คะแนนมาจากไหน?</h2>
+    <div class="row">
+      <div class="box reveal d2">
+        <h3>น้ำหนักคะแนนรายวิชา</h3>
+        <ul class="pts small" style="margin-top:16px">
+          <li>หน่วยที่ 1–6 <b>หน่วยละ 10%</b></li>
+          <li>หน่วยที่ 7–11 <b>หน่วยละ 5%</b></li>
+          <li>ประเมินรวมสัปดาห์ที่ 18 <b>15%</b></li>
+        </ul>
+      </div>
+      <div class="box sun reveal d3">
+        <h3>เกณฑ์ผ่านหน่วยที่ 1 (80%)</h3>
+        <ul class="pts small" style="margin-top:16px">
+          <li>แบบทดสอบ <b class="mono">16 / 20</b></li>
+          <li>ใบงานละ <b class="mono">20 / 25</b></li>
+          <li>พฤติกรรม <b class="mono">12 / 15</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: ตารางวิเคราะห์พฤติกรรมการเรียนรู้ และการวัดผลหน่วยที่ 1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="เปิดบทเรียน" data-title="สัปดาห์นี้เรียนอะไร">
+  <div class="body">
+    <div class="kicker reveal">สัปดาห์นี้เรียนอะไร</div>
+    <h2 class="title reveal d1">อันตรายของไฟฟ้าและการปฏิบัติงานที่ปลอดภัย</h2>
+    <div class="grid g2" style="gap:30px">
+      <div class="box reveal d2" style="--sec:var(--orange)"><h3>5.1 คุณสมบัติ ประโยชน์ และโทษของไฟฟ้า</h3><p class="small">ตัวนำ ฉนวน · ไฟฟ้าช็อต · ไฟฟ้าดูด</p></div>
+      <div class="box reveal d3"><h3>5.2 อันตรายของไฟฟ้าต่อร่างกาย</h3><p class="small">สัมผัสโดยตรง/โดยอ้อม · ปริมาณกระแส</p></div>
+      <div class="box reveal d4" style="--sec:var(--blue)"><h3>5.3 ข้อควรปฏิบัติในการใช้ไฟฟ้า</h3><p class="small">ตรวจก่อนใช้ · ตัดไฟ · PPE · สายดิน · RCD</p></div>
+      <div class="box reveal d5" style="--sec:#0f8a6c"><h3>ใบงานที่ 1.1 (ปฏิบัติ 3 ชม.)</h3><p class="small">สำรวจอุปกรณ์ป้องกันภัยและเครื่องมือช่าง</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="ผลลัพธ์การเรียนรู้และสมรรถนะ">
+  <div class="body">
+    <div class="kicker reveal">ผลลัพธ์การเรียนรู้ระดับหน่วย</div>
+    <h2 class="title reveal d1">ทำงานไฟฟ้าได้อย่าง<span class="hl">ปลอดภัย</span></h2>
+    <ul class="pts reveal d2">
+      <li>ทำงานตาม<b>กฎความปลอดภัย</b>ทางไฟฟ้า</li>
+      <li>เลือก<b>เครื่องมือและอุปกรณ์ป้องกันภัย</b>ให้เหมาะกับงาน</li>
+      <li class="c-sec">ช่วยเหลือผู้ถูกไฟฟ้าดูดได้ถูกวิธี <span class="small">(เรียนสัปดาห์ที่ 2)</span></li>
+    </ul>
+    <p class="small reveal d3" style="margin-top:20px">อ้างอิงมาตรฐานฝีมือแรงงานแห่งชาติ ช่างอิเล็กทรอนิกส์ ระดับ 1 · ข้อ 1.1 ความปลอดภัยในการปฏิบัติงาน</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="จุดประสงค์เชิงพฤติกรรม">
+  <div class="body">
+    <div class="kicker reveal">จุดประสงค์เชิงพฤติกรรม</div>
+    <h2 class="title reveal d1">เรียนจบสัปดาห์นี้ นักเรียนสามารถ…</h2>
+    <ol class="steps">
+      <li class="reveal d2">บอก<b>ประโยชน์และโทษ</b>ของไฟฟ้าได้ถูกต้อง <span class="small c-sec">(4.1)</span></li>
+      <li class="reveal d3">อธิบาย<b>อันตรายของไฟฟ้าต่อร่างกาย</b>มนุษย์ได้ถูกต้อง <span class="small c-sec">(4.2)</span></li>
+      <li class="reveal d4">บอก<b>ข้อควรปฏิบัติ</b>ในการใช้ไฟฟ้าอย่างปลอดภัยได้ <span class="small c-sec">(4.3)</span></li>
+      <li class="reveal d5">เตรียมอุปกรณ์ ทำงานอย่างรับผิดชอบ ตรงต่อเวลา <span class="small c-sec">(4.7)</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="บทนำ" data-title="ชวนคิด: เกิดอะไรขึ้นได้บ้าง">
+  <div class="body">
+    <div class="kicker reveal">บทนำ · ชวนคิด</div>
+    <h2 class="title reveal d1">ถ้าเป็นแบบนี้ จะเกิดอะไรขึ้น?</h2>
+    <div class="grid g3">
+      <div class="box rose tile reveal d2"><div class="icon">💧🔌</div><h3>มือเปียก<br>เสียบปลั๊ก</h3></div>
+      <div class="box rose tile reveal d3"><div class="icon">🩹〰️</div><h3>สายไฟฉนวนแตก<br>ยังฝืนใช้ต่อ</h3></div>
+      <div class="box rose tile reveal d4"><div class="icon">🧊🦶</div><h3>ตู้เย็นไฟรั่ว<br>เท้าเปล่าไปจับ</h3></div>
+    </div>
+    <p class="lead reveal d5" style="margin-top:40px;text-align:center">เกิดอันตรายอะไร? <span class="hl">เพราะอะไร?</span> 🤔</p>
+  </div>
+</section>
+
+<!-- ============ 5.1 คุณสมบัติ ประโยชน์ และโทษของไฟฟ้า ============ -->
+<section class="slide section sec-1" data-tag="5.1 คุณสมบัติ ประโยชน์ และโทษ" data-title="5.1 คุณสมบัติ ประโยชน์ และโทษของไฟฟ้า">
+  <div class="big-no">5.1</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.1</div>
+    <h2 class="reveal d1">คุณสมบัติ ประโยชน์<br>และโทษของไฟฟ้า</h2>
+    <p class="lead reveal d2">ไฟฟ้าคือพลังงานที่ใช้ได้ทั้งคุณและโทษ</p>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ตัวนำ กับ ฉนวน">
+  <div class="body">
+    <div class="kicker reveal">คุณสมบัติของไฟฟ้า</div>
+    <h2 class="title reveal d1">ไหลง่ายใน<span class="c-orange">ตัวนำ</span> ไหลยากใน<span class="c-blue">ฉนวน</span></h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 640px">
+        <svg viewBox="0 0 640 400" aria-label="ภาพตัดสายไฟ: แกนทองแดงเป็นตัวนำ เปลือกพลาสติกเป็นฉนวน">
+          <rect x="20" y="150" width="400" height="110" rx="55" fill="#3b6fd4"/>
+          <rect x="410" y="172" width="190" height="66" rx="14" fill="#e8742c"/>
+          <g stroke="#b85a1f" stroke-width="4"><line x1="420" y1="188" x2="600" y2="188"/><line x1="420" y1="205" x2="600" y2="205"/><line x1="420" y1="222" x2="600" y2="222"/></g>
+          <text x="505" y="105" font-size="36" fill="#e8742c" font-weight="500" text-anchor="middle">ตัวนำ</text>
+          <text x="505" y="145" font-size="24" fill="#5d5866" text-anchor="middle">แกนทองแดง ▼</text>
+          <text x="220" y="310" font-size="36" fill="#3b6fd4" font-weight="500" text-anchor="middle">▲ ฉนวน</text>
+          <text x="220" y="350" font-size="24" fill="#5d5866" text-anchor="middle">เปลือกพลาสติก</text>
+        </svg>
+      </div>
+      <div class="reveal d3">
+        <p class="small" style="margin:0"><b class="c-orange">ตัวนำ</b> ทองแดง เงิน เหล็ก อะลูมิเนียม</p>
+        <p class="small"><b class="c-blue">ฉนวน</b> พลาสติก ยาง แก้ว ไม้</p>
+        <div class="box sun" style="padding:18px 24px;margin-top:20px"><p class="small" style="margin:0"><span class="extra">เสริม</span> ไม้<b>เปียกน้ำ</b>กลายเป็นตัวนำได้ ผิวหนังก็เช่นกัน <sup class="ref"><a href="#refs">[2]</a></sup></p></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.1 <sup class="ref"><a href="#refs">[1]</a></sup> · OSHA 3075 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ภัยมืด: มองไม่เห็นไฟฟ้า">
+  <div class="body">
+    <div class="kicker reveal">คุณสมบัติของไฟฟ้า</div>
+    <h2 class="title reveal d1">“ภัยมืด” มองไม่เห็น ต้องตรวจด้วยเครื่องมือ</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 560px">
+        <img src="../assets/img/test-screwdriver.jpg" alt="ไขควงลองไฟ" style="width:520px">
+        <div class="cap">ไขควงลองไฟ</div>
+        <div class="credit">ภาพ: August Geyler, CC BY-SA 4.0</div>
+      </div>
+      <div class="photo reveal d3" style="flex:0 0 330px">
+        <img src="../assets/img/multimeter.jpg" alt="มัลติมิเตอร์แบบดิจิทัล" style="height:340px">
+        <div class="cap">มัลติมิเตอร์</div>
+        <div class="credit">ภาพ: Anselm Schüler, CC BY-SA 4.0</div>
+      </div>
+      <div class="box rose reveal d4" style="text-align:center"><div class="icon">✋🚫</div><p class="small" style="margin:0"><b>ห้ามใช้มือแตะ</b><br>ทดสอบว่ามีไฟ<br>โดยเด็ดขาด</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ประโยชน์ของไฟฟ้า">
+  <div class="body">
+    <div class="kicker reveal">ประโยชน์ของไฟฟ้า</div>
+    <h2 class="title reveal d1">เปลี่ยนเป็นพลังงานรูปอื่นได้แทบทุกแบบ</h2>
+    <div class="grid g3" style="gap:24px">
+      <div class="box orange tile reveal d2"><div class="icon">🔥</div><h3>ความร้อน</h3><p>เตารีด หม้อหุงข้าว หัวแร้ง</p></div>
+      <div class="box blue tile reveal d2"><div class="icon">❄️</div><h3>ความเย็น</h3><p>ตู้เย็น ตู้แช่ แอร์</p></div>
+      <div class="box tint tile reveal d3"><div class="icon">⚙️</div><h3>พลังงานกล</h3><p>มอเตอร์ พัดลม สว่าน เครื่องซักผ้า</p></div>
+      <div class="box rose tile reveal d3"><div class="icon">🧲</div><h3>อำนาจแม่เหล็ก</h3><p>กระดิ่ง หม้อแปลง ลำโพง</p></div>
+      <div class="box sun tile reveal d4"><div class="icon">💡</div><h3>แสงสว่าง</h3><p>ไฟฉาย หลอดไฟ งานเชื่อม</p></div>
+      <div class="box green tile reveal d4"><div class="icon">📺</div><h3>ความสะดวกสบาย</h3><p>ทีวี คอมพิวเตอร์ วิทยุสื่อสาร</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ในรถยนต์คันเดียว">
+  <div class="body center">
+    <div class="kicker reveal">ช่างทุกสาขาต้องรู้</div>
+    <h2 class="title reveal d1">ในรถยนต์คันเดียว ก็มีครบเกือบทุกแบบ 🚗</h2>
+    <div class="grid g3" style="gap:30px;margin-top:10px">
+      <div class="box tint tile reveal d2"><div class="icon">⚙️</div><h3>มอเตอร์สตาร์ท</h3><p>ไฟฟ้า → พลังงานกล</p></div>
+      <div class="box sun tile reveal d3"><div class="icon">💡</div><h3>ไฟส่องสว่าง</h3><p>ไฟฟ้า → แสง</p></div>
+      <div class="box rose tile reveal d4"><div class="icon">📯</div><h3>แตร</h3><p>ไฟฟ้า → แม่เหล็ก → เสียง</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="โทษของไฟฟ้า 2 ลักษณะ">
+  <div class="body">
+    <div class="kicker reveal">โทษของไฟฟ้า</div>
+    <h2 class="title reveal d1">เกิดจาก<span class="hl">ใช้ผิดวิธี</span> ขาดความระวัง ประมาท</h2>
+    <div class="grid g2" style="gap:40px;margin-top:10px">
+      <div class="box orange tile reveal d2"><div class="icon">🔥</div><h3 class="c-orange">ไฟฟ้าช็อต</h3><p class="small" style="margin:0">(Short Circuit) ไฟฟ้าลัดวงจร</p><p style="margin-top:14px">→ ความร้อนสูง <b>เพลิงไหม้</b></p></div>
+      <div class="box rose tile reveal d3"><div class="icon">⚡🧍</div><h3 class="c-rose">ไฟฟ้าดูด</h3><p class="small" style="margin:0">(Electric Shock)</p><p style="margin-top:14px">→ กระแสผ่านร่างกาย <b>พิการ/เสียชีวิต</b></p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ไฟฟ้าช็อต (ลัดวงจร)">
+  <div class="body">
+    <div class="kicker reveal">โทษลักษณะที่ 1</div>
+    <h2 class="title reveal d1">ไฟฟ้าช็อต <span class="en">(Short Circuit)</span></h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 820px">
+        <svg viewBox="-90 0 910 460" aria-label="วงจรลัด: กระแสไหลผ่านสายที่แตะกันโดยไม่ผ่านหลอดไฟ">
+          <defs><marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d6455d"/></marker></defs>
+          <g fill="none" stroke="#5d5866" stroke-width="8" stroke-linecap="round">
+            <path d="M120 120 H660 V180"/><path d="M660 300 V360 H120"/>
+            <path d="M120 120 V190"/><path d="M120 290 V360"/>
+          </g>
+          <circle cx="120" cy="240" r="54" fill="#fff" stroke="#2a2733" stroke-width="6"/>
+          <path d="M92 240 q14 -24 28 0 t28 0" fill="none" stroke="#2a2733" stroke-width="5"/>
+          <text x="56" y="250" font-size="26" fill="#5d5866" text-anchor="end">แหล่งจ่าย</text>
+          <circle cx="660" cy="240" r="58" fill="#fff1cc" stroke="#2a2733" stroke-width="6"/>
+          <path d="M624 204 L696 276 M696 204 L624 276" stroke="#2a2733" stroke-width="5"/>
+          <text x="760" y="235" font-size="28" fill="#2a2733" text-anchor="middle">ภาระ</text>
+          <text x="760" y="270" font-size="22" fill="#5d5866" text-anchor="middle">(Load)</text>
+          <path d="M420 120 L400 190 L440 250 L420 360" fill="none" stroke="#d6455d" stroke-width="9" stroke-linecap="round"/>
+          <text x="455" y="335" font-size="30" fill="#d6455d" font-weight="600">สายแตะกัน!</text>
+          <text x="380" y="80" font-size="44">🔥</text>
+          <path class="flow" d="M200 95 H360" stroke="#d6455d" stroke-width="5" fill="none" marker-end="url(#ahr)"/>
+          <path d="M360 395 H200" stroke="#d6455d" stroke-width="5" fill="none" marker-end="url(#ahr)"/>
+        </svg>
+      </div>
+      <div class="reveal d3">
+        <ul class="pts small">
+          <li>กระแสไหลครบวงจร<b>โดยไม่ผ่านภาระ</b></li>
+          <li>ไม่มีภาระจำกัด → กระแส<b>สูงมาก</b></li>
+          <li>เกิด<b>ความร้อน</b> → เพลิงไหม้</li>
+        </ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · แผนภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ไฟฟ้าดูด">
+  <div class="body">
+    <div class="kicker reveal">โทษลักษณะที่ 2</div>
+    <h2 class="title reveal d1">ไฟฟ้าดูด <span class="en">(Electric Shock)</span></h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 640px">
+        <svg viewBox="0 0 640 470" aria-label="ไฟฟ้าดูด: กระแสจากสายไฟผ่านมือ ลำตัว ลงเท้าสู่พื้นดิน">
+          <defs><marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d6455d"/></marker></defs>
+          <rect x="20" y="58" width="600" height="26" rx="13" fill="#3b6fd4"/>
+          <rect x="250" y="58" width="70" height="26" fill="#e8742c"/>
+          <text x="20" y="40" font-size="26" fill="#3b6fd4">สายไฟที่มีไฟ</text>
+          <text x="285" y="40" font-size="24" fill="#e8742c" text-anchor="middle">ฉนวนชำรุด ▼</text>
+          <g stroke="#2a2733" stroke-width="10" stroke-linecap="round" fill="none">
+            <circle cx="400" cy="170" r="34" fill="#fff"/>
+            <path d="M400 204 V320"/><path d="M400 230 L300 90"/><path d="M400 230 L470 300"/>
+            <path d="M400 320 L360 420"/><path d="M400 320 L440 420"/>
+          </g>
+          <rect x="20" y="424" width="600" height="14" fill="#8a6d4a"/>
+          <g stroke="#8a6d4a" stroke-width="4"><path d="M40 438 l-20 24M100 438 l-20 24M160 438 l-20 24M220 438 l-20 24M280 438 l-20 24M340 438 l-20 24M400 438 l-20 24M460 438 l-20 24M520 438 l-20 24M580 438 l-20 24"/></g>
+          <text x="560" y="410" font-size="24" fill="#8a6d4a" text-anchor="middle">พื้นดิน</text>
+          <path d="M320 120 L385 215 L385 330 L350 405" stroke="#d6455d" stroke-width="6" fill="none" stroke-dasharray="14 10" marker-end="url(#ahs)"/>
+          <text x="150" y="260" font-size="28" fill="#d6455d" font-weight="600">กระแสผ่านร่างกาย</text>
+        </svg>
+      </div>
+      <div class="reveal d3">
+        <ul class="pts small">
+          <li>กระแสไหล<b>ผ่านร่างกาย</b>ลงดิน หรือครบวงจร</li>
+          <li>กล้ามเนื้อ<b>เกร็ง</b> สะบัดให้หลุดเองไม่ได้</li>
+          <li>อาจ<b>พิการ</b>หรือ<b>เสียชีวิต</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · แผนภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ระวังสับสน: ช็อต กับ shock">
+  <div class="body center">
+    <div class="kicker reveal">ระวังสับสน <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1">“ช็อต” ภาษาไทย ≠ “shock” ภาษาอังกฤษ</h2>
+    <table class="t reveal d2" style="width:100%">
+      <tr><th>เราพูดว่า</th><th>ความหมาย</th><th>ภาษาอังกฤษ</th></tr>
+      <tr><td><b class="c-orange">ไฟฟ้าช็อต</b></td><td>ไฟฟ้าลัดวงจร → ไฟไหม้</td><td class="mono">short circuit</td></tr>
+      <tr><td><b class="c-rose">ไฟฟ้าดูด</b></td><td>กระแสผ่านคน → บาดเจ็บ</td><td class="mono">electric shock</td></tr>
+    </table>
+    <p class="small reveal d3" style="margin-top:30px">อ่านคู่มือภาษาอังกฤษ เจอคำว่า <b>shock</b> ให้นึกถึง “<b>คนถูกไฟดูด</b>”</p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ฝึกคิด 5.1">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.1 · คำถามท้ายใบความรู้</div>
+    <ol class="steps" style="margin-top:20px">
+      <li class="reveal d1">บอก<b>ประโยชน์</b>ของไฟฟ้าอย่างน้อย 3 ข้อ พร้อมยกตัวอย่างอุปกรณ์</li>
+      <li class="reveal d2"><b>ไฟฟ้าช็อต</b>กับ<b>ไฟฟ้าดูด</b> ต่างกันอย่างไร แต่ละแบบอันตรายอย่างไร</li>
+    </ol>
+    <p class="small reveal d3 c-sec" style="margin-top:30px">💬 คุยกับเพื่อนข้าง ๆ 2 นาที แล้วสุ่มตอบ</p>
+  </div>
+</section>
+
+<!-- ============ 5.2 อันตรายของไฟฟ้าต่อร่างกายมนุษย์ ============ -->
+<section class="slide section sec-2" data-tag="5.2 อันตรายต่อร่างกาย" data-title="5.2 อันตรายของไฟฟ้าต่อร่างกายมนุษย์">
+  <div class="big-no">5.2</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.2</div>
+    <h2 class="reveal d1">อันตรายของไฟฟ้า<br>ต่อร่างกายมนุษย์</h2>
+    <p class="lead reveal d2">ร่างกายเราก็เป็น “ตัวนำ”</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ร่างกายเป็นตัวนำไฟฟ้า">
+  <div class="body">
+    <div class="kicker reveal">อันตรายต่อร่างกาย</div>
+    <h2 class="title reveal d1">ร่างกาย = ตัวนำ ไฟผ่านได้สะดวก</h2>
+    <p class="reveal d2">ยิ่งอันตรายเมื่อส่วนใดส่วนหนึ่งของร่างกาย<b>แตะ</b>…</p>
+    <div class="grid g3 reveal d3" style="gap:26px">
+      <div class="box blue tile"><div class="icon">💧</div><h3>พื้นน้ำ</h3></div>
+      <div class="box sun tile"><div class="icon">🟫</div><h3>พื้นดิน</h3></div>
+      <div class="box tint tile"><div class="icon">🔩</div><h3>โลหะที่ต่อลงดิน</h3></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:26px"><span class="extra">เสริม</span> คนถูกดูดเมื่อร่างกาย<b>ทำให้วงจรครบ</b> เช่น แตะสายไฟ 2 เส้น หรือแตะสายไฟ 1 เส้น + พื้นดิน <sup class="ref"><a href="#refs">[2]</a></sup></p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="สัมผัสโดยตรง และ สัมผัสโดยอ้อม">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">ลักษณะการสัมผัสไฟฟ้า (ภาพที่ 1.2)</div>
+    <h2 class="title reveal d1" style="margin-bottom:6px">สัมผัส<span class="c-orange">โดยตรง</span> กับ <span class="c-blue">โดยอ้อม</span></h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2" style="padding:18px 24px">
+        <div class="diagram"><svg viewBox="0 0 640 360" aria-label="สัมผัสโดยตรง: มือจับสายไฟที่ฉนวนชำรุด">
+          <defs><marker id="ah1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d6455d"/></marker></defs>
+          <rect x="20" y="40" width="600" height="24" rx="12" fill="#3b6fd4"/><rect x="230" y="40" width="70" height="24" fill="#e8742c"/>
+          <text x="265" y="25" font-size="24" fill="#e8742c" text-anchor="middle">ฉนวนชำรุด</text>
+          <g stroke="#2a2733" stroke-width="9" stroke-linecap="round" fill="none"><circle cx="380" cy="130" r="28" fill="#fff"/><path d="M380 158 V250"/><path d="M380 180 L280 70"/><path d="M380 180 L440 240"/><path d="M380 250 L345 320"/><path d="M380 250 L415 320"/></g>
+          <rect x="20" y="322" width="600" height="12" fill="#8a6d4a"/>
+          <path d="M295 85 L365 175 L365 270 L340 312" stroke="#d6455d" stroke-width="5" fill="none" stroke-dasharray="12 8" marker-end="url(#ah1)"/>
+        </svg></div>
+        <h3 style="margin:6px 0 0;color:var(--orange)">โดยตรง (Direct Contact)</h3>
+        <p class="small" style="margin:0">แตะ<b>ส่วนที่มีไฟ</b> เช่น สายไฟฉนวนชำรุด</p>
+      </div>
+      <div class="box reveal d3" style="padding:18px 24px">
+        <div class="diagram"><svg viewBox="0 0 640 360" aria-label="สัมผัสโดยอ้อม: มือแตะตัวถังโลหะของเครื่องใช้ไฟฟ้าที่ไฟรั่ว">
+          <defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d6455d"/></marker></defs>
+          <rect x="40" y="60" width="210" height="262" rx="14" fill="#dfe8fa" stroke="#3b6fd4" stroke-width="6"/>
+          <text x="145" y="110" font-size="24" fill="#3b6fd4" text-anchor="middle">ตัวถังโลหะ</text>
+          <path d="M80 200 l20 -22 l20 22 l20 -22 l20 22 l20 -22 l20 22" stroke="#d6455d" stroke-width="5" fill="none"/>
+          <text x="145" y="250" font-size="24" fill="#d6455d" text-anchor="middle">ไฟรั่วข้างใน</text>
+          <g stroke="#2a2733" stroke-width="9" stroke-linecap="round" fill="none"><circle cx="420" cy="130" r="28" fill="#fff"/><path d="M420 158 V250"/><path d="M420 180 L255 170"/><path d="M420 180 L480 240"/><path d="M420 250 L385 320"/><path d="M420 250 L455 320"/></g>
+          <rect x="20" y="322" width="600" height="12" fill="#8a6d4a"/>
+          <path d="M270 160 L405 185 L405 270 L380 312" stroke="#d6455d" stroke-width="5" fill="none" stroke-dasharray="12 8" marker-end="url(#ah2)"/>
+        </svg></div>
+        <h3 style="margin:6px 0 0;color:var(--blue)">โดยอ้อม (Indirect Contact)</h3>
+        <p class="small" style="margin:0">แตะ<b>โลหะที่มีไฟรั่ว</b> เช่น ตัวถังเครื่องใช้ไฟฟ้า</p>
+      </div>
+    </div>
+    <div class="src">ที่มา: ภาพที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · วาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="อันตรายมากหรือน้อยขึ้นกับอะไร">
+  <div class="body">
+    <div class="kicker reveal">อันตรายมากหรือน้อย ขึ้นกับ…</div>
+    <h2 class="title reveal d1">กระแส<span class="hl">มาก</span> + นาน = อันตรายมาก</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box orange tile reveal d2"><div class="icon">⚡</div><h3>ปริมาณกระแส</h3><p>ที่ไหลผ่านร่างกาย</p></div>
+      <div class="box orange tile reveal d3"><div class="icon">⏱️</div><h3>ระยะเวลา</h3><p>ที่กระแสไหลผ่าน</p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:30px"><span class="extra">เสริม</span> ปัจจัยอื่น: <b>เส้นทาง</b>ที่กระแสผ่านร่างกาย และ<b>ความถี่</b>ของไฟฟ้า <sup class="ref"><a href="#refs">[2]</a></sup></p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตารางที่ 1.2 กระแสกับปฏิกิริยาของร่างกาย">
+  <div class="body" style="top:112px;bottom:84px">
+    <div class="kicker" style="font-size:26px">ตารางที่ 1.2 ความสัมพันธ์ของปริมาณกระแสไหลผ่านร่างกายกับปฏิกิริยาที่เกิดขึ้น · กด → ทีละแถว</div>
+    <table class="t left compact cur" style="width:100%;margin-top:8px">
+      <tr><th></th><th>กระแสผ่านร่างกาย</th><th>ปฏิกิริยาที่เกิดขึ้น</th></tr>
+      <tr class="frag"><td class="sev"><i style="background:#2e9b57"></i></td><td>ต่ำกว่า 0.5 mA</td><td>ยังไม่มีผล หรือไม่รู้สึก</td></tr>
+      <tr class="frag"><td class="sev"><i style="background:#8cc152"></i></td><td>1 mA</td><td>รู้สึกจั๊กจี้ หรือกระตุกเล็กน้อย</td></tr>
+      <tr class="frag"><td class="sev"><i style="background:#f7b733"></i></td><td>5 mA</td><td>สั่นเล็กน้อย ไม่เจ็บ ส่วนใหญ่ยังหนีได้</td></tr>
+      <tr class="frag"><td class="sev"><i style="background:#e8742c"></i></td><td>6–25 mA (หญิง)<br>9–30 mA (ชาย)</td><td>เจ็บปวด <b>สูญเสียการควบคุมกล้ามเนื้อ</b> ขยับไม่ได้</td></tr>
+      <tr class="frag hit"><td class="sev"><i style="background:#d6455d"></i></td><td>50–150 mA</td><td>เจ็บปวดมาก <b>ระบบหายใจหยุดทำงาน</b> เสียชีวิตได้</td></tr>
+      <tr class="frag"><td class="sev"><i style="background:#a3203a"></i></td><td>1–4.3 A</td><td><b>หัวใจหยุดเต้น</b> เส้นประสาทถูกทำลาย เสียชีวิต</td></tr>
+      <tr class="frag"><td class="sev"><i style="background:#5a0f1e"></i></td><td>10 A</td><td>หัวใจหยุดเต้น ถูกเผาไหม้รุนแรง เสียชีวิต</td></tr>
+    </table>
+    <p class="tiny" style="margin-top:8px"><span class="extra">เสริม</span> ค่าโดยประมาณ กรณีกระแสไหล<b>จากมือถึงเท้านาน 1 วินาที</b> <sup class="ref"><a href="#refs">[2]</a></sup> · OSHA ใช้ “ต่ำกว่า 1 mA” เป็นระดับที่ไม่รู้สึก ส่วน 0.5 mA เป็นเกณฑ์ตาม IEC 60479-1 <sup class="ref"><a href="#refs">[4]</a></sup></p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ทำไมปล่อยมือไม่ได้">
+  <div class="body">
+    <div class="kicker reveal">ทำไมถูกดูดแล้ว “ปล่อยมือไม่ได้”</div>
+    <h2 class="title reveal d1">กล้ามเนื้อเกร็ง → <span class="c-rose">ยิ่งค้างนาน ยิ่งอันตราย</span></h2>
+    <ol class="steps">
+      <li class="reveal d2">กระแสกระตุ้นกล้ามเนื้อให้<b>หดเกร็ง</b> มือกำแน่น</li>
+      <li class="reveal d3">หลุดออกเองไม่ได้ → กระแสไหล<b>นานขึ้น</b></li>
+      <li class="reveal d4">ผิวหนังพอง ความต้านทานลด → กระแส<b>เพิ่มขึ้น</b></li>
+    </ol>
+    <p class="small reveal d5"><span class="extra">เสริม</span> “ไฟแรงดันต่ำ ไม่ได้แปลว่าอันตรายต่ำ” <sup class="ref"><a href="#refs">[2]</a></sup></p>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ฝึกคิด: มือแห้ง กับ มือเปียก">
+  <div class="body">
+    <div class="kicker reveal">ฝึกคิด · ทำไมห้ามจับไฟตอนมือเปียก <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1" style="margin-bottom:10px">กระแส = แรงดัน ÷ ความต้านทาน <span class="en">(I = V / R)</span></h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box blue">
+        <h3 class="c-blue">ผิวแห้ง ≈ 100,000 Ω</h3>
+        <div class="frag"><span class="mono">I = 220 ÷ 100,000</span></div>
+        <div class="frag"><span class="mono">= 0.0022 A = </span><span class="answer" style="font-size:44px">2.2 mA</span></div>
+        <p class="small frag" style="margin-top:10px">→ รู้สึกกระตุกเล็กน้อย</p>
+      </div>
+      <div class="box rose">
+        <h3 class="c-rose">ผิวเปียก ≈ 1,000 Ω</h3>
+        <div class="frag"><span class="mono">I = 220 ÷ 1,000</span></div>
+        <div class="frag"><span class="mono">= 0.22 A = </span><span class="answer" style="font-size:44px">220 mA</span></div>
+        <p class="small frag" style="margin-top:10px">→ เกิน 50–150 mA <b class="c-rose">เสียชีวิตได้!</b></p>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:14px">ตัวอย่างประมาณการด้วยไฟบ้าน 220 V · ค่าความต้านทานผิวและวิธีคิดจาก OSHA <sup class="ref"><a href="#refs">[3]</a></sup> · กฎของโอห์มจะเรียนละเอียดในหน่วยที่ 3</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ฝึกคิด 5.2">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.2 · คำถามท้ายใบความรู้</div>
+    <ol class="steps" start="3" style="margin-top:20px;counter-reset:st 2">
+      <li class="reveal d1">สัมผัสไฟฟ้า<b>โดยตรง</b>กับ<b>โดยอ้อม</b> ต่างกันอย่างไร ยกตัวอย่าง</li>
+      <li class="reveal d2">กระแสเท่าใดที่ทำให้<b>อวัยวะเกี่ยวกับการหายใจหยุดทำงาน</b></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 5.3 ข้อควรปฏิบัติในการใช้ไฟฟ้า ============ -->
+<section class="slide section sec-3" data-tag="5.3 ข้อควรปฏิบัติ" data-title="5.3 ข้อควรปฏิบัติในการใช้ไฟฟ้าอย่างปลอดภัย">
+  <div class="big-no">5.3</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.3</div>
+    <h2 class="reveal d1">ข้อควรปฏิบัติในการใช้ไฟฟ้า<br>อย่างถูกต้องปลอดภัย</h2>
+    <p class="lead reveal d2">ปลอดภัยไว้ก่อน เริ่มจาก “ตรวจก่อนใช้”</p>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ตรวจก่อนใช้ และห้ามมือเปียก">
+  <div class="body">
+    <div class="kicker reveal">ข้อควรปฏิบัติ 1–2</div>
+    <h2 class="title reveal d1">ตรวจก่อนใช้ · ห้ามเปียก</h2>
+    <div class="grid g2" style="gap:36px">
+      <div class="box reveal d2"><div class="icon">🔍</div><h3>ตรวจสายไฟและอุปกรณ์ทุกครั้ง</h3><p class="small">ฉนวน<b>ชำรุด/แตกร้าว</b> → เปลี่ยนใหม่ทันที</p></div>
+      <div class="box blue reveal d3"><div class="icon">💧🚫</div><h3>ห้ามมือเปียก ห้ามยืนพื้นเปียก</h3><p class="small">น้ำทำให้ความต้านทานผิว<b>ลดลงมาก</b> กระแสผ่านง่าย</p></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ซ่อมบำรุง: ตัดไฟ แขวนป้าย">
+  <div class="body">
+    <div class="kicker reveal">ข้อควรปฏิบัติ 3</div>
+    <h2 class="title reveal d1">ก่อนซ่อม: <span class="hl">ตัดไฟที่เบรกเกอร์</span> + แขวนป้าย</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 660px">
+        <img src="../assets/img/lockout.jpg" alt="สวิตช์ตัดไฟถูกล็อกด้วยกุญแจและติดป้าย" style="width:620px">
+        <div class="credit">ภาพ: darkday, CC BY 2.0, via Wikimedia Commons</div>
+      </div>
+      <div class="reveal d3">
+        <ul class="pts small">
+          <li>กันคนอื่น<b>สับเบรกเกอร์กลับ</b>ขณะเรายังทำงาน</li>
+          <li><span class="extra">เสริม</span> ในโรงงานใช้<b>ล็อกด้วยกุญแจ</b>และติดป้าย (Lockout/Tagout) <sup class="ref"><a href="#refs">[2]</a></sup></li>
+        </ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="เครื่องมือหุ้มฉนวน PPE และสายดิน">
+  <div class="body">
+    <div class="kicker reveal">ข้อควรปฏิบัติ 4–6</div>
+    <h2 class="title reveal d1">เครื่องมือ · อุปกรณ์ป้องกัน · สายดิน</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box tile reveal d2"><div class="icon">🪛</div><h3>ด้ามหุ้มฉนวน</h3><p>ใช้เครื่องมือช่างที่ด้ามจับหุ้มฉนวน</p></div>
+      <div class="box tile reveal d3"><div class="icon">🦺</div><h3>สวม PPE ให้ครบ</h3><p>อุปกรณ์ป้องกันภัยส่วนบุคคล</p></div>
+      <div class="box tile reveal d4"><div class="icon">⏚</div><h3>ต่อสายดิน</h3><p>เครื่องใช้ที่ตัวถังเป็นโลหะ</p></div>
+    </div>
+    <div class="box sun reveal d5" style="margin-top:26px;padding:18px 28px"><p class="small" style="margin:0">⏚ สายดินพาไฟรั่ว<b>ลงดินแทน</b>การไหลผ่านร่างกาย · <span class="extra">เสริม</span> ปลั๊ก 3 ขา คือตัวอย่างอุปกรณ์ที่มีสายดิน <sup class="ref"><a href="#refs">[2]</a></sup></p></div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไม่เกินพิกัด ไม่แหย่เต้ารับ ติด RCD">
+  <div class="body">
+    <div class="kicker reveal">ข้อควรปฏิบัติ 7–9</div>
+    <h2 class="title reveal d1">เครื่องตัดไฟรั่ว = ด่านสุดท้าย</h2>
+    <div class="row center">
+      <div class="reveal d2">
+        <ul class="pts small">
+          <li>ห้ามใช้เครื่องใช้ไฟฟ้า<b>เกินพิกัด</b>สายไฟหรือเต้ารับ</li>
+          <li>ห้าม<b>แหย่โลหะ</b>เข้ารูเต้ารับ</li>
+          <li>ติดตั้ง<b>เครื่องตัดไฟรั่ว (RCD)</b> ตัดไฟเองเมื่อมีไฟรั่ว</li>
+        </ul>
+        <div class="box sun" style="padding:16px 26px;margin-top:6px"><p class="small" style="margin:0"><span class="extra">เสริม</span> กันไฟดูดต้องพิกัดไฟรั่ว<b>ไม่เกิน 30 mA</b> มี มอก. และกดปุ่ม <b>Test</b> อย่างน้อยทุก 6 เดือน <sup class="ref"><a href="#refs">[5]</a></sup></p></div>
+      </div>
+      <div class="photo reveal d3" style="flex:0 0 330px">
+        <img src="../assets/img/rcbo-30ma.jpg" alt="เครื่องตัดไฟรั่วชนิด RCBO พิกัดไฟรั่ว 0.03 A" style="height:470px">
+        <div class="cap">RCBO พิกัดไฟรั่ว<br><span class="mono">0.03 A = 30 mA</span></div>
+        <div class="credit">ภาพ: Dmitry G, CC BY-SA 3.0</div>
+      </div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="สรุปข้อควรปฏิบัติ 9 ข้อ">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">สรุปข้อควรปฏิบัติ (ใช้ในใบงาน ตอนที่ 3)</div>
+    <h2 class="title reveal d1" style="font-size:62px;margin-bottom:10px">ใช้ไฟฟ้าอย่างปลอดภัย 9 ข้อ</h2>
+    <div class="grid g2 reveal d2 small" style="gap:0 50px">
+      <ol class="steps chk" style="margin:0">
+        <li>ตรวจสายไฟ/อุปกรณ์ก่อนใช้</li>
+        <li>ฉนวนชำรุด เปลี่ยนทันที</li>
+        <li>ห้ามมือเปียก/พื้นเปียก</li>
+        <li>ซ่อม: ตัดเบรกเกอร์ + แขวนป้าย</li>
+        <li>ใช้เครื่องมือด้ามหุ้มฉนวน</li>
+      </ol>
+      <ol class="steps chk" style="margin:0;counter-reset:st 5">
+        <li>สวม PPE ให้ครบ</li>
+        <li>ต่อสายดินเครื่องตัวถังโลหะ</li>
+        <li>ไม่เกินพิกัด ไม่แหย่เต้ารับ</li>
+        <li>ติดตั้งเครื่องตัดไฟรั่ว (RCD)</li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ฝึกคิด 5.3">
+  <div class="body center">
+    <div class="kicker reveal">ฝึกคิด 5.3 · คำถามท้ายใบความรู้</div>
+    <ol class="steps" style="margin-top:20px;counter-reset:st 4">
+      <li class="reveal d1">บอก<b>ข้อควรปฏิบัติ</b>ในการใช้ไฟฟ้าอย่างปลอดภัย อย่างน้อย 5 ข้อ</li>
+    </ol>
+    <p class="small reveal d2 c-sec" style="margin-top:30px">💡 ลองย้อนไปตอบสถานการณ์ในบทนำ: มือเปียก · ฉนวนแตก · ตู้เย็นไฟรั่ว</p>
+  </div>
+</section>
+
+<!-- ============ ใบงานที่ 1.1 ============ -->
+<section class="slide section sec-4" data-tag="ใบงานที่ 1.1" data-title="ใบงานที่ 1.1 สำรวจอุปกรณ์ป้องกันภัยและเครื่องมือช่าง">
+  <div class="big-no">1.1</div>
+  <div class="body center">
+    <div class="label reveal">ใบงานที่ 1.1 · ปฏิบัติ 3 ชั่วโมง</div>
+    <h2 class="reveal d1">การสำรวจอุปกรณ์ป้องกันภัย<br>และเครื่องมือช่างไฟฟ้า</h2>
+    <p class="lead reveal d2">จำแนก · ตรวจสภาพ · เลือกใช้ให้เหมาะกับงาน</p>
+  </div>
+</section>
+
+<section class="slide sec-4 ppe" data-title="อุปกรณ์ป้องกันภัยส่วนบุคคล (PPE)">
+  <div class="body" style="top:118px">
+    <div class="kicker reveal">อุปกรณ์ป้องกันภัยส่วนบุคคล (PPE)</div>
+    <h2 class="title reveal d1" style="font-size:60px;margin-bottom:12px">4 อย่างที่ต้องรู้จัก</h2>
+    <div class="grid g4" style="gap:22px">
+      <div class="box reveal d2" style="padding:18px"><img class="sign" src="../assets/img/iso-m009-gloves.png" alt="ป้ายบังคับสวมถุงมือ">
+        <div class="photo" style="height:200px;display:flex;align-items:center;justify-content:center;font-size:120px">🧤</div>
+        <h3>ถุงมือยาง</h3><p>ชนิดฉนวนไฟฟ้า<br>ลดอันตรายจากไฟดูด <sup class="ref"><a href="#refs">[2]</a></sup></p></div>
+      <div class="box reveal d3" style="padding:18px"><img class="sign" src="../assets/img/iso-m004-eye.png" alt="ป้ายบังคับสวมแว่นตานิรภัย">
+        <div class="photo"><img src="../assets/img/safety-glasses.jpg" alt="แว่นตานิรภัย" style="height:180px;width:100%"></div>
+        <h3>แว่นตานิรภัย</h3><p>กันเศษโลหะ/ประกายไฟ<br>กระเด็นเข้าตา <sup class="ref"><a href="#refs">[2]</a></sup></p></div>
+      <div class="box reveal d4" style="padding:18px"><img class="sign" src="../assets/img/iso-m014-helmet.png" alt="ป้ายบังคับสวมหมวกนิรภัย">
+        <div class="photo"><img src="../assets/img/hard-hat.jpg" alt="หมวกนิรภัย" style="height:180px;width:100%"></div>
+        <h3>หมวกนิรภัย</h3><p>ป้องกันศีรษะ<br>ชนิดสำหรับงานไฟฟ้า <sup class="ref"><a href="#refs">[2]</a></sup></p></div>
+      <div class="box reveal d5" style="padding:18px"><img class="sign" src="../assets/img/iso-m008-foot.png" alt="ป้ายบังคับสวมรองเท้านิรภัย">
+        <div class="photo"><img src="../assets/img/safety-boots.jpg" alt="รองเท้านิรภัย" style="height:180px;width:100%"></div>
+        <h3>รองเท้านิรภัย</h3><p>ป้องกันเท้า<br>จากของหล่นทับ/ของมีคม</p></div>
+    </div>
+    <div class="src">ที่มา: รายการอุปกรณ์ในใบงานที่ 1.1 <sup class="ref"><a href="#refs">[1]</a></sup> · OSHA 3075 <sup class="ref"><a href="#refs">[2]</a></sup> · ป้าย ISO 7010 · ภาพ: Jacek Halicki, Norbert Pietsch, Francis Flinch</div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="เครื่องมือช่างไฟฟ้าด้ามหุ้มฉนวน">
+  <div class="body">
+    <div class="kicker reveal">เครื่องมือช่างไฟฟ้า (ด้ามจับหุ้มฉนวน)</div>
+    <h2 class="title reveal d1">ไขควง และคีม</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="photo reveal d2"><img src="../assets/img/insulated-screwdriver.jpg" alt="ไขควงด้ามและก้านหุ้มฉนวน" style="height:300px;width:100%"><div class="cap"><b>ไขควงแบน / ไขควงแฉก</b><br>ขัน-คลายสกรู</div><div class="credit">ภาพ: Wiha Werkzeuge GmbH, CC BY-SA 4.0</div></div>
+      <div class="photo reveal d3"><img src="../assets/img/diagonal-cutters.jpg" alt="คีมตัด" style="height:300px;width:100%"><div class="cap"><b>คีมตัด</b><br>ตัดสายไฟ ตัดขาอุปกรณ์</div><div class="credit">ภาพ: CSonic, CC BY-SA 3.0</div></div>
+      <div class="photo reveal d4"><img src="../assets/img/long-nose-pliers.jpg" alt="คีมปากจิ้งจก" style="height:300px;width:100%"><div class="cap"><b>คีมปากจิ้งจก</b><br>จับ ดัด งอสายในที่แคบ</div><div class="credit">ภาพ: Raysonho, CC0</div></div>
+    </div>
+    <div class="src">ที่มา: รายการเครื่องมือในใบงานที่ 1.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ตรวจสภาพเครื่องมือก่อนใช้">
+  <div class="body">
+    <div class="kicker reveal">ตรวจสภาพก่อนใช้งาน</div>
+    <h2 class="title reveal d1">ฉนวนดีไหม? ดูให้ครบ 3 จุด</h2>
+    <div class="row center">
+      <div class="photo reveal d2" style="flex:0 0 430px">
+        <img src="../assets/img/electrician-tools.jpg" alt="ชุดเครื่องมือช่างไฟฟ้าด้ามหุ้มฉนวน" style="height:500px">
+        <div class="credit">ภาพ: Dmitry G, CC BY-SA 3.0</div>
+      </div>
+      <div class="reveal d3">
+        <ul class="pts small">
+          <li>ด้ามมี<b>รอยแตกร้าว</b>ไหม</li>
+          <li>ฉนวน<b>บิ่น ฉีก หลุดล่อน</b>ไหม</li>
+          <li>ถุงมือยางมี<b>รู/รอยขาด</b>ไหม</li>
+        </ul>
+        <div class="box rose" style="padding:14px 24px"><p class="small" style="margin:0">ชำรุด = <b>ห้ามใช้</b> แยกเก็บ ติดป้าย แจ้งครู <span class="extra">เสริม</span> <sup class="ref"><a href="#refs">[2]</a></sup></p></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ตอนที่ 2 <sup class="ref"><a href="#refs">[1]</a></sup> · OSHA 3075 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ข้อควรระวังในการทำใบงาน">
+  <div class="body">
+    <div class="kicker reveal">คำแนะนำ / ข้อควรระวัง</div>
+    <h2 class="title reveal d1">ก่อนเริ่มใบงาน ⚠️</h2>
+    <ol class="steps">
+      <li class="reveal d2"><b>แต่งกายถูกระเบียบ</b>ก่อนเข้าโรงฝึกงานทุกครั้ง</li>
+      <li class="reveal d3">เครื่องมือฉนวน<b>ชำรุด/แตกร้าว ห้ามใช้</b>เด็ดขาด</li>
+      <li class="reveal d4"><b>ไม่ต่อวงจรกับไฟจริง</b> ใบงานนี้สำรวจและตรวจสภาพเท่านั้น</li>
+      <li class="reveal d5">เสร็จแล้ว<b>เก็บเครื่องมือเข้าที่</b>ให้เรียบร้อย</li>
+    </ol>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 6 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ขั้นตอนการปฏิบัติงาน 3 ตอน">
+  <div class="body">
+    <div class="kicker reveal">ขั้นตอนการปฏิบัติงาน · กลุ่มละ 4–5 คน</div>
+    <h2 class="title reveal d1">3 ตอน ใน 3 ชั่วโมง</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box orange reveal d2"><div class="icon">🦺</div><h3>ตอนที่ 1</h3><p class="small">สำรวจ <b>PPE</b><br>บันทึก ชื่อ · หน้าที่ · สภาพ</p></div>
+      <div class="box tint reveal d3"><div class="icon">🪛</div><h3>ตอนที่ 2</h3><p class="small">ตรวจ<b>เครื่องมือช่าง</b><br>สภาพฉนวน + เหตุผล</p></div>
+      <div class="box blue reveal d4"><div class="icon">🗣️</div><h3>ตอนที่ 3</h3><p class="small">สรุปข้อควรปฏิบัติ <b>≥ 5 ข้อ</b><br>นำเสนอ ≤ 5 นาที</p></div>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ตารางบันทึกผลตอนที่ 1–2">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างการบันทึกผล</div>
+    <h2 class="title reveal d1">กรอกตารางให้ครบทุกช่อง</h2>
+    <p class="small reveal d2" style="margin:0 0 6px"><b>ตอนที่ 1</b> อุปกรณ์ป้องกันภัย</p>
+    <table class="t compact reveal d2" style="width:100%">
+      <tr><th>ที่</th><th>ชื่ออุปกรณ์</th><th>หน้าที่ / ป้องกันอันตรายใด</th><th>สภาพ</th><th>หมายเหตุ</th></tr>
+      <tr><td>1</td><td>แว่นตานิรภัย</td><td>กันเศษวัสดุกระเด็นเข้าตา</td><td>ใช้ได้</td><td>–</td></tr>
+    </table>
+    <p class="small reveal d3" style="margin:24px 0 6px"><b>ตอนที่ 2</b> เครื่องมือช่างไฟฟ้า</p>
+    <table class="t compact reveal d3" style="width:100%">
+      <tr><th>ที่</th><th>ชื่อเครื่องมือ</th><th>หน้าที่การใช้งาน</th><th>สภาพฉนวน</th><th>เหตุผลประกอบ</th></tr>
+      <tr><td>1</td><td>คีมตัด</td><td>ตัดสายไฟ</td><td>ชำรุด</td><td>ด้ามแตกร้าว</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบงานที่ 1.1 <sup class="ref"><a href="#refs">[1]</a></sup> · แถวตัวอย่างเขียนขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="เกณฑ์การประเมินใบงาน 25 คะแนน">
+  <div class="body">
+    <div class="kicker reveal">การประเมินผลใบงานที่ 1.1</div>
+    <h2 class="title reveal d1">25 คะแนน · ผ่าน <span class="hl">20</span> คะแนน (80%)</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนน</th></tr>
+      <tr><td>1</td><td>ชื่อและหน้าที่ของอุปกรณ์ป้องกันภัย (ตอนที่ 1)</td><td class="mono">5</td></tr>
+      <tr><td>2</td><td>ระบุสภาพความพร้อมของอุปกรณ์ป้องกันภัย (ตอนที่ 1)</td><td class="mono">5</td></tr>
+      <tr><td>3</td><td>ชื่อและหน้าที่ของเครื่องมือช่างไฟฟ้า (ตอนที่ 2)</td><td class="mono">5</td></tr>
+      <tr><td>4</td><td>สรุปข้อควรปฏิบัติได้ครบถ้วน (ตอนที่ 3)</td><td class="mono">5</td></tr>
+      <tr><td>5</td><td>ความละเอียดรอบคอบ และส่งงานตรงเวลา</td><td class="mono">5</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 9 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ============ ปิดบทเรียน ============ -->
+<section class="slide sec-0" data-tag="สรุปบทเรียน" data-title="สรุปบทเรียน">
+  <div class="body">
+    <div class="kicker reveal">สรุป</div>
+    <h2 class="title reveal d1">สิ่งที่เราได้เรียนในสัปดาห์นี้</h2>
+    <div class="grid g2" style="gap:26px">
+      <div class="box orange reveal d2"><h3 class="c-orange">5.1 ประโยชน์และโทษ</h3><p class="small">ใช้ถูกวิธีเกิดประโยชน์ · ผิดวิธีเกิด<b>ไฟฟ้าช็อต</b>/<b>ไฟฟ้าดูด</b></p></div>
+      <div class="box tint reveal d3"><h3>5.2 อันตรายต่อร่างกาย</h3><p class="small">กระแสยิ่งมาก ยิ่งนาน ยิ่งอันตราย · <b>50–150 mA</b> เสียชีวิตได้</p></div>
+      <div class="box blue reveal d4"><h3 class="c-blue">5.3 ข้อควรปฏิบัติ</h3><p class="small">ตรวจก่อนใช้ · ตัดไฟ+ป้าย · PPE · สายดิน · RCD</p></div>
+      <div class="box green reveal d5"><h3 class="c-green">ใบงาน 1.1</h3><p class="small">รู้จัก PPE และเครื่องมือ · <b>ชำรุด ห้ามใช้</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="กิจกรรมต่อไป">
+  <div class="body center" style="text-align:center">
+    <div class="kicker reveal">กิจกรรมต่อไป</div>
+    <h2 class="title reveal d1">ทบทวนแล้วลองทำดู!</h2>
+    <div class="grid g3 reveal d2" style="gap:30px">
+      <a class="box tint" href="exercises.html" style="text-decoration:none;color:inherit"><div class="icon">✏️</div><h3>แบบฝึกหัด</h3><p class="small">ตรวจคำตอบทันที</p></a>
+      <a class="box orange" href="quiz.html" style="text-decoration:none;color:inherit"><div class="icon">📝</div><h3 class="c-orange">แบบทดสอบ 20 ข้อ</h3><p class="small">ก่อนเรียน / หลังเรียน</p></a>
+      <a class="box green" href="worksheet.html" style="text-decoration:none;color:inherit"><div class="icon">🖨️</div><h3 class="c-green">ใบงานที่ 1.1</h3><p class="small">พิมพ์ไปใช้ในโรงฝึกงาน</p></a>
+    </div>
+    <p class="small reveal d3" style="margin-top:36px">📖 การบ้าน: อ่านล่วงหน้าเรื่อง <b>การช่วยเหลือผู้ถูกไฟฟ้าดูด</b> (สัปดาห์ที่ 2)</p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="refs" data-tag="เอกสารอ้างอิง" data-title="เอกสารอ้างอิง และเครดิตภาพ">
+  <div class="body" style="font-size:24px;line-height:1.42">
+    <h2 class="title" style="font-size:56px;margin-bottom:16px">เอกสารอ้างอิง</h2>
+    <ol style="margin:0;padding-left:56px">
+      <li style="margin-bottom:10px">จิรกิตติ์ วราภรณ์. <i>แผนการจัดการเรียนรู้ วิชา 20100-1005 งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น</i> (หลักสูตร ปวช. 2567) หน่วยที่ 1 ใบความรู้ที่ 1.1 และใบงานที่ 1.1. วิทยาลัยเทคนิคอุตรดิตถ์. (เอกสารต้นฉบับของบทเรียนนี้)</li>
+      <li style="margin-bottom:10px">Occupational Safety and Health Administration. (2002). <i>Controlling Electrical Hazards</i> (OSHA 3075, Revised). U.S. Department of Labor. https://www.osha.gov/sites/default/files/publications/osha3075.pdf</li>
+      <li style="margin-bottom:10px">Occupational Safety and Health Administration. <i>Construction eTool: Electrical Incidents – How Electrical Current Affects the Human Body</i>. (สำเนาเก็บถาวร 17 พ.ย. 2014) http://web.archive.org/web/20141117075356/https://www.osha.gov/SLTC/etools/construction/electrical_incidents/eleccurrent.html</li>
+      <li style="margin-bottom:10px">International Electrotechnical Commission. (2005). <i>IEC/TS 60479-1: Effects of current on human beings and livestock – Part 1: General aspects</i>. IEC.</li>
+      <li style="margin-bottom:10px">การไฟฟ้าส่วนภูมิภาค. (8 ธันวาคม 2564). PEA แนะนำติดตั้งเครื่องตัดไฟรั่ว (RCD) เพื่อป้องกันอันตรายที่อาจเกิดขึ้นจากเครื่องใช้ไฟฟ้า. ฐานเศรษฐกิจ. https://www.thansettakij.com/pr-news/economy/506018</li>
+    </ol>
+    <div class="box" style="margin-top:14px;padding:14px 26px;font-size:21px;line-height:1.4">
+      <b>เครดิตภาพ (Wikimedia Commons)</b> · ไขควงลองไฟ: August Geyler, CC BY-SA 4.0 · มัลติมิเตอร์ UT61D: Anselm Schüler, CC BY-SA 4.0 · ล็อกสวิตช์: darkday, CC BY 2.0 · RCBO: Dmitry G, CC BY-SA 3.0 · ชุดเครื่องมือช่าง: Dmitry G, CC BY-SA 3.0 · แว่นตานิรภัย: Jacek Halicki, CC BY-SA 4.0 · หมวกนิรภัย: Norbert Pietsch, CC BY-SA 4.0 · รองเท้านิรภัย: Francis Flinch, CC BY 3.0 · ไขควงหุ้มฉนวน: Wiha Werkzeuge GmbH, CC BY-SA 4.0 · คีมตัด: CSonic, CC BY-SA 3.0 · คีมปากจิ้งจก: Raysonho, CC0 · ป้ายความปลอดภัย ISO 7010 (M004, M008, M009, M014, W012): สาธารณสมบัติ · แผนภาพอื่น ๆ วาดขึ้นใหม่
+    </div>
+    <p class="tiny" style="margin-top:10px">เข้าถึงแหล่งข้อมูลออนไลน์เมื่อ 19 ตุลาคม 2569</p>
+  </div>
+</section>
+
+</main>
+</div>
+<script src="../assets/js/deck.js"></script>
+</body>
+</html>
