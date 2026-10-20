@@ -24,9 +24,14 @@
     .keytable { border-collapse: collapse; width: 100%; font-family: var(--font-mono); }
     .keytable td, .keytable th { border: 1px solid var(--line); text-align: center; padding: 4px; }
     .keytable th { background: var(--cream-deep); font-family: var(--font-display); font-weight: 500; }
+    .keytable.ws-key { font-family: var(--font-body); font-size: 15px; margin-bottom: 10px; }
+    .keytable.ws-key td { text-align: left; }
+    .keytable.ws-key td:first-child { text-align: center; width: 3em; }
     @media (max-width: 620px) { .ex-row { grid-template-columns: 2em 1fr; } .ex-row .how { grid-column: 2; } .ans-q ol { grid-template-columns: 1fr; } }
     @media print {
         body[data-only="quiz"] #exKey, body[data-only="ex"] #quizKey, body[data-only="ex"] #quickKey { display: none; }
+        body[data-only="quiz"] #wsKey, body[data-only="ex"] #wsKey { display: none; }
+        #wsKey { break-before: page; }
         #exKey { break-before: page; }
         body[data-only="ex"] #exKey { break-before: auto; }
         .ex-row, .ans-q { break-inside: avoid; }
@@ -61,6 +66,7 @@
         <section class="card" id="quickKey"></section>
         <section class="card" id="quizKey"></section>
         <section class="card" id="exKey"></section>
+        <section class="card" id="wsKey" hidden></section>
     </div>
 </div>
 
@@ -115,6 +121,17 @@
             });
         });
         document.getElementById('exKey').innerHTML = html;
+
+        // เฉลยใบงาน (มีเมื่อรันสคริปต์เข้ารหัสรุ่นที่ส่ง ws ต่อมา)
+        const wsBox = document.getElementById('wsKey');
+        if (key.ws) {
+            wsBox.innerHTML = `<h2>${C.esc(key.ws.title)}</h2>` + key.ws.parts.map(p => `
+                <h3 style="color:var(--teal)">${C.esc(p.title)}</h3>
+                <table class="keytable ws-key"><tr>${p.head.map(h => `<th>${C.esc(h)}</th>`).join('')}</tr>
+                ${p.rows.map(r => `<tr>${r.map(c => `<td>${C.esc(c)}</td>`).join('')}</tr>`).join('')}</table>`).join('')
+                + (key.ws.note ? `<div class="note">${C.esc(key.ws.note)}</div>` : '');
+            wsBox.hidden = false;
+        } else wsBox.hidden = true;
     }
 
     async function open() {

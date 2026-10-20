@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/theme.css">
 <link rel="stylesheet" href="../assets/css/deck.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
 <style>
     /* ส่วนเพิ่มเฉพาะสัปดาห์นี้ */
     .cover .hazard { position: absolute; right: 170px; top: 250px; width: 470px; }
@@ -29,6 +30,26 @@
     .chk li { margin-bottom: 14px !important; }
     .wk { font-family: var(--font-mono); color: var(--ink-soft); font-size: 26px; }
     table.units td, table.units th { font-size: 27px; padding: 7px 16px; }
+    table.plan td, table.plan th { font-size: 28px; padding: 7px 18px; }
+    table.plan td:first-child { font-family: var(--font-mono); white-space: nowrap; }
+    table.plan tr.brk td { background: var(--cream); color: var(--ink-soft); }
+    .vwrap { flex: 0 0 1000px; }
+    .vside { display: flex; flex-direction: column; gap: 18px; }
+    .calc { font: 500 40px var(--font-mono); color: var(--ink); }
+    .race td { font-size: 30px; }
+    .race td.ans { font-family: var(--font-mono); color: var(--rose); }
+    .gm { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .gm .box { text-align: center; padding: 16px 12px; }
+    .gm .icon { font-size: 64px; }
+    .gm h3 { margin: 4px 0 4px; font-size: 34px; }
+    .gm .frag { font: 500 28px var(--font-display); color: var(--rose); }
+    .roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .roles .box { text-align: center; padding: 16px; }
+    .roles h3 { margin: 4px 0; font-size: 32px; }
+    .roles p { font-size: 26px; line-height: 1.35; margin: 0; }
+    .tagcard { border: 5px solid var(--rose); border-radius: 18px; background: #fff; padding: 14px 20px; text-align: center; width: 360px; }
+    .tagcard b { display: block; background: var(--rose); color: #fff; font: 600 40px var(--font-display); border-radius: 10px; margin-bottom: 8px; }
+    .tagcard p { font-size: 26px; margin: 0; line-height: 1.4; }
 </style>
 </head>
 <body>
@@ -48,6 +69,45 @@
     <div class="tiny reveal d4" style="margin-top:40px">เรียบเรียงจากแผนการจัดการเรียนรู้ ใบความรู้ที่ 1.1 และใบงานที่ 1.1 และแหล่งอ้างอิงท้ายสไลด์</div>
   </div>
   <img class="hazard reveal d3" src="../assets/img/iso-w012-electricity.png" alt="ป้ายเตือนอันตรายจากไฟฟ้า">
+</section>
+
+<section class="slide sec-0" data-tag="แผนการเรียนวันนี้" data-title="แผนการเรียนวันนี้ 4 ชั่วโมง">
+  <div class="body" style="top:112px">
+    <div class="kicker reveal">วันนี้เราจะทำอะไรบ้าง · ทฤษฎี 1 ชม. ปฏิบัติ 3 ชม.</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:10px">4 ชั่วโมง ดู คิด เล่น ลงมือทำ</h2>
+    <table class="t left plan reveal d2" style="width:100%">
+      <tr><th>เวลา</th><th>ช่วง</th><th>นักเรียนทำอะไร</th></tr>
+      <tr><td>0:00–0:15</td><td>เปิดเรื่อง</td><td>🎬 ดูข่าวจริง · 💬 คิด-คู่-แชร์</td></tr>
+      <tr><td>0:15–0:25</td><td>แนะนำรายวิชา</td><td>รู้จักวิชา แผน 18 สัปดาห์ เกณฑ์ผ่าน</td></tr>
+      <tr><td>0:25–0:40</td><td>แบบทดสอบก่อนเรียน</td><td>📱 ทำ 20 ข้อบนมือถือ</td></tr>
+      <tr><td>0:40–1:10</td><td>5.1 ประโยชน์และโทษของไฟฟ้า</td><td>🎬 คลิป 2 เรื่อง · 🎮 เกมพลังงาน · 🙋 โหวต “ช็อต หรือ ดูด?”</td></tr>
+      <tr><td>1:10–1:45</td><td>5.2 อันตรายต่อร่างกาย</td><td>🎬 คลิป 3 เรื่อง · 🙋 ทายก่อนเฉลย · 🧮 แข่งคำนวณกระแส</td></tr>
+      <tr class="brk"><td>1:45–1:55</td><td>พัก</td><td>☕</td></tr>
+      <tr><td>1:55–2:25</td><td>5.3 ข้อควรปฏิบัติ</td><td>🎬 คลิป 4 เรื่อง · 🔎 ล่าจุดเสี่ยง · 🎭 บทบาทสมมติตัดไฟ-แขวนป้าย</td></tr>
+      <tr><td>2:25–3:30</td><td>ใบงานที่ 1.1</td><td>🔍 ตรวจสภาพเครื่องมือจากภาพ (กลุ่มละ 4–5 คน)</td></tr>
+      <tr><td>3:30–3:45</td><td>นำเสนอ ตอนที่ 3</td><td>🎲 สุ่มกลุ่มออกมานำเสนอ</td></tr>
+      <tr><td>3:45–4:00</td><td>สรุป + แบบทดสอบหลังเรียน</td><td>📱 ทำ 20 ข้อ เทียบกับก่อนเรียน</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide sec-0 act watch" data-tag="เปิดเรื่อง" data-title="🎬 ข่าวจริง: ช่างต่อปลั๊กพ่วงใช้เอง ถูกไฟดูด">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูข่าวจริง</span><span class="act-meta">2 นาที · แล้วคิด-คู่-แชร์ 5 นาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">เกิดขึ้นจริง ใกล้ตัวกว่าที่คิด</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="d_dPtON1oJA" data-title="หวิดดับ ช่างต่อปลั๊กพ่วงใช้เองถูกไฟดูด" data-credit="ข่าวเย็นไทยรัฐ · Thairath News · 16 ก.พ. 2566" data-len="2:20"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>💬 ดูจบแล้วคุยกับเพื่อนข้าง ๆ</h3><ol>
+          <li>เกิดเหตุเพราะอะไร?</li>
+          <li>ถ้าเป็นเรา จะป้องกันอย่างไร?</li>
+          <li>คนที่อยู่ใกล้ ๆ ควรช่วยอย่างไร?</li>
+        </ol></div>
+        <div data-timer="300" class="sm"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ: ช่อง YouTube ทางการของไทยรัฐ <sup class="ref"><a href="#videos">[V1]</a></sup></div>
+  </div>
 </section>
 
 <section class="slide sec-0" data-tag="แนะนำรายวิชา" data-title="แนะนำรายวิชา">
@@ -118,6 +178,16 @@
   </div>
 </section>
 
+<section class="slide sec-0 act" data-title="📱 แบบทดสอบก่อนเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">📱 แบบทดสอบก่อนเรียน</span><span class="act-meta">รายบุคคล · 15 นาที</span></div>
+    <h2 class="title">ยังไม่รู้ก็ไม่เป็นไร ตอบตามที่คิด!</h2>
+    <p>เปิด <b>แบบทดสอบ</b> → เลือก “<b>ก่อนเรียน</b>” → ทำ 20 ข้อ → กดส่ง</p>
+    <p class="small"><a href="quiz.html">quiz.html</a> (ลิงก์อยู่ในหน้าแรกของวิชา)</p>
+    <div style="margin-top:20px"><div data-timer="900"></div></div>
+  </div>
+</section>
+
 <section class="slide sec-0" data-tag="เปิดบทเรียน" data-title="สัปดาห์นี้เรียนอะไร">
   <div class="body">
     <div class="kicker reveal">สัปดาห์นี้เรียนอะไร</div>
@@ -158,16 +228,19 @@
   </div>
 </section>
 
-<section class="slide sec-0" data-tag="บทนำ" data-title="ชวนคิด: เกิดอะไรขึ้นได้บ้าง">
+<section class="slide sec-0 act" data-tag="บทนำ" data-title="🙋 ชวนคิด: เกิดอะไรขึ้นได้บ้าง">
   <div class="body">
-    <div class="kicker reveal">บทนำ · ชวนคิด</div>
+    <div><span class="act-badge reveal">🙋 ทายก่อนเรียน</span><span class="act-meta reveal">คู่ละ 2 นาที · ยกมือตอบ</span></div>
     <h2 class="title reveal d1">ถ้าเป็นแบบนี้ จะเกิดอะไรขึ้น?</h2>
     <div class="grid g3">
       <div class="box rose tile reveal d2"><div class="icon">💧🔌</div><h3>มือเปียก<br>เสียบปลั๊ก</h3></div>
       <div class="box rose tile reveal d3"><div class="icon">🩹〰️</div><h3>สายไฟฉนวนแตก<br>ยังฝืนใช้ต่อ</h3></div>
       <div class="box rose tile reveal d4"><div class="icon">🧊🦶</div><h3>ตู้เย็นไฟรั่ว<br>เท้าเปล่าไปจับ</h3></div>
     </div>
-    <p class="lead reveal d5" style="margin-top:40px;text-align:center">เกิดอันตรายอะไร? <span class="hl">เพราะอะไร?</span> 🤔</p>
+    <div class="row center reveal d5" style="margin-top:30px">
+      <p class="lead" style="margin:0">เกิดอันตรายอะไร? <span class="hl">เพราะอะไร?</span> 🤔<br><span class="small">เก็บคำตอบไว้ ท้ายคาบมาดูว่าทายถูกไหม</span></p>
+      <div style="flex:0 0 auto"><div data-timer="120" class="sm"></div></div>
+    </div>
   </div>
 </section>
 
@@ -244,6 +317,27 @@
   </div>
 </section>
 
+<section class="slide sec-1 act" data-title="🎮 เกมแข่งกลุ่ม: ไฟฟ้ากลายเป็นพลังงานอะไร">
+  <div class="body" style="top:118px">
+    <div><span class="act-badge">🎮 เกมแข่งกลุ่ม</span><span class="act-meta">กลุ่มละ 4–5 คน · 5 นาที · ข้อละ 1 คะแนน</span></div>
+    <h2 class="title" style="font-size:54px;margin-bottom:14px">ไฟฟ้ากลายเป็นพลังงานอะไร? เขียนคำตอบลงกระดาษ</h2>
+    <div class="gm">
+      <div class="box"><div class="icon">🌀</div><h3>พัดลม</h3><div class="frag">พลังงานกล</div></div>
+      <div class="box"><div class="icon">🫖</div><h3>กาต้มน้ำ</h3><div class="frag">ความร้อน</div></div>
+      <div class="box"><div class="icon">🔔</div><h3>กริ่งประตู</h3><div class="frag">แม่เหล็ก → เสียง</div></div>
+      <div class="box"><div class="icon">💡</div><h3>หลอด LED</h3><div class="frag">แสงสว่าง</div></div>
+      <div class="box"><div class="icon">🧊</div><h3>ตู้เย็น</h3><div class="frag">ความเย็น</div></div>
+      <div class="box"><div class="icon">🔊</div><h3>ลำโพง</h3><div class="frag">แม่เหล็ก → เสียง</div></div>
+      <div class="box"><div class="icon">💨</div><h3>ไดร์เป่าผม</h3><div class="frag">ความร้อน + กล (2 อย่าง!)</div></div>
+      <div class="box sun"><div class="icon">🔋</div><h3>ชาร์จแบตมือถือ</h3><div class="frag">พลังงานเคมี ✨โบนัส</div></div>
+    </div>
+    <div class="row" style="margin-top:18px;align-items:flex-end">
+      <div data-timer="300" class="sm" style="flex:0 0 auto"></div>
+      <div data-board="6"></div>
+    </div>
+  </div>
+</section>
+
 <section class="slide sec-1" data-title="ในรถยนต์คันเดียว">
   <div class="body center">
     <div class="kicker reveal">ช่างทุกสาขาต้องรู้</div>
@@ -307,6 +401,43 @@
   </div>
 </section>
 
+<section class="slide sec-1 act watch" data-title="🎬 ทายก่อนดู: ปลั๊กพ่วงไม่ได้มาตรฐาน">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ทายก่อนดู</span><span class="act-meta">1 นาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">เด็กเสียบชาร์จแบตกับปลั๊กพ่วงราคาถูก… จะเกิดอะไร?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="Ae7ogNBtbDI" data-title="อุทาหรณ์ ใช้ปลั๊กพ่วงไม่ได้มาตรฐาน ไฟลุกพุ่งเข้าหน้า" data-credit="เรื่องเล่าเช้านี้ (ช่อง 3)" data-len="0:53"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>🙋 ยกมือทายก่อนกดเล่น</h3><ol>
+          <li>ไม่มีอะไรเกิดขึ้น</li>
+          <li>ไฟดูดเด็ก</li>
+          <li>ไฟลุก ไฟไหม้</li>
+        </ol></div>
+        <div class="box sun" style="padding:14px 22px"><p class="small" style="margin:0">ดูจบ: นี่คือ<b>ไฟฟ้าช็อต</b> หรือ<b>ไฟฟ้าดูด</b>? เพราะอะไร?</p></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act watch" data-title="🎬 ลัดวงจร หรือ กระแสเกิน">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป</span><span class="act-meta">4 นาที · จดคำตอบ 2 ข้อ</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ไฟไหม้บ้าน เกิดจาก “ลัดวงจร” อย่างเดียวจริงไหม?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="M7zfORRlO3c" data-title="ทำความเข้าใจ “ไฟฟ้าลัดวงจร” กับ “ไฟฟ้ากระแสเกิน”" data-credit="ทันโลก กับ Thai PBS" data-len="4:00"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>✏️ จดคำตอบ</h3><ol>
+          <li><b>ลัดวงจร</b> กับ <b>กระแสเกิน</b> ต่างกันอย่างไร?</li>
+          <li>เสียบปลั๊กพ่วงหลายเครื่องพร้อมกัน เสี่ยงแบบไหน?</li>
+        </ol></div>
+        <div class="box orange frag" style="padding:14px 22px"><p class="small" style="margin:0">ทั้งสองแบบทำให้<b>กระแสสูงกว่าที่สายรับได้</b> → สายร้อน → ไฟไหม้ จึงต้องใช้ปลั๊กพ่วงมี มอก. และ<b>ไม่ใช้เกินพิกัด</b></p></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V3]</a></sup></div>
+  </div>
+</section>
+
 <section class="slide sec-1" data-title="ไฟฟ้าดูด">
   <div class="body">
     <div class="kicker reveal">โทษลักษณะที่ 2</div>
@@ -357,14 +488,33 @@
   </div>
 </section>
 
-<section class="slide sec-1" data-title="ฝึกคิด 5.1">
-  <div class="body center">
-    <div class="kicker reveal">ฝึกคิด 5.1 · คำถามท้ายใบความรู้</div>
-    <ol class="steps" style="margin-top:20px">
-      <li class="reveal d1">บอก<b>ประโยชน์</b>ของไฟฟ้าอย่างน้อย 3 ข้อ พร้อมยกตัวอย่างอุปกรณ์</li>
-      <li class="reveal d2"><b>ไฟฟ้าช็อต</b>กับ<b>ไฟฟ้าดูด</b> ต่างกันอย่างไร แต่ละแบบอันตรายอย่างไร</li>
-    </ol>
-    <p class="small reveal d3 c-sec" style="margin-top:30px">💬 คุยกับเพื่อนข้าง ๆ 2 นาที แล้วสุ่มตอบ</p>
+<section class="slide sec-1 act" data-title="🙋 โหวต: ช็อต หรือ ดูด?">
+  <div class="body" style="top:118px">
+    <div><span class="act-badge">🙋 โหวตทั้งห้อง</span><span class="act-meta">ชูนิ้ว 1 = ช็อต · ชูนิ้ว 2 = ดูด</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:22px">เหตุการณ์นี้คือ “ไฟฟ้าช็อต” หรือ “ไฟฟ้าดูด”?</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span>ช่างจับสายไฟฉนวนขาด แล้วรู้สึกกระตุกทั้งแขน</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">🔥 ช็อต</button><button type="button" class="opt">⚡ ดูด</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">กระแสไหลผ่าน<b>ร่างกาย</b> = ไฟฟ้าดูด (electric shock)</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span>สายไฟ 2 เส้นในปลั๊กพ่วงละลายแตะกัน มีประกายไฟ ควันขึ้น</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">🔥 ช็อต</button><button type="button" class="opt">⚡ ดูด</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">กระแสไหลลัด<b>ไม่ผ่านภาระ</b> = ไฟฟ้าช็อต (ลัดวงจร)</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">3</span>เด็กเท้าเปล่าจับประตูตู้เย็นที่ไฟรั่ว แล้วสะดุ้ง</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">🔥 ช็อต</button><button type="button" class="opt">⚡ ดูด</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">กระแสจากตัวถังผ่านตัวเด็กลงพื้น = ไฟฟ้าดูด แบบ<b>สัมผัสโดยอ้อม</b> (เรียนต่อใน 5.2)</div></div></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🎲 ฝึกคิด 5.1">
+  <div class="body">
+    <div><span class="act-badge">🎲 ฝึกคิด 5.1</span><span class="act-meta">คุยกับเพื่อนข้าง ๆ 2 นาที แล้วสุ่มเลขที่ตอบ</span></div>
+    <h2 class="title" style="font-size:56px">คำถามท้ายใบความรู้</h2>
+    <div class="row">
+      <ol class="steps" style="flex:1.5">
+        <li>บอก<b>ประโยชน์</b>ของไฟฟ้าอย่างน้อย 3 ข้อ พร้อมยกตัวอย่างอุปกรณ์</li>
+        <li><b>ไฟฟ้าช็อต</b>กับ<b>ไฟฟ้าดูด</b> ต่างกันอย่างไร แต่ละแบบอันตรายอย่างไร</li>
+      </ol>
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;align-items:flex-start"><div data-timer="120" class="sm"></div><div data-picker="40"></div></div>
+    </div>
   </div>
 </section>
 
@@ -442,6 +592,22 @@
   </div>
 </section>
 
+<section class="slide sec-2 act" data-title="🙋 ทายก่อนเฉลย: กระแสเท่าไรหยุดหายใจ">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทายก่อนเฉลย</span><span class="act-meta">ชูนิ้ว 1–4 พร้อมกันทั้งห้อง</span></div>
+    <h2 class="title" style="font-size:58px">กระแสผ่านร่างกายเท่าไร ทำให้<span class="c-rose">ระบบหายใจหยุดทำงาน</span>?</h2>
+    <div class="vote" data-answer="2">
+      <button type="button" class="opt"><b>1</b> 1 mA (มิลลิแอมป์)</button>
+      <button type="button" class="opt"><b>2</b> 5 mA</button>
+      <button type="button" class="opt"><b>3</b> 50–150 mA</button>
+      <button type="button" class="opt"><b>4</b> 10 A (แอมป์)</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">แค่ <b>50–150 mA</b> หรือ 0.05–0.15 A ก็หยุดหายใจได้ ขณะที่หม้อหุงข้าวใช้กระแสราว 3–5 A <b>มากกว่านั้นหลายสิบเท่า</b> · ดูทั้งตารางในสไลด์ถัดไป</div>
+    </div>
+    <p class="tiny" style="margin-top:16px">1 A = 1,000 mA</p>
+  </div>
+</section>
+
 <section class="slide sec-2" data-title="ตารางที่ 1.2 กระแสกับปฏิกิริยาของร่างกาย">
   <div class="body" style="top:112px;bottom:84px">
     <div class="kicker" style="font-size:26px">ตารางที่ 1.2 ความสัมพันธ์ของปริมาณกระแสไหลผ่านร่างกายกับปฏิกิริยาที่เกิดขึ้น · กด → ทีละแถว</div>
@@ -473,6 +639,43 @@
   </div>
 </section>
 
+<section class="slide sec-2 act watch" data-title="🎬 เมื่อถูกไฟดูด ร่างกายเป็นอย่างไร">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป</span><span class="act-meta">4 นาที · หาคำตอบ 3 ข้อ</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">นักวิทยาศาสตร์อธิบาย: ไฟดูดทำร้ายร่างกายแค่ไหน?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="j-wLXbHuxD8" data-title="Science Facts : อันตรายจากไฟดูด ทำอย่างไรถึงปลอดภัย" data-credit="PSUSci Channel คณะวิทยาศาสตร์ ม.สงขลานครินทร์" data-len="3:59"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>🔎 ระหว่างดู หาคำตอบ</h3><ol>
+          <li>ไฟดูดทำอันตรายต่อ<b>ส่วนใด</b>ของร่างกาย?</li>
+          <li>อะไรทำให้ถูกดูด<b>รุนแรงขึ้น</b>?</li>
+          <li>ป้องกันตัวเองอย่างไร?</li>
+        </ol></div>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act watch" data-title="🎬 ห้ามแตะอุปกรณ์ไฟฟ้าขณะตัวเปียก">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 คลิปสั้น</span><span class="act-meta">30 วินาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ตัวเปียก มือเปียก ทำไมการไฟฟ้าต้องเตือน?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="qWR35r6xAiI" data-title="PEA SPOT 2 ห้ามแตะอุปกรณ์ไฟฟ้าขณะตัวเปียก" data-credit="PEA CHANNEL THAILAND (การไฟฟ้าส่วนภูมิภาค)" data-len="0:30"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>🤔 ลองเดา</h3><ol>
+          <li>น้ำทำให้ความต้านทานผิวหนัง <b>เพิ่ม</b> หรือ <b>ลด</b>?</li>
+          <li>ความต้านทานลด → กระแส <b>มากขึ้น</b> หรือ <b>น้อยลง</b>?</li>
+        </ol></div>
+        <p class="small" style="margin:0">ไปพิสูจน์ด้วยตัวเลขในสไลด์ถัดไป ➜</p>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V5]</a></sup></div>
+  </div>
+</section>
+
 <section class="slide sec-2" data-title="ฝึกคิด: มือแห้ง กับ มือเปียก">
   <div class="body">
     <div class="kicker reveal">ฝึกคิด · ทำไมห้ามจับไฟตอนมือเปียก <span class="extra">เสริม</span></div>
@@ -495,13 +698,75 @@
   </div>
 </section>
 
-<section class="slide sec-2" data-title="ฝึกคิด 5.2">
-  <div class="body center">
-    <div class="kicker reveal">ฝึกคิด 5.2 · คำถามท้ายใบความรู้</div>
-    <ol class="steps" start="3" style="margin-top:20px;counter-reset:st 2">
-      <li class="reveal d1">สัมผัสไฟฟ้า<b>โดยตรง</b>กับ<b>โดยอ้อม</b> ต่างกันอย่างไร ยกตัวอย่าง</li>
-      <li class="reveal d2">กระแสเท่าใดที่ทำให้<b>อวัยวะเกี่ยวกับการหายใจหยุดทำงาน</b></li>
+<section class="slide sec-2" data-title="ตัวอย่างที่ 2: มือชื้นเหงื่อ">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างที่ 2 · คิดทีละขั้น (กด → ทีละบรรทัด)</div>
+    <h2 class="title reveal d1" style="font-size:60px;margin-bottom:20px">ทำงานกลางแดด มือชื้นเหงื่อ ≈ <span class="mono">10,000 Ω</span> แตะไฟ 220 V</h2>
+    <ol class="steps">
+      <li class="frag">เขียนสูตร: <span class="calc">I = V ÷ R</span></li>
+      <li class="frag">แทนค่า: <span class="calc">I = 220 ÷ 10,000 = 0.022 A</span></li>
+      <li class="frag">แปลงหน่วย (× 1,000): <span class="calc">0.022 A = </span><span class="answer" style="font-size:46px">22 mA</span></li>
+      <li class="frag">เทียบตาราง 1.2: อยู่ในช่วง <b>9–30 mA</b> → <b class="c-rose">กล้ามเนื้อเกร็ง ปล่อยมือไม่ได้!</b></li>
     </ol>
+    <p class="tiny frag">ค่าความต้านทาน 10,000 Ω เป็นค่าสมมติระหว่างผิวแห้งกับผิวเปียก เพื่อฝึกคิด</p>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🧮 แข่งคำนวณกระแสผ่านร่างกาย">
+  <div class="body" style="top:118px">
+    <div><span class="act-badge">🧮 แข่งคำนวณ</span><span class="act-meta">กลุ่มละ 4–5 คน · 6 นาที · ถูกข้อละ 1 คะแนน</span></div>
+    <h2 class="title" style="font-size:52px;margin-bottom:14px">คิด I = V ÷ R แล้วบอกว่าร่างกายจะเป็นอย่างไร</h2>
+    <table class="t left compact race" style="width:100%">
+      <tr><th>ข้อ</th><th>เหตุการณ์ (ค่าสมมติ)</th><th>กระแส</th><th>ผลต่อร่างกาย</th></tr>
+      <tr><td>1</td><td>ไฟบ้าน <b>220 V</b> ยืนเท้าเปล่าบนพื้นเปียก ร่างกาย ≈ <b>2,000 Ω</b></td><td class="ans frag">110 mA</td><td class="frag">ระบบหายใจหยุดทำงาน</td></tr>
+      <tr><td>2</td><td>ไฟบ้าน <b>220 V</b> สวมถุงมือยาง + รองเท้านิรภัย รวม ≈ <b>1,000,000 Ω</b></td><td class="ans frag">0.22 mA</td><td class="frag">ไม่รู้สึก → <b>PPE ช่วยได้!</b></td></tr>
+      <tr><td>3</td><td>ไฟโรงงาน <b>380 V</b> มือเปียก ≈ <b>1,000 Ω</b></td><td class="ans frag">380 mA</td><td class="frag">เกิน 50–150 mA เสียชีวิตได้</td></tr>
+    </table>
+    <div class="row" style="margin-top:16px;align-items:flex-end">
+      <div data-timer="360" class="sm" style="flex:0 0 auto"></div>
+      <div data-board="6"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-2 act watch" data-title="🎬 เห็นคนถูกไฟดูด ทำอย่างไร">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป + โหวต</span><span class="act-meta">1 นาที · เรียนวิธีช่วยเหลือเต็ม ๆ ในสัปดาห์ที่ 2</span></div>
+    <h2 class="title" style="font-size:54px;margin-bottom:16px">เพื่อนถูกไฟดูดค้างอยู่ สิ่งแรกที่ต้องทำคือ?</h2>
+    <div class="row" style="gap:32px">
+      <div style="flex:0 0 860px"><div data-video="nQJnlg70sX0" data-title="PEA HERO ตอน การปฐมพยาบาลผู้ถูกไฟฟ้าดูด" data-credit="โครงการเซฟไทย การไฟฟ้าส่วนภูมิภาค (PEA)" data-len="1:09"></div></div>
+      <div class="vote one" data-answer="1">
+        <button type="button" class="opt"><b>1</b> รีบดึงตัวเพื่อนออกมา</button>
+        <button type="button" class="opt"><b>2</b> ตัดไฟ / ถอดปลั๊กก่อน</button>
+        <button type="button" class="opt"><b>3</b> เอาน้ำสาดให้หลุด</button>
+        <button type="button" class="opt"><b>4</b> วิ่งไปตามครู</button>
+        <button type="button" class="reveal">เฉลย</button>
+        <div class="why"><b>ตัดไฟก่อน ห้ามจับตัวด้วยมือเปล่า</b> ถ้าตัดไฟไม่ได้ ใช้ไม้แห้งเขี่ยออก แล้วโทร <b>1669</b></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V6]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🎲 ฝึกคิด 5.2">
+  <div class="body">
+    <div><span class="act-badge">🎲 ฝึกคิด 5.2</span><span class="act-meta">คุยกับเพื่อนข้าง ๆ 2 นาที แล้วสุ่มเลขที่ตอบ</span></div>
+    <h2 class="title" style="font-size:56px">คำถามท้ายใบความรู้</h2>
+    <div class="row">
+      <ol class="steps" style="flex:1.5;counter-reset:st 2">
+        <li>สัมผัสไฟฟ้า<b>โดยตรง</b>กับ<b>โดยอ้อม</b> ต่างกันอย่างไร ยกตัวอย่าง</li>
+        <li>กระแสเท่าใดที่ทำให้<b>อวัยวะเกี่ยวกับการหายใจหยุดทำงาน</b></li>
+      </ol>
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;align-items:flex-start"><div data-timer="120" class="sm"></div><div data-picker="40"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="☕ พัก 10 นาที">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge" style="background:var(--teal)">☕ พัก 10 นาที</span></div>
+    <h2 class="title">กลับมาแล้วเจอ “ล่าจุดเสี่ยง” 🔎</h2>
+    <div data-timer="600"></div>
   </div>
 </section>
 
@@ -527,6 +792,111 @@
   </div>
 </section>
 
+<section class="slide sec-3 act watch" data-title="🎬 ใช้ไฟฟ้าอย่างปลอดภัยในบ้าน">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป + แข่งจด</span><span class="act-meta">3 นาที · จดได้ข้อละ 1 คะแนนกลุ่ม</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">การไฟฟ้าแนะนำกี่ข้อ? กลุ่มไหนจดได้มากที่สุด</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="gVpXXdJVbn0" data-title="การใช้ไฟฟ้าอย่างปลอดภัยในบ้านอยู่อาศัย" data-credit="PEA CHANNEL THAILAND (การไฟฟ้าส่วนภูมิภาค)" data-len="3:02"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>✏️ กติกา</h3><ol>
+          <li>ระหว่างดู จด<b>ข้อควรปฏิบัติ</b>ให้มากที่สุด</li>
+          <li>ดูจบ ผลัดกันอ่านทีละกลุ่ม ห้ามซ้ำ</li>
+          <li>ข้อที่ตรงกับ 9 ข้อของเรา ได้คะแนน</li>
+        </ol></div>
+        <div data-board="6"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V7]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="🔎 ล่าจุดเสี่ยง: ห้องนี้อันตรายตรงไหน">
+  <div class="body" style="top:112px;bottom:84px">
+    <div><span class="act-badge">🔎 ล่าจุดเสี่ยง</span><span class="act-meta">กลุ่มละ 4–5 คน · 4 นาที · แล้วผลัดกันออกมาจิ้มบนจอ</span></div>
+    <h2 class="title" style="font-size:50px;margin-bottom:12px">ห้องนี้มีจุดเสี่ยงทางไฟฟ้าซ่อนอยู่ 6 จุด หาให้ครบ!</h2>
+    <div class="hunt">
+      <svg viewBox="0 0 1100 640" aria-label="ภาพห้องที่มีจุดเสี่ยงทางไฟฟ้า 6 จุด คลิกที่จุดเพื่อเฉลย">
+        <rect width="1100" height="470" fill="#fbf5ea"/>
+        <rect y="470" width="1100" height="170" fill="#e9d6b4"/>
+        <g stroke="#cdb48c" stroke-width="3"><line x1="0" y1="525" x2="1100" y2="525"/><line x1="0" y1="585" x2="1100" y2="585"/><line x1="180" y1="470" x2="180" y2="525"/><line x1="520" y1="470" x2="520" y2="525"/><line x1="860" y1="470" x2="860" y2="525"/><line x1="340" y1="525" x2="340" y2="585"/><line x1="700" y1="525" x2="700" y2="585"/><line x1="90" y1="585" x2="90" y2="640"/><line x1="460" y1="585" x2="460" y2="640"/><line x1="980" y1="585" x2="980" y2="640"/></g>
+        <rect y="458" width="1100" height="14" fill="#dccaa8"/>
+        <!-- หน้าต่าง (ไม่ใช่จุดเสี่ยง) -->
+        <rect x="50" y="50" width="200" height="150" rx="8" fill="#dff0fb" stroke="#8a8494" stroke-width="6"/>
+        <line x1="150" y1="50" x2="150" y2="200" stroke="#8a8494" stroke-width="5"/><line x1="50" y1="125" x2="250" y2="125" stroke="#8a8494" stroke-width="5"/>
+        <!-- 6: ตากผ้าเปียกบนสายไฟ -->
+        <circle cx="300" cy="80" r="7" fill="#5d5866"/><circle cx="780" cy="96" r="7" fill="#5d5866"/>
+        <path d="M300 80 Q540 122 780 96" stroke="#2a2733" stroke-width="5" fill="none"/>
+        <text x="700" y="80" font-size="22" fill="#5d5866" text-anchor="middle">สายไฟ</text>
+        <path d="M468 100 L594 104 L590 212 L472 208 Z" fill="#7fb2e6" stroke="#3b6fd4" stroke-width="4"/>
+        <g stroke="#3b6fd4" stroke-width="3"><line x1="482" y1="182" x2="580" y2="185"/><line x1="482" y1="194" x2="580" y2="197"/></g>
+        <g fill="#3b6fd4"><path d="M500 222 q7 13 0 18 q-7 -5 0 -18z"/><path d="M540 228 q7 13 0 18 q-7 -5 0 -18z"/><path d="M574 220 q7 13 0 18 q-7 -5 0 -18z"/></g>
+        <!-- 1: เต้ารับไหม้ -->
+        <ellipse cx="328" cy="298" rx="40" ry="30" fill="#2a2733" opacity=".45"/>
+        <path d="M306 290 q-12 -36 12 -52 q6 24 18 12 q18 22 8 40 z" fill="#2a2733" opacity=".55"/>
+        <rect x="300" y="290" width="56" height="80" rx="8" fill="#fff" stroke="#8a8494" stroke-width="4"/>
+        <g fill="#2a2733"><rect x="315" y="306" width="8" height="18" rx="2"/><rect x="333" y="306" width="8" height="18" rx="2"/><rect x="315" y="338" width="8" height="18" rx="2"/><rect x="333" y="338" width="8" height="18" rx="2"/></g>
+        <!-- โต๊ะ + โน้ตบุ๊ก (ไม่ใช่จุดเสี่ยง) -->
+        <rect x="390" y="300" width="290" height="18" rx="4" fill="#b98b5a"/>
+        <rect x="405" y="318" width="16" height="152" fill="#a37748"/><rect x="649" y="318" width="16" height="152" fill="#a37748"/>
+        <rect x="505" y="236" width="104" height="60" rx="5" fill="#5d5866"/><rect x="512" y="242" width="90" height="48" fill="#bcd7f0"/>
+        <rect x="490" y="294" width="134" height="7" rx="3" fill="#8a8494"/>
+        <!-- พัดลม (ไม่ใช่จุดเสี่ยง) -->
+        <line x1="150" y1="410" x2="150" y2="465" stroke="#5d5866" stroke-width="8"/>
+        <ellipse cx="150" cy="470" rx="45" ry="10" fill="#5d5866"/>
+        <circle cx="150" cy="360" r="55" fill="#fff" stroke="#5d5866" stroke-width="6"/>
+        <g fill="#9fc6e8"><ellipse cx="150" cy="332" rx="14" ry="24"/><ellipse cx="176" cy="372" rx="14" ry="24" transform="rotate(120 176 372)"/><ellipse cx="124" cy="372" rx="14" ry="24" transform="rotate(240 124 372)"/></g>
+        <circle cx="150" cy="360" r="9" fill="#5d5866"/>
+        <!-- 3: น้ำหก -->
+        <ellipse cx="660" cy="572" rx="120" ry="22" fill="#9fd0f5" opacity=".85"/>
+        <polygon points="522,572 562,560 570,588 530,600" fill="#e8f5fd" stroke="#8a8494" stroke-width="3"/>
+        <!-- 4: สายพัดลม ฉนวนขาด พันเทป -->
+        <path d="M175 470 Q230 540 330 540 L590 540 Q618 540 618 524" stroke="#2a2733" stroke-width="8" fill="none"/>
+        <line x1="412" y1="540" x2="452" y2="540" stroke="#e8742c" stroke-width="10"/>
+        <rect x="398" y="530" width="14" height="20" fill="#a8a1b0"/><rect x="452" y="530" width="14" height="20" fill="#a8a1b0"/>
+        <!-- 2: ปลั๊กพ่วงต่อพ่วงกัน เสียบเต็ม -->
+        <rect x="740" y="370" width="50" height="70" rx="8" fill="#fff" stroke="#8a8494" stroke-width="4"/>
+        <rect x="751" y="384" width="28" height="38" rx="5" fill="#2a2733"/>
+        <path d="M765 422 Q768 500 780 530 L770 537" stroke="#2a2733" stroke-width="7" fill="none"/>
+        <rect x="600" y="520" width="170" height="34" rx="8" fill="#fff" stroke="#5d5866" stroke-width="4"/>
+        <g fill="#2a2733"><rect x="608" y="504" width="22" height="24" rx="4"/><rect x="646" y="504" width="22" height="24" rx="4"/><rect x="684" y="504" width="22" height="24" rx="4"/><rect x="722" y="504" width="22" height="24" rx="4"/></g>
+        <path d="M657 504 Q650 470 610 470" stroke="#2a2733" stroke-width="5" fill="none"/>
+        <path d="M695 504 Q700 460 740 456" stroke="#2a2733" stroke-width="5" fill="none"/>
+        <path d="M733 504 Q760 560 820 595" stroke="#2a2733" stroke-width="6" fill="none"/>
+        <rect x="820" y="580" width="170" height="34" rx="8" fill="#fff" stroke="#5d5866" stroke-width="4"/>
+        <g fill="#2a2733"><rect x="828" y="564" width="22" height="24" rx="4"/><rect x="866" y="564" width="22" height="24" rx="4"/><rect x="904" y="564" width="22" height="24" rx="4"/><rect x="942" y="564" width="22" height="24" rx="4"/></g>
+        <g stroke="#2a2733" stroke-width="5" fill="none"><path d="M839 564 Q840 520 880 505"/><path d="M877 564 Q890 530 930 520"/><path d="M915 564 Q940 530 1000 528"/><path d="M953 564 Q990 560 1100 548"/></g>
+        <!-- 5: ตู้ไฟเปิดทิ้ง สายหลุด -->
+        <rect x="880" y="80" width="160" height="230" rx="6" fill="#e4e0d8" stroke="#8a8494" stroke-width="6"/>
+        <polygon points="1040,84 1088,100 1088,296 1040,312" fill="#d2cdc4" stroke="#8a8494" stroke-width="5"/>
+        <g fill="#fff" stroke="#8a8494" stroke-width="2"><rect x="898" y="110" width="20" height="44"/><rect x="922" y="110" width="20" height="44"/><rect x="946" y="110" width="20" height="44"/><rect x="970" y="110" width="20" height="44"/><rect x="994" y="110" width="20" height="44"/><rect x="898" y="180" width="20" height="44"/><rect x="922" y="180" width="20" height="44"/><rect x="946" y="180" width="20" height="44"/></g>
+        <path d="M975 236 Q960 300 990 360" stroke="#b85a1f" stroke-width="7" fill="none"/>
+        <circle cx="990" cy="362" r="6" fill="#e8742c"/>
+        <!-- จุดคลิก -->
+        <g class="spot"><circle class="hit" cx="328" cy="312" r="72"/><circle class="ring" cx="328" cy="312" r="72"/><g class="tag"><circle cx="379" cy="261" r="22"/><text x="379" y="271">1</text></g></g>
+        <g class="spot"><circle class="hit" cx="830" cy="552" r="102"/><circle class="ring" cx="830" cy="552" r="102"/><g class="tag"><circle cx="902" cy="480" r="22"/><text x="902" y="490">2</text></g></g>
+        <g class="spot"><circle class="hit" cx="580" cy="582" r="58"/><circle class="ring" cx="580" cy="582" r="58"/><g class="tag"><circle cx="621" cy="541" r="22"/><text x="621" y="551">3</text></g></g>
+        <g class="spot"><circle class="hit" cx="432" cy="540" r="52"/><circle class="ring" cx="432" cy="540" r="52"/><g class="tag"><circle cx="469" cy="503" r="22"/><text x="469" y="513">4</text></g></g>
+        <g class="spot"><circle class="hit" cx="975" cy="220" r="118"/><circle class="ring" cx="975" cy="220" r="118"/><g class="tag"><circle cx="891" cy="137" r="22"/><text x="891" y="147">5</text></g></g>
+        <g class="spot"><circle class="hit" cx="532" cy="160" r="74"/><circle class="ring" cx="532" cy="160" r="74"/><g class="tag"><circle cx="584" cy="108" r="22"/><text x="584" y="118">6</text></g></g>
+      </svg>
+      <div class="hunt-side">
+        <div class="hunt-score">พบแล้ว <span class="hunt-n">0 / 6</span></div>
+        <ol class="hunt-list">
+          <li>เต้ารับมี<b>รอยไหม้ดำ</b> → หยุดใช้ แจ้งช่างเปลี่ยน</li>
+          <li>ปลั๊กพ่วง<b>ต่อกันหลายทอด</b> เสียบเต็ม → กระแสเกิน ไฟไหม้</li>
+          <li><b>น้ำหก</b>ใกล้ปลั๊กพ่วง → ไฟรั่ว ไฟดูด ลัดวงจร</li>
+          <li>สาย<b>ฉนวนขาด</b> พันเทปลวก ๆ → เปลี่ยนสายใหม่</li>
+          <li><b>ตู้ไฟเปิดทิ้ง</b> สายหลุด → ห้ามจับ ปิดตู้ แจ้งช่าง</li>
+          <li><b>ตากผ้าเปียกบนสายไฟ</b> → ไฟรั่วผ่านผ้าเปียก</li>
+        </ol>
+        <div class="hunt-btns"><button type="button" data-a="all">เฉลยทั้งหมด</button><button type="button" data-a="reset">↺ เริ่มใหม่</button></div>
+        <div data-timer="240" class="sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="slide sec-3" data-title="ซ่อมบำรุง: ตัดไฟ แขวนป้าย">
   <div class="body">
     <div class="kicker reveal">ข้อควรปฏิบัติ 3</div>
@@ -547,6 +917,42 @@
   </div>
 </section>
 
+<section class="slide sec-3 act watch" data-title="🎬 อุบัติเหตุเพราะไม่ล็อก ไม่แขวนป้าย">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป</span><span class="act-meta">2 นาที · หาว่าใครทำพลาด</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ทำไมต้อง “ตัดไฟ + ล็อก + แขวนป้าย”?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="dBMQ7tU4MTY" data-title="Lock out Tag out (LOTO) Accident อุบัติเหตุจากอุปกรณ์ตัดแยกพลังงาน" data-credit="SAFETYINTHAI เซฟตี้อินไทย" data-len="1:59"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>🕵️ นักสืบอุบัติเหตุ</h3><ol>
+          <li>ใครทำพลาด? พลาดตรงไหน?</li>
+          <li>ถ้ามี<b>กุญแจ + ป้าย</b> จะเกิดเหตุไหม?</li>
+        </ol></div>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V8]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="🎭 บทบาทสมมติ: ตัดไฟ แขวนป้าย">
+  <div class="body" style="top:118px">
+    <div><span class="act-badge">🎭 บทบาทสมมติ</span><span class="act-meta">กลุ่มละ 4 คน · ซ้อม 5 นาที · สุ่ม 2 กลุ่มแสดง</span></div>
+    <h2 class="title" style="font-size:52px;margin-bottom:14px">จำลองการซ่อมเต้ารับ ใช้ป้ายกระดาษแทนป้ายจริง</h2>
+    <div class="roles">
+      <div class="box orange"><div class="icon">🧑‍🔧</div><h3>ช่างซ่อม</h3><p>แจ้งทุกคน → ปิดเบรกเกอร์ → <b>แขวนป้ายของตัวเอง</b> → ตรวจว่าไม่มีไฟด้วยไขควงลองไฟ → ทำงาน</p></div>
+      <div class="box blue"><div class="icon">🙋</div><h3>เพื่อนร่วมงาน</h3><p>เดินมาจะเปิดไฟ เห็นป้าย → <b>ห้ามสับเบรกเกอร์</b> ไปถามช่างก่อน</p></div>
+      <div class="box tint"><div class="icon">🧑‍💼</div><h3>หัวหน้างาน</h3><p>ตรวจว่าทำครบทุกขั้น · ซ่อมเสร็จ <b>ช่างคนที่แขวนป้ายเป็นผู้ปลดเอง</b></p></div>
+      <div class="box sun"><div class="icon">📋</div><h3>ผู้สังเกต</h3><p>จดว่ากลุ่มทำขั้นไหน<b>ข้าม</b>หรือ<b>ผิดลำดับ</b> แล้วรายงาน</p></div>
+    </div>
+    <div class="row center" style="margin-top:20px">
+      <div class="tagcard" style="flex:0 0 auto"><b>⚠ อันตราย ห้ามสับสวิตช์</b><p>กำลังซ่อมบำรุง<br>ผู้ปฏิบัติงาน ..........................<br>วันที่ ............ เวลา ..........</p></div>
+      <div data-timer="300" class="sm" style="flex:0 0 auto"></div>
+      <div data-picker="6" data-label="กลุ่มที่" style="flex:0 0 auto"></div>
+    </div>
+  </div>
+</section>
+
 <section class="slide sec-3" data-title="เครื่องมือหุ้มฉนวน PPE และสายดิน">
   <div class="body">
     <div class="kicker reveal">ข้อควรปฏิบัติ 4–6</div>
@@ -558,6 +964,43 @@
     </div>
     <div class="box sun reveal d5" style="margin-top:26px;padding:18px 28px"><p class="small" style="margin:0">⏚ สายดินพาไฟรั่ว<b>ลงดินแทน</b>การไหลผ่านร่างกาย · <span class="extra">เสริม</span> ปลั๊ก 3 ขา คือตัวอย่างอุปกรณ์ที่มีสายดิน <sup class="ref"><a href="#refs">[2]</a></sup></p></div>
     <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1] [2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act watch" data-title="🎬 สาธิต: อาร์กแฟลช (Arc Flash)">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 สาธิตในห้องทดสอบ</span><span class="act-meta">1 นาที · ไม่มีคนบาดเจ็บ</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ลัดวงจรในตู้ไฟแรงสูง เกิด “ระเบิดแสงและความร้อน”</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="6hpE5LYj-CY" data-title="Electrical Arc Flash Demonstration" data-credit="ARC Flash Consultants (ภาษาอังกฤษ ดูภาพได้)" data-len="1:18"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>👀 ดูแล้วบอก</h3><ol>
+          <li>เห็นอะไรพุ่งออกมาบ้าง? (แสง ไฟ เศษโลหะ ควัน)</li>
+          <li>ถ้ายืนหน้าตู้ ส่วนไหนของร่างกายเสี่ยงที่สุด?</li>
+        </ol></div>
+        <div class="box sun" style="padding:14px 22px"><p class="small" style="margin:0"><b>อาร์กแฟลช</b> = ไฟฟ้าช็อตแบบรุนแรงมาก ความร้อนสูงหลายพันองศา</p></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V9]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act watch" data-title="🎬 หุ่นทดสอบ: ชุดธรรมดา กับ ชุดป้องกัน">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ทายก่อนดู</span><span class="act-meta">2 นาที · หุ่นทดสอบ 2 ตัว</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">หุ่นใส่เสื้อยืดผ้าฝ้าย กับ หุ่นใส่ชุดกันไฟ ตัวไหนรอด?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="U9iRmzyNKMs" data-title="Arc Flash - AR/FR vs Non FR clothing" data-credit="Tyndale Company, Inc. (ภาษาอังกฤษ ดูภาพได้)" data-len="1:52"></div></div>
+      <div class="vside">
+        <div class="vote one" data-answer="1">
+          <button type="button" class="opt"><b>1</b> เสื้อยืดผ้าฝ้าย (ยืนไกลกว่า)</button>
+          <button type="button" class="opt"><b>2</b> ชุดกันไฟ FR (ยืนใกล้กว่า)</button>
+          <button type="button" class="reveal">เฉลย</button>
+          <div class="why">เสื้อยืด<b>ติดไฟลุกไหม้ต่อ</b> ส่วนชุดกันไฟดับเองแม้ยืนใกล้กว่า · นี่คือเหตุผลที่ต้องสวม <b>PPE</b> ให้ถูกชนิดกับงาน</div>
+        </div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V10]</a></sup></div>
   </div>
 </section>
 
@@ -607,13 +1050,19 @@
   </div>
 </section>
 
-<section class="slide sec-3" data-title="ฝึกคิด 5.3">
-  <div class="body center">
-    <div class="kicker reveal">ฝึกคิด 5.3 · คำถามท้ายใบความรู้</div>
-    <ol class="steps" style="margin-top:20px;counter-reset:st 4">
-      <li class="reveal d1">บอก<b>ข้อควรปฏิบัติ</b>ในการใช้ไฟฟ้าอย่างปลอดภัย อย่างน้อย 5 ข้อ</li>
-    </ol>
-    <p class="small reveal d2 c-sec" style="margin-top:30px">💡 ลองย้อนไปตอบสถานการณ์ในบทนำ: มือเปียก · ฉนวนแตก · ตู้เย็นไฟรั่ว</p>
+<section class="slide sec-3 act" data-title="🎲 ฝึกคิด 5.3">
+  <div class="body">
+    <div><span class="act-badge">🎲 ฝึกคิด 5.3</span><span class="act-meta">สุ่มเลขที่ คนละ 1 ข้อ ห้ามซ้ำกับเพื่อน</span></div>
+    <h2 class="title" style="font-size:56px">คำถามท้ายใบความรู้</h2>
+    <div class="row">
+      <div style="flex:1.5">
+        <ol class="steps" style="counter-reset:st 4">
+          <li>บอก<b>ข้อควรปฏิบัติ</b>ในการใช้ไฟฟ้าอย่างปลอดภัย อย่างน้อย 5 ข้อ</li>
+        </ol>
+        <p class="small c-sec" style="margin-top:20px">💡 ย้อนไปตอบสถานการณ์ในบทนำ: มือเปียก · ฉนวนแตก · ตู้เย็นไฟรั่ว ทายถูกไหม?</p>
+      </div>
+      <div style="flex:1"><div data-picker="40"></div></div>
+    </div>
   </div>
 </section>
 
@@ -623,7 +1072,7 @@
   <div class="body center">
     <div class="label reveal">ใบงานที่ 1.1 · ปฏิบัติ 3 ชั่วโมง</div>
     <h2 class="reveal d1">การสำรวจอุปกรณ์ป้องกันภัย<br>และเครื่องมือช่างไฟฟ้า</h2>
-    <p class="lead reveal d2">จำแนก · ตรวจสภาพ · เลือกใช้ให้เหมาะกับงาน</p>
+    <p class="lead reveal d2">จำแนก · ตรวจสภาพ · เลือกใช้ให้เหมาะกับงาน<br><span class="small">ไม่มีของจริงก็ฝึกได้ ตรวจสภาพจากภาพบนเว็บ 🔍</span></p>
   </div>
 </section>
 
@@ -684,30 +1133,52 @@
   </div>
 </section>
 
+<section class="slide sec-4" data-title="ไม่มีของจริง? ตรวจสภาพจากภาพ">
+  <div class="body">
+    <div class="kicker reveal">วิธีทำใบงานในห้องนี้</div>
+    <h2 class="title reveal d1">ไม่มีของจริง? <span class="hl">ตรวจสภาพจากภาพ</span> 🔍</h2>
+    <div class="row center">
+      <ol class="steps" style="flex:1.4">
+        <li class="reveal d2">เปิดหน้า <b>ตรวจสภาพเครื่องมือ</b> บนมือถือ (กลุ่มละ 1 เครื่อง) หรือดูบนจอ</li>
+        <li class="reveal d3">ดูภาพทีละชิ้น 10 ชิ้น <b>แตะจุดที่ชำรุด</b> ถ้ามี</li>
+        <li class="reveal d4">ตัดสิน <b>✅ ใช้ได้</b> หรือ <b>⛔ ห้ามใช้</b> แล้วเลือกเหตุผล</li>
+        <li class="reveal d5"><b>เขียนลงใบงาน</b>ด้วยภาษาของกลุ่มเอง (ห้ามลอก)</li>
+      </ol>
+      <div class="box sun reveal d4" style="flex:1;text-align:center">
+        <div class="icon">📱</div>
+        <h3 style="margin:6px 0">inspect.html</h3>
+        <p class="small" style="margin:0">หน้าแรกของวิชา → สัปดาห์ที่ 1<br>→ <b>🔍 ตรวจสภาพเครื่องมือ</b></p>
+        <p class="tiny" style="margin:12px 0 0"><a href="inspect.html">เปิดหน้าตรวจสภาพ</a></p>
+      </div>
+    </div>
+    <p class="tiny reveal d5" style="margin-top:16px">ถ้าโรงฝึกงานมีอุปกรณ์จริง ใช้ตารางในใบงานชุดเดียวกันตรวจของจริงได้เลย</p>
+  </div>
+</section>
+
 <section class="slide sec-4" data-title="ข้อควรระวังในการทำใบงาน">
   <div class="body">
     <div class="kicker reveal">คำแนะนำ / ข้อควรระวัง</div>
     <h2 class="title reveal d1">ก่อนเริ่มใบงาน ⚠️</h2>
     <ol class="steps">
-      <li class="reveal d2"><b>แต่งกายถูกระเบียบ</b>ก่อนเข้าโรงฝึกงานทุกครั้ง</li>
-      <li class="reveal d3">เครื่องมือฉนวน<b>ชำรุด/แตกร้าว ห้ามใช้</b>เด็ดขาด</li>
-      <li class="reveal d4"><b>ไม่ต่อวงจรกับไฟจริง</b> ใบงานนี้สำรวจและตรวจสภาพเท่านั้น</li>
-      <li class="reveal d5">เสร็จแล้ว<b>เก็บเครื่องมือเข้าที่</b>ให้เรียบร้อย</li>
+      <li class="reveal d2">ดูภาพให้ครบ<b>ทุกส่วน</b> ด้าม ฉนวน ปลาย สาย ขาปลั๊ก</li>
+      <li class="reveal d3">สงสัยว่าชำรุด = <b>ห้ามใช้</b> ไว้ก่อน แล้วเขียนเหตุผล</li>
+      <li class="reveal d4"><b>ห้ามทดลองกับไฟจริง</b> เด็ดขาด ใบงานนี้ตรวจสภาพเท่านั้น</li>
+      <li class="reveal d5">แบ่งหน้าที่ในกลุ่ม: คนดูภาพ · คนจด · คนตรวจทาน · คนนำเสนอ</li>
     </ol>
-    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 6 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 6 <sup class="ref"><a href="#refs">[1]</a></sup> · ปรับให้ทำจากภาพแทนอุปกรณ์จริง</div>
   </div>
 </section>
 
 <section class="slide sec-4" data-title="ขั้นตอนการปฏิบัติงาน 3 ตอน">
   <div class="body">
     <div class="kicker reveal">ขั้นตอนการปฏิบัติงาน · กลุ่มละ 4–5 คน</div>
-    <h2 class="title reveal d1">3 ตอน ใน 3 ชั่วโมง</h2>
+    <h2 class="title reveal d1">3 ตอน ใน 65 นาที</h2>
     <div class="grid g3" style="gap:26px">
-      <div class="box orange reveal d2"><div class="icon">🦺</div><h3>ตอนที่ 1</h3><p class="small">สำรวจ <b>PPE</b><br>บันทึก ชื่อ · หน้าที่ · สภาพ</p></div>
-      <div class="box tint reveal d3"><div class="icon">🪛</div><h3>ตอนที่ 2</h3><p class="small">ตรวจ<b>เครื่องมือช่าง</b><br>สภาพฉนวน + เหตุผล</p></div>
-      <div class="box blue reveal d4"><div class="icon">🗣️</div><h3>ตอนที่ 3</h3><p class="small">สรุปข้อควรปฏิบัติ <b>≥ 5 ข้อ</b><br>นำเสนอ ≤ 5 นาที</p></div>
+      <div class="box orange reveal d2"><div class="icon">🦺</div><h3>ตอนที่ 1 · 20 นาที</h3><p class="small"><b>PPE</b> 4 ชิ้น<br>ชื่อ · ป้องกันอะไร · สภาพ</p></div>
+      <div class="box tint reveal d3"><div class="icon">🪛</div><h3>ตอนที่ 2 · 25 นาที</h3><p class="small"><b>เครื่องมือ/อุปกรณ์ไฟฟ้า</b> 6 ชิ้น<br>จุดชำรุด · ใช้ได้ไหม · เหตุผล</p></div>
+      <div class="box blue reveal d4"><div class="icon">🗂️</div><h3>ตอนที่ 3 · 20 นาที</h3><p class="small"><b>บัตรสถานการณ์</b> 4 ข้อ<br>เลือก PPE + เครื่องมือ · สรุป 5 ข้อ</p></div>
     </div>
-    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup> · ปรับให้ทำจากภาพแทนอุปกรณ์จริง</div>
   </div>
 </section>
 
@@ -715,17 +1186,30 @@
   <div class="body">
     <div class="kicker reveal">ตัวอย่างการบันทึกผล</div>
     <h2 class="title reveal d1">กรอกตารางให้ครบทุกช่อง</h2>
-    <p class="small reveal d2" style="margin:0 0 6px"><b>ตอนที่ 1</b> อุปกรณ์ป้องกันภัย</p>
+    <p class="small reveal d2" style="margin:0 0 6px"><b>ตอนที่ 1</b> อุปกรณ์ป้องกันภัยส่วนบุคคล</p>
     <table class="t compact reveal d2" style="width:100%">
-      <tr><th>ที่</th><th>ชื่ออุปกรณ์</th><th>หน้าที่ / ป้องกันอันตรายใด</th><th>สภาพ</th><th>หมายเหตุ</th></tr>
-      <tr><td>1</td><td>แว่นตานิรภัย</td><td>กันเศษวัสดุกระเด็นเข้าตา</td><td>ใช้ได้</td><td>–</td></tr>
+      <tr><th>ภาพที่</th><th>ชื่ออุปกรณ์</th><th>ป้องกันอันตรายใด</th><th>สภาพที่พบ</th><th>ผล</th></tr>
+      <tr><td>10</td><td>แว่นตานิรภัย</td><td>เศษวัสดุกระเด็นเข้าตา</td><td>ไม่พบรอยชำรุด</td><td>✅ ใช้ได้</td></tr>
     </table>
-    <p class="small reveal d3" style="margin:24px 0 6px"><b>ตอนที่ 2</b> เครื่องมือช่างไฟฟ้า</p>
+    <p class="small reveal d3" style="margin:24px 0 6px"><b>ตอนที่ 2</b> เครื่องมือและอุปกรณ์ไฟฟ้า</p>
     <table class="t compact reveal d3" style="width:100%">
-      <tr><th>ที่</th><th>ชื่อเครื่องมือ</th><th>หน้าที่การใช้งาน</th><th>สภาพฉนวน</th><th>เหตุผลประกอบ</th></tr>
-      <tr><td>1</td><td>คีมตัด</td><td>ตัดสายไฟ</td><td>ชำรุด</td><td>ด้ามแตกร้าว</td></tr>
+      <tr><th>ภาพที่</th><th>ชื่อ</th><th>ใช้ทำอะไร</th><th>จุดชำรุดที่พบ</th><th>ผล / เหตุผล</th></tr>
+      <tr><td>2</td><td>คีมตัด</td><td>ตัดสายไฟ</td><td>ฉนวนด้ามลอก</td><td>⛔ ไฟถึงมือได้</td></tr>
     </table>
     <div class="src">ที่มา: ใบงานที่ 1.1 <sup class="ref"><a href="#refs">[1]</a></sup> · แถวตัวอย่างเขียนขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🛠️ ลงมือทำใบงาน 1.1">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">🛠️ ลงมือทำใบงานที่ 1.1</span><span class="act-meta">กลุ่มละ 4–5 คน · 65 นาที</span></div>
+    <h2 class="title" style="margin-bottom:20px">ตรวจสภาพจากภาพ แล้วเขียนลงใบงาน</h2>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div data-timer="3900" class="sm"></div>
+      <div data-board="6" style="justify-content:center"></div>
+      <p class="small" style="margin:0">กลุ่มที่ทำหน้าตรวจสภาพได้คะแนน<b>สูงสุด</b> +2 คะแนน</p>
+    </div>
+    <p class="small" style="margin-top:20px">ครูเดินดูทุกกลุ่ม · เสร็จก่อน? ทำ <a href="exercises.html">แบบฝึกหัดออนไลน์</a> ต่อได้เลย</p>
   </div>
 </section>
 
@@ -736,12 +1220,33 @@
     <table class="t left compact reveal d2" style="width:100%">
       <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนน</th></tr>
       <tr><td>1</td><td>ชื่อและหน้าที่ของอุปกรณ์ป้องกันภัย (ตอนที่ 1)</td><td class="mono">5</td></tr>
-      <tr><td>2</td><td>ระบุสภาพความพร้อมของอุปกรณ์ป้องกันภัย (ตอนที่ 1)</td><td class="mono">5</td></tr>
-      <tr><td>3</td><td>ชื่อและหน้าที่ของเครื่องมือช่างไฟฟ้า (ตอนที่ 2)</td><td class="mono">5</td></tr>
-      <tr><td>4</td><td>สรุปข้อควรปฏิบัติได้ครบถ้วน (ตอนที่ 3)</td><td class="mono">5</td></tr>
-      <tr><td>5</td><td>ความละเอียดรอบคอบ และส่งงานตรงเวลา</td><td class="mono">5</td></tr>
+      <tr><td>2</td><td>ระบุจุดชำรุด ตัดสินใช้ได้/ห้ามใช้ พร้อมเหตุผล (ตอนที่ 1–2)</td><td class="mono">5</td></tr>
+      <tr><td>3</td><td>ชื่อและหน้าที่ของเครื่องมือและอุปกรณ์ไฟฟ้า (ตอนที่ 2)</td><td class="mono">5</td></tr>
+      <tr><td>4</td><td>เลือก PPE/เครื่องมือตามสถานการณ์ และสรุปข้อควรปฏิบัติ (ตอนที่ 3)</td><td class="mono">5</td></tr>
+      <tr><td>5</td><td>ความละเอียดรอบคอบ ทำงานร่วมกัน และส่งงานตรงเวลา</td><td class="mono">5</td></tr>
     </table>
-    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 9 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+    <div class="src">ที่มา: ใบงานที่ 1.1 ข้อ 9 <sup class="ref"><a href="#refs">[1]</a></sup> · ปรับรายการให้ตรงกับงานแบบตรวจจากภาพ</div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🎲 นำเสนอตอนที่ 3">
+  <div class="body">
+    <div><span class="act-badge">🎲 สุ่มกลุ่มนำเสนอ</span><span class="act-meta">กลุ่มละไม่เกิน 3 นาที · เพื่อนให้คะแนน</span></div>
+    <h2 class="title" style="font-size:56px">นำเสนอบัตรสถานการณ์ 1 ใบ + ข้อควรปฏิบัติ 5 ข้อ</h2>
+    <div class="row center">
+      <div style="flex:1.2">
+        <ul class="pts small">
+          <li>บอกว่าเลือก <b>PPE</b> และ<b>เครื่องมือ</b>อะไร เพราะอะไร</li>
+          <li>ข้อควรปฏิบัติ<b>สำคัญที่สุด</b>ของงานนี้คือข้อใด</li>
+          <li>กลุ่มอื่นถามได้ 1 คำถาม ตอบได้ +1 คะแนน</li>
+        </ul>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:18px;align-items:flex-start">
+        <div data-picker="6" data-label="กลุ่มที่"></div>
+        <div data-timer="180" class="sm"></div>
+      </div>
+    </div>
+    <div data-board="6" style="margin-top:10px"></div>
   </div>
 </section>
 
@@ -759,14 +1264,25 @@
   </div>
 </section>
 
+<section class="slide sec-0 act" data-title="📱 แบบทดสอบหลังเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">📱 แบบทดสอบหลังเรียน</span><span class="act-meta">รายบุคคล · 10 นาที</span></div>
+    <h2 class="title">20 ข้อชุดเดิม ดูซิว่าเก่งขึ้นกี่ข้อ!</h2>
+    <p>เปิด <b>แบบทดสอบ</b> → เลือก “<b>หลังเรียน</b>” → ทำ 20 ข้อ → กดส่ง → พิมพ์ใบคะแนนส่ง Classroom</p>
+    <p class="small"><a href="quiz.html">quiz.html</a></p>
+    <div style="margin-top:20px"><div data-timer="600"></div></div>
+  </div>
+</section>
+
 <section class="slide sec-0" data-title="กิจกรรมต่อไป">
   <div class="body center" style="text-align:center">
     <div class="kicker reveal">กิจกรรมต่อไป</div>
     <h2 class="title reveal d1">ทบทวนแล้วลองทำดู!</h2>
-    <div class="grid g3 reveal d2" style="gap:30px">
+    <div class="grid g4 reveal d2" style="gap:26px">
       <a class="box tint" href="exercises.html" style="text-decoration:none;color:inherit"><div class="icon">✏️</div><h3>แบบฝึกหัด</h3><p class="small">ตรวจคำตอบทันที</p></a>
       <a class="box orange" href="quiz.html" style="text-decoration:none;color:inherit"><div class="icon">📝</div><h3 class="c-orange">แบบทดสอบ 20 ข้อ</h3><p class="small">ก่อนเรียน / หลังเรียน</p></a>
-      <a class="box green" href="worksheet.html" style="text-decoration:none;color:inherit"><div class="icon">🖨️</div><h3 class="c-green">ใบงานที่ 1.1</h3><p class="small">พิมพ์ไปใช้ในโรงฝึกงาน</p></a>
+      <a class="box blue" href="inspect.html" style="text-decoration:none;color:inherit"><div class="icon">🔍</div><h3 class="c-blue">ตรวจสภาพเครื่องมือ</h3><p class="small">10 ภาพ หาจุดชำรุด</p></a>
+      <a class="box green" href="worksheet.html" style="text-decoration:none;color:inherit"><div class="icon">🖨️</div><h3 class="c-green">ใบงานที่ 1.1</h3><p class="small">พิมพ์กลุ่มละ 1 ชุด</p></a>
     </div>
     <p class="small reveal d3" style="margin-top:36px">📖 การบ้าน: อ่านล่วงหน้าเรื่อง <b>การช่วยเหลือผู้ถูกไฟฟ้าดูด</b> (สัปดาห์ที่ 2)</p>
   </div>
@@ -789,8 +1305,28 @@
   </div>
 </section>
 
+<section class="slide sec-0" id="videos" data-title="วิดีโอประกอบการสอน">
+  <div class="body" style="top:112px;font-size:23px;line-height:1.38">
+    <h2 class="title" style="font-size:52px;margin-bottom:12px">วิดีโอประกอบการสอน (YouTube)</h2>
+    <ol style="margin:0;padding-left:70px;list-style:none;counter-reset:v">
+      <li style="margin-bottom:6px"><b>[V1]</b> Thairath News - ข่าวไทยรัฐ. (2566, 16 กุมภาพันธ์). <i>หวิดดับ ช่างต่อปลั๊กพ่วงใช้เองถูกไฟดูด</i>. https://www.youtube.com/watch?v=d_dPtON1oJA</li>
+      <li style="margin-bottom:6px"><b>[V2]</b> เรื่องเล่าเช้านี้. <i>อุทาหรณ์ ใช้ปลั๊กพ่วงไม่ได้มาตรฐาน เด็ก 3 ขวบ เสียบชาร์จแบต เกิดไฟลุกพุ่งเข้าหน้า</i>. https://www.youtube.com/watch?v=Ae7ogNBtbDI</li>
+      <li style="margin-bottom:6px"><b>[V3]</b> ทันโลก กับ Thai PBS. <i>ทำความเข้าใจ “ไฟฟ้าลัดวงจร” ไม่ใช่สาเหตุหลักของไฟไหม้ ส่วนใหญ่เกิดจากไฟฟ้ากระแสเกิน</i>. https://www.youtube.com/watch?v=M7zfORRlO3c</li>
+      <li style="margin-bottom:6px"><b>[V4]</b> PSUSci Channel คณะวิทยาศาสตร์ มหาวิทยาลัยสงขลานครินทร์. <i>Science Facts: อันตรายจากไฟดูด ทำอย่างไรถึงปลอดภัย</i>. https://www.youtube.com/watch?v=j-wLXbHuxD8</li>
+      <li style="margin-bottom:6px"><b>[V5]</b> PEA CHANNEL THAILAND การไฟฟ้าส่วนภูมิภาค. <i>PEA SPOT 2 ห้ามแตะอุปกรณ์ไฟฟ้าขณะตัวเปียก</i>. https://www.youtube.com/watch?v=qWR35r6xAiI</li>
+      <li style="margin-bottom:6px"><b>[V6]</b> โครงการเซฟไทย การไฟฟ้าส่วนภูมิภาค. <i>PEA HERO ตอน การปฐมพยาบาลผู้ถูกไฟฟ้าดูด</i>. https://www.youtube.com/watch?v=nQJnlg70sX0</li>
+      <li style="margin-bottom:6px"><b>[V7]</b> PEA CHANNEL THAILAND การไฟฟ้าส่วนภูมิภาค. <i>การใช้ไฟฟ้าอย่างปลอดภัยในบ้านอยู่อาศัย</i>. https://www.youtube.com/watch?v=gVpXXdJVbn0</li>
+      <li style="margin-bottom:6px"><b>[V8]</b> SAFETYINTHAI เซฟตี้อินไทย. <i>Lock out Tag out (LOTO) Accident อุบัติเหตุจากอุปกรณ์ตัดแยกพลังงาน</i>. https://www.youtube.com/watch?v=dBMQ7tU4MTY</li>
+      <li style="margin-bottom:6px"><b>[V9]</b> ARC Flash Consultants. <i>Electrical Arc Flash Demonstration</i>. https://www.youtube.com/watch?v=6hpE5LYj-CY</li>
+      <li style="margin-bottom:6px"><b>[V10]</b> Tyndale Company, Inc. <i>Arc Flash – AR/FR vs Non FR clothing</i>. https://www.youtube.com/watch?v=U9iRmzyNKMs</li>
+    </ol>
+    <p class="tiny" style="margin-top:10px">ฝังจากช่องผู้เผยแพร่โดยตรง ไม่ได้ดาวน์โหลดหรือตัดต่อ · ตรวจว่ายังเปิดดูได้เมื่อ 20 ตุลาคม 2569 · ครูควรดูก่อนสอนทุกครั้ง เพราะคลิปอาจถูกลบหรือย้าย</p>
+  </div>
+</section>
+
 </main>
 </div>
+<script src="../assets/js/sims.js"></script>
 <script src="../assets/js/deck.js"></script>
 </body>
 </html>

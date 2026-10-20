@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ตรวจสภาพเครื่องมือ สัปดาห์ที่ 1</title>
+<meta name="description" content="ตรวจสภาพเครื่องมือช่างไฟฟ้าและอุปกรณ์ป้องกันภัยจากภาพ 10 รายการ หาจุดชำรุด ตัดสินใช้ได้หรือห้ามใช้ ใช้แทนอุปกรณ์จริงในใบงานที่ 1.1 วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+    .who { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; }
+    .who label { display: flex; flex-direction: column; font-size: 15px; color: var(--ink-soft); gap: 4px; }
+    .who input { width: 100%; }
+    @media (max-width: 620px) { .who { grid-template-columns: 1fr 1fr; } .who label:first-child { grid-column: 1 / -1; } }
+
+    .progress { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); }
+    .progress .bar { flex: 1; height: 12px; background: var(--cream-deep); border-radius: 99px; overflow: hidden; }
+    .progress .bar i { display: block; height: 100%; width: 0; background: var(--teal); transition: width .3s; }
+
+    .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 16px; }
+    .it { background: #fff; border: 2px solid var(--line); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+    .it.done { border-color: var(--teal); }
+    .it-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .it-head h2 { margin: 0; font-size: 22px; }
+    .it-name { font-family: var(--font-display); color: var(--ink-soft); font-size: 16px; }
+    .it.done .it-name { color: var(--teal); font-size: 18px; }
+    .pic { position: relative; background: var(--paper); border: 1.5px dashed var(--line); border-radius: 14px; touch-action: manipulation; }
+    .pic svg { width: 100%; height: auto; display: block; cursor: crosshair; }
+    .pic .tap { pointer-events: none; }
+    .pic .tap.miss circle { fill: none; stroke: var(--ink-soft); stroke-width: 3; }
+    .pic .tap.miss path { stroke: var(--ink-soft); stroke-width: 3; }
+    .pic .ring { fill: rgba(214, 69, 93, .12); stroke: var(--rose); stroke-width: 4; stroke-dasharray: 10 6; pointer-events: none; }
+    .tapmsg { min-height: 1.6em; font-size: 15px; color: var(--ink-soft); margin: -4px 0 0; }
+    .tapmsg.hit { color: var(--rose); font-weight: 700; }
+    .step { font-family: var(--font-display); font-size: 15px; color: var(--ink-soft); margin: 0; }
+    .verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .verdict button { font: 500 17px var(--font-display); padding: 10px; border-radius: 12px; border: 2px solid var(--line); background: var(--paper); cursor: pointer; color: var(--ink); }
+    .verdict button.on[data-v="ok"] { background: var(--green-soft); border-color: var(--green); }
+    .verdict button.on[data-v="no"] { background: var(--rose-soft); border-color: var(--rose); }
+    .reasons { display: flex; flex-direction: column; gap: 6px; }
+    .reasons label { display: flex; gap: 8px; align-items: flex-start; padding: 6px 10px; border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer; font-size: 16px; line-height: 1.4; background: var(--paper); }
+    .reasons input { margin-top: 4px; accent-color: var(--teal); }
+    .reasons label.right { border-color: var(--green); background: var(--green-soft); }
+    .reasons label.wrong { border-color: var(--rose); background: var(--rose-soft); }
+    .it.done .verdict button, .it.done .reasons label { cursor: default; }
+    .result { display: none; border-radius: 12px; padding: 10px 14px; background: var(--sun-soft); font-size: 16px; }
+    .it.done .result { display: block; }
+    .result .mark { font-family: var(--font-display); font-size: 17px; }
+    .result .use { color: var(--ink-soft); margin-top: 4px; }
+    .photo-real { margin-top: 8px; }
+    .photo-real img { max-width: 100%; max-height: 200px; border-radius: 10px; display: block; }
+    .photo-real .credit { font-size: 12px; color: var(--ink-soft); }
+    .chip.ppe { background: var(--orange-soft); color: #b5531a; }
+    .chip.tool { background: var(--blue-soft); color: var(--blue); }
+    #result .big { font: 500 40px var(--font-display); color: var(--teal); }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="worksheet.html">ใบงาน 1.1</a>
+        <span class="spacer"></span>
+        <a href="answers.html">สำหรับครู 🔒</a>
+    </nav>
+
+    <header class="card">
+        <span class="chip orange">สัปดาห์ที่ 1 · ใบงานที่ 1.1</span>
+        <h1 style="margin-top:8px">🔍 ตรวจสภาพเครื่องมือและอุปกรณ์ป้องกันภัย</h1>
+        <p class="muted" style="margin:0 0 10px">ใช้แทนอุปกรณ์จริง · ทำเป็นกลุ่ม 10 ภาพ ภาพละ 3 ขั้น:
+            <b>① แตะจุดที่ชำรุด</b> (ถ้ามี) → <b>② ตัดสินใช้ได้หรือห้ามใช้</b> → <b>③ เลือกเหตุผล</b> แล้วกด “ตรวจ”
+            · ตรวจได้ภาพละครั้งเดียว ข้อละ 2 คะแนน (ตัดสินถูก 1 + เหตุผลถูก 1) · เสร็จแล้ว<b>เขียนผลลงใบงานด้วยภาษาของกลุ่มเอง</b></p>
+        <div class="who">
+            <label>ชื่อ-สกุล ตัวแทนกลุ่ม <input class="name-field" type="text" id="name" autocomplete="name"></label>
+            <label>ชั้น <input class="name-field" type="text" id="room"></label>
+            <label>เลขที่ (ตัวแทน) <input class="name-field" type="text" id="no" inputmode="numeric"></label>
+        </div>
+        <div class="progress" style="margin-top:12px"><span id="progTxt">ตรวจแล้ว 0 / 10</span><span class="bar"><i id="progBar"></i></span><span id="scoreTxt">0 คะแนน</span></div>
+    </header>
+
+    <main class="items" id="items"></main>
+
+    <section class="card no-print" id="submitBox" style="margin-top:16px">
+        <h2>ส่งผลการตรวจ</h2>
+        <p class="muted" style="margin:0 0 6px">ตรวจครบ 10 ภาพแล้วกดส่ง เพื่อรับใบคะแนน (บันทึกเป็น PDF ส่งใน Google Classroom)</p>
+        <div class="btn-row">
+            <button class="btn orange" type="button" id="submit" disabled>📨 ส่งผลการตรวจ</button>
+            <button class="btn ghost" type="button" id="restart">↺ เริ่มใหม่ทั้งหมด</button>
+        </div>
+        <div id="result" aria-live="polite"></div>
+    </section>
+
+    <section class="score-sheet" id="scoreSheet" hidden aria-label="ใบรายงานคะแนน"></section>
+</div>
+
+<script src="../assets/js/common.js"></script>
+<script src="inspect-data.js"></script>
+<script src="../assets/js/scoresheet.js"></script>
+<script>
+/* ===========================================
+   ตรวจสภาพเสมือน: แตะจุดชำรุด → ตัดสิน → เหตุผล → ตรวจ (คะแนนนับครั้งแรก)
+   ความคืบหน้าเก็บใน localStorage เปิดหน้าใหม่ไม่หาย
+   =========================================== */
+(function () {
+    'use strict';
+    const C = LessonCommon, D = INSPECT, KEY = 'bee-w01-inspect';
+    const TH = ['ก', 'ข', 'ค', 'ง'];
+    const state = C.store.get(KEY + '-progress', {});   // { i1: { verdict, reason, found, score } }
+    const startedAt = C.store.get(KEY + '-start', Date.now());
+    C.store.set(KEY + '-start', startedAt);
+    const root = document.getElementById('items');
+
+    root.innerHTML = D.items.map((it, n) => `
+        <article class="it" data-id="${it.id}">
+            <div class="it-head"><h2>ภาพที่ ${n + 1}</h2><span class="chip ${it.group}">${it.group === 'ppe' ? 'อุปกรณ์ป้องกันภัย' : 'เครื่องมือ/อุปกรณ์ไฟฟ้า'}</span></div>
+            <div class="it-name">❓ นี่คืออะไร? (เฉลยชื่อหลังกดตรวจ)</div>
+            <div class="pic"><svg viewBox="0 0 400 260" role="img" aria-label="ภาพที่ ${n + 1} แตะจุดที่คิดว่าชำรุด">${it.svg}<g class="marks"></g></svg></div>
+            <p class="tapmsg" aria-live="polite">① แตะภาพตรงจุดที่คิดว่าชำรุด</p>
+            <p class="step">② ตัดสิน</p>
+            <div class="verdict"><button type="button" data-v="ok">✅ ใช้ได้</button><button type="button" data-v="no">⛔ ห้ามใช้</button></div>
+            <p class="step">③ เหตุผล</p>
+            <div class="reasons">${it.reasons.map((r, j) => `<label><input type="radio" name="r-${it.id}" value="${j}"><span>${TH[j]}. ${C.esc(r)}</span></label>`).join('')}</div>
+            <button class="btn" type="button" data-act="check">ตรวจภาพที่ ${n + 1}</button>
+            <div class="result"></div>
+        </article>`).join('');
+
+    const byId = id => D.items.find(x => x.id === id);
+    const NS = 'http://www.w3.org/2000/svg';
+
+    function ringFor(card, it) {
+        if (!it.defect || card.querySelector('.ring')) return;
+        const c = document.createElementNS(NS, 'circle');
+        c.setAttribute('class', 'ring'); c.setAttribute('cx', it.defect.x); c.setAttribute('cy', it.defect.y); c.setAttribute('r', it.defect.r);
+        card.querySelector('.marks').appendChild(c);
+    }
+
+    function tap(card, it, ev) {
+        if (card.classList.contains('done')) return;
+        const svg = card.querySelector('svg');
+        const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+        const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+        const msg = card.querySelector('.tapmsg');
+        const s = state[it.id] || (state[it.id] = {});
+        if (it.defect && Math.hypot(p.x - it.defect.x, p.y - it.defect.y) <= it.defect.r) {
+            s.found = true; ringFor(card, it);
+            msg.className = 'tapmsg hit'; msg.textContent = '🔍 พบจุดผิดปกติ! ดูให้ชัดแล้วตัดสินต่อ';
+        } else {
+            const g = document.createElementNS(NS, 'g');
+            g.setAttribute('class', 'tap miss');
+            g.innerHTML = `<circle cx="${p.x}" cy="${p.y}" r="12"/><path d="M${p.x - 6} ${p.y - 6} l12 12 M${p.x + 6} ${p.y - 6} l-12 12"/>`;
+            card.querySelector('.marks').appendChild(g);
+            msg.className = 'tapmsg'; msg.textContent = 'จุดนี้ไม่พบความเสียหาย ลองดูส่วนอื่น (ด้าม ฉนวน สาย ขา พื้น เปลือก)';
+        }
+        save();
+    }
+
+    function render(card, it) {
+        const s = state[it.id] || {};
+        card.querySelectorAll('.verdict button').forEach(b => b.classList.toggle('on', b.dataset.v === s.verdict));
+        if (s.reason != null) { const r = card.querySelector(`input[value="${s.reason}"]`); if (r) r.checked = true; }
+        if (s.found) ringFor(card, it);
+        if (s.score == null) return;
+        card.classList.add('done');
+        card.querySelectorAll('input').forEach(i => { i.disabled = true; });
+        card.querySelectorAll('.verdict button').forEach(b => { b.disabled = true; });
+        card.querySelector('[data-act=check]').hidden = true;
+        ringFor(card, it);
+        card.querySelectorAll('.reasons label').forEach((l, j) => {
+            l.classList.toggle('right', j === it.reason);
+            l.classList.toggle('wrong', j === +s.reason && j !== it.reason);
+        });
+        const vOk = (s.verdict === 'ok') === it.ok, rOk = +s.reason === it.reason;
+        card.querySelector('.it-name').textContent = '✔ ' + it.name;
+        card.querySelector('.result').innerHTML = `
+            <div class="mark">${vOk ? '<span class="ok">✓ ตัดสินถูก</span>' : '<span class="bad">✗ ตัดสินผิด</span>'} · ${rOk ? '<span class="ok">✓ เหตุผลถูก</span>' : '<span class="bad">✗ เหตุผลผิด</span>'} · ได้ ${s.score}/2
+              — เฉลย: <b>${it.ok ? '✅ ใช้ได้' : '⛔ ห้ามใช้'}</b></div>
+            <div>${C.esc(it.explain)}</div>
+            <div class="use">หน้าที่: ${C.esc(it.use)}</div>
+            ${it.photo ? `<details class="photo-real"><summary>📷 ดูภาพของจริง (สภาพดี)</summary><img src="${it.photo.src}" alt="${C.esc(it.name)} ของจริง" loading="lazy"><div class="credit">ภาพ: ${C.esc(it.photo.credit)} · Wikimedia Commons</div></details>` : ''}`;
+        const msg = card.querySelector('.tapmsg');
+        msg.className = 'tapmsg'; msg.textContent = it.defect ? 'วงสีแดง = จุดชำรุด' : 'ภาพนี้ไม่มีจุดชำรุด';
+    }
+
+    function check(card, it) {
+        const s = state[it.id] || (state[it.id] = {});
+        const r = card.querySelector('input:checked');
+        const msg = card.querySelector('.tapmsg');
+        if (!s.verdict || !r) { msg.className = 'tapmsg hit'; msg.textContent = 'เลือกให้ครบทั้ง ② ตัดสิน และ ③ เหตุผล ก่อนกดตรวจ'; return; }
+        s.reason = +r.value;
+        s.score = ((s.verdict === 'ok') === it.ok ? 1 : 0) + (s.reason === it.reason ? 1 : 0);
+        save(); render(card, it); summary();
+    }
+
+    function save() { C.store.set(KEY + '-progress', state); }
+
+    function summary() {
+        const done = D.items.filter(it => state[it.id] && state[it.id].score != null);
+        const score = done.reduce((a, it) => a + state[it.id].score, 0);
+        document.getElementById('progTxt').textContent = `ตรวจแล้ว ${done.length} / ${D.items.length}`;
+        document.getElementById('progBar').style.width = (done.length / D.items.length * 100) + '%';
+        document.getElementById('scoreTxt').textContent = `${score} คะแนน`;
+        document.getElementById('submit').disabled = done.length < D.items.length;
+        return score;
+    }
+
+    root.addEventListener('click', e => {
+        const card = e.target.closest('.it'); if (!card) return;
+        const it = byId(card.dataset.id);
+        const v = e.target.closest('.verdict button');
+        if (v && !card.classList.contains('done')) {
+            (state[it.id] || (state[it.id] = {})).verdict = v.dataset.v; save(); render(card, it); return;
+        }
+        if (e.target.closest('[data-act=check]')) { check(card, it); return; }
+        if (e.target.closest('svg')) tap(card, it, e);
+    });
+    root.addEventListener('change', e => {
+        const card = e.target.closest('.it'); if (!card || card.classList.contains('done')) return;
+        (state[card.dataset.id] || (state[card.dataset.id] = {})).reason = +e.target.value; save();
+    });
+
+    /* ชื่อผู้ส่ง จำไว้ในเครื่อง */
+    ['name', 'room', 'no'].forEach(f => {
+        const el = document.getElementById(f);
+        el.value = C.store.get('bee-who-' + f, '');
+        el.addEventListener('input', () => C.store.set('bee-who-' + f, el.value.trim()));
+    });
+
+    document.getElementById('submit').addEventListener('click', () => {
+        const who = { name: document.getElementById('name').value.trim(), room: document.getElementById('room').value.trim(), no: document.getElementById('no').value.trim() };
+        const res = document.getElementById('result');
+        if (!who.name || !who.room || !who.no) { res.innerHTML = '<p class="bad">กรอกชื่อ ชั้น และเลขที่ของตัวแทนกลุ่มให้ครบก่อนส่ง</p>'; return; }
+        const score = summary(), total = D.items.length * 2, submittedAt = Date.now();
+        const k = KEY + ':' + who.room + ':' + who.no + ':' + who.name;
+        const rec = C.store.get(k, { history: [] });
+        rec.history.push({ score, total, submittedAt });
+        C.store.set(k, rec);
+        const detail = `<table class="ss-sets"><tr><th>ภาพ</th><th>รายการ</th><th>ตัดสิน</th><th>เหตุผล</th></tr>${D.items.map((it, i) => {
+            const s = state[it.id];
+            return `<tr><td>${i + 1}</td><td>${C.esc(it.name)}</td><td>${(s.verdict === 'ok') === it.ok ? '✓' : '✗'}</td><td>${s.reason === it.reason ? '✓' : '✗'}</td></tr>`;
+        }).join('')}<tr><th colspan="2" style="text-align:right">รวม</th><td colspan="2"><b>${score}</b> / ${total}</td></tr></table>`;
+        ScoreSheet.render(document.getElementById('scoreSheet'), {
+            kind: 'ตรวจสภาพเครื่องมือ (ใบงานที่ 1.1)', chapter: D.chapter, who, score, total, submittedAt, startedAt, attempt: rec.history.length, detailHTML: detail
+        });
+        res.innerHTML = `<p class="ok" style="margin:10px 0 0">ส่งเรียบร้อย · ${C.thaiDateTime(submittedAt)}</p>
+            <div class="big">${score} / ${total} คะแนน</div>
+            <div class="score-actions" style="margin-top:10px"><button class="btn orange" type="button" id="printScore">🖨 พิมพ์ใบคะแนน</button>
+            <span class="hint">เลือกปลายทาง “บันทึกเป็น PDF” แล้วแนบส่งใน Google Classroom</span></div>`;
+        document.getElementById('printScore').addEventListener('click', () => ScoreSheet.print());
+        document.getElementById('scoreSheet').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    let armed = false;
+    document.getElementById('restart').addEventListener('click', e => {
+        if (!armed) { armed = true; e.currentTarget.textContent = '⚠ กดอีกครั้งเพื่อล้างคำตอบทั้งหมด'; return; }
+        Object.keys(state).forEach(k => delete state[k]);
+        C.store.set(KEY + '-progress', {}); C.store.set(KEY + '-start', Date.now());
+        location.reload();
+    });
+
+    root.querySelectorAll('.it').forEach(card => render(card, byId(card.dataset.id)));
+    summary();
+})();
+</script>
+</body>
+</html>
