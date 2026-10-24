@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ฝึกจังหวะ CPR สัปดาห์ที่ 2</title>
+<meta name="description" content="ฝึกจังหวะกดหน้าอก CPR บนมือถือ แตะตามจังหวะ วัดอัตรา 100–120 ครั้งต่อนาที นับ 30 ต่อ 2 ครบ 5 รอบ และฝึกตำแหน่งวางมือ ใช้แทนหุ่นฝึกในใบงานที่ 1.2 วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+    .who { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; }
+    .who label { display: flex; flex-direction: column; font-size: 15px; color: var(--ink-soft); gap: 4px; }
+    .who input { width: 100%; }
+    @media (max-width: 620px) { .who { grid-template-columns: 1fr 1fr; } .who label:first-child { grid-column: 1 / -1; } }
+    .warn { border-left: 4px solid var(--rose); background: var(--rose-soft); padding: 8px 14px; border-radius: 0 12px 12px 0; margin: 10px 0 0; }
+
+    /* ตำแหน่งวางมือ */
+    .hand { display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: 18px; align-items: start; }
+    @media (max-width: 640px) { .hand { grid-template-columns: 1fr; } }
+    .torso { background: var(--paper); border: 1.5px dashed var(--line); border-radius: 14px; touch-action: manipulation; }
+    .torso svg { width: 100%; height: auto; display: block; cursor: crosshair; }
+    .torso svg text { font-family: 'Kanit', sans-serif; }
+    .hmsg { min-height: 3em; font-size: 16px; margin: 6px 0 0; }
+    .hmsg.ok { color: var(--green); font-weight: 700; }
+    .hmsg.bad { color: var(--rose); font-weight: 700; }
+
+    /* เครื่องฝึกจังหวะ */
+    .trainer { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+    @media (max-width: 760px) { .trainer { grid-template-columns: 1fr; } }
+    .pad { position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 420px; border-radius: 28px; border: 0; cursor: pointer;
+        background: radial-gradient(circle at 50% 40%, #fff 0, var(--teal-soft) 60%, #b7e3e1 100%); color: var(--teal);
+        font: 500 30px var(--font-display); box-shadow: 0 8px 0 #8fcfcc; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+    .pad:active, .pad.hit { transform: translateY(6px); box-shadow: 0 2px 0 #8fcfcc; }
+    .pad .big { display: block; font: 700 96px/1 var(--font-mono); color: var(--ink); }
+    .pad .sub { display: block; font-size: 20px; color: var(--ink-soft); margin-top: 6px; }
+    .pad.breath { background: radial-gradient(circle at 50% 40%, #fff 0, var(--sun-soft) 60%, #f7d98a 100%); box-shadow: 0 8px 0 #e5c36b; color: #9a6a00; }
+    .pad.over { background: radial-gradient(circle at 50% 40%, #fff 0, var(--green-soft) 60%, #a9dcbb 100%); box-shadow: 0 8px 0 #8fc9a4; }
+    .side { display: flex; flex-direction: column; gap: 12px; }
+    .stat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .stat div { background: var(--paper); border: 1.5px solid var(--line); border-radius: 14px; padding: 8px 10px; text-align: center; }
+    .stat b { display: block; font: 700 30px var(--font-mono); }
+    .stat span { font-size: 14px; color: var(--ink-soft); }
+    .gauge { position: relative; height: 34px; border-radius: 99px; background: linear-gradient(90deg, var(--orange-soft) 0 40%, var(--green-soft) 40% 60%, var(--rose-soft) 60% 100%); border: 1.5px solid var(--line); }
+    .gauge .needle { position: absolute; top: -6px; width: 6px; height: 44px; margin-left: -3px; border-radius: 3px; background: var(--ink); left: 0; transition: left .2s; }
+    .gauge-l { display: flex; justify-content: space-between; font: 500 13px var(--font-mono); color: var(--ink-soft); margin-top: 2px; }
+    .gauge-l span:nth-child(2), .gauge-l span:nth-child(3) { color: var(--green); }
+    .rmsg { font: 500 22px var(--font-display); min-height: 1.4em; margin: 0; }
+    .rmsg.slow { color: var(--orange); } .rmsg.good { color: var(--green); } .rmsg.fast { color: var(--rose); }
+    .cycles { display: flex; gap: 8px; }
+    .cycles i { flex: 1; height: 14px; border-radius: 99px; background: var(--cream-deep); }
+    .cycles i.on { background: var(--teal); }
+    .ctrl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .beat { width: 18px; height: 18px; border-radius: 50%; background: var(--line); display: inline-block; vertical-align: middle; }
+    .beat.on { background: var(--teal); }
+    .res table { width: 100%; border-collapse: collapse; margin-top: 8px; background: #fff; }
+    .res th, .res td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
+    .res th { background: var(--cream); font-family: var(--font-display); font-weight: 500; width: 46%; }
+    .res .good { color: var(--green); font-weight: 700; } .res .bad { color: var(--rose); font-weight: 700; }
+    .hist td, .hist th { font-size: 15px; }
+
+    /* ความลึก */
+    .depth { display: grid; grid-template-columns: minmax(0, 300px) 1fr; gap: 18px; align-items: center; }
+    @media (max-width: 640px) { .depth { grid-template-columns: 1fr; } }
+    .chk { list-style: none; padding: 0; margin: 0; }
+    .chk li { padding: 4px 0; }
+    #result .big { font: 500 40px var(--font-display); color: var(--teal); }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="rescue.html">จำลองการช่วยเหลือ</a> · <a href="worksheet.html">ใบงาน 1.2</a>
+        <span class="spacer"></span>
+        <a href="answers.html">สำหรับครู 🔒</a>
+    </nav>
+
+    <header class="card">
+        <span class="chip orange">สัปดาห์ที่ 2 · ใบงานที่ 1.2 ตอนที่ 2</span>
+        <h1 style="margin-top:8px">❤️ ฝึกจังหวะ CPR (ไม่ต้องมีหุ่น)</h1>
+        <p class="muted" style="margin:0">3 ขั้น: <b>① แตะตำแหน่งวางมือ</b> → <b>② แตะตามจังหวะกดหน้าอก 30 : 2 ครบ 5 รอบ</b> → <b>③ ฝึกความลึกกับหมอน</b>
+            แล้วจดค่าที่ได้ลงตารางตอนที่ 2 ในใบงาน · ใช้บนมือถือ แท็บเล็ต หรือจอโปรเจกเตอร์ (กด Space แทนการแตะได้)</p>
+        <p class="warn"><b>⚠️ ห้ามฝึกกดหน้าอกกับคนจริงเด็ดขาด</b> อาจทำให้ซี่โครงหักหรืออวัยวะภายในบาดเจ็บ ฝึกบนจอ หมอน หรือหุ่นฝึกเท่านั้น</p>
+    </header>
+
+    <section class="card">
+        <h2>① วางมือตรงไหน? แตะบนภาพ</h2>
+        <div class="hand">
+            <div class="torso"><svg id="torso" viewBox="0 0 300 340" role="img" aria-label="ภาพลำตัวผู้ป่วยนอนหงาย แตะตำแหน่งที่จะวางส้นมือ">
+                <path d="M60 30 Q150 0 240 30 L262 110 Q268 220 246 330 L54 330 Q32 220 38 110 Z" fill="#fde6d4" stroke="#c98a6a" stroke-width="4"/>
+                <circle cx="150" cy="-6" r="40" fill="#fde6d4" stroke="#c98a6a" stroke-width="4"/>
+                <g stroke="#e3b79c" stroke-width="3" fill="none">
+                    <path d="M138 70 Q96 66 64 84"/><path d="M162 70 Q204 66 236 84"/>
+                    <path d="M138 100 Q94 96 58 116"/><path d="M162 100 Q206 96 242 116"/>
+                    <path d="M138 130 Q92 128 56 148"/><path d="M162 130 Q208 128 244 148"/>
+                    <path d="M138 160 Q94 160 58 182"/><path d="M162 160 Q206 160 242 182"/>
+                    <path d="M138 190 Q100 194 70 216"/><path d="M162 190 Q200 194 230 216"/>
+                </g>
+                <path d="M88 42 Q120 52 140 50 M212 42 Q180 52 160 50" stroke="#c98a6a" stroke-width="4" fill="none"/>
+                <rect x="138" y="50" width="24" height="160" rx="10" fill="#f5d3bd" stroke="#c98a6a" stroke-width="3"/>
+                <path d="M140 210 L150 230 L160 210" fill="#f5d3bd" stroke="#c98a6a" stroke-width="3"/>
+                <circle cx="98" cy="128" r="5" fill="#c98a6a"/><circle cx="202" cy="128" r="5" fill="#c98a6a"/>
+                <line x1="98" y1="128" x2="202" y2="128" stroke="#c98a6a" stroke-width="2" stroke-dasharray="5 5"/>
+                <text x="150" y="292" font-size="16" fill="#8a6a58" text-anchor="middle">ท้อง</text>
+                <g id="marks"></g>
+            </svg></div>
+            <div>
+                <p style="margin:0">เส้นประ = แนวหัวนม · แถบกลางอก = กระดูกหน้าอก · ปลายแหลมด้านล่าง = ลิ้นปี่</p>
+                <p class="hmsg" id="hmsg" aria-live="polite">แตะตรงจุดที่จะวางส้นมือข้างแรก</p>
+                <div class="btn-row"><button class="btn ghost" type="button" id="handShow">ดูเฉลย</button><button class="btn ghost" type="button" id="handReset">↺ ลองใหม่</button></div>
+                <p class="small muted" style="margin-top:10px">วางส้นมือข้างหนึ่งกึ่งกลางหน้าอก (ครึ่งล่างของกระดูกหน้าอก) มืออีกข้างวางทับ ประสานนิ้วและยกนิ้วขึ้น ไม่ให้กดลงบนซี่โครง</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>② แตะตามจังหวะ: กด 30 ครั้ง เป่า 2 ครั้ง × 5 รอบ</h2>
+        <div class="trainer">
+            <button class="pad" type="button" id="pad" aria-live="polite"><span class="big" id="padNum">▶</span><span class="sub" id="padSub">แตะเพื่อเริ่มกดครั้งแรก</span></button>
+            <div class="side">
+                <div class="stat">
+                    <div><b id="stRate">–</b><span>ครั้ง/นาที</span></div>
+                    <div><b id="stCycle">0/5</b><span>รอบ</span></div>
+                    <div><b id="stIn">–</b><span>% อยู่ในช่วง</span></div>
+                </div>
+                <div><div class="gauge"><span class="needle" id="needle"></span></div><div class="gauge-l"><span>60</span><span>100</span><span>120</span><span>160</span></div></div>
+                <p class="rmsg" id="rmsg"></p>
+                <div class="cycles" id="cycles"><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="ctrl">
+                    <button class="btn ghost" type="button" id="metro">🔊 เปิดเสียงจังหวะ 110</button><span class="beat" id="beat"></span>
+                    <button class="btn ghost" type="button" id="reset">↺ เริ่มใหม่</button>
+                </div>
+                <p class="small muted" style="margin:0">เปิดเสียงจังหวะช่วยฝึกก่อน แล้วลองปิดเสียงทำเองให้ได้ในช่วง 100–120 · หยุดเป่าปากให้สั้นที่สุด แล้วกลับมากดต่อทันที</p>
+            </div>
+        </div>
+        <div class="res" id="res" hidden></div>
+    </section>
+
+    <section class="card">
+        <h2>③ ความลึก 5–6 ซม. ฝึกกับหมอน</h2>
+        <div class="depth">
+            <svg viewBox="0 0 300 150" role="img" aria-label="ไม้บรรทัด 0 ถึง 7 เซนติเมตร ช่วง 5 ถึง 6 เซนติเมตรเป็นสีเขียว">
+                <rect x="20" y="40" width="260" height="56" rx="6" fill="#fff1cc" stroke="#b98b5a" stroke-width="3"/>
+                <rect x="198.6" y="40" width="34.3" height="56" fill="#dcf3e3" stroke="#2e9b57" stroke-width="2"/>
+                <g stroke="#5d5866" stroke-width="2">
+                    <line x1="27" y1="40" x2="27" y2="70"/><line x1="61.3" y1="40" x2="61.3" y2="70"/><line x1="95.6" y1="40" x2="95.6" y2="70"/><line x1="129.9" y1="40" x2="129.9" y2="70"/>
+                    <line x1="164.2" y1="40" x2="164.2" y2="70"/><line x1="198.6" y1="40" x2="198.6" y2="70"/><line x1="232.9" y1="40" x2="232.9" y2="70"/><line x1="267.2" y1="40" x2="267.2" y2="70"/>
+                </g>
+                <g font-size="15" fill="#2a2733" text-anchor="middle" font-family="Prompt, sans-serif">
+                    <text x="27" y="88">0</text><text x="61.3" y="88">1</text><text x="95.6" y="88">2</text><text x="129.9" y="88">3</text><text x="164.2" y="88">4</text><text x="198.6" y="88">5</text><text x="232.9" y="88">6</text><text x="267.2" y="88">7</text>
+                </g>
+                <text x="215.7" y="28" font-size="16" fill="#2e9b57" text-anchor="middle" font-family="Kanit, sans-serif">5–6 ซม.</text>
+                <text x="150" y="128" font-size="14" fill="#5d5866" text-anchor="middle" font-family="Kanit, sans-serif">ภาพไม่ใช่ขนาดจริง ใช้ไม้บรรทัดจริงเทียบ</text>
+            </svg>
+            <div>
+                <ol style="margin:0;padding-left:22px">
+                    <li>ม้วนผ้าขนหนู 2–3 ผืนหรือพับหมอนให้หนา วาง<b>บนพื้นหรือโต๊ะแข็ง</b> ติดเทปกระดาษเป็นจุดกลางหน้าอก</li>
+                    <li>เพื่อนตั้งไม้บรรทัดข้างหมอน ดูว่าแต่ละครั้งกดลงประมาณ <b>5–6 ซม.</b> แล้วปล่อยให้คืนตัวสุด</li>
+                    <li>กดพร้อมเปิดหน้าฝึกจังหวะ (ข้อ ②) ให้เพื่อนอีกคนแตะตาม แล้วสลับหน้าที่</li>
+                </ol>
+                <p style="margin:10px 0 4px"><b>ผู้สังเกตเช็กท่า:</b></p>
+                <ul class="chk">
+                    <li>☐ แขนเหยียดตรง ไม่งอศอก</li>
+                    <li>☐ ไหล่อยู่เหนือมือ โน้มตัวตั้งฉาก ใช้น้ำหนักตัวกด</li>
+                    <li>☐ กดแล้วปล่อยให้คืนตัวสุด ไม่ยกมือออกจากจุดกด</li>
+                    <li>☐ นิ้วไม่กดลงบนซี่โครง</li>
+                </ul>
+                <p class="small muted" style="margin-top:8px">ความลึกจากหมอนเป็นค่าประมาณ ถ้าโรงฝึกงานมีหุ่นฝึก CPR ใช้ตารางในใบงานชุดเดียวกันได้</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card no-print">
+        <h2>ส่งผลการฝึก</h2>
+        <div class="who">
+            <label>ชื่อ-สกุล <input class="name-field" type="text" id="name" autocomplete="name"></label>
+            <label>ชั้น <input class="name-field" type="text" id="room"></label>
+            <label>เลขที่ <input class="name-field" type="text" id="no" inputmode="numeric"></label>
+        </div>
+        <p class="muted" style="margin:8px 0">ฝึกครบ 5 รอบแล้วกดส่ง ระบบใช้ผลของครั้งล่าสุด ให้คะแนนตามเกณฑ์ใบงานข้อ 4 (อัตรา 100–120 ครบ 5 รอบ เต็ม 5)</p>
+        <div class="btn-row"><button class="btn orange" type="button" id="submit" disabled>📨 ส่งผลการฝึก</button></div>
+        <div id="result" aria-live="polite"></div>
+    </section>
+
+    <section class="score-sheet" id="scoreSheet" hidden aria-label="ใบรายงานคะแนน"></section>
+</div>
+
+<script src="../assets/js/common.js"></script>
+<script src="../assets/js/scoresheet.js"></script>
+<script>
+/* ===========================================
+   ฝึกจังหวะ CPR: นับ 30 ครั้ง → เป่า 2 ครั้ง × 5 รอบ วัดอัตราจากช่วงห่างการแตะ
+   ช่วงที่ถูกต้อง 100–120 ครั้ง/นาที (ใบความรู้ 1.2, AHA 2025)
+   =========================================== */
+(function () {
+    'use strict';
+    const C = LessonCommon, KEY = 'bee-w02-cpr';
+    const LO = 100, HI = 120, PUSH = 30, BREATHS = 2, CYCLES = 5;
+    const $ = id => document.getElementById(id);
+    const startedAt = C.store.get(KEY + '-start', Date.now());
+    C.store.set(KEY + '-start', startedAt);
+
+    /* ---------- ① ตำแหน่งวางมือ ---------- */
+    const NS = 'http://www.w3.org/2000/svg';
+    const torso = $('torso'), marks = $('marks'), hmsg = $('hmsg');
+    const TARGET = { x: 150, y: 160, r: 26 };   // ครึ่งล่างของกระดูกหน้าอก (กระดูกยาว y 50–210)
+    const hand = C.store.get(KEY + '-hand', { tries: 0, ok: false });
+    function mark(x, y, ok) {
+        const g = document.createElementNS(NS, 'g');
+        g.innerHTML = ok ? `<circle cx="${x}" cy="${y}" r="14" fill="rgba(46,155,87,.35)" stroke="#2e9b57" stroke-width="3"/>`
+            : `<path d="M${x - 8} ${y - 8} l16 16 M${x + 8} ${y - 8} l-16 16" stroke="#d6455d" stroke-width="4"/>`;
+        marks.appendChild(g);
+    }
+    function showTarget() {
+        if (marks.querySelector('.tgt')) return;
+        const c = document.createElementNS(NS, 'circle');
+        c.setAttribute('class', 'tgt'); c.setAttribute('cx', TARGET.x); c.setAttribute('cy', TARGET.y); c.setAttribute('r', TARGET.r);
+        c.setAttribute('fill', 'rgba(0,135,143,.15)'); c.setAttribute('stroke', '#00878f'); c.setAttribute('stroke-width', '3'); c.setAttribute('stroke-dasharray', '8 5');
+        marks.appendChild(c);
+    }
+    torso.addEventListener('click', ev => {
+        const pt = torso.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+        const p = pt.matrixTransform(torso.getScreenCTM().inverse());
+        const ok = Math.hypot(p.x - TARGET.x, p.y - TARGET.y) <= TARGET.r;
+        if (!hand.ok) hand.tries++;
+        mark(p.x, p.y, ok);
+        if (ok) { hand.ok = true; showTarget(); hmsg.className = 'hmsg ok'; hmsg.textContent = `✅ ถูกต้อง! กึ่งกลางหน้าอก ครึ่งล่างของกระดูกหน้าอก (แตะ ${hand.tries} ครั้ง)`; }
+        else {
+            hmsg.className = 'hmsg bad';
+            if (Math.abs(p.x - TARGET.x) > 22 && p.y < 230) hmsg.textContent = '✗ เยื้องไปด้านข้าง ตรงนั้นคือซี่โครง ต้องอยู่กึ่งกลางหน้าอก';
+            else if (p.y < TARGET.y - TARGET.r) hmsg.textContent = '✗ สูงไป ให้เลื่อนลงมาที่ครึ่งล่างของกระดูกหน้าอก';
+            else hmsg.textContent = '✗ ต่ำไป ตรงนั้นคือลิ้นปี่/ท้อง กดแล้วโดนตับและกระเพาะ';
+        }
+        C.store.set(KEY + '-hand', hand);
+    });
+    $('handShow').addEventListener('click', () => { showTarget(); hmsg.className = 'hmsg'; hmsg.textContent = 'วงสีฟ้า = ตำแหน่งวางส้นมือ (อยู่บนแนวกึ่งกลาง ใต้แนวหัวนมเล็กน้อยถึงเหนือลิ้นปี่)'; });
+    $('handReset').addEventListener('click', () => { marks.innerHTML = ''; hand.tries = 0; hand.ok = false; C.store.set(KEY + '-hand', hand); hmsg.className = 'hmsg'; hmsg.textContent = 'แตะตรงจุดที่จะวางส้นมือข้างแรก'; });
+    if (hand.ok) { showTarget(); hmsg.className = 'hmsg ok'; hmsg.textContent = `✅ ทำแล้ว (แตะ ${hand.tries} ครั้ง)`; }
+
+    /* ---------- ② เครื่องฝึกจังหวะ ---------- */
+    const pad = $('pad'), padNum = $('padNum'), padSub = $('padSub');
+    let S;
+    function fresh() { S = { phase: 'idle', cycle: 0, n: 0, breaths: 0, last: 0, iv: [], cycIv: [], pauses: [], breathStart: 0, t0: 0, total: 0 }; }
+    fresh();
+
+    const rateOf = ms => 60000 / ms;
+    function judge(r) { return r < LO ? 'slow' : r > HI ? 'fast' : 'good'; }
+    function draw() {
+        const recent = S.cycIv.slice(-4);
+        const r = recent.length ? rateOf(recent.reduce((a, b) => a + b, 0) / recent.length) : 0;
+        $('stRate').textContent = r ? Math.round(r) : '–';
+        $('stCycle').textContent = `${Math.min(S.cycle, CYCLES)}/${CYCLES}`;
+        const inn = S.iv.length ? Math.round(S.iv.filter(v => judge(rateOf(v)) === 'good').length / S.iv.length * 100) : null;
+        $('stIn').textContent = inn == null ? '–' : inn;
+        $('needle').style.left = r ? Math.max(0, Math.min(100, (r - 60) / 100 * 100)) + '%' : '0';
+        const m = $('rmsg');
+        if (S.phase === 'push' && r) {
+            const j = judge(r); m.className = 'rmsg ' + j;
+            m.textContent = j === 'slow' ? '🐢 ช้าไป เร่งอีกนิด' : j === 'fast' ? '🐇 เร็วไป ช้าลงหน่อย' : '👍 พอดี รักษาจังหวะไว้';
+        } else if (S.phase !== 'push') { m.className = 'rmsg'; m.textContent = ''; }
+        document.querySelectorAll('#cycles i').forEach((el, i) => el.classList.toggle('on', i < S.cycle));
+        pad.classList.toggle('breath', S.phase === 'breath');
+        pad.classList.toggle('over', S.phase === 'done');
+        if (S.phase === 'idle') { padNum.textContent = '▶'; padSub.textContent = 'แตะเพื่อเริ่มกดครั้งแรก'; }
+        else if (S.phase === 'push') { padNum.textContent = S.n; padSub.textContent = `กดหน้าอก ${S.n} / ${PUSH} · รอบที่ ${S.cycle + 1}`; }
+        else if (S.phase === 'breath') { padNum.textContent = '🫁'; padSub.textContent = `แตะ = เป่าปาก ${S.breaths} / ${BREATHS} (ครั้งละ ~1 วินาที)`; }
+        else { padNum.textContent = '✔'; padSub.textContent = 'ครบ 5 รอบ ดูผลด้านล่าง'; }
+    }
+
+    function hit() {
+        const now = performance.now();
+        pad.classList.add('hit'); setTimeout(() => pad.classList.remove('hit'), 90);
+        if (S.phase === 'done') return;
+        if (S.phase === 'idle') { S.phase = 'push'; S.t0 = now; }
+        if (S.phase === 'push') {
+            if (S.n > 0) { const d = now - S.last; S.iv.push(d); S.cycIv.push(d); }
+            else if (S.breathStart) S.pauses.push(now - S.breathStart);
+            S.n++; S.total++; S.last = now;
+            if (S.n === PUSH) { S.phase = 'breath'; S.breaths = 0; S.breathStart = now; }
+        } else if (S.phase === 'breath') {
+            S.breaths++;
+            if (S.breaths === BREATHS) {
+                S.cycle++; S.n = 0; S.cycIv = [];
+                if (S.cycle === CYCLES) { S.phase = 'done'; S.t1 = now; finish(); }
+                else S.phase = 'push';
+            }
+        }
+        draw();
+    }
+    pad.addEventListener('pointerdown', e => { e.preventDefault(); hit(); });
+    pad.addEventListener('click', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+        if ((e.code === 'Space' || e.code === 'Enter') && !e.repeat && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); hit(); }
+    });
+
+    function scoreOf(pct, full) { if (!full) return 0; return pct >= 80 ? 5 : pct >= 60 ? 4 : pct >= 40 ? 3 : pct >= 20 ? 2 : 1; }
+    let lastResult = C.store.get(KEY + '-last', null);
+    function finish() {
+        const mean = S.iv.reduce((a, b) => a + b, 0) / S.iv.length;
+        const inPct = Math.round(S.iv.filter(v => judge(rateOf(v)) === 'good').length / S.iv.length * 100);
+        const pause = S.pauses.length ? S.pauses.reduce((a, b) => a + b, 0) / S.pauses.length / 1000 : 0;
+        lastResult = { rate: Math.round(rateOf(mean)), inPct, cycles: S.cycle, pushes: S.total, ratio: `${PUSH} : ${BREATHS}`, pause: Math.round(pause * 10) / 10, secs: Math.round((S.t1 - S.t0) / 1000), at: Date.now() };
+        lastResult.score = scoreOf(inPct, lastResult.cycles === CYCLES);
+        const hist = C.store.get(KEY + '-hist', []); hist.push(lastResult); C.store.set(KEY + '-hist', hist.slice(-10));
+        C.store.set(KEY + '-last', lastResult);
+        showResult();
+    }
+    function showResult() {
+        const r = lastResult, res = $('res');
+        if (!r) { res.hidden = true; $('submit').disabled = true; return; }
+        const hist = C.store.get(KEY + '-hist', []);
+        res.innerHTML = `<h3 style="margin:14px 0 0">ผลการฝึกครั้งล่าสุด · จดลงตารางตอนที่ 2</h3>
+            <table>
+                <tr><th>อัตราการกดหน้าอกเฉลี่ย (ครั้ง/นาที)</th><td><b class="${judge(r.rate) === 'good' ? 'good' : 'bad'}">${r.rate}</b> ${judge(r.rate) === 'good' ? '✓ อยู่ในช่วง 100–120' : '✗ ต้องอยู่ในช่วง 100–120'}</td></tr>
+                <tr><th>กดในช่วง 100–120 ได้</th><td><b>${r.inPct}%</b> ของทุกครั้ง</td></tr>
+                <tr><th>จำนวนรอบที่ปฏิบัติได้ครบ</th><td><b>${r.cycles}</b> รอบ (กดรวม ${r.pushes} ครั้ง)</td></tr>
+                <tr><th>อัตราส่วนการนวดหัวใจต่อการเป่าปาก</th><td><b>${r.ratio}</b></td></tr>
+                <tr><th>หยุดเพื่อเป่าปากเฉลี่ย</th><td>${r.pause} วินาที/รอบ ${r.pause > 10 ? '— นานไป ลองให้สั้นลง' : ''}</td></tr>
+                <tr><th>เวลาทั้งหมด</th><td>${Math.floor(r.secs / 60)} นาที ${r.secs % 60} วินาที</td></tr>
+                <tr><th>คะแนนแนะนำ ใบงานข้อ 4</th><td><b>${r.score} / 5</b> <span class="muted">(≥80% = 5, ≥60% = 4, ≥40% = 3, ≥20% = 2)</span></td></tr>
+            </table>
+            ${hist.length > 1 ? `<table class="hist"><tr><th>ฝึกครั้งที่</th><th>อัตราเฉลี่ย</th><th>% ในช่วง</th></tr>${hist.map((h, i) => `<tr><td>${i + 1}</td><td>${h.rate}</td><td>${h.inPct}%</td></tr>`).join('')}</table>` : ''}`;
+        res.hidden = false;
+        $('submit').disabled = false;
+    }
+    showResult();
+    $('reset').addEventListener('click', e => { fresh(); draw(); e.currentTarget.blur(); });
+
+    /* เสียงจังหวะ 110 ครั้ง/นาที */
+    let ac = null, tick = null;
+    $('metro').addEventListener('click', e => {
+        const b = e.currentTarget; b.blur();
+        if (tick) { clearInterval(tick); tick = null; b.textContent = '🔊 เปิดเสียงจังหวะ 110'; $('beat').classList.remove('on'); return; }
+        try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); ac.resume(); } catch (err) { ac = null; }
+        const beat = () => {
+            const d = $('beat'); d.classList.add('on'); setTimeout(() => d.classList.remove('on'), 120);
+            if (!ac) return;
+            const o = ac.createOscillator(), g = ac.createGain();
+            o.frequency.value = 880; g.gain.setValueAtTime(0.25, ac.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.08);
+            o.connect(g).connect(ac.destination); o.start(); o.stop(ac.currentTime + 0.09);
+        };
+        beat(); tick = setInterval(beat, 60000 / 110);
+        b.textContent = '🔇 ปิดเสียงจังหวะ';
+    });
+
+    /* ---------- ส่งผล ---------- */
+    ['name', 'room', 'no'].forEach(f => {
+        const el = $(f);
+        el.value = C.store.get('bee-who-' + f, '');
+        el.addEventListener('input', () => C.store.set('bee-who-' + f, el.value.trim()));
+    });
+    $('submit').addEventListener('click', () => {
+        const who = { name: $('name').value.trim(), room: $('room').value.trim(), no: $('no').value.trim() };
+        const out = $('result');
+        if (!who.name || !who.room || !who.no) { out.innerHTML = '<p class="bad">กรอกชื่อ ชั้น และเลขที่ให้ครบก่อนส่ง</p>'; return; }
+        const r = lastResult, submittedAt = Date.now();
+        const k = KEY + ':' + who.room + ':' + who.no + ':' + who.name;
+        const rec = C.store.get(k, { history: [] });
+        rec.history.push({ score: r.score, total: 5, submittedAt });
+        C.store.set(k, rec);
+        const detail = `<table class="ss-sets"><tr><th>รายการ</th><th>ผล</th></tr>
+            <tr><td>อัตราการกดหน้าอกเฉลี่ย</td><td>${r.rate} ครั้ง/นาที</td></tr>
+            <tr><td>กดในช่วง 100–120</td><td>${r.inPct}%</td></tr>
+            <tr><td>จำนวนรอบ / อัตราส่วน</td><td>${r.cycles} รอบ / ${r.ratio}</td></tr>
+            <tr><td>ตำแหน่งวางมือ</td><td>${hand.ok ? `ถูกต้อง (แตะ ${hand.tries} ครั้ง)` : 'ยังไม่ได้ทำ'}</td></tr></table>`;
+        ScoreSheet.render($('scoreSheet'), {
+            kind: 'ฝึกจังหวะ CPR (ใบงานที่ 1.2 ตอนที่ 2 ข้อ 4)', chapter: 'สัปดาห์ที่ 2 การช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด', who, score: r.score, total: 5, submittedAt, startedAt, attempt: rec.history.length, detailHTML: detail
+        });
+        out.innerHTML = `<p class="ok" style="margin:10px 0 0">ส่งเรียบร้อย · ${C.thaiDateTime(submittedAt)}</p>
+            <div class="big">${r.score} / 5 คะแนน</div>
+            <div class="score-actions" style="margin-top:10px"><button class="btn orange" type="button" id="printScore">🖨 พิมพ์ใบคะแนน</button>
+            <span class="hint">เลือกปลายทาง “บันทึกเป็น PDF” แล้วแนบส่งใน Google Classroom</span></div>`;
+        $('printScore').addEventListener('click', () => ScoreSheet.print());
+        $('scoreSheet').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    draw();
+})();
+</script>
+</body>
+</html>

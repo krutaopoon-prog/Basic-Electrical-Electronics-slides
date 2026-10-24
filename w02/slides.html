@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สัปดาห์ที่ 2 การช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด</title>
+<meta name="description" content="สไลด์ประกอบการสอน วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) สัปดาห์ที่ 2 หน่วยที่ 1 การช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด CPR และ AED ระดับ ปวช.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/deck.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    /* ส่วนเพิ่มเฉพาะสัปดาห์นี้ */
+    .cover .aed { position: absolute; right: 190px; top: 270px; width: 400px; border-radius: 26px; }
+    .tile { text-align: center; padding: 26px 22px; }
+    .tile .icon { margin-bottom: 6px; }
+    .tile h3 { margin: 0 0 6px; }
+    .tile p { font-size: 30px; line-height: 1.4; margin: 0; color: var(--ink-soft); }
+    .diagram svg text { font-family: 'Kanit', sans-serif; }
+    table.plan td, table.plan th { font-size: 28px; padding: 7px 18px; }
+    table.plan td:first-child { font-family: var(--font-mono); white-space: nowrap; }
+    table.plan tr.brk td { background: var(--cream); color: var(--ink-soft); }
+    .vwrap { flex: 0 0 1000px; }
+    .vside { display: flex; flex-direction: column; gap: 18px; }
+    .bignum { font: 700 72px/1.05 var(--font-mono); }
+    .gm { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .gm .box { text-align: center; padding: 16px 12px; }
+    .gm .icon { font-size: 64px; }
+    .gm h3 { margin: 4px 0 4px; font-size: 32px; }
+    .gm .frag { font: 500 30px var(--font-display); }
+    .gm .frag.y { color: var(--green); } .gm .frag.n { color: var(--rose); }
+    .flow { display: flex; flex-direction: column; }
+    .flow .fs { display: flex; align-items: center; gap: 22px; background: #fff; border: 3px solid var(--line); border-radius: 18px; padding: 10px 24px; font-size: 32px; }
+    .flow .fs .n { font: 700 34px var(--font-mono); color: #fff; background: var(--teal); border-radius: 50%; width: 56px; height: 56px; display: grid; place-items: center; flex: 0 0 56px; }
+    .flow .fs.rose { border-color: var(--rose); } .flow .fs.rose .n { background: var(--rose); }
+    .flow .fs.orange .n { background: var(--orange); } .flow .fs.blue .n { background: var(--blue); } .flow .fs.green .n { background: var(--green); }
+    .flow .ar { text-align: center; color: var(--ink-soft); font-size: 26px; line-height: 1; margin: 3px 0; }
+    .flow .fs small { display: block; font-size: 24px; color: var(--ink-soft); }
+    .side-note { border: 3px dashed var(--rose); border-radius: 16px; padding: 12px 18px; font-size: 27px; background: var(--rose-soft); }
+    .chain { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: stretch; }
+    .chain .ln { position: relative; text-align: center; background: #fff; border: 3px solid var(--line); padding: 18px 12px; margin-right: 26px; border-radius: 18px; }
+    .chain .ln:not(:last-child)::after { content: '➜'; position: absolute; right: -40px; top: 50%; transform: translateY(-50%); font-size: 36px; color: var(--teal); }
+    .chain .ln .icon { font-size: 64px; }
+    .chain .ln h3 { margin: 6px 0 2px; font-size: 32px; }
+    .chain .ln p { margin: 0; font-size: 25px; color: var(--ink-soft); line-height: 1.35; }
+    table.cmp td, table.cmp th { font-size: 27px; padding: 9px 16px; vertical-align: top; }
+    table.cmp td.old { color: var(--ink-soft); }
+    table.cmp td.new { color: var(--teal); font-weight: 700; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .cards .box { padding: 16px 20px; font-size: 30px; display: flex; gap: 14px; align-items: center; }
+    .cards .box .lt { font: 700 40px var(--font-mono); color: var(--orange); flex: 0 0 auto; }
+    .roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .roles .box { text-align: center; padding: 16px; }
+    .roles h3 { margin: 4px 0; font-size: 32px; }
+    .roles p { font-size: 26px; line-height: 1.35; margin: 0; }
+    .call { font-size: 30px; }
+    .call li { margin-bottom: 10px; }
+    .numbig { font: 700 120px/1 var(--font-mono); color: var(--rose); }
+    .calcs { display: flex; flex-direction: column; gap: 12px; max-width: 1560px; }
+    .crow { display: grid; grid-template-columns: 640px 1fr; align-items: center; gap: 24px; font-size: 36px; padding: 8px 0; border-bottom: 2px dashed var(--line); }
+    .crow b { font: 700 40px var(--font-mono); color: var(--orange); background: var(--orange-soft); border-radius: 12px; padding: 4px 18px; justify-self: start; }
+    .crow.tot b { color: #fff; background: var(--teal); }
+    .chk li { margin-bottom: 14px !important; }
+</style>
+</head>
+<body>
+<!--
+  วิธีใช้: ← → / Space เลื่อนสไลด์และแสดงทีละขั้น · T สารบัญ · F เต็มจอ · ลิงก์ #หมายเลข ไปสไลด์นั้น
+  ป้าย "เสริม" = เนื้อหาเพิ่มจากแหล่งภายนอก มีเลขอ้างอิง [n] ลิงก์ไปสไลด์เอกสารอ้างอิง
+  จุดที่ "ปรับจากใบความรู้" = แนวทาง CPR ปัจจุบัน (AHA 2025) ต่างจากเอกสารต้นฉบับ มีหมายเหตุบนสไลด์
+-->
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage" data-head="สัปดาห์ที่ 2 · หน่วยที่ 1" data-foot="">
+
+<!-- ============ เปิดบทเรียน ============ -->
+<section class="slide cover" data-title="ปก: สัปดาห์ที่ 2">
+  <div class="body center" style="top:0;bottom:0">
+    <div class="chapter reveal d1">สัปดาห์ที่ 2 · หน่วยที่ 1</div>
+    <h1 class="reveal d2">การช่วยเหลือ<br>และปฐมพยาบาล<br>ผู้ถูกไฟฟ้าดูด</h1>
+    <div class="sub reveal d3">วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) · ระดับ ปวช.</div>
+    <div class="tiny reveal d4" style="margin-top:40px">เรียบเรียงจากแผนการจัดการเรียนรู้ ใบความรู้ที่ 1.2 และใบงานที่ 1.2 · ปรับขั้นตอน CPR ตามแนวทาง AHA 2025</div>
+  </div>
+  <img class="aed reveal d3" src="../assets/img/iso-e010-aed.png" alt="ป้ายเครื่องกระตุกหัวใจไฟฟ้าอัตโนมัติ (AED)">
+</section>
+
+<section class="slide sec-0" data-tag="แผนการเรียนวันนี้" data-title="แผนการเรียนวันนี้ 4 ชั่วโมง">
+  <div class="body" style="top:112px">
+    <div class="kicker reveal">วันนี้เราจะทำอะไรบ้าง · ทฤษฎี 1 ชม. ปฏิบัติ 3 ชม.</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:10px">4 ชั่วโมง ดู คิด ลงมือ ช่วยชีวิต</h2>
+    <table class="t left plan reveal d2" style="width:100%">
+      <tr><th>เวลา</th><th>ช่วง</th><th>นักเรียนทำอะไร</th></tr>
+      <tr><td>0:00–0:10</td><td>เปิดเรื่อง</td><td>🎬 ข่าวจริง · 💬 คิด-คู่-แชร์</td></tr>
+      <tr><td>0:10–0:20</td><td>ทบทวนสัปดาห์ที่ 1</td><td>🙋 โหวต จริงหรือไม่จริง</td></tr>
+      <tr><td>0:20–0:35</td><td>แบบทดสอบก่อนเรียน</td><td>📱 ทำ 20 ข้อบนมือถือ</td></tr>
+      <tr><td>0:35–1:05</td><td>5.1 การช่วยเหลือ</td><td>🙋 ใครช่วยถูก? · 🧰 เลือกวัสดุ · 🃏 เรียงบัตร · 🎭 บทบาทสมมติ</td></tr>
+      <tr><td>1:05–1:45</td><td>5.2 CPR และ AED</td><td>📏 ทายความลึก · 🎵 ตบโต๊ะตามจังหวะ · 📱 แตะจังหวะ · 🔎 จับผิดท่า</td></tr>
+      <tr class="brk"><td>1:45–1:55</td><td>พัก</td><td>☕</td></tr>
+      <tr><td>1:55–2:20</td><td>5.3 ข้อควรระวัง + เตรียมใบงาน</td><td>🎬 คลิป · ☎️ ซ้อมโทร 1669</td></tr>
+      <tr><td>2:20–3:35</td><td>ใบงานที่ 1.2</td><td>🚑 จำลองการช่วยเหลือ · ❤️ ฝึก CPR กับหมอน (กลุ่มละ 4–5 คน)</td></tr>
+      <tr><td>3:35–3:45</td><td>สรุปและวิจารณ์ผล</td><td>🎲 สุ่มกลุ่มเล่า “พลาดตรงไหน”</td></tr>
+      <tr><td>3:45–4:00</td><td>สรุป + แบบทดสอบหลังเรียน</td><td>📱 ทำ 20 ข้อ เทียบกับก่อนเรียน</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide sec-0 act watch" data-tag="เปิดเรื่อง" data-title="🎬 ข่าวจริง: CPR ช่วยเด็กถูกไฟดูดในน้ำท่วม">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูข่าวจริง</span><span class="act-meta">1 นาที · แล้วคิด-คู่-แชร์ 4 นาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">นาทีชีวิต: ถ้าเป็นเรา จะช่วยได้ไหม?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="QrTp5_KiVSg" data-title="นาทีชีวิต ทำ CPR ช่วยชีวิต เด็กถูกไฟดูดในบ้านที่น้ำท่วมขัง" data-credit="เรื่องเล่าเช้านี้ · 27 ก.ย. 2569" data-len="1:11"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>💬 ดูจบแล้วคุยกับเพื่อนข้าง ๆ</h3><ol>
+          <li>คนที่ช่วยทำอะไรบ้าง?</li>
+          <li>ถ้าเราอยู่ตรงนั้น จะทำอะไร<b>ก่อน</b>?</li>
+          <li>อะไรที่<b>ห้าม</b>ทำเด็ดขาด?</li>
+        </ol></div>
+        <div data-timer="240" class="sm"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ: ช่อง YouTube เรื่องเล่าเช้านี้ (ช่อง 3) <sup class="ref"><a href="#videos">[V1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-tag="ทบทวน" data-title="🙋 ทบทวนสัปดาห์ที่ 1">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทบทวนสัปดาห์ที่ 1</span><span class="act-meta">ทั้งห้องโหวต ข้อละ 1 นาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:22px">จริง หรือ ไม่จริง?</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span>กระแสผ่านร่างกายเพียง 50–150 mA ก็ทำให้เสียชีวิตได้</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">✅ จริง</button><button type="button" class="opt">❌ ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">จริง! อวัยวะที่เกี่ยวกับการหายใจ<b>หยุดทำงาน</b> และเสียชีวิตได้</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span>มือเปียกทำให้ความต้านทานของผิวหนังลดลง กระแสไหลผ่านง่ายขึ้น</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">✅ จริง</button><button type="button" class="opt">❌ ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">จริง! จึงห้ามแตะอุปกรณ์ไฟฟ้าขณะมือเปียกหรือยืนบนพื้นเปียก</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">3</span>คนที่ถูกไฟดูดค้าง ปล่อยมือออกจากสายไฟเองได้เสมอ</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">✅ จริง</button><button type="button" class="opt">❌ ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ไม่จริง! กระแส 6–30 mA ทำให้<b>กล้ามเนื้อเกร็ง</b> สะบัดไม่หลุด → ต้องมีคนช่วย <b>อย่างถูกวิธี</b></div></div></div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.1 ตารางที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="📱 แบบทดสอบก่อนเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">📱 แบบทดสอบก่อนเรียน</span><span class="act-meta">รายบุคคล · 15 นาที</span></div>
+    <h2 class="title">ยังไม่รู้ก็ไม่เป็นไร ตอบตามที่คิด!</h2>
+    <p>เปิด <b>แบบทดสอบ</b> → เลือก “<b>ก่อนเรียน</b>” → ทำ 20 ข้อ → กดส่ง</p>
+    <p class="small"><a href="quiz.html">quiz.html</a> (ลิงก์อยู่ในหน้าแรกของวิชา · สัปดาห์ที่ 2)</p>
+    <div style="margin-top:20px"><div data-timer="900"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="เปิดบทเรียน" data-title="สัปดาห์นี้เรียนอะไร">
+  <div class="body">
+    <div class="kicker reveal">สัปดาห์นี้เรียนอะไร</div>
+    <h2 class="title reveal d1">การช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด</h2>
+    <div class="grid g2" style="gap:30px">
+      <div class="box reveal d2" style="--sec:var(--orange)"><h3>5.1 การช่วยเหลือผู้ถูกไฟฟ้าดูด</h3><p class="small">ผู้ช่วยปลอดภัยก่อน · ตัดไฟ · วัสดุฉนวนแห้ง</p></div>
+      <div class="box reveal d3"><h3>5.2 การปฐมพยาบาล (CPR)</h3><p class="small">กดหน้าอก · เปิดทางเดินหายใจ · เป่าปาก · AED</p></div>
+      <div class="box reveal d4" style="--sec:var(--blue)"><h3>5.3 ข้อควรระวัง</h3><p class="small">โทร 1669 · พื้นแข็ง · ทำต่อเนื่อง · ส่งแพทย์</p></div>
+      <div class="box reveal d5" style="--sec:#0f8a6c"><h3>ใบงานที่ 1.2 (ปฏิบัติ 3 ชม.)</h3><p class="small">ช่วยเหลือตามลำดับ · ฝึก CPR (ไม่ต้องมีหุ่น)</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="ผลลัพธ์การเรียนรู้และสมรรถนะ">
+  <div class="body">
+    <div class="kicker reveal">สมรรถนะประจำหน่วย</div>
+    <h2 class="title reveal d1">ช่วยคนอื่นได้ โดยที่<span class="hl">ตัวเองปลอดภัย</span></h2>
+    <ul class="pts reveal d2">
+      <li><b>3.2</b> แสดงความรู้เรื่องวิธีช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด</li>
+      <li><b>3.3</b> ปฏิบัติงานตามมาตรการความปลอดภัย ช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูดได้ถูกวิธี</li>
+    </ul>
+    <p class="small reveal d3" style="margin-top:20px">อ้างอิงมาตรฐานฝีมือแรงงานแห่งชาติ ช่างอิเล็กทรอนิกส์ ระดับ 1 · ข้อ 1.1 ความปลอดภัยในการปฏิบัติงาน (การปฐมพยาบาลเบื้องต้น)</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 2–3 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="จุดประสงค์เชิงพฤติกรรม">
+  <div class="body">
+    <div class="kicker reveal">จุดประสงค์เชิงพฤติกรรม</div>
+    <h2 class="title reveal d1">เรียนจบสัปดาห์นี้ นักเรียนสามารถ…</h2>
+    <ol class="steps">
+      <li class="reveal d2">อธิบาย<b>วิธีการช่วยเหลือ</b>ผู้ประสบอันตรายจากไฟฟ้าดูดได้ถูกต้อง <span class="small c-sec">(4.4)</span></li>
+      <li class="reveal d3">ปฏิบัติการช่วยเหลือได้<b>ตามลำดับขั้นตอน</b> <span class="small c-sec">(4.5)</span></li>
+      <li class="reveal d4">ปฐมพยาบาลด้วย<b>การนวดหัวใจ</b>ได้ตามแบบที่กำหนด <span class="small c-sec">(4.6)</span></li>
+      <li class="reveal d5">เตรียมอุปกรณ์ ทำงานอย่างรับผิดชอบ ตรงต่อเวลา <span class="small c-sec">(4.7)</span></li>
+    </ol>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 4 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-tag="บทนำ" data-title="🙋 ทายก่อนเรียน: ใครช่วยถูก?">
+  <div class="body">
+    <div><span class="act-badge reveal">🙋 ทายก่อนเรียน</span><span class="act-meta reveal">โหวตทั้งห้อง · 2 นาที · ยังไม่ต้องรู้คำตอบ</span></div>
+    <h2 class="title reveal d1" style="font-size:54px;margin-bottom:16px">เพื่อนถูกไฟดูดจากพัดลมที่ไฟรั่ว ใครช่วยถูก?</h2>
+    <div class="row" style="gap:40px;align-items:flex-start">
+      <div class="grid g3" style="flex:1.6;gap:20px">
+        <div class="box tint tile reveal d2"><div class="icon">🏃✋</div><h3>เอ</h3><p>วิ่งไปจับแขน<br>ดึงออกมาทันที</p></div>
+        <div class="box tint tile reveal d3"><div class="icon">🧹💧</div><h3>บี</h3><p>ใช้ไม้กวาดเขี่ย<br>แต่ยืนบนพื้นเปียก</p></div>
+        <div class="box tint tile reveal d4"><div class="icon">🔌⬇️</div><h3>ซี</h3><p>ถอดปลั๊ก/สับเบรกเกอร์<br>ก่อนเข้าไปใกล้</p></div>
+      </div>
+      <div class="vote one reveal d4" data-answer="2" style="flex:1">
+        <button type="button" class="opt"><b>ก</b> เอ</button>
+        <button type="button" class="opt"><b>ข</b> บี</button>
+        <button type="button" class="opt"><b>ค</b> ซี</button>
+        <button type="button" class="reveal">เฉลย</button>
+        <div class="why"><b>ซี</b> ตัดไฟก่อน · เอกลายเป็นผู้ประสบภัยรายที่สอง · บีใช้ฉนวนถูก แต่พื้นเปียกพาไฟผ่านตัว</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5.1 การช่วยเหลือ ============ -->
+<section class="slide section sec-1" data-tag="5.1 การช่วยเหลือ" data-title="5.1 การช่วยเหลือผู้ประสบอันตรายจากไฟฟ้าดูด">
+  <div class="big-no">5.1</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.1</div>
+    <h2 class="reveal d1">การช่วยเหลือผู้ประสบ<br>อันตรายจากไฟฟ้าดูด</h2>
+    <p class="lead reveal d2">ช่วยให้รอด ต้องไม่กลายเป็นผู้ประสบภัยเสียเอง</p>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ความปลอดภัยของผู้ช่วยเหลือมาก่อน">
+  <div class="body">
+    <div class="kicker reveal">สิ่งที่ต้องคำนึงเป็นอันดับแรก</div>
+    <h2 class="title reveal d1"><span class="hl">ความปลอดภัยของผู้เข้าช่วยเหลือ</span></h2>
+    <div class="row center">
+      <div class="diagram reveal d2" style="flex:0 0 820px">
+        <svg viewBox="0 0 820 420" aria-label="ภาพทางเดินกระแส: สายไฟ ผ่านผู้ประสบภัย ผ่านมือผู้ช่วยที่จับไว้ ลงพื้นดิน">
+          <rect x="0" y="360" width="820" height="60" fill="#e9d6b4"/>
+          <path d="M20 80 L200 80" stroke="#2a2733" stroke-width="8"/><path d="M200 80 L260 80" stroke="#e8742c" stroke-width="8"/>
+          <text x="110" y="60" font-size="26" fill="#5d5866" text-anchor="middle">สายไฟที่มีไฟ</text>
+          <g stroke="#d6455d" stroke-width="7" stroke-linecap="round" fill="none">
+            <circle cx="330" cy="120" r="26" fill="#fff"/><path d="M330 146 L330 250 M330 172 L262 86 M330 172 L400 200 M330 250 L300 352 M330 250 L360 352"/>
+          </g>
+          <g stroke="#2a2733" stroke-width="7" stroke-linecap="round" fill="none">
+            <circle cx="520" cy="130" r="26" fill="#fff"/><path d="M520 156 L520 260 M520 182 L402 202 M520 182 L580 240 M520 260 L490 352 M520 260 L550 352"/>
+          </g>
+          <text x="330" y="80" font-size="24" fill="#d6455d" text-anchor="middle">ผู้ประสบภัย</text>
+          <text x="560" y="100" font-size="24" fill="#2a2733" text-anchor="middle">ผู้ช่วย (มือเปล่า)</text>
+          <g fill="#f7b733" stroke="#b5531a" stroke-width="2">
+            <path d="M282 108 l14 -8 l-2 10 l14 -6"/><path d="M384 196 l14 -8 l-2 10 l14 -6"/><path d="M470 210 l14 -8 l-2 10 l14 -6"/>
+          </g>
+          <path d="M260 92 Q300 150 330 200 Q380 210 420 205 Q470 210 505 240 L500 330 L495 380" stroke="#f7b733" stroke-width="5" stroke-dasharray="14 10" fill="none"/>
+          <path d="M486 372 l9 14 l9 -14" fill="#f7b733"/>
+          <text x="660" y="398" font-size="26" fill="#5d5866" text-anchor="middle">กระแสไหลลงดิน ⏚</text>
+        </svg>
+      </div>
+      <div class="reveal d3" style="flex:1">
+        <p style="margin:0">ร่างกายเป็นตัวนำ ถ้าจับตัวผู้ที่ยังติดไฟอยู่ กระแสจะ<b>ไหลผ่านเรา</b>ลงพื้น</p>
+        <div class="box rose" style="padding:18px 24px;margin-top:20px"><p class="small" style="margin:0">✋🚫 <b>ห้ามใช้มือเปล่าสัมผัสตัวผู้ประสบภัยโดยเด็ดขาด</b></p></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ลำดับขั้นการช่วยเหลือ (ภาพ 1.3)">
+  <div class="body" style="top:110px">
+    <div class="kicker reveal">ลำดับขั้นการช่วยเหลือ (ปรับจากภาพที่ 1.3)</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:14px">จำให้ขึ้นใจ 4 ขั้น</h2>
+    <div class="row" style="gap:40px;align-items:center">
+      <div class="flow" style="flex:1.5">
+        <div class="fs frag"><span class="n">1</span><div><b>ตัดกระแสไฟฟ้า</b> ที่ปลั๊ก สวิตช์ หรือเบรกเกอร์</div></div>
+        <div class="ar frag">▼</div>
+        <div class="fs orange frag"><span class="n">2</span><div><b>ตัดไฟไม่ได้</b> ใช้วัสดุฉนวนแห้งเขี่ยออก</div></div>
+        <div class="ar frag">▼</div>
+        <div class="fs blue frag"><span class="n">3</span><div><b>ตรวจการตอบสนองและการหายใจ</b> · โทร 1669</div></div>
+        <div class="ar frag">▼</div>
+        <div class="fs green frag"><span class="n">4</span><div><b>CPR + AED</b> แล้วนำส่งแพทย์</div></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:22px">
+        <div class="side-note frag">ห้ามใช้มือเปล่าสัมผัสผู้ประสบภัย</div>
+        <div class="side-note frag" style="border-color:var(--blue);background:var(--blue-soft)">ไม่ตอบสนอง ไม่หายใจ หรือหายใจเฮือก → <b>CPR ทันที</b></div>
+        <p class="tiny frag" style="margin:0"><span class="extra">ปรับ</span> ภาพ 1.3 เขียนว่า “ตรวจการหายใจและชีพจร” แนวทาง AHA 2025 ให้คนทั่วไปดู<b>การตอบสนองและการหายใจ</b> ไม่ต้องคลำชีพจร <sup class="ref"><a href="#refs">[2]</a></sup></p>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ภาพที่ 1.3 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 Part 7 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ขั้นที่ 1 ตัดไฟที่ไหน">
+  <div class="body">
+    <div class="kicker reveal">ขั้นที่ 1 ตัดกระแสไฟฟ้า</div>
+    <h2 class="title reveal d1">ตัดไฟที่ “ต้นทาง” ให้แน่นอน</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box green tile reveal d2"><div class="icon">🔌</div><h3>ถอดปลั๊ก</h3><p>มือแห้ง จับที่ตัวปลั๊ก<br>ไม่ดึงที่สาย</p></div>
+      <div class="box green tile reveal d3"><div class="icon">🎚️</div><h3>สับเบรกเกอร์</h3><p>หรือคัตเอาต์ลง<br>ตัดไฟทั้งวงจร</p></div>
+      <div class="box sun tile reveal d4"><div class="icon">🔘</div><h3>ปิดสวิตช์ที่ตัวเครื่อง</h3><p><b>อาจไม่พอ!</b><br>ไฟที่รั่วอาจยังอยู่</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:26px"><span class="extra">เสริม</span> แค่ปิดเครื่องใช้ไฟฟ้าอาจหยุดกระแสไม่ได้ ให้ถอดปลั๊กหรือปิดเบรกเกอร์ <sup class="ref"><a href="#refs">[5]</a></sup></p>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ภาพที่ 1.3 <sup class="ref"><a href="#refs">[1]</a></sup> · MedlinePlus <sup class="ref"><a href="#refs">[5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 โหวต: ตัดไฟได้จริงไหม">
+  <div class="body">
+    <div><span class="act-badge">🙋 โหวต</span><span class="act-meta">ทั้งห้อง ข้อละ 1 นาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:22px">ทำแบบนี้ “ตัดไฟได้จริง” หรือ “ยังไม่พอ”?</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span>เตารีดไฟรั่ว → กดปุ่มปิดที่ตัวเตารีด</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">✅ ได้จริง</button><button type="button" class="opt">⚠️ ยังไม่พอ</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ยังไม่พอ ไฟที่รั่วอาจยังมาถึงตัวเครื่อง → <b>ถอดปลั๊ก/สับเบรกเกอร์</b></div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span>มือแห้ง จับที่ตัวปลั๊ก ดึงออกจากเต้ารับ</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">✅ ได้จริง</button><button type="button" class="opt">⚠️ ยังไม่พอ</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ได้จริง ตัดไฟของเครื่องนั้นออกจากวงจร</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">3</span>สับเบรกเกอร์ในตู้ไฟของบ้านลง</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">✅ ได้จริง</button><button type="button" class="opt">⚠️ ยังไม่พอ</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ได้จริง ตัดไฟทั้งวงจร · <b>ถามตัวเองด้วย:</b> บ้านเรา ตู้ไฟอยู่ตรงไหน?</div></div></div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> <sup class="ref"><a href="#refs">[5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ขั้นที่ 2 วัสดุฉนวนแห้ง">
+  <div class="body">
+    <div class="kicker reveal">ขั้นที่ 2 ตัดไฟไม่ได้ → ใช้วัสดุแยกผู้ประสบภัย</div>
+    <h2 class="title reveal d1">ต้องเป็น<span class="c-teal">ฉนวน</span> และ<span class="hl">แห้งสนิท</span></h2>
+    <div class="grid g2" style="gap:30px">
+      <div class="box green reveal d2"><h3 class="c-green">✅ ใช้ได้</h3><p class="small">ไม้แห้ง · เชือกแห้ง · ผ้าแห้ง<br>สายยางแห้ง · ถุงพลาสติกแห้ง</p></div>
+      <div class="box rose reveal d3"><h3 class="c-rose">⛔ ห้ามใช้</h3><p class="small">โลหะทุกชนิด (ท่อ ลวด ไม้แขวนเสื้อลวด)<br>ของเปียก (ผ้าเปียก ไม้เปียก)</p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:26px">ผู้ช่วยควร<b>ยืนบนฉนวน</b> เช่น แผ่นยาง ไม้กระดานแห้ง และสวมถุงมือยาง (ถ้ามี)</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup> · สพฉ. <sup class="ref"><a href="#refs">[8]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🧰 เกม: หยิบอะไรไปช่วย">
+  <div class="body" style="top:118px">
+    <div><span class="act-badge">🧰 เกมแข่งกลุ่ม</span><span class="act-meta">กลุ่มละ 4–5 คน · 3 นาที · ข้อละ 1 คะแนน</span></div>
+    <h2 class="title" style="font-size:52px;margin-bottom:14px">ตัดไฟไม่ได้! ของชิ้นไหน “ใช้ได้” หรือ “ห้ามใช้”? เขียนลงกระดาษ</h2>
+    <div class="gm">
+      <div class="box"><div class="icon">🧹</div><h3>ไม้กวาดด้ามไม้แห้ง</h3><div class="frag y">✅ ใช้ได้</div></div>
+      <div class="box"><div class="icon">🔩</div><h3>ท่อเหล็ก</h3><div class="frag n">⛔ โลหะ</div></div>
+      <div class="box"><div class="icon">🧺</div><h3>ผ้าขนหนูเปียก</h3><div class="frag n">⛔ เปียก</div></div>
+      <div class="box"><div class="icon">🪢</div><h3>เชือกไนลอนแห้ง</h3><div class="frag y">✅ ใช้ได้</div></div>
+      <div class="box"><div class="icon">🪑</div><h3>เก้าอี้พลาสติกแห้ง</h3><div class="frag y">✅ ใช้ผลักได้</div></div>
+      <div class="box"><div class="icon">🧽</div><h3>ไม้ถูพื้นชุบน้ำ</h3><div class="frag n">⛔ เปียก</div></div>
+      <div class="box"><div class="icon">🪝</div><h3>ไม้แขวนเสื้อลวด</h3><div class="frag n">⛔ โลหะ</div></div>
+      <div class="box"><div class="icon">🟫</div><h3>พรมเช็ดเท้ายางแห้ง</h3><div class="frag y">✅ ใช้ได้</div></div>
+    </div>
+    <div class="row" style="margin-top:14px;align-items:flex-end">
+      <div data-timer="180" class="sm" style="flex:0 0 auto"></div>
+      <div data-board="6"></div>
+    </div>
+    <div class="src">ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> · MedlinePlus ยกตัวอย่างไม้กวาด เก้าอี้ พรม แผ่นยางเช็ดเท้า <sup class="ref"><a href="#refs">[5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ขั้นที่ 2 ใช้วัสดุอย่างไร">
+  <div class="body">
+    <div class="kicker reveal">ใช้วัสดุฉนวนอย่างไร</div>
+    <h2 class="title reveal d1">เขี่ย ผลัก หรือคล้อง — ไม่แตะตัว</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box tint tile reveal d2"><div class="icon">🧹➡️</div><h3>เขี่ยสายไฟ</h3><p>ออกจากตัว<br>ผู้ประสบภัย</p></div>
+      <div class="box tint tile reveal d3"><div class="icon">🪑➡️</div><h3>ผลักตัว</h3><p>ให้พ้นจาก<br>แหล่งจ่ายไฟ</p></div>
+      <div class="box tint tile reveal d4"><div class="icon">🪢⬅️</div><h3>คล้องดึง</h3><p>ด้วยเชือกแห้ง<br>หรือผ้าแห้ง</p></div>
+    </div>
+    <div class="box rose reveal d5" style="margin-top:24px;padding:16px 24px"><p class="small" style="margin:0">⚠️ ระวัง: จับวัสดุส่วนที่แห้งเท่านั้น · มืออีกข้าง<b>ห้าม</b>แตะตัวผู้ประสบภัย · ยืนบนฉนวนแห้ง</p></div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · กฟภ. <sup class="ref"><a href="#refs">[6]</a></sup> · MedlinePlus <sup class="ref"><a href="#refs">[5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="เสริม: สายไฟฟ้าแรงสูง">
+  <div class="body">
+    <div class="kicker reveal"><span class="extra">เสริม</span> กรณีพิเศษ</div>
+    <h2 class="title reveal d1">สายไฟฟ้าแรงสูงขาด = <span class="c-rose">ห้ามเข้าใกล้</span></h2>
+    <div class="row center" style="gap:40px">
+      <div class="box rose reveal d2" style="flex:1.2;text-align:center"><div class="numbig">6 ม.</div><p class="small" style="margin:6px 0 0">อยู่ห่างอย่างน้อย 6 เมตร จนกว่าการไฟฟ้าตัดไฟ<br>ไม้แห้ง/ถุงมือยางทั่วไป <b>กันไม่ได้</b></p></div>
+      <div class="reveal d3" style="flex:1">
+        <p class="small" style="margin:0 0 14px">☎️ แจ้งการไฟฟ้า + 1669 · กันคนอื่นไม่ให้เข้าใกล้</p>
+        <table class="t left compact" style="width:100%">
+          <tr><th>เบอร์</th><th>หน่วยงาน</th></tr>
+          <tr><td class="mono"><b>1129</b></td><td>การไฟฟ้าส่วนภูมิภาค (74 จังหวัด รวมอุตรดิตถ์)</td></tr>
+          <tr><td class="mono">1130</td><td>การไฟฟ้านครหลวง (กทม. นนทบุรี สมุทรปราการ)</td></tr>
+          <tr><td class="mono"><b>1669</b></td><td>การแพทย์ฉุกเฉิน</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="src">ที่มา: MedlinePlus <sup class="ref"><a href="#refs">[5]</a></sup> · กฟภ. <sup class="ref"><a href="#refs">[6]</a></sup> <sup class="ref"><a href="#refs">[9]</a></sup> · สพฉ. <sup class="ref"><a href="#refs">[8]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act watch" data-title="🎬 การไฟฟ้าแนะนำวิธีช่วย">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป + แข่งจด</span><span class="act-meta">1 นาที · จดได้ข้อละ 1 คะแนนกลุ่ม</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">PEA แนะนำกี่ขั้นตอน? กลุ่มไหนจดครบก่อน</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="mRxd_LZW3FE" data-title="PEA แนะแนวทางช่วยกรณีพบคนถูกไฟฟ้าดูด" data-credit="สำนักข่าวไทย TNAMCOT (MCOT)" data-len="1:16"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>✏️ จดให้ครบ</h3><ol>
+          <li class="frag">ตัดกระแสไฟให้เร็วที่สุด</li>
+          <li class="frag">ใช้ผ้าแห้ง/ไม้แห้ง ฉุดหรือเขี่ยออก</li>
+          <li class="frag">หมดสติ/หยุดหายใจ → CPR</li>
+          <li class="frag">นำส่งโรงพยาบาล</li>
+        </ol></div>
+        <p class="small" style="margin:0">บวกคะแนนบนกระดานกลุ่มในเกมเรียงบัตร</p>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V2]</a></sup> · สรุปตรงกับประกาศ กฟภ. <sup class="ref"><a href="#refs">[6]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act watch" data-title="🎬 ความเชื่อผิด: เอาทรายกลบ">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูข่าว + โหวต</span><span class="act-meta">2 นาที · แล้วโหวต</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">เอาทรายกลบตัว “ดูดไฟออก” ช่วยได้ไหม?</h2>
+    <div class="row" style="gap:32px">
+      <div style="flex:0 0 900px"><div data-video="-JWRaDcnN38" data-title="ไม่ควรทำ ! “ทรายกลบ” ช่วยคนงานไฟดูด" data-credit="Ch7HD News · สนามข่าวเสาร์-อาทิตย์" data-len="2:21"></div></div>
+      <div class="vote one" data-answer="1">
+        <button type="button" class="opt"><b>ก</b> ช่วยได้ ทรายดูดไฟ</button>
+        <button type="button" class="opt"><b>ข</b> ไม่ช่วย เสียเวลา</button>
+        <button type="button" class="opt"><b>ค</b> ช่วยได้ถ้าทรายเปียก</button>
+        <button type="button" class="reveal">เฉลย</button>
+        <div class="why"><b>ความเชื่อผิด!</b> ไฟฟ้าไม่ได้ “ค้าง” ในตัว ทรายไม่ได้ดูดไฟ ยิ่งรอ ยิ่งเสียโอกาส → <b>โทร 1669 + CPR</b></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🃏 เกมเรียงบัตรขั้นตอน">
+  <div class="body" style="top:118px">
+    <div><span class="act-badge">🃏 เกมเรียงบัตร</span><span class="act-meta">กลุ่มละ 4–5 คน · 3 นาที · ถูกครบได้ 3 คะแนน</span></div>
+    <h2 class="title" style="font-size:52px;margin-bottom:16px">เรียงตัวอักษรตามลำดับที่ถูก เขียนลงกระดาษ เช่น “ค-ก-…”</h2>
+    <div class="cards">
+      <div class="box"><span class="lt">ก</span>โทร 1669 ขอ AED</div>
+      <div class="box"><span class="lt">ข</span>กดหน้าอก 30 เป่าปาก 2</div>
+      <div class="box"><span class="lt">ค</span>ตัดไฟที่ปลั๊ก/เบรกเกอร์</div>
+      <div class="box"><span class="lt">ง</span>ตบไหล่ เรียก ดูการหายใจ</div>
+      <div class="box"><span class="lt">จ</span>ใช้ฉนวนแห้งเขี่ยออก</div>
+      <div class="box"><span class="lt">ฉ</span>นำส่งโรงพยาบาล</div>
+    </div>
+    <div class="row" style="margin-top:20px;align-items:center">
+      <p class="frag" style="margin:0;font:700 52px var(--font-mono);color:var(--teal)">ค → จ → ง → ก → ข → ฉ</p>
+      <div data-timer="180" class="sm" style="flex:0 0 auto"></div>
+    </div>
+    <div data-board="6" style="margin-top:12px"></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🎭 บทบาทสมมติ: ช่วยเพื่อนอย่างปลอดภัย">
+  <div class="body">
+    <div><span class="act-badge">🎭 บทบาทสมมติ</span><span class="act-meta">กลุ่มละ 3 คน · 6 นาที · ไม่ใช้ไฟจริง</span></div>
+    <h2 class="title" style="font-size:54px;margin-bottom:16px">แสดงให้ดูว่า “ช่วยอย่างไร ไม่ให้ตัวเองโดนดูด”</h2>
+    <div class="roles">
+      <div class="box rose"><div class="icon">🧍‍⚡</div><h3>ผู้ประสบภัย</h3><p>จับ “สายไฟ”<br>(เชือก/สายชาร์จที่ไม่เสียบ)</p></div>
+      <div class="box tint"><div class="icon">🦸</div><h3>ผู้ช่วย</h3><p>ตัดไฟ → ใช้ไม้บรรทัด/<br>กระดาษม้วนแทนไม้แห้ง</p></div>
+      <div class="box sun"><div class="icon">👀</div><h3>ผู้สังเกต</h3><p>จดว่าข้ามขั้นไหน<br>แตะตัวโดยตรงไหม</p></div>
+      <div class="box green"><div class="icon">☎️</div><h3>ทุกคน</h3><p>พูดออกเสียง<br>“โทร 1669!”</p></div>
+    </div>
+    <div class="row" style="margin-top:22px;align-items:center;gap:30px">
+      <div data-picker="6" data-label="กลุ่มที่" style="flex:0 0 auto"></div>
+      <div data-timer="360" class="sm" style="flex:0 0 auto"></div>
+      <p class="small" style="margin:0">สุ่ม 2 กลุ่มออกมาแสดงหน้าห้อง<br>เพื่อนช่วยจับผิด</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🎲 ฝึกคิด 5.1">
+  <div class="body">
+    <div><span class="act-badge">🎲 ฝึกคิด 5.1</span><span class="act-meta">คุยกับเพื่อนข้าง ๆ 2 นาที แล้วสุ่มเลขที่ตอบ</span></div>
+    <h2 class="title" style="font-size:56px">คำถามท้ายใบความรู้</h2>
+    <div class="row">
+      <ol class="steps" style="flex:1.5">
+        <li>เมื่อพบผู้ถูกไฟฟ้าดูด <b>สิ่งแรก</b>ที่ต้องทำคืออะไร เพราะเหตุใด</li>
+        <li>วัสดุที่ใช้แยกผู้ประสบภัยต้องมี<b>คุณสมบัติ</b>อย่างไร ยกตัวอย่าง</li>
+      </ol>
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;align-items:flex-start"><div data-timer="120" class="sm"></div><div data-picker="40"></div></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ============ 5.2 CPR ============ -->
+<section class="slide section sec-2" data-tag="5.2 CPR" data-title="5.2 การปฐมพยาบาลผู้ประสบอันตรายจากไฟฟ้าดูด">
+  <div class="big-no">5.2</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.2</div>
+    <h2 class="reveal d1">การปฐมพยาบาล<br>การช่วยฟื้นคืนชีพ (CPR)</h2>
+    <p class="lead reveal d2">มือสองข้างของเรา ช่วยให้หัวใจคนอื่นเต้นแทนได้</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="CPR และ BLS คืออะไร">
+  <div class="body">
+    <div class="kicker reveal">ทำไมต้องรีบ</div>
+    <h2 class="title reveal d1">ไฟดูด → หมดสติ หยุดหายใจ หัวใจหยุดเต้น</h2>
+    <div class="grid g3 reveal d2" style="gap:22px">
+      <div class="box rose tile"><div class="icon">🫀</div><h3>Cardio</h3><p>หัวใจ</p></div>
+      <div class="box blue tile"><div class="icon">🫁</div><h3>Pulmonary</h3><p>ปอด</p></div>
+      <div class="box green tile"><div class="icon">💪</div><h3>Resuscitation</h3><p>การกู้ชีพ</p></div>
+    </div>
+    <p class="reveal d3" style="margin-top:24px"><b class="c-teal">CPR</b> = การปฏิบัติการช่วยฟื้นคืนชีพ · วิธีขั้นพื้นฐาน = <b class="c-teal">BLS</b> (Basic Life Support)</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="เสริม: ห่วงโซ่การรอดชีวิต">
+  <div class="body">
+    <div class="kicker reveal"><span class="extra">เสริม</span> ห่วงโซ่การรอดชีวิต (แบบย่อ สำหรับคนทั่วไป)</div>
+    <h2 class="title reveal d1" style="margin-bottom:26px">ทุกห่วงต้องเร็ว ขาดห่วงเดียว โอกาสรอดลด</h2>
+    <div class="chain">
+      <div class="ln reveal d2"><div class="icon">📞</div><h3>โทร 1669</h3><p>รู้ว่าหัวใจหยุด<br>เรียกความช่วยเหลือ</p></div>
+      <div class="ln reveal d3"><div class="icon">🫀</div><h3>CPR ทันที</h3><p>กดหน้าอก<br>คุณภาพสูง</p></div>
+      <div class="ln reveal d4"><div class="icon">⚡</div><h3>AED</h3><p>กระตุกหัวใจ<br>เร็วที่สุด</p></div>
+      <div class="ln reveal d5"><div class="icon">🚑</div><h3>ทีมแพทย์</h3><p>ช่วยชีวิตขั้นสูง<br>ดูแลหลังฟื้น</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:26px">ห่วงที่ 1–3 <b>เราทำได้เอง</b> ก่อนรถพยาบาลมาถึง</p>
+    <div class="src">ที่มา: AHA 2025 Part 7 <sup class="ref"><a href="#refs">[2]</a></sup> (ย่อจากห่วงโซ่ฉบับเต็ม)</div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ขั้นตอน CPR สำหรับคนทั่วไป">
+  <div class="body" style="top:110px">
+    <div class="kicker reveal">หลังแยกผู้ประสบภัยออกจากไฟแล้ว</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:12px">ขั้นตอน CPR สำหรับคนทั่วไป</h2>
+    <div class="flow" style="max-width:1500px">
+      <div class="fs frag"><span class="n">1</span><div><b>ปลุก</b> ตบไหล่ เรียกดัง ๆ “เป็นอะไรไหม!”</div></div>
+      <div class="ar frag">▼</div>
+      <div class="fs frag"><span class="n">2</span><div><b>ดูการหายใจ</b> ไม่เกิน 10 วินาที <small>ไม่หายใจ หรือหายใจเฮือก = หัวใจหยุดเต้น</small></div></div>
+      <div class="ar frag">▼</div>
+      <div class="fs orange frag"><span class="n">3</span><div><b>โทร 1669</b> เปิดลำโพง · ให้เพื่อนไปเอา <b>AED</b></div></div>
+      <div class="ar frag">▼</div>
+      <div class="fs rose frag"><span class="n">4</span><div><b>กดหน้าอก 30 ครั้ง</b> → เปิดทางเดินหายใจ → <b>เป่าปาก 2 ครั้ง</b> ทำซ้ำ</div></div>
+      <div class="ar frag">▼</div>
+      <div class="fs green frag"><span class="n">5</span><div><b>AED มาถึง ใช้ทันที</b> · ทำต่อจนหายใจเองหรือหน่วยแพทย์มาถึง</div></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 Part 7 <sup class="ref"><a href="#refs">[2]</a></sup> · กรม สบส. <sup class="ref"><a href="#refs">[7]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act watch" data-title="🎬 สพฉ. สอน CPR">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป สพฉ.</span><span class="act-meta">2 นาที · แล้วตอบพร้อมกันทั้งห้อง</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">นายฉุกเฉินการแพทย์สอน CPR</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="SGX48U5LdjQ" data-title="Motion 3 มารู้จักการทำ CPR กันครับ เมื่อพบผู้ที่หัวใจหยุดเต้นเฉียบพลัน" data-credit="1669 CHANNEL สพฉ. (สถาบันการแพทย์ฉุกเฉินแห่งชาติ)" data-len="2:13"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>🙋 ตอบพร้อมกัน</h3><ol>
+          <li>เบอร์อะไร? <b class="frag">1669 โทรฟรี</b></li>
+          <li>กดตรงไหน? <b class="frag">กลางหน้าอก</b></li>
+          <li>กดถึงเมื่อไร? <b class="frag">จนหน่วยแพทย์มาถึง</b></li>
+        </ol></div>
+        <div data-timer="150" class="sm"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V6]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🙋 ทายก่อนเฉลย: หายใจเฮือก">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทายก่อนเฉลย</span><span class="act-meta">ทั้งห้องโหวต · 1 นาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:22px">ปลุกไม่ตื่น แต่ “หายใจเฮือก ๆ” เป็นพัก ๆ แปลว่า?</h2>
+    <div class="row" style="gap:40px;align-items:flex-start">
+      <div class="vote one" data-answer="1" style="flex:1">
+        <button type="button" class="opt"><b>ก</b> ยังหายใจ ปลอดภัยแล้ว รอดูอาการ</button>
+        <button type="button" class="opt"><b>ข</b> หายใจผิดปกติ ถือว่าหัวใจหยุดเต้น เริ่ม CPR</button>
+        <button type="button" class="opt"><b>ค</b> ให้นอนพัก เดี๋ยวก็ฟื้น</button>
+        <button type="button" class="reveal">เฉลย</button>
+        <div class="why">หมดสติ + ไม่หายใจ <b>หรือหายใจเฮือก</b> = ให้ถือว่าหัวใจหยุดเต้น โทร 1669 แล้วกดหน้าอกทันที</div>
+      </div>
+      <div class="box sun" style="flex:0 0 560px"><p class="small" style="margin:0"><span class="extra">เสริม</span> หายใจเฮือก (gasping) พบได้ในนาทีแรก ๆ หลังหัวใจหยุดเต้น คนมักเข้าใจผิดว่ายังหายใจอยู่ <sup class="ref"><a href="#refs">[2]</a></sup></p></div>
+    </div>
+    <div class="src">ที่มา: AHA 2025 Part 7 ข้อ 6.1 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="หมายเหตุ: ต่างจากใบความรู้ตรงไหน">
+  <div class="body" style="top:110px">
+    <div class="kicker reveal"><span class="extra">ปรับ</span> แนวทางปัจจุบัน AHA 2025 ต่างจากใบความรู้ 1.2 ตรงไหน</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:14px">ใบความรู้ vs แนวทางปัจจุบัน</h2>
+    <table class="t left cmp reveal d2" style="width:100%">
+      <tr><th style="width:18%">เรื่อง</th><th>ใบความรู้ 1.2</th><th>AHA 2025 (ใช้ในสไลด์นี้)</th></tr>
+      <tr><td>ลำดับ</td><td class="old">เปิดทางเดินหายใจ เป่าปากก่อน แล้วนวดหัวใจ</td><td class="new">กดหน้าอกก่อน (C-A-B) แล้วค่อยเป่าปาก</td></tr>
+      <tr><td>การตรวจ</td><td class="old">ตรวจการหายใจและคลำชีพจร</td><td class="new">คนทั่วไปดูการตอบสนอง + การหายใจ ไม่ต้องคลำชีพจร</td></tr>
+      <tr><td>คนไม่ได้ฝึก</td><td class="old">—</td><td class="new">กดหน้าอกอย่างเดียวได้ (Hands-only CPR)</td></tr>
+      <tr><td>AED</td><td class="old">ไม่ได้กล่าวถึง</td><td class="new">ใช้ให้เร็วที่สุดเมื่อเครื่องมาถึง</td></tr>
+      <tr><td>ทารก</td><td class="old">ใช้ 2 นิ้วกด</td><td class="new">ใช้ 2 นิ้วโป้งโอบรอบอก หรือส้นมือเดียว (เลิกใช้ 2 นิ้ว)</td></tr>
+    </table>
+    <p class="small reveal d3" style="margin-top:14px">เหมือนเดิม: ลึก <b>5–6 ซม.</b> · <b>100–120</b> ครั้ง/นาที · <b>30 : 2</b> · ห้ามใช้มือเปล่า · โทร <b>1669</b></p>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 Part 7 <sup class="ref"><a href="#refs">[2]</a></sup> · Part 6 <sup class="ref"><a href="#refs">[3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตำแหน่งวางมือ">
+  <div class="body">
+    <div class="kicker reveal">5.2.2 การนวดหัวใจภายนอก · ตำแหน่งมือ</div>
+    <h2 class="title reveal d1">ส้นมือ <span class="hl">กึ่งกลางหน้าอก</span></h2>
+    <div class="row center" style="gap:50px">
+      <div class="diagram reveal d2" style="flex:0 0 420px">
+        <svg viewBox="0 0 300 300" aria-label="ภาพลำตัว วงสีฟ้าที่ครึ่งล่างของกระดูกหน้าอก คือตำแหน่งวางส้นมือ">
+          <path d="M60 30 Q150 0 240 30 L262 110 Q268 220 246 300 L54 300 Q32 220 38 110 Z" fill="#fde6d4" stroke="#c98a6a" stroke-width="4"/>
+          <g stroke="#e3b79c" stroke-width="3" fill="none">
+            <path d="M138 70 Q96 66 64 84"/><path d="M162 70 Q204 66 236 84"/><path d="M138 100 Q94 96 58 116"/><path d="M162 100 Q206 96 242 116"/>
+            <path d="M138 130 Q92 128 56 148"/><path d="M162 130 Q208 128 244 148"/><path d="M138 160 Q94 160 58 182"/><path d="M162 160 Q206 160 242 182"/>
+          </g>
+          <rect x="138" y="50" width="24" height="160" rx="10" fill="#f5d3bd" stroke="#c98a6a" stroke-width="3"/>
+          <path d="M140 210 L150 230 L160 210" fill="#f5d3bd" stroke="#c98a6a" stroke-width="3"/>
+          <circle cx="98" cy="128" r="5" fill="#c98a6a"/><circle cx="202" cy="128" r="5" fill="#c98a6a"/>
+          <line x1="98" y1="128" x2="202" y2="128" stroke="#c98a6a" stroke-width="2" stroke-dasharray="5 5"/>
+          <circle cx="150" cy="160" r="26" fill="rgba(0,135,143,.2)" stroke="#00878f" stroke-width="4" stroke-dasharray="8 5"/>
+          <text x="244" y="250" font-size="18" fill="#8a6a58" text-anchor="middle">ลิ้นปี่ ▲</text>
+        </svg>
+      </div>
+      <div style="flex:1">
+        <ul class="pts">
+          <li class="frag">คลำหา<b>กึ่งกลางกระดูกหน้าอก</b> (ครึ่งล่าง)</li>
+          <li class="frag">วาง<b>ส้นมือ</b>ข้างหนึ่ง มืออีกข้างวางทับ</li>
+          <li class="frag">ประสานนิ้ว <b>ยกนิ้วขึ้น</b></li>
+          <li class="frag c-rose"><b>ห้าม</b>ใช้นิ้วกดซี่โครง → ซี่โครงหัก ตับ/ม้ามแตก</li>
+        </ul>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.2.2 ภาพที่ 1.5 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 <sup class="ref"><a href="#refs">[2]</a></sup> · ภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ท่ากดหน้าอก">
+  <div class="body">
+    <div class="kicker reveal">5.2.2 การนวดหัวใจภายนอก · ท่ากด</div>
+    <h2 class="title reveal d1">แขนตรง ไหล่อยู่เหนือมือ ใช้น้ำหนักตัว</h2>
+    <div class="row center" style="gap:46px">
+      <div class="diagram reveal d2" style="flex:0 0 760px">
+        <svg viewBox="0 0 760 400" aria-label="ภาพด้านข้าง ผู้ช่วยคุกเข่าข้างผู้ป่วย แขนเหยียดตรง ไหล่อยู่เหนือมือ กดลงตรง ๆ">
+          <rect x="0" y="330" width="760" height="70" fill="#e4e0d8"/>
+          <rect x="280" y="290" width="400" height="40" rx="20" fill="#9fc6e8" stroke="#3b6fd4" stroke-width="4"/>
+          <circle cx="700" cy="300" r="30" fill="#fde6d4" stroke="#c98a6a" stroke-width="4"/>
+          <g stroke="#00878f" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M150 330 L210 330 L220 240"/>
+            <path d="M220 240 L360 130"/>
+            <path d="M360 130 L360 282"/>
+          </g>
+          <circle cx="392" cy="96" r="32" fill="#fff" stroke="#00878f" stroke-width="7"/>
+          <rect x="336" y="280" width="48" height="14" rx="6" fill="#00878f"/>
+          <text x="450" y="78" font-size="30" fill="#e8742c">ไหล่อยู่เหนือมือ</text>
+          <path d="M446 88 Q410 120 372 128" stroke="#e8742c" stroke-width="3" fill="none"/>
+          <text x="380" y="220" font-size="30" fill="#00878f">◀ แขนเหยียดตรง</text>
+          <path d="M600 150 L600 250" stroke="#d6455d" stroke-width="7"/><path d="M584 232 L600 262 L616 232" fill="#d6455d"/>
+          <text x="600" y="136" font-size="30" fill="#d6455d" text-anchor="middle">กดลงตรง ๆ 5–6 ซม.</text>
+        </svg>
+      </div>
+      <ul class="pts" style="flex:1">
+        <li class="frag">คุกเข่าข้างผู้ป่วย</li>
+        <li class="frag">โน้มตัว<b>ตั้งฉาก</b>กับหน้าอก</li>
+        <li class="frag">ทิ้ง<b>น้ำหนักตัว</b>ลงบนแขน</li>
+        <li class="frag">กดสุดแล้ว<b>ผ่อน</b>ให้อกคืนตัว ไม่ยกมือ</li>
+      </ul>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.2.2 <sup class="ref"><a href="#refs">[1]</a></sup> · ภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตัวเลขสำคัญของการกดหน้าอก">
+  <div class="body">
+    <div class="kicker reveal">การกดหน้าอกคุณภาพสูง (ผู้ใหญ่)</div>
+    <h2 class="title reveal d1">จำ 4 ตัวเลขนี้ให้ได้</h2>
+    <div class="grid g4" style="gap:22px">
+      <div class="box rose tile reveal d2"><div class="bignum c-rose">5–6</div><h3>ซม.</h3><p>ความลึก</p></div>
+      <div class="box orange tile reveal d3"><div class="bignum c-orange">100–120</div><h3>ครั้ง/นาที</h3><p>อัตราการกด</p></div>
+      <div class="box tint tile reveal d4"><div class="bignum c-teal">30 : 2</div><h3>กด : เป่า</h3><p>อัตราส่วน</p></div>
+      <div class="box green tile reveal d5"><div class="bignum c-green">5</div><h3>รอบ ≈ 2 นาที</h3><p>แล้วประเมิน/สลับคน</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:24px">+ ปล่อยให้<b>อกคืนตัวสุด</b>ทุกครั้ง · <b>หยุดกดให้สั้นที่สุด</b></p>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 Part 7 ข้อ 7–8 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="📏 ทายก่อนเฉลย: 5 ซม. ยาวแค่ไหน">
+  <div class="body">
+    <div><span class="act-badge">📏 ทายก่อนเฉลย</span><span class="act-meta">ทุกคน · 2 นาที · ใช้ไม้บรรทัดของตัวเอง</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ใช้นิ้วโป้งกับนิ้วชี้กะระยะ “5 ซม.” แล้วเทียบไม้บรรทัด</h2>
+    <div class="row center" style="gap:40px">
+      <div class="diagram frag" style="flex:0 0 900px">
+        <svg viewBox="0 0 300 110" aria-label="ไม้บรรทัด 0 ถึง 7 เซนติเมตร ช่วง 5 ถึง 6 เซนติเมตรเป็นสีเขียว">
+          <rect x="20" y="30" width="260" height="56" rx="6" fill="#fff1cc" stroke="#b98b5a" stroke-width="2"/>
+          <rect x="198.6" y="30" width="34.3" height="56" fill="#dcf3e3" stroke="#2e9b57" stroke-width="1.5"/>
+          <g stroke="#5d5866" stroke-width="1.5">
+            <line x1="27" y1="30" x2="27" y2="58"/><line x1="61.3" y1="30" x2="61.3" y2="58"/><line x1="95.6" y1="30" x2="95.6" y2="58"/><line x1="129.9" y1="30" x2="129.9" y2="58"/>
+            <line x1="164.2" y1="30" x2="164.2" y2="58"/><line x1="198.6" y1="30" x2="198.6" y2="58"/><line x1="232.9" y1="30" x2="232.9" y2="58"/><line x1="267.2" y1="30" x2="267.2" y2="58"/>
+          </g>
+          <g font-size="13" fill="#2a2733" text-anchor="middle" font-family="Prompt, sans-serif">
+            <text x="27" y="76">0</text><text x="61.3" y="76">1</text><text x="95.6" y="76">2</text><text x="129.9" y="76">3</text><text x="164.2" y="76">4</text><text x="198.6" y="76">5</text><text x="232.9" y="76">6</text><text x="267.2" y="76">7</text>
+          </g>
+          <text x="215.7" y="22" font-size="14" fill="#2e9b57" text-anchor="middle">5–6 ซม.</text>
+        </svg>
+      </div>
+      <div style="flex:1">
+        <p class="small frag" style="margin:0">ลึก<b>กว่าที่คิด!</b> ต้องใช้น้ำหนักตัว ไม่ใช่แรงแขน</p>
+        <div style="margin-top:20px"><div data-timer="120" class="sm"></div></div>
+      </div>
+    </div>
+    <div class="src">ภาพไม่ใช่ขนาดจริง · ที่มา: <sup class="ref"><a href="#refs">[1]</a></sup> <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act watch" data-title="🎵 จังหวะ 100–120: ตบโต๊ะตามเพลง">
+  <div class="body">
+    <div><span class="act-badge vd">🎵 ดูคลิป + ตบโต๊ะ</span><span class="act-meta">1 นาที · ทั้งห้องตบโต๊ะตามจังหวะ 30 ครั้ง</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">จังหวะ 100–120 เร็วแค่ไหน? ตบโต๊ะตามไปด้วย!</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="M4ACYp75mjU" data-title="Hands-Only CPR Instructional Video" data-credit="American Heart Association" data-len="1:06"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>👏 กติกา</h3><ol>
+          <li>ครูเปิดคลิป ทุกคนตบโต๊ะตามจังหวะ</li>
+          <li>นับดัง ๆ “หนึ่ง สอง สาม…” ถึง 30</li>
+          <li>30 ครั้งควรใช้เวลาประมาณ <b class="frag">15–18 วินาที</b></li>
+        </ol></div>
+        <div data-timer="60" class="sm"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ (ภาษาอังกฤษ ใช้ฟังจังหวะเพลง) <sup class="ref"><a href="#videos">[V7]</a></sup> · 30 ÷ 120 × 60 = 15 วินาที, 30 ÷ 100 × 60 = 18 วินาที</div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="📱 แข่งแตะจังหวะบนมือถือ">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">📱 แข่งแตะจังหวะ</span><span class="act-meta">รายบุคคล · 5 นาที · ใครได้ % ในช่วงมากสุด</span></div>
+    <h2 class="title" style="margin-bottom:16px">เปิด “ฝึกจังหวะ CPR” แล้วแตะ 30 ครั้ง × 1 รอบ</h2>
+    <p>หน้าแรกของวิชา → สัปดาห์ที่ 2 → <b>❤️ ฝึกจังหวะ CPR</b> → ข้อ ② · <a href="cpr.html">cpr.html</a></p>
+    <p class="small">รอบแรกเปิดเสียงจังหวะ 110 · รอบสองปิดเสียง ลองทำเอง · คนที่ได้ “% อยู่ในช่วง” สูงสุด +1 คะแนนกลุ่ม</p>
+    <div style="display:flex;justify-content:center;gap:40px;margin-top:20px;align-items:flex-end"><div data-timer="300" class="sm"></div><div data-board="6"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="เปิดทางเดินหายใจ">
+  <div class="body">
+    <div class="kicker reveal">5.2.1 เปิดทางเดินหายใจ</div>
+    <h2 class="title reveal d1">กดหน้าผาก · เชยคาง</h2>
+    <div class="row center" style="gap:50px">
+      <div class="diagram reveal d2" style="flex:0 0 640px">
+        <svg viewBox="0 0 640 360" aria-label="ภาพด้านข้างศีรษะผู้ป่วยนอนหงาย กดหน้าผากลง เชยคางขึ้น ทางเดินหายใจเปิด">
+          <rect x="0" y="320" width="640" height="40" fill="#e4e0d8"/>
+          <rect x="20" y="250" width="300" height="70" rx="30" fill="#9fc6e8" stroke="#3b6fd4" stroke-width="4"/>
+          <rect x="290" y="236" width="90" height="70" rx="20" fill="#fde6d4" stroke="#c98a6a" stroke-width="4"/>
+          <ellipse cx="450" cy="240" rx="100" ry="72" fill="#fde6d4" stroke="#c98a6a" stroke-width="4"/>
+          <path d="M478 170 L500 150 L512 176" fill="#fde6d4" stroke="#c98a6a" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M530 196 Q552 206 548 232" stroke="#c98a6a" stroke-width="4" fill="none"/>
+          <path d="M512 200 Q440 216 380 262 L300 272" stroke="#2e9b57" stroke-width="7" stroke-dasharray="14 10" fill="none"/>
+          <text x="150" y="226" font-size="28" fill="#2e9b57" text-anchor="middle">ทางเดินหายใจเปิด</text>
+          <path d="M410 70 L410 158" stroke="#d6455d" stroke-width="8"/><path d="M392 142 L410 174 L428 142" fill="#d6455d"/>
+          <text x="410" y="52" font-size="30" fill="#d6455d" text-anchor="middle">กดหน้าผาก</text>
+          <path d="M524 316 L524 262" stroke="#00878f" stroke-width="8"/><path d="M506 278 L524 246 L542 278" fill="#00878f"/>
+          <text x="548" y="306" font-size="30" fill="#00878f">เชยคาง</text>
+        </svg>
+      </div>
+      <div style="flex:1">
+        <p class="small" style="margin:0">คนหมดสติ <b>ลิ้นตกไปปิดทางเดินหายใจ</b> ลมที่เป่าจะไปไม่ถึงปอด</p>
+        <p class="small frag">มือหนึ่ง<b>กดหน้าผาก</b> อีกมือใช้นิ้ว<b>เชยคาง</b>ขึ้น ให้ศีรษะแหงน</p>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.2.1 <sup class="ref"><a href="#refs">[1]</a></sup> · ภาพวาดขึ้นใหม่ (แผนภาพอย่างง่าย)</div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="การเป่าปาก">
+  <div class="body">
+    <div class="kicker reveal">5.2.1 การผายปอดด้วยการให้ลมหายใจทางปาก</div>
+    <h2 class="title reveal d1">บีบจมูก ประกบปาก เป่าจนอกยก</h2>
+    <ol class="steps">
+      <li class="reveal d2">ใช้นิ้ว<b>บีบจมูก</b>ให้สนิท สูดลมหายใจ</li>
+      <li class="reveal d3"><b>ประกบปาก</b>ให้แนบสนิท เป่าประมาณ <b>1 วินาที</b> จนเห็น<b>หน้าอกยก</b></li>
+      <li class="reveal d4">ปล่อยปากให้ลมออก แล้วเป่าอีกครั้ง → <b>กลับไปกดหน้าอกทันที</b></li>
+    </ol>
+    <div class="box sun reveal d5" style="margin-top:20px;padding:14px 24px"><p class="small" style="margin:0"><span class="extra">ปรับ</span> ไม่ได้ฝึกหรือไม่สะดวกเป่าปาก → <b>กดหน้าอกอย่างเดียว</b> (Hands-only) ได้ <sup class="ref"><a href="#refs">[2]</a></sup> · ใบความรู้ที่บอก “เป่า 10 ครั้ง/นาที” ใช้กับผู้ที่<b>ยังมีชีพจร</b>แต่ไม่หายใจ</p></div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.2.1 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 Part 7 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="30 : 2 ครบ 5 รอบ ≈ 2 นาที">
+  <div class="body">
+    <div class="kicker reveal">ลองคิดเวลา</div>
+    <h2 class="title reveal d1">30 : 2 ครบ 5 รอบ ใช้เวลากี่นาที?</h2>
+    <div class="calcs">
+      <div class="crow frag"><span>กด 30 ครั้ง ที่ 110 ครั้ง/นาที</span><b>30 ÷ 110 × 60 ≈ 16 วินาที</b></div>
+      <div class="crow frag"><span>เปิดทางเดินหายใจ + เป่า 2 ครั้ง</span><b>≈ 6–8 วินาที</b></div>
+      <div class="crow frag"><span>รวม 1 รอบ</span><b>≈ 24 วินาที</b></div>
+      <div class="crow tot frag"><span>5 รอบ</span><b>24 × 5 = 120 วินาที = 2 นาที</b></div>
+    </div>
+    <p class="small frag" style="margin-top:22px">ครบ 5 รอบ (≈ 2 นาที) → ประเมินซ้ำ · ถ้ามีคนช่วย <b>สลับคนกด</b> เพราะเหนื่อยแล้วจะกดตื้น</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 ข้อ 7.2 สลับคนกดประมาณทุก 2 นาที (หรือ 5 รอบ) <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act watch" data-title="🎬 CPR คุณภาพสูง (สภากาชาดไทย)">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป + จด</span><span class="act-meta">2 นาที · จดหลักสำคัญ</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">CPR คุณภาพสูง ต้องมีอะไรบ้าง?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="5rBUhYFtcBM" data-title="High Quality CPR 2025" data-credit="ศูนย์ฝึกอบรมปฐมพยาบาลและสุขภาพอนามัย สภากาชาดไทย" data-len="2:23"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>✏️ จดให้ครบ</h3><ol>
+          <li class="frag">เร็ว 100–120 ครั้ง/นาที สม่ำเสมอ</li>
+          <li class="frag">ลึก 5–6 ซม. บนพื้นแข็ง</li>
+          <li class="frag">ปล่อยให้อกคืนตัวสุด</li>
+          <li class="frag">หยุดกดให้น้อยที่สุด</li>
+        </ol></div>
+        <div data-timer="150" class="sm"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V8]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="เสริม: เครื่อง AED">
+  <div class="body">
+    <div class="kicker reveal"><span class="extra">เสริม</span> เครื่องกระตุกหัวใจไฟฟ้าอัตโนมัติ (AED)</div>
+    <h2 class="title reveal d1">เครื่องพูดบอกทุกขั้น คนทั่วไปใช้ได้</h2>
+    <div class="row center" style="gap:46px">
+      <div class="photo reveal d2" style="flex:0 0 340px"><img src="../assets/img/iso-e010-aed.png" alt="ป้าย AED" style="width:300px"><div class="cap">ป้ายบอกที่ตั้ง AED</div><div class="credit">ISO 7010 E010 · CC0</div></div>
+      <ol class="steps" style="flex:1">
+        <li class="frag"><b>เปิดเครื่อง</b> แล้วทำตามเสียงบอก</li>
+        <li class="frag"><b>ติดแผ่น</b>บนหน้าอกตามรูปบนแผ่น (คนอื่นกดหน้าอกต่อ)</li>
+        <li class="frag">เครื่องวิเคราะห์ → <b>ทุกคนถอย ห้ามแตะตัว</b></li>
+        <li class="frag">กดปุ่มช็อกเมื่อสั่ง แล้ว<b>กดหน้าอกต่อทันที</b></li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: AHA 2025 Part 7 ข้อ 9 <sup class="ref"><a href="#refs">[2]</a></sup> · Part 10 ไฟฟ้าดูดใช้ CPR + กระตุกหัวใจเร็ว <sup class="ref"><a href="#refs">[4]</a></sup> · คลิป <sup class="ref"><a href="#videos">[V9]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act watch" data-title="🎬 สาธิต CPR + AED">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูสาธิต</span><span class="act-meta">5 นาที · แล้วคิด-คู่-แชร์</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ดูของจริง: กดหน้าอกอย่างเดียว + ใช้ AED</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="tno42mG4CL8" data-title="CPR Hands only and AED สำหรับประชาชน" data-credit="ศูนย์ฝึกอบรมปฐมพยาบาลและสุขภาพอนามัย สภากาชาดไทย" data-len="5:13"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>💬 คุยกับเพื่อน</h3><ol>
+          <li>ผู้ช่วยพูดอะไรตอนโทร 1669?</li>
+          <li>ตอนเครื่อง AED วิเคราะห์ ทุกคนทำอะไร?</li>
+          <li>ใกล้บ้าน/วิทยาลัยเรา มี AED ที่ไหนบ้าง?</li>
+        </ol></div>
+        <div data-timer="180" class="sm"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V9]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🔎 จับผิดท่า CPR">
+  <div class="body" style="top:118px">
+    <div><span class="act-badge">🔎 จับผิดท่า</span><span class="act-meta">ทั้งห้องโหวต ข้อละ 40 วินาที</span></div>
+    <h2 class="title" style="font-size:54px;margin-bottom:16px">ท่านี้ “ถูก” หรือ “ผิด”?</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span>งอศอก ใช้แรงแขนกดเร็ว ๆ</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">✅ ถูก</button><button type="button" class="opt">❌ ผิด</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ผิด แขนต้องเหยียดตรง ใช้น้ำหนักตัว ไม่เช่นนั้นกดไม่ลึกและเหนื่อยเร็ว</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span>ผู้ป่วยนอนบนที่นอนนุ่ม ๆ จะได้ไม่เจ็บ</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">✅ ถูก</button><button type="button" class="opt">❌ ผิด</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ผิด ที่นอนยุบตามแรง ต้องนอนบน<b>พื้นแข็ง</b></div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">3</span>วางส้นมือกึ่งกลางหน้าอก ประสานนิ้ว ยกนิ้วขึ้น</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">✅ ถูก</button><button type="button" class="opt">❌ ผิด</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ถูก นิ้วไม่กดซี่โครง</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">4</span>กดแล้วค้างไว้ ไม่ปล่อยให้อกคืนตัว</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">✅ ถูก</button><button type="button" class="opt">❌ ผิด</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ผิด ต้องผ่อนให้อกคืนตัวสุด หัวใจจึงรับเลือดกลับเข้ามา</div></div></div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🎲 ฝึกคิด 5.2">
+  <div class="body">
+    <div><span class="act-badge">🎲 ฝึกคิด 5.2</span><span class="act-meta">คุยกับเพื่อนข้าง ๆ 2 นาที แล้วสุ่มเลขที่ตอบ</span></div>
+    <h2 class="title" style="font-size:56px">คำถามท้ายใบความรู้</h2>
+    <div class="row">
+      <ol class="steps" style="flex:1.5;counter-reset:st 2">
+        <li><b>CPR</b> และ <b>BLS</b> ย่อมาจากอะไร และหมายถึงอะไร</li>
+        <li>การนวดหัวใจภายนอกต้องกด<b>ลึกเท่าใด</b> อัตรา<b>กี่ครั้งต่อนาที</b></li>
+        <li>เหตุใดจึง<b>ห้ามใช้นิ้วมือกดซี่โครง</b>ขณะนวดหัวใจ</li>
+      </ol>
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;align-items:flex-start"><div data-timer="120" class="sm"></div><div data-picker="40"></div></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ============ 5.3 ข้อควรระวัง ============ -->
+<section class="slide section sec-3" data-tag="5.3 ข้อควรระวัง" data-title="5.3 ข้อควรระวังในการปฐมพยาบาล">
+  <div class="big-no">5.3</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.3</div>
+    <h2 class="reveal d1">ข้อควรระวัง<br>ในการปฐมพยาบาล</h2>
+    <p class="lead reveal d2">ทำให้ถูก ทำให้เร็ว ทำให้ต่อเนื่อง</p>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ข้อควรระวัง 4 ข้อ">
+  <div class="body">
+    <div class="kicker reveal">ข้อควรระวัง</div>
+    <h2 class="title reveal d1">ก่อนช่วย · ระหว่างช่วย</h2>
+    <div class="grid g2" style="gap:26px">
+      <div class="box rose reveal d2"><h3 class="c-rose">⚡ ตัดไฟ/แยกออกก่อน</h3><p class="small">ไม่เช่นนั้นผู้ช่วยจะกลายเป็น<b>ผู้ประสบภัยรายที่สอง</b></p></div>
+      <div class="box orange reveal d3"><h3 class="c-orange">☎️ โทร 1669 เร็วที่สุด</h3><p class="small">ให้คนอื่นโทรตั้งแต่เริ่มช่วย อยู่คนเดียว → โทรก่อนแล้วเริ่ม CPR</p></div>
+      <div class="box blue reveal d4"><h3 class="c-blue">🪵 พื้นแข็งเสมอ</h3><p class="small">บนที่นอนนุ่ม แรงกดถูกดูดซับ ไม่ได้ผล</p></div>
+      <div class="box green reveal d5"><h3 class="c-green">🔁 ทำต่อเนื่อง</h3><p class="small">จนผู้ป่วยหายใจเอง หรือหน่วยแพทย์มาถึง ไม่ว่าผู้ป่วยเป็นใคร</p></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.3 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 ผู้ช่วยคนเดียวให้โทรก่อนแล้ว CPR ทันที <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="เด็กและทารก">
+  <div class="body">
+    <div class="kicker reveal">เด็กอ่อนและเด็กแรกเกิด</div>
+    <h2 class="title reveal d1">ตัวเล็ก ใช้แรงน้อยลง ลึกประมาณ ⅓ ของอก</h2>
+    <div class="grid g2" style="gap:30px">
+      <div class="box tint reveal d2"><h3>👶 ทารก (ต่ำกว่า 1 ปี)</h3><p class="small">ลึกประมาณ <b>4 ซม.</b> · ใช้<b>นิ้วโป้ง 2 นิ้วโอบรอบอก</b> หรือ<b>ส้นมือเดียว</b></p></div>
+      <div class="box sun reveal d3"><h3>🧒 เด็ก</h3><p class="small">ลึกประมาณ <b>5 ซม.</b> · อัตรา <b>100–120</b> ครั้ง/นาที เท่าผู้ใหญ่</p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:24px"><span class="extra">ปรับ</span> ใบความรู้ให้ใช้ <b>2 นิ้ว</b> กดในทารก · AHA 2025 <b>เลิกใช้</b> เพราะกดได้ไม่ลึกพอ <sup class="ref"><a href="#refs">[3]</a></sup></p>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 ข้อ 5.3 <sup class="ref"><a href="#refs">[1]</a></sup> · AHA 2025 Part 6 Pediatric BLS <sup class="ref"><a href="#refs">[3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="เสริม: ฟื้นแล้วก็ต้องไปโรงพยาบาล">
+  <div class="body">
+    <div class="kicker reveal"><span class="extra">เสริม</span> หลังช่วยเหลือแล้ว</div>
+    <h2 class="title reveal d1">ฟื้นแล้ว พูดได้แล้ว <span class="hl">ก็ต้องไปโรงพยาบาล</span></h2>
+    <div class="row" style="gap:40px">
+      <div class="box rose reveal d2" style="flex:1"><h3 class="c-rose">🫀 อันตรายที่มองไม่เห็น</h3><p class="small">แผลภายนอกดูเล็ก แต่<b>หัวใจ กล้ามเนื้อ สมอง</b>อาจบาดเจ็บ หัวใจเต้นผิดจังหวะได้</p></div>
+      <div class="box sun reveal d3" style="flex:1"><h3>🔥 แผลไหม้</h3><p class="small">ล้างด้วย<b>น้ำสะอาดที่เย็น</b> · <b>ห้าม</b>ทายาสีฟัน เนย น้ำแข็ง ครีม · ไม่เจาะตุ่มพอง</p></div>
+    </div>
+    <div class="src">ที่มา: MedlinePlus, Electrical injury (ทบทวน 14 ต.ค. 2025) <sup class="ref"><a href="#refs">[5]</a></sup> · กฟภ. <sup class="ref"><a href="#refs">[6]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act watch" data-title="🎬 แพทย์ฉุกเฉินแนะนำ">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป + ตอบคำถาม</span><span class="act-meta">3 นาที · สุ่มเลขที่ตอบ</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">แพทย์ฉุกเฉินบอกว่าต้องระวังอะไร?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="AdTJnCFXIn0" data-title="ข้อควรปฏิบัติเมื่อถูกไฟดูด : CHECK-UP สุขภาพ" data-credit="Thai PBS · รายการคนสู้โรค" data-len="2:43"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>❓ ฟังแล้วตอบ</h3><ol>
+          <li>ก่อนเข้าไปช่วย ต้องทำอะไร?</li>
+          <li>ทำไมต้องไปโรงพยาบาล แม้ไม่มีแผล?</li>
+        </ol></div>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ <sup class="ref"><a href="#videos">[V10]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="โทร 1669 พูดอะไรบ้าง">
+  <div class="body">
+    <div class="kicker reveal">☎️ สายด่วนการแพทย์ฉุกเฉิน 1669 (โทรฟรี 24 ชั่วโมง)</div>
+    <h2 class="title reveal d1">โทรแล้ว พูดให้ครบ 4 เรื่อง</h2>
+    <div class="row center" style="gap:40px">
+      <div class="numbig reveal d2" style="flex:0 0 auto">1669</div>
+      <ol class="steps call" style="flex:1">
+        <li class="frag"><b>เกิดอะไร</b> — คนถูกไฟดูด หมดสติ ไม่หายใจ</li>
+        <li class="frag"><b>ที่ไหน</b> — สถานที่ + จุดสังเกตใกล้ ๆ</li>
+        <li class="frag"><b>กี่คน อาการอย่างไร</b> — รู้สึกตัวไหม หายใจไหม</li>
+        <li class="frag"><b>เบอร์ติดต่อกลับ</b> — แล้ว<b>อย่าเพิ่งวางสาย</b> ทำตามที่เจ้าหน้าที่บอก</li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup> · สพฉ. ผ่านกรุงเทพธุรกิจ <sup class="ref"><a href="#refs">[8]</a></sup> · คลิป สพฉ. <sup class="ref"><a href="#videos">[V6]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="☎️ ซ้อมโทร 1669">
+  <div class="body">
+    <div><span class="act-badge">☎️ ซ้อมโทร</span><span class="act-meta">จับคู่ · 4 นาที · สลับบทกัน (ห้ามโทรจริง!)</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">คนหนึ่งเป็นผู้แจ้ง อีกคนเป็นเจ้าหน้าที่ 1669</h2>
+    <div class="grid g2" style="gap:30px">
+      <div class="box tint"><h3>🧑 ผู้แจ้ง</h3><p class="small">เลือกสถานการณ์จากสัปดาห์นี้ 1 เรื่อง<br>พูดให้ครบ 4 เรื่องภายใน 30 วินาที</p></div>
+      <div class="box orange"><h3 class="c-orange">🎧 เจ้าหน้าที่</h3><p class="small">ถามกลับ: “หายใจไหมคะ?” “อยู่ตรงไหน?”<br>บอกผู้แจ้งให้เริ่มกดหน้าอก</p></div>
+    </div>
+    <div class="row" style="margin-top:20px;align-items:center;gap:30px"><div data-timer="240" class="sm" style="flex:0 0 auto"></div><div data-picker="40"></div><p class="small" style="margin:0">สุ่ม 2 คู่ออกมาแสดง</p></div>
+  </div>
+</section>
+
+<!-- ============ ใบงานที่ 1.2 ============ -->
+<section class="slide section sec-4" data-tag="ใบงานที่ 1.2" data-title="ใบงานที่ 1.2 การช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด">
+  <div class="big-no">1.2</div>
+  <div class="body center">
+    <div class="label reveal">ใบงานที่ 1.2 · ปฏิบัติ 3 ชั่วโมง</div>
+    <h2 class="reveal d1">การช่วยเหลือและปฐมพยาบาล<br>ผู้ถูกไฟฟ้าดูด</h2>
+    <p class="lead reveal d2">ไม่มีหุ่นก็ฝึกได้</p>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ไม่มีหุ่นฝึก? ใช้อะไรแทน">
+  <div class="body">
+    <div class="kicker reveal">อุปกรณ์ที่ใช้แทนหุ่นฝึก CPR</div>
+    <h2 class="title reveal d1">มือถือ + หมอน + ไม้บรรทัด</h2>
+    <div class="grid g3" style="gap:26px">
+      <a class="box tint tile reveal d2" href="rescue.html" style="text-decoration:none;color:inherit"><div class="icon">🚑</div><h3>จำลองการช่วยเหลือ</h3><p>5 สถานการณ์<br>ตอนที่ 1</p></a>
+      <a class="box rose tile reveal d3" href="cpr.html" style="text-decoration:none;color:inherit"><div class="icon">❤️</div><h3>ฝึกจังหวะ CPR</h3><p>ตำแหน่งมือ + จังหวะ<br>ตอนที่ 2</p></a>
+      <div class="box sun tile reveal d4"><div class="icon">🛏️📏</div><h3>หมอน/ผ้าขนหนูม้วน</h3><p>วางบนพื้นแข็ง<br>ฝึกท่าและความลึก</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:24px">ถ้าโรงฝึกงานมีหุ่นฝึก CPR ใช้ตารางในใบงานชุดเดียวกันได้</p>
+    <div class="src">ปรับจากใบงานที่ 1.2 ข้อ 5 (หุ่นจำลอง CPR Manikin) <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ข้อควรระวังในการทำใบงาน">
+  <div class="body">
+    <div class="kicker reveal">คำแนะนำ / ข้อควรระวัง (ใบงานข้อ 6)</div>
+    <h2 class="title reveal d1">ก่อนเริ่มใบงาน ⚠️</h2>
+    <ol class="steps chk">
+      <li class="reveal d2 c-rose"><b>ห้ามฝึกกดหน้าอกกับคนจริงโดยเด็ดขาด</b> ซี่โครงหัก อวัยวะภายในบาดเจ็บได้</li>
+      <li class="reveal d3">หมอนวาง<b>บนพื้นแข็ง</b> · ถ้ามีหุ่น เช็ดฆ่าเชื้อก่อน-หลังเปลี่ยนคน</li>
+      <li class="reveal d4">วัสดุฉนวนต้อง<b>แห้งสนิท</b> ห้ามเปียกชื้น</li>
+      <li class="reveal d5">ทำ<b>ตามลำดับ</b>อย่างเคร่งครัด ไม่ข้ามขั้นตอน</li>
+    </ol>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 6 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ตอนที่ 1 ขั้นตอนและตาราง">
+  <div class="body">
+    <div class="kicker reveal">ตอนที่ 1 · 35 นาที</div>
+    <h2 class="title reveal d1">การช่วยเหลือผู้ประสบอันตรายจากไฟฟ้าดูด</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ที่</th><th>ขั้นตอนการช่วยเหลือ</th><th>ผลการปฏิบัติ</th><th>เหตุผลประกอบ</th></tr>
+      <tr><td>1</td><td>ตัดกระแสไฟฟ้าที่สวิตช์หรือเบรกเกอร์</td><td class="frag">สับเบรกเกอร์ลง</td><td class="frag">หยุดกระแส ผู้ช่วยปลอดภัย</td></tr>
+      <tr><td>2</td><td>เลือกวัสดุฉนวนที่ใช้แยกผู้ประสบภัย</td><td>…</td><td>…</td></tr>
+      <tr><td>3</td><td>แยกผู้ประสบภัยออกจากตัวนำไฟฟ้า</td><td>…</td><td>…</td></tr>
+      <tr><td>4</td><td>ตรวจการตอบสนองและการหายใจ แล้วโทร 1669</td><td>…</td><td>…</td></tr>
+    </table>
+    <p class="small reveal d3" style="margin-top:18px">ทำหน้า <a href="rescue.html">🚑 จำลองการช่วยเหลือ</a> ครบ 5 สถานการณ์ แล้ว<b>เขียนด้วยภาษาของกลุ่มเอง</b> (แถว 1 เป็นตัวอย่าง)</p>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 7 ตอนที่ 1 <sup class="ref"><a href="#refs">[1]</a></sup> · แถว 4 ปรับตาม AHA 2025 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ตอนที่ 2 ขั้นตอนและตาราง">
+  <div class="body">
+    <div class="kicker reveal">ตอนที่ 2 · 40 นาที</div>
+    <h2 class="title reveal d1">การปฐมพยาบาลด้วย CPR (กับหมอน)</h2>
+    <div class="row" style="gap:36px;align-items:flex-start">
+      <ol class="steps" style="flex:1.1;font-size:30px">
+        <li class="reveal d2">หมอนบนพื้นแข็ง · แตะตำแหน่งมือในเว็บ</li>
+        <li class="reveal d3">วางมือ แขนตรง กดลึก 5–6 ซม.</li>
+        <li class="reveal d4">กด 30 : เป่า 2 (ฝึกท่า ไม่เป่าจริง)</li>
+        <li class="reveal d5">ครบ 5 รอบ → จดผลจากหน้าฝึกจังหวะ</li>
+      </ol>
+      <table class="t left compact reveal d3" style="flex:1">
+        <tr><th>รายการ</th><th>ค่าที่ได้</th></tr>
+        <tr><td>ความลึก (ซม.)</td><td>…</td></tr>
+        <tr><td>อัตรา (ครั้ง/นาที)</td><td>…</td></tr>
+        <tr><td>จำนวนรอบ</td><td>…</td></tr>
+        <tr><td>อัตราส่วน กด : เป่า</td><td>…</td></tr>
+      </table>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 7 ตอนที่ 2 <sup class="ref"><a href="#refs">[1]</a></sup> · ปรับลำดับเป็นกดหน้าอกก่อน <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="แบ่งหน้าที่ในกลุ่ม">
+  <div class="body">
+    <div class="kicker reveal">ทำงานเป็นทีม · สลับหน้าที่ทุกรอบ</div>
+    <h2 class="title reveal d1">4 หน้าที่ ใครทำอะไร</h2>
+    <div class="roles">
+      <div class="box rose reveal d2"><div class="icon">💪</div><h3>ผู้กด</h3><p>กดหมอน<br>ตามจังหวะ</p></div>
+      <div class="box tint reveal d3"><div class="icon">📱</div><h3>ผู้แตะ</h3><p>แตะหน้าฝึกจังหวะ<br>พร้อมผู้กด</p></div>
+      <div class="box sun reveal d4"><div class="icon">📏</div><h3>ผู้สังเกต</h3><p>ดูไม้บรรทัด<br>เช็กท่าแขนตรง</p></div>
+      <div class="box green reveal d5"><div class="icon">✏️</div><h3>ผู้บันทึก</h3><p>จดค่าลงตาราง<br>ในใบงาน</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:24px">ทุกคนต้องได้เป็น<b>ผู้กด</b>อย่างน้อย 1 รอบ (5 รอบ ≈ 2 นาที) ครูเดินประเมินรายบุคคล</p>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🛠️ ลงมือทำตอนที่ 1">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">🛠️ ลงมือทำใบงานที่ 1.2 ตอนที่ 1</span><span class="act-meta">กลุ่มละ 4–5 คน · 35 นาที</span></div>
+    <h2 class="title" style="margin-bottom:20px">จำลองการช่วยเหลือ 5 สถานการณ์ แล้วเขียนลงตาราง</h2>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div data-timer="2100" class="sm"></div>
+      <div data-board="6" style="justify-content:center"></div>
+      <p class="small" style="margin:0">ทุกกลุ่มชี้ให้ครูดูด้วยว่า <b>ห้องนี้ ตู้ไฟ/เบรกเกอร์อยู่ตรงไหน</b></p>
+    </div>
+    <p class="small" style="margin-top:20px"><a href="rescue.html">rescue.html</a> · กลุ่มที่ได้คะแนนเว็บสูงสุด +2 คะแนน</p>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🛠️ ลงมือทำตอนที่ 2">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">🛠️ ลงมือทำใบงานที่ 1.2 ตอนที่ 2</span><span class="act-meta">กลุ่มละ 4–5 คน · 40 นาที</span></div>
+    <h2 class="title" style="margin-bottom:20px">ฝึก CPR กับหมอน ครบ 5 รอบ ทุกคนได้กด</h2>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div data-timer="2400" class="sm"></div>
+      <p class="small" style="margin:0">⚠️ ห้ามกดบนตัวเพื่อน · หมอนบนพื้นแข็ง · สลับหน้าที่ทุกรอบ</p>
+    </div>
+    <p class="small" style="margin-top:20px"><a href="cpr.html">cpr.html</a> · เสร็จก่อน? ทำ <a href="exercises.html">แบบฝึกหัดออนไลน์</a> ต่อได้เลย</p>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="เกณฑ์การประเมินใบงาน 25 คะแนน">
+  <div class="body">
+    <div class="kicker reveal">การประเมินผลใบงานที่ 1.2</div>
+    <h2 class="title reveal d1">25 คะแนน · ผ่าน <span class="hl">20</span> คะแนน (80%)</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนน</th></tr>
+      <tr><td>1</td><td>ตัดกระแสไฟฟ้าและเลือกวัสดุฉนวนได้ถูกต้อง (ตอนที่ 1)</td><td class="mono">5</td></tr>
+      <tr><td>2</td><td>แยกผู้ประสบภัยออกจากตัวนำได้ถูกวิธี ไม่สัมผัสโดยตรง (ตอนที่ 1)</td><td class="mono">5</td></tr>
+      <tr><td>3</td><td>วางมือถูกตำแหน่งและกดลึก 5–6 ซม. (ตอนที่ 2)</td><td class="mono">5</td></tr>
+      <tr><td>4</td><td>กดหน้าอกได้ในอัตรา 100–120 ครั้ง/นาที ครบ 5 รอบ (ตอนที่ 2)</td><td class="mono">5</td></tr>
+      <tr><td>5</td><td>ความละเอียด รอบคอบ และส่งงานตรงเวลา</td><td class="mono">5</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบงานที่ 1.2 ข้อ 9 <sup class="ref"><a href="#refs">[1]</a></sup> · ข้อ 4 ดูผลจากหน้าฝึกจังหวะ CPR</div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🎲 สรุปและวิจารณ์ผล">
+  <div class="body">
+    <div><span class="act-badge">🎲 สุ่มกลุ่มเล่า</span><span class="act-meta">กลุ่มละไม่เกิน 2 นาที</span></div>
+    <h2 class="title" style="font-size:56px">กลุ่มเรา “พลาดตรงไหน” และครั้งหน้าจะทำอย่างไร</h2>
+    <div class="row center">
+      <ul class="pts small" style="flex:1.2">
+        <li>ขั้นตอนไหน<b>ทำผิด</b>ในเว็บจำลอง เพราะอะไร</li>
+        <li>กดหน้าอกได้ % ในช่วงเท่าไร <b>ยากตรงไหน</b></li>
+        <li>ถ้าเจอเหตุการณ์จริง จะทำอะไร<b>เป็นอย่างแรก</b></li>
+      </ul>
+      <div style="flex:1;display:flex;flex-direction:column;gap:18px;align-items:flex-start">
+        <div data-picker="6" data-label="กลุ่มที่"></div>
+        <div data-timer="120" class="sm"></div>
+      </div>
+    </div>
+    <div data-board="6" style="margin-top:10px"></div>
+  </div>
+</section>
+
+<!-- ============ ปิดบทเรียน ============ -->
+<section class="slide sec-0" data-tag="สรุปบทเรียน" data-title="สรุปบทเรียน">
+  <div class="body">
+    <div class="kicker reveal">สรุป</div>
+    <h2 class="title reveal d1">สิ่งที่เราได้เรียนในสัปดาห์นี้</h2>
+    <div class="grid g2" style="gap:26px">
+      <div class="box orange reveal d2"><h3 class="c-orange">5.1 การช่วยเหลือ</h3><p class="small"><b>ตัดไฟก่อน</b> · ตัดไม่ได้ใช้<b>ฉนวนแห้ง</b> · ห้ามมือเปล่า</p></div>
+      <div class="box tint reveal d3"><h3>5.2 CPR</h3><p class="small">ลึก <b>5–6 ซม.</b> · <b>100–120</b> ครั้ง/นาที · <b>30 : 2</b> · AED ให้เร็ว</p></div>
+      <div class="box blue reveal d4"><h3 class="c-blue">5.3 ข้อควรระวัง</h3><p class="small">โทร <b>1669</b> · พื้นแข็ง · ทำต่อเนื่อง · ฟื้นแล้วส่งแพทย์</p></div>
+      <div class="box green reveal d5"><h3 class="c-green">ใบงาน 1.2</h3><p class="small">ช่วยตามลำดับ · ฝึก CPR · <b>ห้ามกดอกคนจริง</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="📱 แบบทดสอบหลังเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">📱 แบบทดสอบหลังเรียน</span><span class="act-meta">รายบุคคล · 10 นาที</span></div>
+    <h2 class="title">20 ข้อชุดเดิม ดูซิว่าเก่งขึ้นกี่ข้อ!</h2>
+    <p>เปิด <b>แบบทดสอบ</b> → เลือก “<b>หลังเรียน</b>” → ทำ 20 ข้อ → กดส่ง → พิมพ์ใบคะแนนส่ง Classroom</p>
+    <p class="small"><a href="quiz.html">quiz.html</a></p>
+    <div style="margin-top:20px"><div data-timer="600"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="กิจกรรมต่อไป">
+  <div class="body center" style="text-align:center">
+    <div class="kicker reveal">กิจกรรมต่อไป</div>
+    <h2 class="title reveal d1">ทบทวนแล้วลองทำดู!</h2>
+    <div class="grid g4 reveal d2" style="gap:26px">
+      <a class="box tint" href="exercises.html" style="text-decoration:none;color:inherit"><div class="icon">✏️</div><h3>แบบฝึกหัด</h3><p class="small">ตรวจคำตอบทันที</p></a>
+      <a class="box orange" href="quiz.html" style="text-decoration:none;color:inherit"><div class="icon">📝</div><h3 class="c-orange">แบบทดสอบ 20 ข้อ</h3><p class="small">ก่อนเรียน / หลังเรียน</p></a>
+      <a class="box rose" href="cpr.html" style="text-decoration:none;color:inherit"><div class="icon">❤️</div><h3 class="c-rose">ฝึกจังหวะ CPR</h3><p class="small">ฝึกต่อที่บ้านได้</p></a>
+      <a class="box green" href="worksheet.html" style="text-decoration:none;color:inherit"><div class="icon">🖨️</div><h3 class="c-green">ใบงานที่ 1.2</h3><p class="small">พิมพ์กลุ่มละ 1 ชุด</p></a>
+    </div>
+    <p class="small reveal d3" style="margin-top:36px">📖 การบ้าน: อ่านล่วงหน้าหน่วยที่ 2 เรื่อง <b>สัญลักษณ์ทางไฟฟ้าและอิเล็กทรอนิกส์</b> (สัปดาห์ที่ 3) · ชวนที่บ้านดูว่า<b>ตู้ไฟอยู่ตรงไหน</b></p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="refs" data-tag="เอกสารอ้างอิง" data-title="เอกสารอ้างอิง และเครดิตภาพ">
+  <div class="body" style="top:100px;font-size:21px;line-height:1.36">
+    <h2 class="title" style="font-size:52px;margin-bottom:12px">เอกสารอ้างอิง</h2>
+    <ol style="margin:0;padding-left:56px">
+      <li style="margin-bottom:7px">จิรกิตติ์ วราภรณ์. <i>แผนการจัดการเรียนรู้ วิชา 20100-1005 งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น</i> (หลักสูตร ปวช. 2567) หน่วยที่ 1 ใบความรู้ที่ 1.2 และใบงานที่ 1.2. วิทยาลัยเทคนิคอุตรดิตถ์. (เอกสารต้นฉบับของบทเรียนนี้)</li>
+      <li style="margin-bottom:7px">Kleinman, M. E., et al. (2025). Part 7: Adult basic life support: 2025 American Heart Association Guidelines for CPR and ECC. <i>Circulation, 152</i>(Suppl 2), S448–S478. https://doi.org/10.1161/CIR.0000000000001369</li>
+      <li style="margin-bottom:7px">American Heart Association. (2025). <i>Part 6: Pediatric basic life support</i>. 2025 AHA Guidelines for CPR and ECC. https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/pediatric-basic-life-support</li>
+      <li style="margin-bottom:7px">American Heart Association. (2025). <i>Part 10: Adult and pediatric special circumstances of resuscitation</i> (Electrocution). https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-and-pediatric-special-circumstances-of-resuscitation</li>
+      <li style="margin-bottom:7px">U.S. National Library of Medicine. (2025, October 14). <i>Electrical injury</i>. MedlinePlus Medical Encyclopedia. https://medlineplus.gov/ency/article/000053.htm</li>
+      <li style="margin-bottom:7px">การไฟฟ้าส่วนภูมิภาค. (15 พฤศจิกายน 2568). <i>PEA แนะนำพบคนถูกไฟฟ้าดูดต้องทำอย่างไร</i>. https://www.pea.co.th/news/corporate-news/1348</li>
+      <li style="margin-bottom:7px">กรมสนับสนุนบริการสุขภาพ กระทรวงสาธารณสุข. <i>คำแนะนำการช่วยผู้ถูกไฟดูด และการปั๊มหัวใจ (CPR)</i>. https://www.hss.moph.go.th/show_topic.php?id=2344</li>
+      <li style="margin-bottom:7px">กรุงเทพธุรกิจ. <i>เปิดวิธีช่วยเหลือคนถูก “ไฟดูด” ต้องรีบตัดกระแสไฟและแจ้ง 1669 กู้ชีพ!</i> (ข้อมูลจากสถาบันการแพทย์ฉุกเฉินแห่งชาติ). https://www.bangkokbiznews.com/lifestyle/1027355</li>
+      <li style="margin-bottom:7px">Provincial Electricity Authority. <i>PEA business and services</i> (พื้นที่ให้บริการ 74 จังหวัด). https://www.pea.co.th/en/about-pea/pea-service</li>
+    </ol>
+    <div class="box" style="margin-top:10px;padding:10px 24px;font-size:19px;line-height:1.38">
+      <b>เครดิตภาพ</b> · ป้าย AED ISO 7010 E010: M!dgard, CC0 (Wikimedia Commons) · แผนภาพทางเดินกระแส ตำแหน่งวางมือ ท่ากด เปิดทางเดินหายใจ และไม้บรรทัด วาดขึ้นใหม่
+    </div>
+    <p class="tiny" style="margin-top:8px">เข้าถึงแหล่งข้อมูลออนไลน์เมื่อ 24 ตุลาคม 2569</p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="videos" data-title="วิดีโอประกอบการสอน">
+  <div class="body" style="top:112px;font-size:23px;line-height:1.38">
+    <h2 class="title" style="font-size:52px;margin-bottom:12px">วิดีโอประกอบการสอน (YouTube)</h2>
+    <ol style="margin:0;padding-left:70px;list-style:none">
+      <li style="margin-bottom:6px"><b>[V1]</b> เรื่องเล่าเช้านี้. (2569, 27 กันยายน). <i>นาทีชีวิต ทำ CPR ช่วยชีวิต เด็กถูกไฟดูดในบ้านที่น้ำท่วมขัง</i>. https://www.youtube.com/watch?v=QrTp5_KiVSg</li>
+      <li style="margin-bottom:6px"><b>[V2]</b> สำนักข่าวไทย TNAMCOT (MCOT). <i>PEA แนะแนวทางช่วยกรณีพบคนถูกไฟฟ้าดูด</i>. https://www.youtube.com/watch?v=mRxd_LZW3FE</li>
+      <li style="margin-bottom:6px"><b>[V3]</b> โครงการเซฟไทย การไฟฟ้าส่วนภูมิภาค. <i>PEA HERO ตอน การปฐมพยาบาลผู้ถูกไฟฟ้าดูด</i>. https://www.youtube.com/watch?v=nQJnlg70sX0 (ดูแล้วในสัปดาห์ที่ 1 · ใช้ทบทวน)</li>
+      <li style="margin-bottom:6px"><b>[V4]</b> Ch7HD News. <i>ไม่ควรทำ ! “ทรายกลบ” ช่วยคนงานไฟดูด | สนามข่าวเสาร์-อาทิตย์</i>. https://www.youtube.com/watch?v=-JWRaDcnN38</li>
+      <li style="margin-bottom:6px"><b>[V5]</b> We Mahidol. <i>วิธีช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด ไฟฟ้าช็อต</i>. https://www.youtube.com/watch?v=trM7-oJ8W0M (7:42 · ดูเพิ่มเติมที่บ้าน)</li>
+      <li style="margin-bottom:6px"><b>[V6]</b> 1669 CHANNEL สพฉ. <i>Motion 3 มารู้จักการทำ CPR กันครับ เมื่อพบผู้ที่หัวใจหยุดเต้นเฉียบพลัน</i>. https://www.youtube.com/watch?v=SGX48U5LdjQ</li>
+      <li style="margin-bottom:6px"><b>[V7]</b> American Heart Association. <i>Hands-Only CPR Instructional Video</i>. https://www.youtube.com/watch?v=M4ACYp75mjU</li>
+      <li style="margin-bottom:6px"><b>[V8]</b> ศูนย์ฝึกอบรมปฐมพยาบาลและสุขภาพอนามัย สภากาชาดไทย. <i>High Quality CPR 2025</i>. https://www.youtube.com/watch?v=5rBUhYFtcBM</li>
+      <li style="margin-bottom:6px"><b>[V9]</b> ศูนย์ฝึกอบรมปฐมพยาบาลและสุขภาพอนามัย สภากาชาดไทย. <i>CPR Hands only and AED สำหรับประชาชน</i>. https://www.youtube.com/watch?v=tno42mG4CL8</li>
+      <li style="margin-bottom:6px"><b>[V10]</b> Thai PBS. <i>ข้อควรปฏิบัติเมื่อถูกไฟดูด : CHECK-UP สุขภาพ</i>. https://www.youtube.com/watch?v=AdTJnCFXIn0</li>
+    </ol>
+    <p class="tiny" style="margin-top:10px">ฝังจากช่องผู้เผยแพร่โดยตรง ไม่ได้ดาวน์โหลดหรือตัดต่อ · ตรวจว่ายังเปิดดูได้เมื่อ 24 ตุลาคม 2569 · ครูควรดูก่อนสอนทุกครั้ง เพราะคลิปอาจถูกลบหรือย้าย · คลิปเก่าบางคลิปอาจสอนเป่าปากก่อน ให้ยึดลำดับในสไลด์</p>
+  </div>
+</section>
+
+</main>
+</div>
+<script src="../assets/js/sims.js"></script>
+<script src="../assets/js/deck.js"></script>
+</body>
+</html>

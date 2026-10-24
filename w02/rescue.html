@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>จำลองการช่วยเหลือ สัปดาห์ที่ 2</title>
+<meta name="description" content="จำลองการช่วยเหลือผู้ถูกไฟฟ้าดูด 5 สถานการณ์ เลือกทำทีละขั้น ตัดไฟ เลือกวัสดุฉนวน แยกผู้ประสบภัย ตรวจการหายใจ โทร 1669 ใช้แทนหุ่นและอุปกรณ์จริงในใบงานที่ 1.2 วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+    .who { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; }
+    .who label { display: flex; flex-direction: column; font-size: 15px; color: var(--ink-soft); gap: 4px; }
+    .who input { width: 100%; }
+    @media (max-width: 620px) { .who { grid-template-columns: 1fr 1fr; } .who label:first-child { grid-column: 1 / -1; } }
+
+    .progress { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); }
+    .progress .bar { flex: 1; height: 12px; background: var(--cream-deep); border-radius: 99px; overflow: hidden; }
+    .progress .bar i { display: block; height: 100%; width: 0; background: var(--teal); transition: width .3s; }
+
+    .scenes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 16px; }
+    .sc { background: #fff; border: 2px solid var(--line); border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+    .sc.done { border-color: var(--teal); }
+    .sc-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .sc-head h2 { margin: 0; font-size: 21px; }
+    .pic { background: var(--paper); border: 1.5px dashed var(--line); border-radius: 14px; overflow: hidden; }
+    .pic svg { width: 100%; height: auto; display: block; }
+    .pic svg text { font-family: 'Kanit', sans-serif; }
+    .story { margin: 0; font-size: 16px; line-height: 1.5; }
+    .stp { border-top: 1px dashed var(--line); padding-top: 10px; }
+    .stp[hidden] { display: none; }
+    .stp .q { margin: 0 0 6px; font-weight: 700; font-size: 16.5px; }
+    .stp .q .chip { margin-right: 6px; }
+    .opts { display: flex; flex-direction: column; gap: 6px; }
+    .opts button { text-align: left; font: 400 16px/1.4 var(--font-body); padding: 9px 12px; border-radius: 12px; border: 2px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+    .opts button:hover:not(:disabled) { border-color: var(--teal); }
+    .opts button:disabled { cursor: default; }
+    .opts button.right { border-color: var(--green); background: var(--green-soft); }
+    .opts button.wrong { border-color: var(--rose); background: var(--rose-soft); }
+    .opts button.dim { opacity: .55; }
+    .fb { margin: 8px 0 0; padding: 8px 12px; border-radius: 10px; font-size: 15.5px; line-height: 1.45; }
+    .fb.ok { background: var(--green-soft); }
+    .fb.bad { background: var(--rose-soft); }
+    .fb .also { display: block; margin-top: 4px; color: var(--ink-soft); }
+    .sc-score { font-family: var(--font-display); color: var(--teal); }
+    .wsno { font-size: 13px; color: var(--ink-soft); }
+    #result .big { font: 500 40px var(--font-display); color: var(--teal); }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="cpr.html">ฝึกจังหวะ CPR</a> · <a href="worksheet.html">ใบงาน 1.2</a>
+        <span class="spacer"></span>
+        <a href="answers.html">สำหรับครู 🔒</a>
+    </nav>
+
+    <header class="card">
+        <span class="chip orange">สัปดาห์ที่ 2 · ใบงานที่ 1.2 ตอนที่ 1</span>
+        <h1 style="margin-top:8px">🚑 จำลองการช่วยเหลือผู้ถูกไฟฟ้าดูด</h1>
+        <p class="muted" style="margin:0 0 10px">ใช้แทนหุ่นและอุปกรณ์จริง · ทำเป็นกลุ่ม 5 สถานการณ์ อ่านเรื่อง ดูภาพ แล้ว<b>เลือกทำทีละขั้น</b>
+            · ตอบได้ขั้นละครั้งเดียว ถูกได้ 1 คะแนน · ผิดแล้วจะเห็นผลที่เกิดขึ้นและคำตอบที่ถูก
+            · เสร็จแล้ว<b>เขียนผลลงตารางตอนที่ 1 ในใบงานด้วยภาษาของกลุ่มเอง</b></p>
+        <div class="who">
+            <label>ชื่อ-สกุล ตัวแทนกลุ่ม <input class="name-field" type="text" id="name" autocomplete="name"></label>
+            <label>ชั้น <input class="name-field" type="text" id="room"></label>
+            <label>เลขที่ (ตัวแทน) <input class="name-field" type="text" id="no" inputmode="numeric"></label>
+        </div>
+        <div class="progress" style="margin-top:12px"><span id="progTxt">ทำแล้ว 0 / 0 ขั้น</span><span class="bar"><i id="progBar"></i></span><span id="scoreTxt">0 คะแนน</span></div>
+    </header>
+
+    <main class="scenes" id="scenes"></main>
+
+    <section class="card no-print" id="submitBox" style="margin-top:16px">
+        <h2>ส่งผลการฝึก</h2>
+        <p class="muted" style="margin:0 0 6px">ทำครบทุกขั้นแล้วกดส่ง เพื่อรับใบคะแนน (บันทึกเป็น PDF ส่งใน Google Classroom)</p>
+        <div class="btn-row">
+            <button class="btn orange" type="button" id="submit" disabled>📨 ส่งผลการฝึก</button>
+            <button class="btn ghost" type="button" id="restart">↺ เริ่มใหม่ทั้งหมด</button>
+        </div>
+        <div id="result" aria-live="polite"></div>
+    </section>
+
+    <section class="score-sheet" id="scoreSheet" hidden aria-label="ใบรายงานคะแนน"></section>
+</div>
+
+<script src="../assets/js/common.js"></script>
+<script src="rescue-data.js"></script>
+<script src="../assets/js/scoresheet.js"></script>
+<script>
+/* ===========================================
+   จำลองการช่วยเหลือ: เลือกทำทีละขั้น ขั้นละครั้งเดียว (คะแนนนับครั้งแรก)
+   ความคืบหน้าเก็บใน localStorage เปิดหน้าใหม่ไม่หาย
+   =========================================== */
+(function () {
+    'use strict';
+    const C = LessonCommon, D = RESCUE, KEY = 'bee-w02-rescue';
+    const WS = { 1: 'ช่องที่ 1 ตัดไฟ', 2: 'ช่องที่ 2 วัสดุฉนวน', 3: 'ช่องที่ 3 แยกผู้ประสบภัย', 4: 'ช่องที่ 4 ตรวจ/โทร 1669' };
+    const state = C.store.get(KEY + '-progress', {});   // { 's1-0': ลำดับตัวเลือกที่เลือก }
+    const startedAt = C.store.get(KEY + '-start', Date.now());
+    C.store.set(KEY + '-start', startedAt);
+    const root = document.getElementById('scenes');
+    const total = D.scenes.reduce((a, s) => a + s.steps.length, 0);
+
+    root.innerHTML = D.scenes.map((s, n) => `
+        <article class="sc" data-id="${s.id}">
+            <div class="sc-head"><h2>สถานการณ์ที่ ${n + 1} ${C.esc(s.title)}</h2><span class="chip">${C.esc(s.place)}</span></div>
+            <div class="pic"><svg viewBox="0 0 400 220" role="img" aria-label="ภาพสถานการณ์ที่ ${n + 1}">${s.svg}</svg></div>
+            <p class="story">${C.esc(s.story)}</p>
+            ${s.steps.map((st, j) => `
+            <div class="stp" data-k="${s.id}-${j}" hidden>
+                <p class="q"><span class="chip orange">${C.esc(st.tag)}</span>${C.esc(st.q)} <span class="wsno">→ ใบงาน ${WS[st.ws]}</span></p>
+                <div class="opts">${st.opts.map((o, i) => `<button type="button" data-i="${i}">${C.esc(o.t)}</button>`).join('')}</div>
+                <div class="fb-box"></div>
+            </div>`).join('')}
+            <div class="sc-score" hidden></div>
+        </article>`).join('');
+
+    const okIndex = st => st.opts.findIndex(o => o.ok);
+
+    function render(card) {
+        const s = D.scenes.find(x => x.id === card.dataset.id);
+        let open = true, got = 0, done = 0;
+        s.steps.forEach((st, j) => {
+            const k = `${s.id}-${j}`, el = card.querySelector(`[data-k="${k}"]`);
+            el.hidden = !open;
+            const pick = state[k];
+            if (pick == null) { open = false; return; }
+            done++;
+            const right = okIndex(st);
+            if (pick === right) got++;
+            el.querySelectorAll('.opts button').forEach((b, i) => {
+                b.disabled = true;
+                b.classList.toggle('right', i === right);
+                b.classList.toggle('wrong', i === pick && i !== right);
+                b.classList.toggle('dim', i !== right && i !== pick);
+            });
+            const o = st.opts[pick];
+            el.querySelector('.fb-box').innerHTML = pick === right
+                ? `<p class="fb ok">${C.esc(o.fb)}</p>`
+                : `<p class="fb bad">${C.esc(o.fb)}<span class="also">ที่ถูกคือ: ${C.esc(st.opts[right].t)} — ${C.esc(st.opts[right].fb.replace(/^✅\s*/, ''))}</span></p>`;
+        });
+        const sc = card.querySelector('.sc-score');
+        card.classList.toggle('done', done === s.steps.length);
+        sc.hidden = done !== s.steps.length;
+        sc.textContent = `สถานการณ์นี้ได้ ${got} / ${s.steps.length} คะแนน`;
+    }
+
+    function summary() {
+        let done = 0, score = 0;
+        D.scenes.forEach(s => s.steps.forEach((st, j) => {
+            const p = state[`${s.id}-${j}`];
+            if (p != null) { done++; if (p === okIndex(st)) score++; }
+        }));
+        document.getElementById('progTxt').textContent = `ทำแล้ว ${done} / ${total} ขั้น`;
+        document.getElementById('progBar').style.width = (done / total * 100) + '%';
+        document.getElementById('scoreTxt').textContent = `${score} คะแนน`;
+        document.getElementById('submit').disabled = done < total;
+        return score;
+    }
+
+    root.addEventListener('click', e => {
+        const b = e.target.closest('.opts button'); if (!b || b.disabled) return;
+        const stp = b.closest('.stp'), k = stp.dataset.k;
+        if (state[k] != null) return;
+        state[k] = +b.dataset.i;
+        C.store.set(KEY + '-progress', state);
+        const card = b.closest('.sc');
+        render(card); summary();
+        const next = stp.nextElementSibling;
+        if (next && next.classList.contains('stp')) next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    /* ชื่อผู้ส่ง จำไว้ในเครื่อง */
+    ['name', 'room', 'no'].forEach(f => {
+        const el = document.getElementById(f);
+        el.value = C.store.get('bee-who-' + f, '');
+        el.addEventListener('input', () => C.store.set('bee-who-' + f, el.value.trim()));
+    });
+
+    document.getElementById('submit').addEventListener('click', () => {
+        const who = { name: document.getElementById('name').value.trim(), room: document.getElementById('room').value.trim(), no: document.getElementById('no').value.trim() };
+        const res = document.getElementById('result');
+        if (!who.name || !who.room || !who.no) { res.innerHTML = '<p class="bad">กรอกชื่อ ชั้น และเลขที่ของตัวแทนกลุ่มให้ครบก่อนส่ง</p>'; return; }
+        const score = summary(), submittedAt = Date.now();
+        const k = KEY + ':' + who.room + ':' + who.no + ':' + who.name;
+        const rec = C.store.get(k, { history: [] });
+        rec.history.push({ score, total, submittedAt });
+        C.store.set(k, rec);
+        const detail = `<table class="ss-sets"><tr><th>สถานการณ์</th><th>เรื่อง</th><th>ได้</th></tr>${D.scenes.map((s, i) => {
+            const got = s.steps.filter((st, j) => state[`${s.id}-${j}`] === okIndex(st)).length;
+            return `<tr><td>${i + 1}</td><td>${C.esc(s.title)}</td><td>${got} / ${s.steps.length}</td></tr>`;
+        }).join('')}<tr><th colspan="2" style="text-align:right">รวม</th><td><b>${score}</b> / ${total}</td></tr></table>`;
+        ScoreSheet.render(document.getElementById('scoreSheet'), {
+            kind: 'จำลองการช่วยเหลือผู้ถูกไฟฟ้าดูด (ใบงานที่ 1.2 ตอนที่ 1)', chapter: D.chapter, who, score, total, submittedAt, startedAt, attempt: rec.history.length, detailHTML: detail
+        });
+        res.innerHTML = `<p class="ok" style="margin:10px 0 0">ส่งเรียบร้อย · ${C.thaiDateTime(submittedAt)}</p>
+            <div class="big">${score} / ${total} คะแนน</div>
+            <div class="score-actions" style="margin-top:10px"><button class="btn orange" type="button" id="printScore">🖨 พิมพ์ใบคะแนน</button>
+            <span class="hint">เลือกปลายทาง “บันทึกเป็น PDF” แล้วแนบส่งใน Google Classroom</span></div>`;
+        document.getElementById('printScore').addEventListener('click', () => ScoreSheet.print());
+        document.getElementById('scoreSheet').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    let armed = false;
+    document.getElementById('restart').addEventListener('click', e => {
+        if (!armed) { armed = true; e.currentTarget.textContent = '⚠ กดอีกครั้งเพื่อล้างคำตอบทั้งหมด'; return; }
+        Object.keys(state).forEach(k => delete state[k]);
+        C.store.set(KEY + '-progress', {}); C.store.set(KEY + '-start', Date.now());
+        location.reload();
+    });
+
+    root.querySelectorAll('.sc').forEach(render);
+    summary();
+})();
+</script>
+</body>
+</html>

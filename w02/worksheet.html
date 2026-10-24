@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ใบงานที่ 1.2 ช่วยเหลือผู้ถูกไฟฟ้าดูด</title>
+<meta name="description" content="ใบงานที่ 1.2 การช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น สำหรับพิมพ์ A4 ทำได้โดยไม่ต้องมีหุ่นฝึก CPR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+    .ws h2 { font-size: 20px; margin: 18px 0 6px; color: var(--teal); }
+    .ws h3 { font-size: 17px; margin: 12px 0 4px; }
+    .ws p, .ws li { margin: 2px 0; }
+    .ws ol, .ws ul { margin: 2px 0 6px; padding-left: 26px; }
+    .ws table.grid { width: 100%; border-collapse: collapse; margin: 6px 0 10px; background: #fff; }
+    .ws table.grid th, .ws table.grid td { border: 1px solid #555; padding: 4px 8px; vertical-align: top; }
+    .ws table.grid th { background: var(--cream); font-family: var(--font-display); font-weight: 500; text-align: center; }
+    .ws table.grid td.n { text-align: center; width: 2.4em; }
+    .ws table.grid.blank td { height: 12mm; }
+    .ws table.score td:nth-child(3), .ws table.score td:nth-child(4) { text-align: center; width: 6em; }
+    .ws .lines div { border-bottom: 1px dotted #000; height: 9mm; }
+    .ws .head { border: 1.5px solid #000; padding: 8px 12px; margin-bottom: 10px; background: #fff; }
+    .ws .head .line { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .ws .head .line span { white-space: nowrap; }
+    .ws .warn { border-left: 4px solid var(--rose); background: var(--rose-soft); padding: 6px 12px; border-radius: 0 10px 10px 0; }
+    .ws .note { font-size: 14px; color: var(--ink-soft); }
+    @media print {
+        .ws h2 { color: #000; font-size: 14.5pt; margin: 4mm 0 1.5mm; }
+        .ws h3 { font-size: 13.5pt; }
+        .ws table.grid th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .ws table.grid th, .ws table.grid td { border-color: #000; font-size: 12.5pt; }
+        .ws .warn { background: none; border: 1px solid #000; border-radius: 0; }
+        body.doc { font-size: 12pt; line-height: 1.4; }
+        .ws .avoid { break-inside: avoid; }
+        .ws table.grid { break-inside: avoid; }
+        .ws h2, .ws h3 { break-after: avoid; }
+        .ws table.grid.blank td { height: 10mm; }
+        .ws .lines div { height: 8mm; }
+        .ws .head { font-size: 11.5pt; }
+        .ws .note { font-size: 10.5pt; color: #333; }
+    }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="rescue.html">จำลองการช่วยเหลือ</a> · <a href="cpr.html">ฝึกจังหวะ CPR</a> · <a href="exercises.html">แบบฝึกหัด</a> · <a href="quiz.html">แบบทดสอบ</a>
+    </nav>
+
+    <section class="card no-print">
+        <span class="chip orange">สัปดาห์ที่ 2 · ปฏิบัติ 3 ชั่วโมง</span>
+        <h1 style="margin-top:8px">ใบงานที่ 1.2 สำหรับพิมพ์</h1>
+        <p class="muted" style="margin:0 0 10px">พิมพ์กลุ่มละ 1 ชุด (กลุ่มละ 4–5 คน) · ตอนที่ 1 ทำคู่กับหน้า <a href="rescue.html">🚑 จำลองการช่วยเหลือ</a>
+            · ตอนที่ 2 ทำคู่กับหน้า <a href="cpr.html">❤️ ฝึกจังหวะ CPR</a> และหมอนหรือผ้าขนหนูม้วน (ไม่ต้องมีหุ่นฝึก CPR)</p>
+        <div class="btn-row"><button class="btn" type="button" onclick="window.print()">🖨 พิมพ์ใบงาน (A4)</button><a class="btn ghost" href="rescue.html">🚑 จำลองการช่วยเหลือ</a><a class="btn ghost" href="cpr.html">❤️ ฝึกจังหวะ CPR</a></div>
+    </section>
+
+    <main class="ws card">
+        <div class="head">
+            <b>ใบงานที่ 1.2 การช่วยเหลือและปฐมพยาบาลผู้ถูกไฟฟ้าดูด</b><br>
+            วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) · หน่วยที่ 1 · สอนครั้งที่ 2 (ทฤษฎี 1 ชม. ปฏิบัติ 3 ชม.)
+            <div class="line" style="margin-top:4px"><span>กลุ่มที่ ........</span><span>ชั้น ...............</span><span>วันที่ ......../......../........</span><span>คะแนน ............ / 25</span></div>
+            <div class="line"><span>สมาชิก (ชื่อ-เลขที่)</span><span>1. ..................................................</span><span>2. ..................................................</span></div>
+            <div class="line"><span>3. ..................................................</span><span>4. ..................................................</span><span>5. ..................................................</span></div>
+        </div>
+
+        <h2>1. ผลลัพธ์การเรียนรู้จากการปฏิบัติงาน</h2>
+        <p>ผู้เรียนสามารถช่วยเหลือผู้ประสบอันตรายจากไฟฟ้าดูดได้ตามลำดับขั้นตอนอย่างปลอดภัย และปฏิบัติการช่วยฟื้นคืนชีพด้วยการผายปอดร่วมกับการนวดหัวใจภายนอกได้อย่างถูกวิธี</p>
+
+        <h2>2. จุดประสงค์เชิงพฤติกรรม</h2>
+        <p>4.4 อธิบายวิธีการช่วยเหลือผู้ประสบอันตรายจากไฟฟ้าดูดได้ถูกต้อง (K2) · 4.5 ปฏิบัติการช่วยเหลือผู้ประสบอันตรายจากไฟฟ้าดูดได้ตามลำดับขั้นตอน (S2)
+            · 4.6 ปฏิบัติการปฐมพยาบาลผู้ถูกไฟฟ้าดูดด้วยการนวดหัวใจได้ตามแบบที่กำหนด (S2) · 4.7 เตรียมวัสดุอุปกรณ์ให้สอดคล้องกับงาน และปฏิบัติงานด้วยความรับผิดชอบ ตรงต่อเวลา ตามหลักปรัชญาของเศรษฐกิจพอเพียง (A2, Ap1)</p>
+
+        <h2>3. เครื่องมือ วัสดุ และอุปกรณ์</h2>
+        <ul>
+            <li>หน้าเว็บ <b>จำลองการช่วยเหลือ</b> (5 สถานการณ์) และ <b>ฝึกจังหวะ CPR</b> เปิดบนมือถือกลุ่มละ 1–2 เครื่อง หรือดูบนจอโปรเจกเตอร์</li>
+            <li>หมอน หรือผ้าขนหนู 2–3 ผืนม้วนมัดยาง ใช้แทนหุ่นฝึก · ไม้บรรทัด · เทปกระดาษ · นาฬิกาจับเวลา (มือถือ)</li>
+            <li>ใบงานที่ 1.2 และเครื่องเขียน</li>
+            <li>ถ้าโรงฝึกงานมีหุ่นฝึก CPR วัสดุฉนวน (ไม้แห้ง เชือกแห้ง ผ้าแห้ง) ถุงมือยาง และแผ่นยาง ใช้ตารางชุดเดียวกันฝึกกับของจริงได้</li>
+        </ul>
+
+        <h2>4. คำแนะนำ / ข้อควรระวัง</h2>
+        <div class="warn avoid">
+            <ol style="margin:0">
+                <li>ฝึกกับหมอน หุ่นฝึก หรือหน้าเว็บเท่านั้น <b>ห้ามฝึกกดหน้าอกกับคนจริงโดยเด็ดขาด</b> เพราะอาจทำให้ซี่โครงหักหรืออวัยวะภายในบาดเจ็บ</li>
+                <li>วางหมอนบนพื้นหรือโต๊ะที่แข็ง ถ้ามีหุ่นฝึก ทำความสะอาดด้วยแผ่นเช็ดฆ่าเชื้อทุกครั้งก่อนและหลังเปลี่ยนผู้ฝึก</li>
+                <li>วัสดุฉนวนที่ใช้แยกผู้ประสบภัยต้อง <b>แห้งสนิท</b> ห้ามใช้วัสดุที่เปียกชื้นหรือเป็นโลหะ</li>
+                <li>ปฏิบัติตามลำดับขั้นตอนอย่างเคร่งครัด ไม่ข้ามขั้นตอน และแบ่งหน้าที่ในกลุ่ม: ผู้ปฏิบัติ ผู้จับเวลา ผู้สังเกต ผู้บันทึก แล้วสลับกัน</li>
+            </ol>
+        </div>
+
+        <h2>5. ขั้นตอนการปฏิบัติงาน</h2>
+        <div>
+            <h3>ตอนที่ 1 การช่วยเหลือผู้ประสบอันตรายจากไฟฟ้าดูด · 35 นาที</h3>
+            <ol>
+                <li>เปิดหน้า <b>จำลองการช่วยเหลือ</b> อ่านสถานการณ์ทั้ง 5 แล้วเลือกทำทีละขั้น (ตัดไฟ เลือกวัสดุ ยืน แยก ตรวจ โทร)</li>
+                <li>ปฏิบัติการตัดกระแสไฟฟ้าที่สวิตช์หรือเบรกเกอร์เป็นอันดับแรก (ชี้ตำแหน่งปลั๊กหรือเบรกเกอร์ในห้องจริงให้ครูดู)</li>
+                <li>กรณีตัดกระแสไฟฟ้าไม่ได้ ให้ยืนบนฉนวนแห้ง แล้วใช้วัสดุฉนวนแห้งเขี่ยหรือผลักผู้ประสบภัยออกจากตัวนำ โดยไม่สัมผัสตัวโดยตรง</li>
+                <li>ตรวจการตอบสนอง (ตบไหล่ เรียกดัง ๆ) และการหายใจ ไม่เกิน 10 วินาที ถ้าไม่ตอบสนองหรือหายใจเฮือก ให้โทร 1669 แล้วบันทึกผลลงตาราง</li>
+            </ol>
+            <table class="grid blank">
+                <tr><th>ที่</th><th style="width:30%">ขั้นตอนการช่วยเหลือ</th><th>ผลการปฏิบัติ</th><th>เหตุผลประกอบ</th></tr>
+                <tr><td class="n">1</td><td>ตัดกระแสไฟฟ้าที่สวิตช์หรือเบรกเกอร์</td><td></td><td></td></tr>
+                <tr><td class="n">2</td><td>เลือกวัสดุฉนวนที่ใช้แยกผู้ประสบภัย</td><td></td><td></td></tr>
+                <tr><td class="n">3</td><td>แยกผู้ประสบภัยออกจากตัวนำไฟฟ้า</td><td></td><td></td></tr>
+                <tr><td class="n">4</td><td>ตรวจการตอบสนองและการหายใจ แล้วโทร 1669</td><td></td><td></td></tr>
+            </table>
+            <p class="note">* ใบงานต้นฉบับให้ “ตรวจการหายใจและคลำชีพจร” ปรับตามแนวทาง AHA 2025: ผู้ช่วยเหลือทั่วไปให้ดูการตอบสนองและการหายใจ ไม่ต้องคลำชีพจร</p>
+        </div>
+
+        <div>
+            <h3>ตอนที่ 2 การปฐมพยาบาลด้วยการช่วยฟื้นคืนชีพ (CPR) · 40 นาที</h3>
+            <ol>
+                <li>จัดหมอนให้อยู่บนพื้นแข็ง ทำเครื่องหมายกึ่งกลางหน้าอก และฝึกแตะตำแหน่งวางมือในหน้า <b>ฝึกจังหวะ CPR</b> ข้อ ①</li>
+                <li>วางส้นมือกึ่งกลางหน้าอก (ครึ่งล่างของกระดูกหน้าอก) มืออีกข้างวางทับ ประสานนิ้ว แขนเหยียดตรง ไหล่อยู่เหนือมือ</li>
+                <li>กดหน้าอกลึก 5–6 ซม. (เพื่อนตั้งไม้บรรทัดดู) ในอัตรา 100–120 ครั้งต่อนาที ปล่อยให้คืนตัวสุดทุกครั้ง ขณะที่เพื่อนอีกคนแตะตามในหน้าฝึกจังหวะ</li>
+                <li>กดหน้าอก 30 ครั้ง สลับกับเป่าปาก 2 ครั้ง (เปิดทางเดินหายใจด้วยการกดหน้าผาก เชยคาง · ฝึกท่าเท่านั้น ไม่ต้องเป่าจริง) ให้ครบ 5 รอบ แล้วบันทึกผล</li>
+            </ol>
+            <table class="grid blank">
+                <tr><th>ที่</th><th style="width:38%">รายการปฏิบัติ</th><th>ค่าที่วัดได้</th><th>หมายเหตุ</th></tr>
+                <tr><td class="n">1</td><td>ความลึกในการกดหน้าอก (ซม.)</td><td></td><td></td></tr>
+                <tr><td class="n">2</td><td>อัตราการกดหน้าอก (ครั้ง/นาที)</td><td></td><td></td></tr>
+                <tr><td class="n">3</td><td>จำนวนรอบที่ปฏิบัติได้ครบ (รอบ)</td><td></td><td></td></tr>
+                <tr><td class="n">4</td><td>อัตราส่วนการนวดหัวใจต่อการเป่าปาก</td><td></td><td></td></tr>
+            </table>
+            <p class="note">* ใบงานต้นฉบับให้เปิดทางเดินหายใจและเป่าปากก่อนนวดหัวใจ ปรับตามแนวทาง AHA 2025 ให้เริ่มกดหน้าอกก่อน (C-A-B) · ความลึกจากหมอนเป็นค่าประมาณ</p>
+        </div>
+
+        <div class="avoid">
+            <h2>6. สรุปและวิจารณ์ผล</h2>
+            <p class="muted" style="margin:0">ขั้นตอนใดที่กลุ่มทำผิดหรือทำได้ยากที่สุด เพราะอะไร ถ้าเจอเหตุการณ์จริงจะทำอย่างไรให้ปลอดภัยและรวดเร็ว</p>
+            <div class="lines"><div></div><div></div><div></div><div></div></div>
+        </div>
+
+        <div class="avoid">
+            <h2>7. การประเมินผล (คะแนนเต็ม 25 ผ่านที่ 20 คะแนน ร้อยละ 80)</h2>
+            <table class="grid score">
+                <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+                <tr><td class="n">1</td><td>ตัดกระแสไฟฟ้าและเลือกวัสดุฉนวนได้ถูกต้อง (ตอนที่ 1)</td><td>5</td><td></td></tr>
+                <tr><td class="n">2</td><td>แยกผู้ประสบภัยออกจากตัวนำได้ถูกวิธี ไม่สัมผัสโดยตรง (ตอนที่ 1)</td><td>5</td><td></td></tr>
+                <tr><td class="n">3</td><td>วางมือถูกตำแหน่งและกดลึก 5–6 ซม. (ตอนที่ 2)</td><td>5</td><td></td></tr>
+                <tr><td class="n">4</td><td>กดหน้าอกได้ในอัตรา 100–120 ครั้ง/นาที ครบ 5 รอบ (ตอนที่ 2)</td><td>5</td><td></td></tr>
+                <tr><td class="n">5</td><td>ความละเอียด รอบคอบ และส่งงานตรงเวลา</td><td>5</td><td></td></tr>
+                <tr><th colspan="2" style="text-align:right">รวม</th><td><b>25</b></td><td></td></tr>
+            </table>
+            <p class="muted" style="font-size:13px">ที่มา: ใบงานที่ 1.2 ในแผนการจัดการเรียนรู้ วิชา 20100-1005 (นายจิรกิตติ์ วราภรณ์) · ปรับให้ฝึกด้วยหน้าเว็บและหมอนแทนหุ่นฝึก และปรับลำดับ CPR ตามแนวทาง American Heart Association ปี 2025</p>
+        </div>
+    </main>
+</div>
+</body>
+</html>
