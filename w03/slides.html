@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สัปดาห์ที่ 3 สัญลักษณ์ทางไฟฟ้าและอิเล็กทรอนิกส์</title>
+<meta name="description" content="สไลด์ประกอบการสอน วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) สัปดาห์ที่ 3 หน่วยที่ 2 สัญลักษณ์ทางไฟฟ้าและอิเล็กทรอนิกส์ มาตรฐาน IEC และ ANSI ระดับ ปวช.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/deck.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    /* ส่วนเพิ่มเฉพาะสัปดาห์นี้ */
+    .tile { text-align: center; padding: 26px 22px; }
+    .tile .icon { margin-bottom: 6px; }
+    .tile h3 { margin: 0 0 6px; }
+    .tile p { font-size: 30px; line-height: 1.4; margin: 0; color: var(--ink-soft); }
+    .diagram svg text { font-family: 'Kanit', sans-serif; }
+    table.plan td, table.plan th { font-size: 28px; padding: 7px 18px; }
+    table.plan td:first-child { font-family: var(--font-mono); white-space: nowrap; }
+    table.plan tr.brk td { background: var(--cream); color: var(--ink-soft); }
+    .vwrap { flex: 0 0 1000px; }
+    .vside { display: flex; flex-direction: column; gap: 18px; }
+    /* การ์ดสัญลักษณ์ */
+    .st { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .st.g3c { grid-template-columns: repeat(3, 1fr); }
+    .st .box { text-align: center; padding: 12px 10px 14px; }
+    .st .box svg.sym { width: 222px; height: 148px; color: var(--ink); }
+    .st h3 { font-size: 32px; margin: 2px 0 0; color: var(--ink); }
+    .st h3 small { display: block; font: 400 22px var(--font-body); color: var(--ink-soft); }
+    .st p { font-size: 24px; line-height: 1.35; margin: 4px 0 0; color: var(--ink-soft); }
+    .st .no { font: 700 30px var(--font-mono); color: var(--sec); }
+    /* สไลด์อุปกรณ์ทีละตัว */
+    .dev { flex: 1; display: grid; grid-template-columns: 600px 1fr; gap: 54px; align-items: center; padding-bottom: 40px; }
+    .dev > div:last-child { min-width: 0; }
+    .dev .pic { background: #fff; border: 3px solid var(--line); border-radius: 30px; display: grid; place-items: center; height: 500px; position: relative; }
+    .dev .pic svg.sym { width: 510px; height: 340px; color: var(--ink); }
+    .dev .pic .lbl { position: absolute; top: 18px; left: 26px; font: 600 34px var(--font-mono); color: var(--sec); }
+    .dev .pic .std { position: absolute; bottom: 14px; right: 22px; font: 500 22px var(--font-display); color: var(--ink-soft); }
+    .dev h3.nm { font: 500 60px/1.2 var(--font-display); margin: 0 0 6px; }
+    .dev h3.nm small { font-size: 36px; color: var(--ink-soft); font-weight: 400; }
+    .dev .fn { font-size: 38px; margin: 0 0 18px; }
+    .dev .like { background: var(--sun-soft); border-radius: 20px; padding: 14px 24px; font-size: 32px; margin-bottom: 16px; }
+    .dev .like b { color: #8a5d00; }
+    .mini { display: flex; gap: 22px; align-items: center; font-size: 28px; }
+    .mini svg.sym { width: 150px; height: 100px; color: var(--ink); flex: 0 0 auto; }
+    /* เทียบ IEC/ANSI */
+    table.std td svg.sym { width: 165px; height: 110px; color: var(--ink); }
+    table.std td, table.std th { padding: 4px 24px; font-size: 32px; vertical-align: middle; }
+    .vrow .sit svg.sym { width: 150px; height: 100px; color: var(--ink); margin-right: 10px; }
+    /* ฝึกทายสัญลักษณ์ */
+    .flash .fbox { flex: 0 0 860px; height: 600px; background: #fff; border: 4px solid var(--line); border-radius: 36px; display: grid; place-items: center; }
+    .flash .fbox svg.sym { width: 780px; height: 520px; color: var(--ink); }
+    .flash .fans { display: flex; flex-direction: column; gap: 18px; }
+    .flash .fans h3 { font: 500 58px/1.2 var(--font-display); color: var(--sec); margin: 0; }
+    .flash .fans p { font-size: 34px; margin: 0; }
+    .grid-draw svg { width: 100%; height: auto; display: block; }
+    .chk li { margin-bottom: 14px !important; }
+    .pics4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .pics4 .box { text-align: center; padding: 14px 10px; }
+    .pics4 svg.sym { width: 260px; height: 173px; color: var(--ink); }
+    .pics4 h3 { font-size: 32px; margin: 0; color: var(--ink); }
+    .pics4 .frag { font: 500 30px var(--font-display); }
+    .pics4 .frag.y { color: var(--green); } .pics4 .frag.n { color: var(--rose); }
+    .bank { padding-right: 340px; display: flex; flex-wrap: wrap; gap: 10px 14px; }
+    .bank span { background: var(--cream); border: 2px solid var(--line); border-radius: 999px; padding: 2px 18px; font-size: 26px; }
+</style>
+</head>
+<body>
+<!--
+  วิธีใช้: ← → / Space เลื่อนสไลด์และแสดงทีละขั้น · T สารบัญ · F เต็มจอ · ลิงก์ #หมายเลข ไปสไลด์นั้น
+  ป้าย "เสริม" = เนื้อหาเพิ่มจากแหล่งภายนอก มีเลขอ้างอิง [n] ลิงก์ไปสไลด์เอกสารอ้างอิง
+  ภาพสัญลักษณ์ทั้งหมดวาดด้วย assets/js/symbols.js (<span data-sym="ชื่อ">)
+-->
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage" data-head="สัปดาห์ที่ 3 · หน่วยที่ 2" data-foot="">
+
+<!-- ============ เปิดบทเรียน ============ -->
+<section class="slide cover" data-title="ปก: สัปดาห์ที่ 3">
+  <div class="body center" style="top:0;bottom:0">
+    <div class="chapter reveal d1">สัปดาห์ที่ 3 · หน่วยที่ 2</div>
+    <h1 class="reveal d2">สัญลักษณ์ทางไฟฟ้า<br>และอิเล็กทรอนิกส์</h1>
+    <div class="sub reveal d3">วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) · ระดับ ปวช.</div>
+    <div class="tiny reveal d4" style="margin-top:40px">เรียบเรียงจากแผนการจัดการเรียนรู้ ใบความรู้ที่ 2.1 และใบงานที่ 2.1 · มาตรฐาน IEC 60617 และ ANSI</div>
+  </div>
+  <div class="reveal d3" style="position:absolute;right:150px;top:250px;display:grid;grid-template-columns:repeat(3,200px);gap:16px;color:var(--teal)">
+    <span data-sym="cell" style="font-size:66px"></span><span data-sym="lamp" style="font-size:66px"></span><span data-sym="res" style="font-size:66px"></span>
+    <span data-sym="led" style="font-size:66px"></span><span data-sym="sw" style="font-size:66px"></span><span data-sym="gnd" style="font-size:66px"></span>
+    <span data-sym="cap" style="font-size:66px"></span><span data-sym="npn" style="font-size:66px"></span><span data-sym="fuse" style="font-size:66px"></span>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="แผนการเรียนวันนี้" data-title="แผนการเรียนวันนี้ 4 ชั่วโมง">
+  <div class="body" style="top:112px">
+    <div class="kicker reveal">วันนี้เราจะทำอะไรบ้าง · ทฤษฎี 1 ชม. ปฏิบัติ 3 ชม.</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:10px">4 ชั่วโมง ดู ทาย วาด ตรวจ</h2>
+    <table class="t left plan reveal d2" style="width:100%">
+      <tr><th>เวลา</th><th>ช่วง</th><th>นักเรียนทำอะไร</th></tr>
+      <tr><td>0:00–0:15</td><td>เปิดเรื่อง + ทบทวนสัปดาห์ที่ 2</td><td>🙋 ภาพไหนอ่านง่ายกว่า? · 💬 คิด-คู่-แชร์ · 🙋 โหวต</td></tr>
+      <tr><td>0:15–0:30</td><td>แบบทดสอบก่อนเรียน</td><td>📱 ทำ 20 ข้อบนมือถือ</td></tr>
+      <tr><td>0:30–0:50</td><td>5.1 ความหมาย + IEC / ANSI</td><td>🎬 นับสัญลักษณ์ในคลิป · 🙋 อันนี้ IEC หรือ ANSI?</td></tr>
+      <tr><td>0:50–1:10</td><td>5.2 สัญลักษณ์อุปกรณ์ไฟฟ้า</td><td>🙋 ขั้วไหนบวก? · 🃏 จับคู่สัญลักษณ์</td></tr>
+      <tr><td>1:10–1:45</td><td>5.3 อิเล็กทรอนิกส์ + 5.4 ข้อควรระวัง</td><td>🎬 ดูของจริง · 🙋 ทายชื่อ · 🔎 จับผิดวงจร</td></tr>
+      <tr class="brk"><td>1:45–1:55</td><td>พัก</td><td>☕</td></tr>
+      <tr><td>1:55–3:15</td><td>ใบงานที่ 2.1 ตอนที่ 1–3</td><td>✏️ วาดบนกริด · 🃏 จับคู่ชื่อ-หน้าที่ · 🔁 แลกตรวจกับเพื่อน</td></tr>
+      <tr><td>3:15–3:40</td><td>ฝึกทายสัญลักษณ์ 3 รอบ</td><td>🎯 ครูเปิดภาพ ทั้งห้องตอบพร้อมกัน · 🎲 สุ่มเลขที่</td></tr>
+      <tr><td>3:40–4:00</td><td>สรุป + แบบทดสอบหลังเรียน</td><td>🎲 คำถามท้ายใบความรู้ · 📱 ทำ 20 ข้อ เทียบกับก่อนเรียน</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-tag="เปิดเรื่อง" data-title="🙋 ภาพไหนอ่านง่ายกว่า">
+  <div class="body">
+    <div><span class="act-badge">🙋 เปิดเรื่อง · คิด-คู่-แชร์</span><span class="act-meta">ดูภาพ 1 นาที · คุยกับเพื่อน 3 นาที</span></div>
+    <h2 class="title" style="font-size:54px;margin-bottom:16px">วงจรเดียวกัน วาด 2 แบบ ช่างทั่วโลกเลือกแบบไหน?</h2>
+    <div class="row" style="gap:30px;align-items:flex-start">
+      <div class="box diagram" style="padding:10px 14px">
+        <h3 style="font-size:34px;margin:0">แบบ ก วาดรูปของจริง</h3>
+        <svg viewBox="0 0 600 360" aria-label="ภาพวาดของจริง: ถ่าน สวิตช์ และหลอดไฟ ต่อกันด้วยสายไฟ">
+          <path d="M150 90 C90 90, 70 150, 90 230 S180 318, 250 312" stroke="#d6455d" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M270 88 C340 60, 380 90, 430 118" stroke="#d6455d" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M380 312 C460 320, 520 280, 478 212" stroke="#2a2733" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <rect x="130" y="68" width="150" height="46" rx="14" fill="#cfd4dc" stroke="#5d5866" stroke-width="4"/>
+          <path d="M190 90 L232 58" stroke="#2a2733" stroke-width="10" stroke-linecap="round"/><circle cx="190" cy="90" r="8" fill="#2a2733"/>
+          <circle cx="470" cy="128" r="54" fill="#fff6c8" stroke="#c99400" stroke-width="4"/>
+          <path d="M452 150 Q470 104 488 150" stroke="#e8742c" stroke-width="4" fill="none"/>
+          <rect x="448" y="176" width="44" height="40" rx="6" fill="#a8a1b0" stroke="#5d5866" stroke-width="3"/>
+          <path d="M448 188 H492 M448 200 H492" stroke="#5d5866" stroke-width="3"/>
+          <rect x="250" y="286" width="130" height="54" rx="12" fill="#2a2733"/>
+          <rect x="250" y="286" width="44" height="54" rx="12" fill="#e8742c"/>
+          <rect x="380" y="302" width="12" height="22" rx="3" fill="#a8a1b0"/>
+          <text x="420" y="300" font-size="30" fill="#2a2733" text-anchor="middle">+</text><text x="232" y="300" font-size="30" fill="#2a2733" text-anchor="middle">−</text>
+        </svg>
+      </div>
+      <div class="box diagram" style="padding:10px 14px">
+        <h3 style="font-size:34px;margin:0">แบบ ข ใช้สัญลักษณ์</h3>
+        <svg viewBox="0 0 600 360" style="color:#2a2733" aria-label="แบบวงจร: แบตเตอรี่ สวิตช์ และหลอดไฟ ใช้สัญลักษณ์">
+          <path d="M80 70 H240 M360 70 H520 V130 M520 250 V300 H360 M240 300 H80 V70" stroke="#2a2733" stroke-width="3.5" fill="none"/>
+          <use href="#s-sw" x="240" y="30" width="120" height="80"/>
+          <use href="#s-lamp" x="460" y="150" width="120" height="80" transform="rotate(90 520 190)"/>
+          <use href="#s-cell" x="240" y="260" width="120" height="80"/>
+          <text x="300" y="34" font-size="26" fill="#00878f" text-anchor="middle">SW1</text>
+          <text x="560" y="198" font-size="26" fill="#00878f">LP1</text>
+          <text x="300" y="356" font-size="26" fill="#00878f" text-anchor="middle">BT1 3 V</text>
+        </svg>
+      </div>
+      <div class="vside" style="flex:0 0 380px">
+        <div class="qbox"><h3>💬 คุยกับเพื่อน</h3><ol>
+          <li>แบบไหน<b>วาดเร็ว</b>กว่า?</li>
+          <li>ถ้าวงจรมี 100 ชิ้น แบบไหนอ่านง่าย?</li>
+          <li>ช่างญี่ปุ่นอ่านแบบ ข ออกไหม?</li>
+        </ol></div>
+        <div data-timer="240" class="sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-tag="ทบทวน" data-title="🙋 ทบทวนสัปดาห์ที่ 2">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทบทวนสัปดาห์ที่ 2</span><span class="act-meta">ทั้งห้องโหวต ข้อละ 1 นาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:22px">จริง หรือ ไม่จริง?</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span>เจอคนถูกไฟดูด สิ่งแรกคือรีบวิ่งไปดึงตัวออกมา</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">✅ จริง</button><button type="button" class="opt">❌ ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ไม่จริง! <b>ตัดไฟก่อน</b> (ถอดปลั๊ก/สับเบรกเกอร์) ห้ามใช้มือเปล่า</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span>กดหน้าอกลึก 5–6 ซม. อัตรา 100–120 ครั้งต่อนาที</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">✅ จริง</button><button type="button" class="opt">❌ ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">จริง! กด 30 ครั้ง สลับเป่าปาก 2 ครั้ง</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">3</span>เบอร์โทรแจ้งเหตุเจ็บป่วยฉุกเฉินคือ 1669</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">✅ จริง</button><button type="button" class="opt">❌ ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">จริง! สถาบันการแพทย์ฉุกเฉินแห่งชาติ (สพฉ.)</div></div></div>
+    <div class="src">ที่มา: ใบความรู้ที่ 1.2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="📱 แบบทดสอบก่อนเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">📱 แบบทดสอบก่อนเรียน</span><span class="act-meta">รายบุคคล · 15 นาที</span></div>
+    <h2 class="title">ยังไม่รู้ก็ไม่เป็นไร ตอบตามที่คิด!</h2>
+    <p>เปิด <b>แบบทดสอบ</b> → เลือก “<b>ก่อนเรียน</b>” → ทำ 20 ข้อ → กดส่ง</p>
+    <p class="small"><a href="quiz.html">quiz.html</a> (ลิงก์อยู่ในหน้าแรกของวิชา · สัปดาห์ที่ 3)</p>
+    <div style="margin-top:20px"><div data-timer="900"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="เปิดบทเรียน" data-title="สัปดาห์นี้เรียนอะไร">
+  <div class="body">
+    <div class="kicker reveal">สัปดาห์นี้เรียนอะไร</div>
+    <h2 class="title reveal d1">สัญลักษณ์ทางไฟฟ้าและอิเล็กทรอนิกส์</h2>
+    <div class="grid g2" style="gap:30px">
+      <div class="box reveal d2" style="--sec:var(--orange)"><h3>5.1 ความหมายและความสำคัญ</h3><p class="small">สัญลักษณ์คืออะไร · ทำไมต้องใช้ · IEC กับ ANSI</p></div>
+      <div class="box reveal d3"><h3>5.2 อุปกรณ์ไฟฟ้าพื้นฐาน</h3><p class="small">แบตเตอรี่ สวิตช์ ฟิวส์ หลอดไฟ มอเตอร์ สายดิน</p></div>
+      <div class="box reveal d4" style="--sec:var(--blue)"><h3>5.3 อุปกรณ์อิเล็กทรอนิกส์พื้นฐาน</h3><p class="small">R C L ไดโอด LED ทรานซิสเตอร์</p></div>
+      <div class="box reveal d5" style="--sec:var(--rose)"><h3>5.4 ข้อควรระวังในการเขียน</h3><p class="small">จุดต่อสาย · ขั้ว + − · ชื่อกำกับ R1 = 220 Ω</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:24px">🛠️ ปฏิบัติ 3 ชม.: <b>ใบงานที่ 2.1</b> การเขียนและจำแนกสัญลักษณ์ (ใช้แค่ดินสอ ยางลบ ไม้บรรทัด)</p>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="ผลลัพธ์การเรียนรู้และสมรรถนะ">
+  <div class="body">
+    <div class="kicker reveal">ผลลัพธ์การเรียนรู้ระดับหน่วย</div>
+    <h2 class="title reveal d1">อ่านเป็น เขียนเป็น <span class="hl">ตามมาตรฐานสากล</span></h2>
+    <ul class="pts reveal d2">
+      <li><b>3.1</b> แสดงความรู้เกี่ยวกับสัญลักษณ์ทางไฟฟ้าและอิเล็กทรอนิกส์ตามมาตรฐานสากล</li>
+      <li><b>3.3</b> อ่านและเขียนสัญลักษณ์ทางไฟฟ้าและอิเล็กทรอนิกส์ พร้อมทั้งอ่านแบบวงจรเบื้องต้นได้อย่างถูกต้อง</li>
+    </ul>
+    <p class="small reveal d3" style="margin-top:20px">อ้างอิงมาตรฐานฝีมือแรงงานแห่งชาติ ช่างอิเล็กทรอนิกส์ ระดับ 1 · สมรรถนะย่อยข้อ 1.2 สัญลักษณ์ทางไฟฟ้าและอิเล็กทรอนิกส์</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 1–3 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="จุดประสงค์เชิงพฤติกรรม">
+  <div class="body">
+    <div class="kicker reveal">จุดประสงค์เชิงพฤติกรรม</div>
+    <h2 class="title reveal d1">เรียนจบสัปดาห์นี้ นักเรียนสามารถ…</h2>
+    <ol class="steps">
+      <li class="reveal d2">บอก<b>ความหมายและความสำคัญ</b>ของสัญลักษณ์ทางไฟฟ้าและอิเล็กทรอนิกส์ได้ถูกต้อง <span class="small c-sec">(4.1)</span></li>
+      <li class="reveal d3">ระบุ<b>ชื่อสัญลักษณ์</b>ของอุปกรณ์ที่กำหนดให้ได้ถูกต้อง <span class="small c-sec">(4.2)</span></li>
+      <li class="reveal d4"><b>เขียนสัญลักษณ์</b>ตามมาตรฐานได้ถูกต้องตามแบบที่กำหนด <span class="small c-sec">(4.5)</span></li>
+      <li class="reveal d5">เตรียมอุปกรณ์ ทำงานอย่างรับผิดชอบ ตรงต่อเวลา <span class="small c-sec">(4.7)</span></li>
+    </ol>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 4 และใบงานที่ 2.1 ข้อ 4 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ============ 5.1 ความหมายและความสำคัญ ============ -->
+<section class="slide section sec-1" data-tag="5.1 ความหมาย" data-title="5.1 ความหมายและความสำคัญของสัญลักษณ์">
+  <div class="big-no">5.1</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.1</div>
+    <h2 class="reveal d1">ความหมายและความสำคัญ<br>ของสัญลักษณ์</h2>
+    <p class="lead reveal d2">ภาษาภาพที่ช่างทั่วโลกใช้คุยกัน</p>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="สัญลักษณ์คืออะไร">
+  <div class="body">
+    <div class="kicker reveal">สัญลักษณ์ (Symbol) คืออะไร</div>
+    <h2 class="title reveal d1">รูปภาพง่าย ๆ ที่<span class="hl">ใช้แทนอุปกรณ์</span>แต่ละชนิด</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box tint tile reveal d2"><div class="icon">🚸</div><h3>ป้ายจราจร</h3><p>เห็นป้ายก็รู้ทันที<br>ไม่ต้องอ่านตัวหนังสือ</p></div>
+      <div class="box sun tile reveal d3"><div class="icon">📶 🔋 🔊</div><h3>ไอคอนในมือถือ</h3><p>ทุกคนเข้าใจตรงกัน<br>ไม่ว่าจะพูดภาษาอะไร</p></div>
+      <div class="box orange tile reveal d4"><div class="mini" style="justify-content:center;color:var(--ink)"><span data-sym="lamp"></span></div><h3>สัญลักษณ์ไฟฟ้า</h3><p>วงกลมมีกากบาท<br>= หลอดไฟ ทั่วโลก</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:26px">ใช้แทน “การวาดรูปอุปกรณ์จริง” ซึ่งเสียเวลาและไม่ชัดเจน</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="ทำไมต้องใช้สัญลักษณ์">
+  <div class="body">
+    <div class="kicker reveal">ความสำคัญของสัญลักษณ์</div>
+    <h2 class="title reveal d1">ทำไมช่างต้องใช้สัญลักษณ์?</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box tint tile frag"><div class="icon">✍️⚡</div><h3>เขียนเร็ว เป็นระเบียบ</h3><p>วงจร 100 ชิ้น<br>ก็เขียนได้ในแผ่นเดียว</p></div>
+      <div class="box sun tile frag"><div class="icon">🌏🤝</div><h3>อ่านตรงกันทั่วโลก</h3><p>ช่างไทย ญี่ปุ่น เยอรมัน<br>อ่านแบบเดียวกันได้</p></div>
+      <div class="box green tile frag"><div class="icon">🔧📄</div><h3>ซ่อมง่าย เป็นหลักฐาน</h3><p>รู้ว่าแต่ละตัวอยู่ตรงไหน<br>ใช้ผลิต ติดตั้ง ซ่อมบำรุง</p></div>
+    </div>
+    <p class="small frag" style="margin-top:26px">😱 ถ้าไม่มีแบบ… ช่างที่ต้องซ่อม<b>จำไม่ได้</b>ว่าตัวเองต่ออะไรไว้ เมื่อเวลาผ่านไป</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act watch" data-title="🎬 นับสัญลักษณ์ในคลิป">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป + นับ</span><span class="act-meta">5 นาที · จดชื่อสัญลักษณ์ที่เห็นให้ได้มากที่สุด</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ในคลิปมีสัญลักษณ์อะไรบ้าง? จดให้ได้มากที่สุด</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="tdiO3xSDKS4" data-title="สัญลักษณ์ในวงจรไฟฟ้า" data-credit="Newtun engineering" data-len="4:47"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>✍️ ดูไป จดไป</h3><ol>
+          <li>จดชื่อสัญลักษณ์ที่เห็นลงกระดาษ</li>
+          <li>ตัวไหน<b>เคยเห็นของจริง</b> ใส่ดาว ⭐</li>
+          <li>จบคลิป เทียบกับเพื่อนข้าง ๆ</li>
+        </ol></div>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ: ช่อง YouTube Newtun engineering <sup class="ref"><a href="#videos">[V1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="มาตรฐาน 2 ระบบ IEC และ ANSI">
+  <div class="body">
+    <div class="kicker reveal">มาตรฐานสัญลักษณ์ที่นิยม มี 2 ระบบหลัก</div>
+    <h2 class="title reveal d1">IEC 🌍 กับ ANSI 🗽</h2>
+    <div class="grid g2" style="gap:34px">
+      <div class="box tint reveal d2"><h3>IEC 60617</h3>
+        <p class="small" style="margin:0 0 8px"><b>I</b>nternational <b>E</b>lectrotechnical <b>C</b>ommission</p>
+        <p class="small" style="margin:0">นิยมใช้ใน<b>ยุโรป</b>และ<b>ประเทศไทย</b> 👉 ใบงานวันนี้ใช้ระบบนี้</p></div>
+      <div class="box orange reveal d3" style="--sec:var(--orange)"><h3>ANSI</h3>
+        <p class="small" style="margin:0 0 8px"><b>A</b>merican <b>N</b>ational <b>S</b>tandards <b>I</b>nstitute</p>
+        <p class="small" style="margin:0">นิยมใช้ใน<b>สหรัฐอเมริกา</b> · เจอบ่อยในคู่มือเครื่องจักรจากอเมริกา</p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:24px">ต้อง<b>อ่านได้ทั้งสองระบบ</b> เพราะเครื่องจักรที่นำเข้ามักใช้ระบบของประเทศผู้ผลิต</p>
+    <p class="tiny reveal d5" style="margin:0"><span class="extra">เสริม</span> สัญลักษณ์แบบอเมริกันอยู่ในมาตรฐาน IEEE 315 (ANSI Y32.2) · IEC 60617 ปัจจุบันเป็นฐานข้อมูลออนไลน์ <sup class="ref"><a href="#refs">[2]</a></sup> <sup class="ref"><a href="#refs">[3]</a></sup></p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup> · IEC <sup class="ref"><a href="#refs">[2]</a></sup> · IEEE <sup class="ref"><a href="#refs">[3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="เทียบ IEC กับ ANSI">
+  <div class="body" style="top:116px">
+    <div class="kicker reveal">อุปกรณ์เดียวกัน วาดต่างกัน</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:12px">เทียบให้เห็นชัด ๆ</h2>
+    <table class="t std reveal d2" style="width:100%">
+      <tr><th>อุปกรณ์</th><th>IEC (ยุโรป · ไทย)</th><th>ANSI (สหรัฐฯ)</th><th>จำง่าย ๆ</th></tr>
+      <tr><td>ตัวต้านทาน</td><td><span data-sym="res"></span></td><td class="frag"><span data-sym="res-ansi"></span></td><td class="frag" style="font-size:27px">กล่อง 🆚 ฟันเลื่อย</td></tr>
+      <tr><td>ฟิวส์</td><td><span data-sym="fuse"></span></td><td class="frag"><span data-sym="fuse-ansi"></span></td><td class="frag" style="font-size:27px">กล่องมีเส้นผ่า 🆚 ตัว S</td></tr>
+      <tr><td>หลอดไฟ</td><td><span data-sym="lamp"></span></td><td class="frag"><span data-sym="lamp-ansi"></span></td><td class="frag" style="font-size:27px">กากบาท 🆚 ไส้หลอด</td></tr>
+      <tr><td>ตัวเก็บประจุมีขั้ว</td><td><span data-sym="cap-pol"></span></td><td class="frag"><span data-sym="cap-pol-ansi"></span></td><td class="frag" style="font-size:27px">แผ่นทึบ 🆚 แผ่นโค้ง</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.1 (ตัวต้านทาน) <sup class="ref"><a href="#refs">[1]</a></sup> · <span class="extra" style="font-size:18px">เสริม</span> ฟิวส์ หลอดไฟ ตัวเก็บประจุ <sup class="ref"><a href="#refs">[3]</a></sup> <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🙋 โหวต: IEC หรือ ANSI">
+  <div class="body">
+    <div><span class="act-badge">🙋 โหวต</span><span class="act-meta">ทั้งห้องยกมือ ข้อละ 30 วินาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">อันนี้เป็นแบบ IEC หรือ ANSI?</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span><span data-sym="res-ansi"></span>ตัวต้านทาน</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">IEC</button><button type="button" class="opt">ANSI</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ANSI · เส้นซิกแซก</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span><span data-sym="fuse"></span>ฟิวส์</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">IEC</button><button type="button" class="opt">ANSI</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">IEC · กล่องมีเส้นผ่ากลาง</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">3</span><span data-sym="lamp-ansi"></span>หลอดไฟ</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">IEC</button><button type="button" class="opt">ANSI</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ANSI · มีรูปไส้หลอดข้างใน</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">4</span><span data-sym="pot"></span>ตัวต้านทานปรับค่าได้</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">IEC</button><button type="button" class="opt">ANSI</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">IEC · ตัวกล่อง + ลูกศรปรับค่า</div></div></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="กฎเหล็ก: ใช้มาตรฐานเดียวทั้งแบบ">
+  <div class="body">
+    <div class="kicker reveal">กฎเหล็กของการเขียนแบบ</div>
+    <h2 class="title reveal d1">แบบ 1 แผ่น = <span class="hl">มาตรฐานเดียว</span> ตลอดทั้งแบบ</h2>
+    <div class="row center" style="gap:50px">
+      <div class="box rose reveal d2" style="text-align:center">
+        <h3 class="c-rose">❌ ปนกัน</h3>
+        <div class="mini" style="justify-content:center"><span data-sym="res"></span><span data-sym="res-ansi"></span></div>
+        <p class="small">R1 กล่อง R2 ซิกแซก<br>คนอ่าน: “สองตัวนี้ต่างกันเหรอ?” 🤔</p>
+      </div>
+      <div class="box green reveal d3" style="text-align:center">
+        <h3 class="c-green">✅ แบบเดียวกัน</h3>
+        <div class="mini" style="justify-content:center"><span data-sym="res"></span><span data-sym="res"></span></div>
+        <p class="small">ตัวต้านทานทุกตัวหน้าตาเหมือนกัน<br>อ่านง่าย ไม่สับสน</p>
+      </div>
+    </div>
+    <p class="small reveal d4" style="margin-top:26px">เหมือนเขียนรายงาน ใช้ฟอนต์ไทยกับตัวเลขไทยปนอารบิกมั่ว ๆ ก็อ่านยาก 😵</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act watch" data-title="🎬 มาตรฐานการเขียนแบบไฟฟ้า">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป (3 นาทีแรก)</span><span class="act-meta">แล้วตอบพร้อมกันทั้งห้อง</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">มาตรฐานไม่ได้มีแค่ IEC กับ ANSI นะ!</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="k8ElIK5epew" data-title="การเขียนแบบไฟฟ้าตามมาตรฐานต่างๆ IEC, IEC60617, IEEE, NFPA, JIS, GB" data-credit="CAD Auto" data-len="10:29" data-end="180"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>🙋 ตอบพร้อมกัน</h3><ol>
+          <li>มาตรฐานของญี่ปุ่นชื่ออะไร?</li>
+          <li>ประเทศไทยนิยมใช้มาตรฐานไหน?</li>
+          <li>ทำไมช่างควรอ่านได้หลายแบบ?</li>
+        </ol></div>
+        <p class="tiny" style="margin:0">คลิปสาธิตในโปรแกรม AutoCAD · ดูเฉพาะช่วงแนะนำมาตรฐาน</p>
+      </div>
+    </div>
+    <div class="src">วิดีโอ: ช่อง YouTube CAD Auto <sup class="ref"><a href="#videos">[V2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="🎲 ฝึกคิด 5.1">
+  <div class="body">
+    <div><span class="act-badge">🎲 ฝึกคิด 5.1</span><span class="act-meta">คุยกับเพื่อนข้าง ๆ 2 นาที แล้วสุ่มเลขที่ตอบ</span></div>
+    <h2 class="title" style="font-size:56px">คำถามท้ายใบความรู้</h2>
+    <div class="row">
+      <ol class="steps" style="flex:1.5">
+        <li>เหตุใดในการเขียนแบบวงจรจึงใช้<b>สัญลักษณ์แทนการวาดรูปอุปกรณ์จริง</b></li>
+        <li>มาตรฐานสัญลักษณ์ที่นิยมใช้มีกี่ระบบ อะไรบ้าง และ<b>ประเทศไทยนิยมใช้ระบบใด</b></li>
+      </ol>
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;align-items:flex-start"><div data-timer="120" class="sm"></div><div data-picker="40"></div></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 7 คำถามที่ 1–2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ============ 5.2 อุปกรณ์ไฟฟ้าพื้นฐาน ============ -->
+<section class="slide section sec-2" data-tag="5.2 อุปกรณ์ไฟฟ้า" data-title="5.2 สัญลักษณ์ของอุปกรณ์ไฟฟ้าพื้นฐาน">
+  <div class="big-no">5.2</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.2</div>
+    <h2 class="reveal d1">สัญลักษณ์ของ<br>อุปกรณ์ไฟฟ้าพื้นฐาน</h2>
+    <p class="lead reveal d2">แหล่งจ่าย ตัวควบคุม ตัวป้องกัน โหลด และสายไฟ</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ภาพที่ 2.1 สัญลักษณ์อุปกรณ์ไฟฟ้าพื้นฐาน">
+  <div class="body" style="top:116px">
+    <div class="kicker reveal">ภาพที่ 2.1 สัญลักษณ์ของอุปกรณ์ไฟฟ้าพื้นฐาน</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:14px">8 ตัวที่ต้องจำให้ได้</h2>
+    <div class="st reveal d2">
+      <div class="box"><span data-sym="cell"></span><h3>แบตเตอรี่<small>Battery</small></h3></div>
+      <div class="box"><span data-sym="sw"></span><h3>สวิตช์<small>Switch</small></h3></div>
+      <div class="box"><span data-sym="fuse"></span><h3>ฟิวส์<small>Fuse</small></h3></div>
+      <div class="box"><span data-sym="lamp"></span><h3>หลอดไฟ<small>Lamp</small></h3></div>
+      <div class="box"><span data-sym="motor"></span><h3>มอเตอร์<small>Motor</small></h3></div>
+      <div class="box"><span data-sym="gnd"></span><h3>สายดิน<small>Ground</small></h3></div>
+      <div class="box"><span data-sym="junction"></span><h3>จุดต่อสาย<small>Junction</small></h3></div>
+      <div class="box"><span data-sym="hop"></span><h3>สายไขว้<small>ไม่ต่อกัน</small></h3></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.1 (วาดใหม่) <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="แบตเตอรี่ (Battery)">
+  <div class="body">
+    <div class="kicker reveal">แหล่งจ่ายไฟฟ้า</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">BT1</span><span data-sym="cell"></span><span class="std">IEC</span></div>
+      <div>
+        <h3 class="nm reveal d2">แบตเตอรี่ <small>Battery</small></h3>
+        <p class="fn reveal d2">จ่ายพลังงานไฟฟ้า<b>กระแสตรง</b>ให้วงจร</p>
+        <div class="like frag">🔑 <b>เส้นยาว = ขั้วบวก (+)</b> · เส้นสั้นหนา = ขั้วลบ (−)</div>
+        <div class="like frag" style="background:var(--teal-soft)">จำง่าย: “<b>ยาว</b>ก็<b>บวก</b>เพิ่ม” ➕ เครื่องหมายบวกต้องใช้เส้นยาวกว่า</div>
+        <p class="tiny frag" style="margin:0"><span class="extra">เสริม</span> ถ้าวาดแผ่นคู่เดียวเรียก <b>เซลล์</b> หลายคู่ต่อกันเรียก <b>แบตเตอรี่</b> <span data-sym="batt" style="font-size:30px"></span> <sup class="ref"><a href="#refs">[4]</a></sup></p>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.2, 5.4 <sup class="ref"><a href="#refs">[1]</a></sup> · Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🙋 ทายก่อนเฉลย: ขั้วไหนบวก">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทายก่อนเฉลย</span><span class="act-meta">ชี้ซ้ายหรือขวา พร้อมกันทั้งห้อง · 1 นาที</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:16px">แบตเตอรี่ 2 ตัวนี้ ขั้วบวก (+) อยู่ด้านไหน?</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span><svg class="sym" viewBox="0 0 120 80" style="width:150px;height:100px;color:var(--ink);margin-right:10px"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><path d="M0 40 H54 M66 40 H120 M66 16 V64"/><path d="M54 28 V52" stroke-width="7"/></g></svg>(ไม่ได้เขียน + −)</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">👈 ซ้าย</button><button type="button" class="opt">👉 ขวา</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ขวา · เส้น<b>ยาว</b>อยู่ขวา = ขั้วบวก</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span><svg class="sym" viewBox="0 0 120 80" style="width:150px;height:100px;color:var(--ink);margin-right:10px"><g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><path d="M0 40 H54 M66 40 H120 M54 16 V64"/><path d="M66 28 V52" stroke-width="7"/></g></svg>(ไม่ได้เขียน + −)</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">👈 ซ้าย</button><button type="button" class="opt">👉 ขวา</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ซ้าย · เส้นยาวอยู่ซ้าย · แต่<b>ควรเขียน + กำกับด้วย</b> จะได้ไม่พลาด</div></div></div>
+    <p class="small" style="margin-top:16px">ต่อกลับขั้วแล้วจะเกิดอะไร? 👉 อุปกรณ์บางตัว<b>เสียทันที</b> (เรียนต่อในหัวข้อ 5.4)</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="สวิตช์ (Switch)">
+  <div class="body">
+    <div class="kicker reveal">ตัวควบคุม</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">SW1</span><span data-sym="sw"></span><span class="std">IEC</span></div>
+      <div>
+        <h3 class="nm reveal d2">สวิตช์ <small>Switch</small></h3>
+        <p class="fn reveal d2"><b>เปิด-ปิดวงจร</b> ให้กระแสไหลหรือหยุดไหล</p>
+        <div class="like frag">🚪 เหมือน<b>ประตู</b> · ก้านยกขึ้น = ประตูเปิด กระแสผ่านไม่ได้ (วงจรเปิด)</div>
+        <div class="mini frag"><span data-sym="push"></span><span><span class="extra">เสริม</span> <b>สวิตช์กดติด ปล่อยดับ</b> (Push Button) เช่น กริ่งหน้าบ้าน ปุ่มสตาร์ตเครื่องจักร <sup class="ref"><a href="#refs">[4]</a></sup></span></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.1 <sup class="ref"><a href="#refs">[1]</a></sup> · Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ฟิวส์ (Fuse)">
+  <div class="body">
+    <div class="kicker reveal">ตัวป้องกัน</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">F1</span><span data-sym="fuse"></span><span class="std">IEC</span></div>
+      <div>
+        <h3 class="nm reveal d2">ฟิวส์ <small>Fuse</small></h3>
+        <p class="fn reveal d2"><b>ขาดและตัดวงจร</b> เมื่อกระแสไหลเกินกำหนด</p>
+        <div class="like frag">🦸 เหมือน<b>ฮีโร่ที่ยอมเสียสละ</b> · ฟิวส์ขาดเอง เพื่อไม่ให้อุปกรณ์อื่นพังหรือไฟไหม้</div>
+        <div class="like frag" style="background:var(--rose-soft)">⚠️ ระวังสับสน: ฟิวส์ = กล่อง<b>มีเส้นผ่ากลาง</b> · ตัวต้านทาน = กล่อง<b>ว่าง</b></div>
+        <div class="mini frag"><span data-sym="fuse"></span><span>🆚</span><span data-sym="res"></span></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.1 <sup class="ref"><a href="#refs">[1]</a></sup> · หน้าที่ของฟิวส์: สัปดาห์ที่ 1 ใบความรู้ที่ 1.1</div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="หลอดไฟและมอเตอร์ (โหลด)">
+  <div class="body">
+    <div class="kicker reveal">โหลด (Load) = อุปกรณ์ที่ใช้ไฟฟ้า</div>
+    <h2 class="title reveal d1" style="font-size:60px">วงกลมเหมือนกัน ดูของข้างใน!</h2>
+    <div class="grid g3" style="gap:26px">
+      <div class="box tint tile reveal d2"><div class="mini" style="justify-content:center"><span data-sym="lamp"></span></div><h3>หลอดไฟ LP</h3><p>กากบาทในวงกลม<br>ไฟฟ้า → <b>แสงสว่าง</b> 💡</p></div>
+      <div class="box sun tile reveal d3"><div class="mini" style="justify-content:center"><span data-sym="motor"></span></div><h3>มอเตอร์ M</h3><p>ตัว M ในวงกลม<br>ไฟฟ้า → <b>การหมุน</b> 🌀</p></div>
+      <div class="box green tile reveal d4"><div class="mini" style="justify-content:center"><span data-sym="spk"></span></div><h3>ลำโพง LS <span class="extra">เสริม</span></h3><p>รูปกรวยลำโพง<br>ไฟฟ้า → <b>เสียง</b> 🔊</p></div>
+    </div>
+    <p class="small reveal d5" style="margin-top:24px">🔎 วงกลมมีตัวอักษร: <b>M</b> มอเตอร์ · <b>V</b> โวลต์มิเตอร์ · <b>A</b> แอมมิเตอร์ (เรียนวัดไฟฟ้าในหน่วยต่อไป)</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.1 <sup class="ref"><a href="#refs">[1]</a></sup> · ลำโพง เครื่องวัด <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="สายดิน (Ground)">
+  <div class="body">
+    <div class="kicker reveal">สายไฟและจุดอ้างอิง</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span data-sym="gnd"></span><span class="std">IEC</span></div>
+      <div>
+        <h3 class="nm reveal d2">สายดิน <small>Ground / Earth</small></h3>
+        <p class="fn reveal d2">ต่อลงดิน · เป็นจุดอ้างอิง <b>0 โวลต์</b> ของวงจร</p>
+        <div class="like frag">🪜 จำง่าย: เส้น 3 เส้น<b>สั้นลงเรื่อย ๆ</b> เหมือนกำลังมุดลงไปในดิน</div>
+        <div class="like frag" style="background:var(--teal-soft)">🔙 สัปดาห์ที่ 1: สายดินพา<b>ไฟรั่ว</b>ลงดิน แทนที่จะไหลผ่านตัวเรา</div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.1 <sup class="ref"><a href="#refs">[1]</a></sup> · Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="จุดต่อสายกับสายไขว้">
+  <div class="body">
+    <div class="kicker reveal">สายไฟในแบบวงจร</div>
+    <h2 class="title reveal d1" style="font-size:60px">สี่แยก 🚦 กับ สะพานลอย 🌉</h2>
+    <div class="grid g2" style="gap:34px">
+      <div class="box green reveal d2" style="text-align:center"><div class="mini" style="justify-content:center"><span data-sym="junction" style="font-size:48px"></span></div>
+        <h3 class="c-green">จุดต่อสาย (Junction)</h3><p class="small">มี<b>จุดทึบ ●</b> = สายต่อถึงกัน<br>เหมือนสี่แยก รถเลี้ยวไปทางไหนก็ได้</p></div>
+      <div class="box blue reveal d3" style="text-align:center"><div class="mini" style="justify-content:center"><span data-sym="hop" style="font-size:48px"></span></div>
+        <h3 class="c-blue">สายไขว้ (ไม่ต่อกัน)</h3><p class="small">เส้นโค้งข้าม หรือไขว้กัน<b>ไม่มีจุด</b><br>เหมือนสะพานลอย ผ่านกันเฉย ๆ</p></div>
+    </div>
+    <p class="small reveal d4" style="margin-top:22px">👉 จุดเดียวสำคัญมาก! รายละเอียดอยู่ในหัวข้อ 5.4</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.1 และข้อ 5.4 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="เสริม: แหล่งจ่ายไฟสลับและเครื่องวัด">
+  <div class="body">
+    <div class="kicker reveal">สัญลักษณ์อื่นที่เจอบ่อย <span class="extra">เสริม</span></div>
+    <h2 class="title reveal d1" style="font-size:60px">เจอแน่ ในวงจรจริง</h2>
+    <div class="st reveal d2">
+      <div class="box"><span data-sym="ac"></span><h3>แหล่งจ่ายไฟสลับ<small>AC Source</small></h3><p>คลื่นไซน์ในวงกลม<br>เช่น ไฟบ้าน 230 V</p></div>
+      <div class="box"><span data-sym="batt"></span><h3>แบตเตอรี่หลายเซลล์<small>Battery</small></h3><p>แผ่นหลายคู่ต่อกัน<br>แรงดันรวมมากขึ้น</p></div>
+      <div class="box"><span data-sym="vm"></span><h3>โวลต์มิเตอร์<small>Voltmeter</small></h3><p>วัดแรงดันไฟฟ้า<br>หน่วย โวลต์ (V)</p></div>
+      <div class="box"><span data-sym="am"></span><h3>แอมมิเตอร์<small>Ammeter</small></h3><p>วัดกระแสไฟฟ้า<br>หน่วย แอมแปร์ (A)</p></div>
+    </div>
+    <div class="src">ที่มา: Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup> · IEC 60617 <sup class="ref"><a href="#refs">[2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🃏 จับคู่ 5.2">
+  <div class="body" style="top:116px">
+    <div><span class="act-badge">🃏 จับคู่สัญลักษณ์</span><span class="act-meta">จับคู่กับเพื่อน · จดคำตอบลงกระดาษ · 3 นาที</span></div>
+    <h2 class="title" style="font-size:52px;margin-bottom:10px">เลข 1–8 คืออะไร? (กดเพื่อเฉลยทีละตัว)</h2>
+    <div class="bank" style="margin-bottom:14px"><span>แบตเตอรี่</span><span>สวิตช์</span><span>ฟิวส์</span><span>หลอดไฟ</span><span>มอเตอร์</span><span>สายดิน</span><span>จุดต่อสาย</span><span>สายไขว้</span></div>
+    <div class="st">
+      <div class="box"><span class="no">1</span> <span data-sym="motor"></span><h3 class="frag">มอเตอร์</h3></div>
+      <div class="box"><span class="no">2</span> <span data-sym="junction"></span><h3 class="frag">จุดต่อสาย</h3></div>
+      <div class="box"><span class="no">3</span> <span data-sym="fuse"></span><h3 class="frag">ฟิวส์</h3></div>
+      <div class="box"><span class="no">4</span> <span data-sym="cell"></span><h3 class="frag">แบตเตอรี่</h3></div>
+      <div class="box"><span class="no">5</span> <span data-sym="cross"></span><h3 class="frag">สายไขว้</h3></div>
+      <div class="box"><span class="no">6</span> <span data-sym="lamp"></span><h3 class="frag">หลอดไฟ</h3></div>
+      <div class="box"><span class="no">7</span> <span data-sym="gnd"></span><h3 class="frag">สายดิน</h3></div>
+      <div class="box"><span class="no">8</span> <span data-sym="sw"></span><h3 class="frag">สวิตช์</h3></div>
+    </div>
+    <div style="position:absolute;right:0;top:0"><div data-timer="180" class="sm"></div></div>
+  </div>
+</section>
+
+<!-- ============ 5.3 อุปกรณ์อิเล็กทรอนิกส์ ============ -->
+<section class="slide section sec-3" data-tag="5.3 อิเล็กทรอนิกส์" data-title="5.3 สัญลักษณ์ของอุปกรณ์อิเล็กทรอนิกส์พื้นฐาน">
+  <div class="big-no">5.3</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.3</div>
+    <h2 class="reveal d1">สัญลักษณ์ของอุปกรณ์<br>อิเล็กทรอนิกส์พื้นฐาน</h2>
+    <p class="lead reveal d2">ตัวเล็ก ๆ บนแผ่นวงจร ที่อยู่ในมือถือทุกเครื่อง</p>
+  </div>
+</section>
+
+<section class="slide sec-3 act watch" data-title="🎬 ของจริงหน้าตาเป็นอย่างไร">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูของจริง</span><span class="act-meta">4 นาที · แล้วตอบพร้อมกัน</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ของจริงหน้าตาแบบนี้ สัญลักษณ์หน้าตาแบบไหน?</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="jkqcAF_J4qc" data-title="บทเรียนที่ 1 | อุปกรณ์อิเล็กทรอนิกส์เบื้องต้น" data-credit="Siripong Srisuwan" data-len="4:29"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>👀 ดูแล้วตอบ</h3><ol>
+          <li>ตัวต้านทานของจริงมี<b>แถบสี</b>ไหม?</li>
+          <li>LED ของจริงขา<b>ยาว-สั้น</b>ต่างกันไหม?</li>
+          <li>อุปกรณ์ไหนมี <b>3 ขา</b>?</li>
+        </ol></div>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ: ช่อง YouTube Siripong Srisuwan <sup class="ref"><a href="#videos">[V3]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ภาพที่ 2.2 สัญลักษณ์อุปกรณ์อิเล็กทรอนิกส์พื้นฐาน">
+  <div class="body" style="top:116px">
+    <div class="kicker reveal">ภาพที่ 2.2 สัญลักษณ์ของอุปกรณ์อิเล็กทรอนิกส์พื้นฐาน</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:14px">อีก 6 ตัว · ตัวอักษรนำหน้าชื่อกำกับ</h2>
+    <div class="st g3c reveal d2">
+      <div class="box"><span data-sym="res"></span><h3>ตัวต้านทาน · <span class="c-sec">R</span><small>Resistor</small></h3></div>
+      <div class="box"><span data-sym="cap"></span><h3>ตัวเก็บประจุ · <span class="c-sec">C</span><small>Capacitor</small></h3></div>
+      <div class="box"><span data-sym="ind"></span><h3>ตัวเหนี่ยวนำ · <span class="c-sec">L</span><small>Inductor</small></h3></div>
+      <div class="box"><span data-sym="diode"></span><h3>ไดโอด · <span class="c-sec">D</span><small>Diode</small></h3></div>
+      <div class="box"><span data-sym="led"></span><h3>ไดโอดเปล่งแสง · <span class="c-sec">LED</span><small>Light Emitting Diode</small></h3></div>
+      <div class="box"><span data-sym="npn"></span><h3>ทรานซิสเตอร์ · <span class="c-sec">Q</span><small>Transistor</small></h3></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.2 (วาดใหม่) <sup class="ref"><a href="#refs">[1]</a></sup> · <span class="extra" style="font-size:18px">เสริม</span> ตัวอักษรนำหน้า <sup class="ref"><a href="#refs">[5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ตัวต้านทาน (Resistor)">
+  <div class="body">
+    <div class="kicker reveal">R · Resistor</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">R1 220 Ω</span><span data-sym="res"></span><span class="std">IEC</span></div>
+      <div>
+        <h3 class="nm reveal d2">ตัวต้านทาน <small>Resistor</small></h3>
+        <p class="fn reveal d2"><b>ต้าน/จำกัด</b>การไหลของกระแสในวงจร</p>
+        <div class="like frag">🚰 เหมือน<b>ท่อที่บีบให้แคบ</b> · น้ำ (กระแส) ไหลได้น้อยลง</div>
+        <div class="mini frag"><span data-sym="pot"></span><span><span class="extra">เสริม</span> <b>ตัวต้านทานปรับค่าได้</b> (VR) มีลูกศร เช่น ปุ่มหมุนปรับเสียงลำโพง <sup class="ref"><a href="#refs">[4]</a></sup></span></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.2 และข้อ 5.4 <sup class="ref"><a href="#refs">[1]</a></sup> · Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ตัวเก็บประจุ (Capacitor)">
+  <div class="body">
+    <div class="kicker reveal">C · Capacitor</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">C1 100 µF</span><span data-sym="cap"></span><span class="std">IEC</span></div>
+      <div>
+        <h3 class="nm reveal d2">ตัวเก็บประจุ <small>Capacitor</small></h3>
+        <p class="fn reveal d2"><b>เก็บและคาย</b>ประจุไฟฟ้า</p>
+        <div class="like frag">🔋 เหมือน<b>พาวเวอร์แบงก์จิ๋ว</b> · เก็บไฟไว้แป๊บเดียว แล้วปล่อยออก</div>
+        <div class="like frag" style="background:var(--rose-soft)">⚠️ แผ่น 2 แผ่น<b>ยาวเท่ากัน</b> = ตัวเก็บประจุ · ยาว-สั้น = แบตเตอรี่</div>
+        <div class="mini frag"><span data-sym="cap-pol"></span><span><span class="extra">เสริม</span> <b>แบบมีขั้ว</b> (อิเล็กโทรไลต์) ต้องเขียน <b>+</b> ต่อกลับขั้วแล้วเสีย/บวมได้ <sup class="ref"><a href="#refs">[4]</a></sup></span></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.2 และข้อ 5.4 <sup class="ref"><a href="#refs">[1]</a></sup> · Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ตัวเหนี่ยวนำ (Inductor)">
+  <div class="body">
+    <div class="kicker reveal">L · Inductor</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">L1</span><span data-sym="ind"></span><span class="std">IEC</span></div>
+      <div>
+        <h3 class="nm reveal d2">ตัวเหนี่ยวนำ <small>Inductor</small></h3>
+        <p class="fn reveal d2"><b>ขดลวด</b> ที่สร้างสนามแม่เหล็กเมื่อมีกระแสไหล</p>
+        <div class="like frag">🌀 หน้าตาเหมือน<b>สปริง</b>ที่ถูกผ่าครึ่ง · ของจริงก็คือลวดพันเป็นขด</div>
+        <div class="mini frag"><span data-sym="xfmr"></span><span><span class="extra">เสริม</span> <b>หม้อแปลงไฟฟ้า</b> = ขดลวด 2 ชุดหันหน้าเข้าหากัน มีเส้นแกนเหล็กตรงกลาง <sup class="ref"><a href="#refs">[4]</a></sup></span></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.2 <sup class="ref"><a href="#refs">[1]</a></sup> · Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไดโอด (Diode)">
+  <div class="body">
+    <div class="kicker reveal">D · Diode</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">D1</span><span data-sym="diode"></span><span class="std" style="left:30px;right:30px;bottom:70px;display:flex;justify-content:space-between;font-size:30px"><b>A (แอโนด)</b><b>K (แคโทด)</b></span></div>
+      <div>
+        <h3 class="nm reveal d2">ไดโอด <small>Diode</small></h3>
+        <p class="fn reveal d2">ยอมให้กระแสไหล<b>ทางเดียว</b></p>
+        <div class="like frag">➡️ <b>ลูกศร (สามเหลี่ยม) ชี้ทางที่กระแสไหลได้</b> · ชนขีดตั้ง = ไหลย้อนไม่ได้</div>
+        <div class="like frag" style="background:var(--teal-soft)">🚇 เหมือน<b>ประตูหมุนรถไฟฟ้า</b> · เข้าได้ทางเดียว ย้อนออกไม่ได้</div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.2 และข้อ 5.4 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="LED และซีเนอร์ไดโอด">
+  <div class="body">
+    <div class="kicker reveal">LED · Light Emitting Diode</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">LED1</span><span data-sym="led"></span><span class="std">IEC</span></div>
+      <div>
+        <h3 class="nm reveal d2">ไดโอดเปล่งแสง <small>LED</small></h3>
+        <p class="fn reveal d2">ไดโอดที่<b>เปล่งแสง</b>เมื่อกระแสไหลผ่าน</p>
+        <div class="like frag">💡 <b>ลูกศรชี้ออก = แสงพุ่งออก</b> · ถ้าลูกศรชี้<b>เข้า</b> = อุปกรณ์รับแสง (โฟโตไดโอด) คนละตัวกัน!</div>
+        <div class="mini frag"><span data-sym="zener"></span><span><span class="extra">เสริม</span> <b>ซีเนอร์ไดโอด</b> ขีดตั้งงอปลายเป็นตัว Z ใช้รักษาแรงดันให้คงที่ <sup class="ref"><a href="#refs">[4]</a></sup></span></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.2 <sup class="ref"><a href="#refs">[1]</a></sup> · Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ทรานซิสเตอร์ (Transistor)">
+  <div class="body">
+    <div class="kicker reveal">Q · Transistor</div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">Q1</span><span data-sym="npn"></span><span class="std">NPN</span></div>
+      <div>
+        <h3 class="nm reveal d2">ทรานซิสเตอร์ <small>Transistor</small></h3>
+        <p class="fn reveal d2">มี <b>3 ขา</b>: B เบส · C คอลเลกเตอร์ · E อิมิตเตอร์ · ใช้เป็น<b>สวิตช์</b>หรือ<b>ขยายสัญญาณ</b></p>
+        <div class="like frag">🎮 เหมือน<b>ก๊อกน้ำ</b> · ไฟนิดเดียวที่ขา B สั่งให้กระแสก้อนใหญ่ไหลจาก C ไป E</div>
+        <div class="mini frag"><span data-sym="pnp"></span><span><span class="extra">เสริม</span> ดู<b>ลูกศรที่ขา E</b>: ชี้ออก = NPN · ชี้เข้า = PNP<br>จำ: NPN = “<b>N</b>ot <b>P</b>ointing i<b>N</b>” <sup class="ref"><a href="#refs">[4]</a></sup></span></div>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ภาพที่ 2.2 <sup class="ref"><a href="#refs">[1]</a></sup> · Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="เสริม: รีเลย์">
+  <div class="body">
+    <div class="kicker reveal">K · Relay <span class="extra">เสริม</span></div>
+    <div class="dev">
+      <div class="pic reveal d1"><span class="lbl">K1</span><span data-sym="relay"></span></div>
+      <div>
+        <h3 class="nm reveal d2">รีเลย์ <small>Relay</small></h3>
+        <p class="fn reveal d2"><b>สวิตช์ที่สั่งด้วยไฟฟ้า</b> · ขดลวด (กล่อง) ดูดหน้าสัมผัส (สวิตช์)</p>
+        <div class="like frag">🧲 เส้นประ = “ขดลวดกับสวิตช์<b>ทำงานคู่กัน</b>” · ไฟน้อยสั่งเปิด-ปิดไฟมากได้</div>
+        <p class="small frag" style="margin:0">เจอในรถยนต์ ตู้ควบคุมเครื่องจักร บ้านอัจฉริยะ</p>
+      </div>
+    </div>
+    <div class="src">ที่มา: Electronic symbol <sup class="ref"><a href="#refs">[4]</a></sup> · Reference designator <sup class="ref"><a href="#refs">[5]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act watch" data-title="🎬 สัญลักษณ์อิเล็กทรอนิกส์เบื้องต้น">
+  <div class="body">
+    <div><span class="act-badge vd">🎬 ดูคลิป + ทวน</span><span class="act-meta">5 นาที · หยุดคลิปให้เพื่อนทายได้</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:18px">ทวนอีกรอบ จากช่างตัวจริง</h2>
+    <div class="row" style="gap:36px">
+      <div class="vwrap"><div data-video="O1cUze2QjNY" data-title="สัญลักษณ์อิเล็กทรอนิกส์เบื้องต้น" data-credit="JEK DIY" data-len="4:34"></div></div>
+      <div class="vside">
+        <div class="qbox"><h3>⏸️ ครูหยุดคลิป แล้วถาม</h3><ol>
+          <li>ตัวนี้ชื่ออะไร?</li>
+          <li>ใช้ตัวอักษรอะไรนำหน้า?</li>
+          <li>มีขั้วไหม?</li>
+        </ol></div>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ: ช่อง YouTube JEK DIY <sup class="ref"><a href="#videos">[V4]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="🙋 ทายชื่อ 5.3">
+  <div class="body">
+    <div><span class="act-badge">🙋 ทายชื่อ</span><span class="act-meta">ยกนิ้ว 1–4 พร้อมกันทั้งห้อง</span></div>
+    <h2 class="title" style="font-size:56px;margin-bottom:14px">สัญลักษณ์นี้คืออะไร?</h2>
+    <div class="row" style="gap:30px;align-items:flex-start">
+      <div class="box tint" style="flex:0 0 420px;text-align:center"><div class="mini" style="justify-content:center"><span data-sym="led" style="font-size:44px"></span></div>
+        <div class="vote one" data-answer="2" style="margin-top:6px">
+          <button type="button" class="opt"><b>1</b> ไดโอด</button><button type="button" class="opt"><b>2</b> โฟโตไดโอด</button><button type="button" class="opt"><b>3</b> LED</button><button type="button" class="reveal">เฉลย</button>
+          <div class="why">LED · ลูกศรชี้ออก</div></div></div>
+      <div class="box sun" style="flex:0 0 420px;text-align:center"><div class="mini" style="justify-content:center"><span data-sym="cap" style="font-size:44px"></span></div>
+        <div class="vote one" data-answer="0" style="margin-top:6px">
+          <button type="button" class="opt"><b>1</b> ตัวเก็บประจุ</button><button type="button" class="opt"><b>2</b> แบตเตอรี่</button><button type="button" class="opt"><b>3</b> สวิตช์</button><button type="button" class="reveal">เฉลย</button>
+          <div class="why">ตัวเก็บประจุ · แผ่นยาวเท่ากัน</div></div></div>
+      <div class="box green" style="flex:1;text-align:center"><div class="mini" style="justify-content:center"><span data-sym="pnp" style="font-size:44px"></span></div>
+        <div class="vote one" data-answer="1" style="margin-top:6px">
+          <button type="button" class="opt"><b>1</b> NPN</button><button type="button" class="opt"><b>2</b> PNP</button><button type="button" class="opt"><b>3</b> ไดโอด</button><button type="button" class="reveal">เฉลย</button>
+          <div class="why">PNP · ลูกศรขา E ชี้เข้า</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5.4 ข้อควรระวัง ============ -->
+<section class="slide section sec-4" data-tag="5.4 ข้อควรระวัง" data-title="5.4 ข้อควรระวังในการเขียนสัญลักษณ์">
+  <div class="big-no">5.4</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.4</div>
+    <h2 class="reveal d1">ข้อควรระวัง<br>ในการเขียนสัญลักษณ์</h2>
+    <p class="lead reveal d2">ผิดจุดเดียว อ่านผิดทั้งวงจร</p>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ข้อควรระวัง 4 ข้อ">
+  <div class="body">
+    <div class="kicker reveal">ข้อควรระวังในการเขียนสัญลักษณ์</div>
+    <h2 class="title reveal d1">4 เรื่องที่ต้องระวัง</h2>
+    <ol class="steps chk">
+      <li class="frag"><b>สัดส่วนสม่ำเสมอ</b> ทั้งแบบ ไม่ใหญ่เล็กปนกัน</li>
+      <li class="frag"><b>มาตรฐานเดียวกัน</b> ไม่ใช้ IEC ปนกับ ANSI</li>
+      <li class="frag c-rose"><b>จุดต่อสาย</b> ต้องเขียนจุดทึบให้ชัด ⭐ ระวังที่สุด!</li>
+      <li class="frag">อุปกรณ์มีขั้ว เขียน <b>+ −</b> ให้ชัด · กำกับ<b>ชื่อและค่า</b>ทุกตัว</li>
+    </ol>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.4 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="จุดต่อสายกับสายไขว้ 4 แบบ">
+  <div class="body" style="top:116px">
+    <div class="kicker reveal">จุดที่ต้องระวังที่สุด</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:16px">ต่อ หรือ ไม่ต่อ? ดูที่<span class="hl">จุดทึบ ●</span></h2>
+    <div class="pics4">
+      <div class="box reveal d2"><span data-sym="junction"></span><h3>ตัว T มีจุด</h3><div class="frag y">✅ ต่อถึงกัน</div></div>
+      <div class="box reveal d3"><span data-sym="junction4"></span><h3>สี่แยกมีจุด</h3><div class="frag y">✅ ต่อถึงกัน</div></div>
+      <div class="box reveal d4"><span data-sym="cross"></span><h3>ไขว้ ไม่มีจุด</h3><div class="frag n">❌ ไม่ต่อกัน</div></div>
+      <div class="box reveal d5"><span data-sym="hop"></span><h3>โค้งข้าม</h3><div class="frag n">❌ ไม่ต่อกัน</div></div>
+    </div>
+    <p class="small frag" style="margin-top:20px"><span class="extra">เสริม</span> ช่างนิยมเขียนจุดต่อ 4 ทางเป็น<b>ตัว T สองจุดเหลื่อมกัน</b> ถ้าจุดเลือนหาย ก็ยังอ่านไม่ผิด <sup class="ref"><a href="#refs">[6]</a></sup></p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.4 <sup class="ref"><a href="#refs">[1]</a></sup> · Circuit diagram <sup class="ref"><a href="#refs">[6]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="ขั้ว + − และชื่อกำกับ">
+  <div class="body">
+    <div class="kicker reveal">อุปกรณ์มีขั้ว · ชื่อกำกับ · ค่า</div>
+    <h2 class="title reveal d1" style="font-size:60px">เขียนให้ครบ คนต่อวงจรจะได้ไม่พลาด</h2>
+    <div class="row" style="gap:44px;align-items:flex-start">
+      <div class="box rose reveal d2" style="flex:1">
+        <h3 class="c-rose">⚠️ ต้องแสดงขั้ว</h3>
+        <div class="mini"><span data-sym="cell"></span>แบตเตอรี่ (+ −)</div>
+        <div class="mini"><span data-sym="diode"></span>ไดโอด (A K)</div>
+        <div class="mini"><span data-sym="cap-pol"></span>ตัวเก็บประจุมีขั้ว (+)</div>
+        <p class="small" style="margin:6px 0 0">ต่อกลับขั้ว → <b>อุปกรณ์เสียทันที</b></p>
+      </div>
+      <div class="box reveal d3" style="flex:1">
+        <h3>🏷️ ชื่อกำกับ + ค่า</h3>
+        <table class="t left compact" style="width:100%">
+          <tr><th>เขียนว่า</th><th>แปลว่า</th></tr>
+          <tr><td class="mono">R1 = 220 Ω</td><td>ตัวต้านทานตัวที่ 1 ค่า 220 โอห์ม</td></tr>
+          <tr><td class="mono">C1 = 100 µF</td><td>ตัวเก็บประจุตัวที่ 1 ค่า 100 ไมโครฟารัด</td></tr>
+          <tr><td class="mono">BT1 12 V</td><td>แบตเตอรี่ตัวที่ 1 ขนาด 12 โวลต์</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 5.4 และใบความรู้ที่ 2.2 ภาพที่ 2.3 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🔎 จับผิดแบบวงจร">
+  <div class="body" style="top:110px">
+    <div><span class="act-badge">🔎 จับผิดแบบวงจร</span><span class="act-meta">กลุ่มละ 3–4 คน · 5 นาที · ใครเจอ ออกมาแตะจุดนั้น</span></div>
+    <h2 class="title" style="font-size:48px;margin-bottom:12px">แบบนี้เขียนผิด 5 จุด หาให้เจอ!</h2>
+    <div class="hunt">
+      <svg viewBox="0 0 1100 600" style="color:#2a2733" aria-label="แบบวงจรที่มีจุดเขียนผิด 5 จุด คลิกที่จุดเพื่อเฉลย">
+        <g fill="none" stroke="#2a2733" stroke-width="4" stroke-linecap="round">
+          <path d="M120 110 H220 M340 110 H440 M560 110 H960 V210 M960 370 V490 H520 M400 490 H120 V292 M120 272 V110"/>
+          <path d="M700 110 V240 M700 360 V490"/>
+          <path d="M80 272 H160 M80 292 H160" stroke-width="5"/>
+          <circle cx="960" cy="290" r="80"/><path d="M903 233 L1017 347 M1017 233 L903 347"/>
+          <path d="M498 410 L470 438 M528 410 L500 438"/>
+        </g>
+        <g fill="#2a2733"><path d="M470 438 l2 -14 l12 12 z"/><path d="M500 438 l2 -14 l12 12 z"/></g>
+        <circle cx="700" cy="110" r="8" fill="#2a2733"/><circle cx="700" cy="490" r="8" fill="#2a2733"/>
+        <use href="#s-sw" x="220" y="70" width="120" height="80"/>
+        <use href="#s-res-ansi" x="440" y="70" width="120" height="80"/>
+        <use href="#s-cap" x="640" y="260" width="120" height="80" transform="rotate(90 700 300)"/>
+        <use href="#s-diode" x="400" y="450" width="120" height="80"/>
+        <g font-family="Kanit, sans-serif" font-size="28" fill="#00878f">
+          <text x="280" y="62" text-anchor="middle">SW1</text><text x="500" y="62" text-anchor="middle">R1 220 Ω</text>
+          <text x="180" y="290">BT1 9 V</text><text x="1060" y="230" text-anchor="end">LP1</text><text x="460" y="560" text-anchor="middle">LED1</text>
+        </g>
+        <g class="spot"><circle class="hit" cx="120" cy="282" r="70"/><circle class="ring" cx="120" cy="282" r="70"/><g class="tag"><circle cx="172" cy="226" r="22"/><text x="172" y="236">1</text></g></g>
+        <g class="spot"><circle class="hit" cx="500" cy="110" r="72"/><circle class="ring" cx="500" cy="110" r="72"/><g class="tag"><circle cx="562" cy="58" r="22"/><text x="562" y="68">2</text></g></g>
+        <g class="spot"><circle class="hit" cx="700" cy="300" r="72"/><circle class="ring" cx="700" cy="300" r="72"/><g class="tag"><circle cx="760" cy="244" r="22"/><text x="760" y="254">3</text></g></g>
+        <g class="spot"><circle class="hit" cx="960" cy="290" r="100"/><circle class="ring" cx="960" cy="290" r="100"/><g class="tag"><circle cx="880" cy="208" r="22"/><text x="880" y="218">4</text></g></g>
+        <g class="spot"><circle class="hit" cx="470" cy="470" r="76"/><circle class="ring" cx="470" cy="470" r="76"/><g class="tag"><circle cx="540" cy="412" r="22"/><text x="540" y="422">5</text></g></g>
+      </svg>
+      <div class="hunt-side">
+        <div class="hunt-score">พบแล้ว <span class="hunt-n">0 / 5</span></div>
+        <ol class="hunt-list">
+          <li>แบตเตอรี่<b>เส้นยาวเท่ากัน</b> ไม่รู้ขั้วไหน + −</li>
+          <li>R1 เป็นซิกแซก <b>ANSI ปน IEC</b></li>
+          <li>ตัวเก็บประจุ<b>ไม่มีชื่อกำกับและค่า</b></li>
+          <li>หลอดไฟ<b>ใหญ่เกิน</b> สัดส่วนไม่สม่ำเสมอ</li>
+          <li>LED <b>ลูกศรชี้เข้า</b> กลายเป็นอุปกรณ์รับแสง</li>
+        </ol>
+        <div class="hunt-btns"><button type="button" data-a="all">เฉลยทั้งหมด</button><button type="button" data-a="reset">↺ เริ่มใหม่</button></div>
+        <div data-timer="300" class="sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="🎲 ฝึกคิด 5.4">
+  <div class="body">
+    <div><span class="act-badge">🎲 ฝึกคิด 5.4</span><span class="act-meta">คุยกับเพื่อนข้าง ๆ 2 นาที แล้วสุ่มเลขที่ตอบ</span></div>
+    <h2 class="title" style="font-size:56px">คำถามท้ายใบความรู้</h2>
+    <div class="row">
+      <ol class="steps" style="flex:1.5;counter-reset:st 3">
+        <li><b>จุดต่อสาย</b>กับ<b>สายไขว้</b>ที่ไม่ต่อกัน เขียนต่างกันอย่างไร ถ้าเขียนผิดจะเกิดผลอย่างไร</li>
+        <li>อุปกรณ์ใดบ้างที่ต้องเขียนให้เห็น<b>ขั้วบวกและขั้วลบ</b>ชัดเจน</li>
+      </ol>
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;align-items:flex-start"><div data-timer="120" class="sm"></div><div data-picker="40"></div></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 7 คำถามที่ 4–5 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="พัก" data-title="☕ พัก 10 นาที">
+  <div class="body center" style="text-align:center">
+    <div class="icon" style="font-size:120px">☕</div>
+    <h2 class="title">พัก 10 นาที</h2>
+    <p>กลับมาแล้ว เตรียม <b>ดินสอ ยางลบ ไม้บรรทัด</b> และใบงานที่ 2.1</p>
+    <div style="margin-top:10px"><div data-timer="600"></div></div>
+  </div>
+</section>
+
+<!-- ============ ใบงานที่ 2.1 ============ -->
+<section class="slide section sec-2" id="sheet" data-tag="ใบงานที่ 2.1" data-title="ใบงานที่ 2.1 การเขียนและจำแนกสัญลักษณ์">
+  <div class="big-no">2.1</div>
+  <div class="body center">
+    <div class="label reveal">ใบงานที่ 2.1 · ปฏิบัติ 3 ชั่วโมง</div>
+    <h2 class="reveal d1">การเขียนและจำแนกสัญลักษณ์<br>ไฟฟ้าและอิเล็กทรอนิกส์</h2>
+    <p class="lead reveal d2">ดินสอ + ไม้บรรทัด + กริด = วาดสวยได้ทุกคน</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="เครื่องมือและข้อควรระวัง">
+  <div class="body">
+    <div class="kicker reveal">เครื่องมือ (ใบงานข้อ 5) และข้อควรระวัง (ใบงานข้อ 6)</div>
+    <h2 class="title reveal d1">ก่อนลงมือวาด ✏️📏</h2>
+    <div class="row" style="gap:40px;align-items:flex-start">
+      <div class="box tint reveal d2" style="flex:1"><h3>🧰 ใช้แค่นี้</h3>
+        <ul class="pts small"><li>ดินสอ ยางลบ ไม้บรรทัด</li><li>ใบงาน 2.1 (มีกริด 5 มม. ในช่องวาดแล้ว)</li><li>วงเวียน · <b>ไม่มี?</b> วาดสี่เหลี่ยม 3×3 ช่อง แล้ววาดวงกลมแนบด้านใน</li></ul></div>
+      <div class="box rose reveal d3" style="flex:1"><h3 class="c-rose">⚠️ ข้อควรระวัง</h3>
+        <ol class="steps small chk" style="font-size:31px">
+          <li>ร่างดินสอก่อน ถูกแล้วค่อยลงเส้นให้ชัด</li>
+          <li>ใช้ไม้บรรทัดทุกเส้น ห้ามมือเปล่า</li>
+          <li>สัดส่วนเท่ากันทั้งแผ่น</li>
+          <li>ใช้ <b>IEC</b> ทั้งใบงาน ห้ามปน ANSI</li>
+        </ol></div>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 2.1 ข้อ 5–6 <sup class="ref"><a href="#refs">[1]</a></sup> · ปรับ: เพิ่มกริดแทนกระดาษกราฟ</div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="วาดตัวต้านทานบนกริดทีละขั้น">
+  <div class="body">
+    <div class="kicker reveal">เทคนิควาดให้ได้สัดส่วน · 1 ช่อง = 5 มม.</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:12px">วาดตัวต้านทาน 4 ขั้น (กดทีละขั้น)</h2>
+    <div class="row" style="gap:40px;align-items:center">
+      <div class="box grid-draw" style="flex:0 0 1000px;padding:14px">
+        <svg viewBox="0 0 500 200" aria-label="กริดแสดงขั้นตอนการวาดตัวต้านทาน">
+          <defs><pattern id="g10" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0 H0 V50" fill="none" stroke="#e6dccb" stroke-width="2"/></pattern></defs>
+          <rect width="500" height="200" fill="url(#g10)"/>
+          <g class="frag"><path d="M75 100 H425" stroke="#a8a1b0" stroke-width="2" stroke-dasharray="6 6"/><text x="75" y="190" font-size="16" fill="#5d5866">① เส้นร่างกลาง 7 ช่อง</text></g>
+          <g class="frag"><path d="M75 100 H175 M325 100 H425" stroke="#2a2733" stroke-width="4"/><text x="125" y="88" font-size="16" fill="#00878f" text-anchor="middle">② ขา 2 ช่อง</text><text x="375" y="88" font-size="16" fill="#00878f" text-anchor="middle">ขา 2 ช่อง</text></g>
+          <g class="frag"><rect x="175" y="75" width="150" height="50" fill="none" stroke="#2a2733" stroke-width="4"/><text x="250" y="150" font-size="16" fill="#e8742c" text-anchor="middle">③ กล่อง กว้าง 3 สูง 1 ช่อง (3 : 1)</text></g>
+          <g class="frag"><text x="250" y="55" font-size="20" fill="#d6455d" text-anchor="middle" font-weight="600">④ R1 = 220 Ω</text></g>
+        </svg>
+      </div>
+      <ul class="pts small" style="flex:1">
+        <li class="frag">ภาพนี้ขยายให้เห็นชัด · ในใบงาน <b>1 ช่อง = 5 มม.</b> → ตัวต้านทานยาว 35 มม. พอดีช่อง</li>
+        <li class="frag">ทุกตัวให้<b>ขาซ้าย-ขวาอยู่เส้นเดียวกัน</b></li>
+      </ul>
+    </div>
+    <div class="src">เทคนิคเสริมสำหรับห้องเรียนนี้ (ไม่ใช่ขนาดตามมาตรฐาน) · ใบงานที่ 2.1 ข้อ 6.3 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="วาดหลอดไฟและแบตเตอรี่บนกริด">
+  <div class="body">
+    <div class="kicker reveal">ตัวอย่างอีก 2 ตัว</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:12px">หลอดไฟ และ แบตเตอรี่</h2>
+    <div class="grid g2" style="gap:34px">
+      <div class="box grid-draw" style="padding:14px">
+        <svg viewBox="0 0 400 200" aria-label="กริดแสดงการวาดหลอดไฟ">
+          <defs><pattern id="g5l" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0 H0 V25" fill="none" stroke="#e6dccb" stroke-width="1.5"/></pattern></defs>
+          <rect width="400" height="200" fill="url(#g5l)"/>
+          <g class="frag"><rect x="162.5" y="62.5" width="75" height="75" fill="none" stroke="#a8a1b0" stroke-width="2" stroke-dasharray="6 6"/><text x="200" y="45" font-size="15" fill="#5d5866" text-anchor="middle">① กรอบ 3×3 ช่อง</text></g>
+          <g class="frag"><circle cx="200" cy="100" r="37.5" fill="none" stroke="#2a2733" stroke-width="4"/><path d="M62.5 100 H162.5 M237.5 100 H337.5" stroke="#2a2733" stroke-width="4"/></g>
+          <g class="frag"><path d="M173.5 73.5 L226.5 126.5 M226.5 73.5 L173.5 126.5" stroke="#2a2733" stroke-width="4"/><text x="200" y="180" font-size="15" fill="#e8742c" text-anchor="middle">② วงกลมแนบในกรอบ + ③ กากบาทเอียง 45°</text></g>
+        </svg>
+      </div>
+      <div class="box grid-draw" style="padding:14px">
+        <svg viewBox="0 0 400 200" aria-label="กริดแสดงการวาดแบตเตอรี่">
+          <defs><pattern id="g5b" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0 H0 V25" fill="none" stroke="#e6dccb" stroke-width="1.5"/></pattern></defs>
+          <rect width="400" height="200" fill="url(#g5b)"/>
+          <g class="frag"><path d="M187.5 62.5 V137.5" stroke="#2a2733" stroke-width="4"/><text x="150" y="50" font-size="15" fill="#00878f" text-anchor="middle">① เส้นยาว 3 ช่อง (+)</text></g>
+          <g class="frag"><path d="M212.5 81 V119" stroke="#2a2733" stroke-width="9"/><text x="300" y="150" font-size="15" fill="#00878f" text-anchor="middle">② เส้นสั้นหนา 1.5 ช่อง (−)</text></g>
+          <g class="frag"><path d="M62.5 100 H187.5 M212.5 100 H337.5" stroke="#2a2733" stroke-width="4"/><text x="168" y="80" font-size="22" fill="#d6455d" font-weight="600">+</text><text x="222" y="80" font-size="22" fill="#d6455d" font-weight="600">−</text><text x="200" y="185" font-size="15" fill="#e8742c" text-anchor="middle">③ ขา + เขียน + − กำกับ</text></g>
+        </svg>
+      </div>
+    </div>
+    <div class="src">เทคนิคเสริมสำหรับห้องเรียนนี้ · สัญลักษณ์ตามใบความรู้ที่ 2.1 ภาพที่ 2.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตอนที่ 1 ขั้นตอนและตาราง">
+  <div class="body">
+    <div class="kicker reveal">ตอนที่ 1 · การเขียนสัญลักษณ์ตามชื่ออุปกรณ์ที่กำหนด</div>
+    <h2 class="title reveal d1" style="font-size:58px;margin-bottom:12px">เขียนสัญลักษณ์ + หน้าที่ 8 อุปกรณ์</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ที่</th><th>ชื่ออุปกรณ์</th><th>เขียนสัญลักษณ์</th><th>หน้าที่ในวงจร</th></tr>
+      <tr><td>1</td><td>แบตเตอรี่ (Battery)</td><td class="frag"><span data-sym="cell"></span></td><td class="frag">จ่ายพลังงานไฟฟ้าให้วงจร</td></tr>
+      <tr><td>2</td><td>สวิตช์ (Switch)</td><td>…</td><td>…</td></tr>
+      <tr><td>3–8</td><td>ฟิวส์ · หลอดไฟ · ตัวต้านทาน · ตัวเก็บประจุ · ไดโอด · สายดิน</td><td>…</td><td>…</td></tr>
+    </table>
+    <p class="small reveal d3" style="margin-top:16px">แถว 1 เป็นตัวอย่าง · หน้าที่เขียน<b>สั้น ๆ ด้วยภาษาตัวเอง</b> ไม่ต้องลอกยาว</p>
+    <div class="src">ที่มา: ใบงานที่ 2.1 ข้อ 7 ตอนที่ 1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🛠️ ลงมือทำตอนที่ 1">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">🛠️ ลงมือทำใบงานที่ 2.1 ตอนที่ 1</span><span class="act-meta">รายบุคคล · 45 นาที</span></div>
+    <h2 class="title" style="margin-bottom:20px">วาด 8 สัญลักษณ์ลงกริด + เขียนหน้าที่</h2>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div data-timer="2700" class="sm"></div>
+      <p class="small" style="margin:0">ติด? เปิดสไลด์ภาพที่ 2.1 และ 2.2 ดูได้ · ครูเดินดูทีละโต๊ะ</p>
+    </div>
+    <p class="small" style="margin-top:20px">เสร็จก่อน? ลองทำ <a href="exercises.html">แบบฝึกหัดออนไลน์</a> ชุดที่ 2–3 ต่อเลย</p>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตอนที่ 2 จุดต่อสายกับสายไขว้">
+  <div class="body" style="top:116px">
+    <div class="kicker reveal">ตอนที่ 2 · การจำแนกจุดต่อสายกับสายไขว้ · 15 นาที</div>
+    <h2 class="title reveal d1" style="font-size:56px;margin-bottom:14px">ภาพในใบงาน ต่อหรือไม่ต่อ? ทำ ✓ + เหตุผล</h2>
+    <div class="pics4 reveal d2">
+      <div class="box"><span data-sym="junction"></span><h3>ภาพที่ 1</h3></div>
+      <div class="box"><span data-sym="cross"></span><h3>ภาพที่ 2</h3></div>
+      <div class="box"><span data-sym="junction4"></span><h3>ภาพที่ 3</h3></div>
+      <div class="box"><span data-sym="hop"></span><h3>ภาพที่ 4</h3></div>
+    </div>
+    <p class="small reveal d3" style="margin-top:20px">เหตุผลต้องบอกว่า <b>ใช้อะไรตัดสิน</b> เช่น “มีจุดทึบ” / “ไม่มีจุดทึบ” / “โค้งข้าม”</p>
+    <div class="src">ที่มา: ใบงานที่ 2.1 ข้อ 7 ตอนที่ 2 <sup class="ref"><a href="#refs">[1]</a></sup> · ภาพวาดขึ้นใหม่ (ต้นฉบับให้ครูกำหนดภาพเอง)</div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🃏 จับคู่ สัญลักษณ์–ชื่อ–หน้าที่">
+  <div class="body" style="top:116px">
+    <div><span class="act-badge">🃏 จับคู่ 3 ทาง</span><span class="act-meta">จับคู่กับเพื่อน · 8 นาที · เขียน “เลข - ชื่อ - หน้าที่”</span></div>
+    <h2 class="title" style="font-size:50px;margin-bottom:10px">สัญลักษณ์ 1–8 ชื่ออะไร ทำหน้าที่อะไร?</h2>
+    <div class="bank" style="margin-bottom:12px"><span>ตัวต้านทานปรับค่าได้</span><span>ตัวเหนี่ยวนำ</span><span>ทรานซิสเตอร์</span><span>LED</span><span>ไดโอด</span><span>ตัวเก็บประจุ</span><span>แหล่งจ่ายไฟสลับ</span><span>ลำโพง</span></div>
+    <div class="st">
+      <div class="box"><span class="no">1</span> <span data-sym="diode"></span><p class="frag"><b>ไดโอด</b> · ให้กระแสไหลทางเดียว</p></div>
+      <div class="box"><span class="no">2</span> <span data-sym="spk"></span><p class="frag"><b>ลำโพง</b> · ไฟฟ้า → เสียง</p></div>
+      <div class="box"><span class="no">3</span> <span data-sym="cap"></span><p class="frag"><b>ตัวเก็บประจุ</b> · เก็บ-คายประจุ</p></div>
+      <div class="box"><span class="no">4</span> <span data-sym="npn"></span><p class="frag"><b>ทรานซิสเตอร์</b> · สวิตช์/ขยายสัญญาณ</p></div>
+      <div class="box"><span class="no">5</span> <span data-sym="ac"></span><p class="frag"><b>แหล่งจ่ายไฟสลับ</b> · จ่ายไฟ AC</p></div>
+      <div class="box"><span class="no">6</span> <span data-sym="led"></span><p class="frag"><b>LED</b> · เปล่งแสง</p></div>
+      <div class="box"><span class="no">7</span> <span data-sym="ind"></span><p class="frag"><b>ตัวเหนี่ยวนำ</b> · ขดลวด สร้างสนามแม่เหล็ก</p></div>
+      <div class="box"><span class="no">8</span> <span data-sym="pot"></span><p class="frag"><b>ตัวต้านทานปรับค่าได้</b> · ปรับความต้านทาน</p></div>
+    </div>
+    <div style="position:absolute;right:0;top:0"><div data-timer="480" class="sm"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="🔁 ตอนที่ 3 แลกตรวจกับเพื่อน">
+  <div class="body">
+    <div><span class="act-badge">🔁 ตอนที่ 3 แลกตรวจ</span><span class="act-meta">แลกใบงานกับเพื่อน · 10 นาที · ใช้ดินสอวงจุดที่ผิด</span></div>
+    <h2 class="title" style="font-size:56px">ตรวจใบงานเพื่อน 5 ข้อนี้</h2>
+    <div class="row" style="gap:40px;align-items:flex-start">
+      <ol class="steps chk" style="flex:1.6;font-size:34px">
+        <li>เป็นแบบ <b>IEC</b> ทุกตัว? (ตัวต้านทานเป็นกล่อง)</li>
+        <li>แบตเตอรี่ <b>เส้นยาว-สั้น</b> ถูก? ไดโอดมี<b>ขีด</b>ที่ปลาย?</li>
+        <li>ฟิวส์มี<b>เส้นผ่ากลาง</b> ต่างจากตัวต้านทาน?</li>
+        <li>ตอนที่ 2 ตัดสินจาก<b>จุดทึบ</b>ถูกทุกภาพ?</li>
+        <li>เส้นตรง ใช้ไม้บรรทัด <b>สัดส่วน</b>เท่ากัน?</li>
+      </ol>
+      <div style="flex:1;display:flex;flex-direction:column;gap:18px;align-items:flex-start">
+        <div data-timer="600" class="sm"></div>
+        <p class="small" style="margin:0">เจอจุดผิด → เขียนลงตอนที่ 3 ของ<b>ใบงานเพื่อน</b> ว่าผิดอย่างไร ควรแก้อย่างไร</p>
+      </div>
+    </div>
+    <div class="src">ที่มา: ใบงานที่ 2.1 ข้อ 7 ตอนที่ 3 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ============ ฝึกทายสัญลักษณ์ (ชั่วโมงปฏิบัติที่ 3) ============ -->
+<section class="slide section sec-3" data-tag="ฝึกทายสัญลักษณ์" data-title="🎯 ฝึกทายสัญลักษณ์ 3 รอบ">
+  <div class="big-no">🎯</div>
+  <div class="body center">
+    <div class="label reveal">ชั่วโมงปฏิบัติที่ 3 · ทบทวนความจำ</div>
+    <h2 class="reveal d1">ฝึกทายสัญลักษณ์</h2>
+    <p class="lead reveal d2">ครูเปิดภาพ → นับ 1-2-3 → ทั้งห้องตอบพร้อมกัน → สุ่มเลขที่บอกหน้าที่</p>
+    <p class="small reveal d3">รอบ 1 ใบความรู้ (12 ตัว) · รอบ 2 สัญลักษณ์เสริม (6 ตัว) · รอบ 3 IEC หรือ ANSI (4 ตัว)</p>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 1">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 1 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="cell"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">แบตเตอรี่ (BT)</h3>
+        <p class="frag">จ่ายพลังงานไฟฟ้า · เส้นยาว = ขั้วบวก</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 2">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 2 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="fuse"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ฟิวส์ (F)</h3>
+        <p class="frag">ขาดเมื่อกระแสเกิน ตัดวงจร · กล่องมีเส้นผ่า</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 3">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 3 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="npn"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ทรานซิสเตอร์ (Q)</h3>
+        <p class="frag">3 ขา B C E · ใช้เป็นสวิตช์หรือขยายสัญญาณ</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 4">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 4 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="lamp"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">หลอดไฟ (LP)</h3>
+        <p class="frag">ไฟฟ้า → แสงสว่าง · วงกลมมีกากบาท</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 5">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 5 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="cap"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ตัวเก็บประจุ (C)</h3>
+        <p class="frag">เก็บและคายประจุ · แผ่นยาวเท่ากัน</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 6">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 6 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="sw"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">สวิตช์ (SW)</h3>
+        <p class="frag">เปิด-ปิดวงจร</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 7">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 7 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="led"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ไดโอดเปล่งแสง (LED)</h3>
+        <p class="frag">ให้แสงเมื่อกระแสไหล · ลูกศรชี้ออก</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 8">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 8 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="gnd"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">สายดิน</h3>
+        <p class="frag">จุดอ้างอิง 0 V · พาไฟรั่วลงดิน</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 9">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 9 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="res"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ตัวต้านทาน (R)</h3>
+        <p class="frag">ต้าน/จำกัดกระแส · กล่องว่าง (IEC)</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 10">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 10 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="motor"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">มอเตอร์ (M)</h3>
+        <p class="frag">ไฟฟ้า → การหมุน</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 11">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 11 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="diode"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ไดโอด (D)</h3>
+        <p class="frag">กระแสไหลทางเดียว ตามทิศลูกศร</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 1 ข้อ 12">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 1 · ใบความรู้</span><span class="act-meta">ข้อ 12 / 12 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="ind"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ตัวเหนี่ยวนำ (L)</h3>
+        <p class="frag">ขดลวด สร้างสนามแม่เหล็ก</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 2 ข้อ 1">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 2 · สัญลักษณ์เสริม</span><span class="act-meta">ข้อ 1 / 6 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="ac"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">แหล่งจ่ายไฟสลับ (AC)</h3>
+        <p class="frag">คลื่นไซน์ในวงกลม · เช่น ไฟบ้าน</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 2 ข้อ 2">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 2 · สัญลักษณ์เสริม</span><span class="act-meta">ข้อ 2 / 6 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="pot"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ตัวต้านทานปรับค่าได้ (VR)</h3>
+        <p class="frag">ลูกศรปรับค่า · เช่น ปุ่มวอลุ่ม</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 2 ข้อ 3">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 2 · สัญลักษณ์เสริม</span><span class="act-meta">ข้อ 3 / 6 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="xfmr"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">หม้อแปลงไฟฟ้า (T)</h3>
+        <p class="frag">ขดลวด 2 ชุด + แกนเหล็ก · แปลงแรงดันไฟสลับ</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 2 ข้อ 4">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 2 · สัญลักษณ์เสริม</span><span class="act-meta">ข้อ 4 / 6 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="zener"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ซีเนอร์ไดโอด</h3>
+        <p class="frag">ขีดงอเป็นตัว Z · รักษาแรงดันคงที่</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 2 ข้อ 5">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 2 · สัญลักษณ์เสริม</span><span class="act-meta">ข้อ 5 / 6 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="am"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">แอมมิเตอร์</h3>
+        <p class="frag">วัดกระแสไฟฟ้า หน่วยแอมแปร์ (A)</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 2 ข้อ 6">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 2 · สัญลักษณ์เสริม</span><span class="act-meta">ข้อ 6 / 6 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="spk"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร?</h2>
+        <h3 class="frag">ลำโพง (LS)</h3>
+        <p class="frag">ไฟฟ้า → เสียง</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 3 ข้อ 1">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 3 · IEC หรือ ANSI</span><span class="act-meta">ข้อ 1 / 4 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="res-ansi"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร? มาตรฐานไหน?</h2>
+        <h3 class="frag">ตัวต้านทาน · แบบ ANSI</h3>
+        <p class="frag">IEC เขียนเป็นกล่องสี่เหลี่ยม</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 3 ข้อ 2">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 3 · IEC หรือ ANSI</span><span class="act-meta">ข้อ 2 / 4 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="lamp-ansi"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร? มาตรฐานไหน?</h2>
+        <h3 class="frag">หลอดไฟ · แบบ ANSI</h3>
+        <p class="frag">IEC เขียนเป็นวงกลมมีกากบาท</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 3 ข้อ 3">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 3 · IEC หรือ ANSI</span><span class="act-meta">ข้อ 3 / 4 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="fuse-ansi"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร? มาตรฐานไหน?</h2>
+        <h3 class="frag">ฟิวส์ · แบบ ANSI</h3>
+        <p class="frag">IEC เขียนเป็นกล่องมีเส้นผ่ากลาง</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-3 act flash" data-title="🎯 รอบที่ 3 ข้อ 4">
+  <div class="body">
+    <div><span class="act-badge">🎯 รอบที่ 3 · IEC หรือ ANSI</span><span class="act-meta">ข้อ 4 / 4 · นับ 1-2-3 แล้วตอบพร้อมกัน</span></div>
+    <div class="row" style="gap:50px;align-items:center;margin-top:18px">
+      <div class="fbox"><span data-sym="pot-ansi"></span></div>
+      <div class="fans">
+        <h2 class="title" style="font-size:54px;margin:0">ชื่ออะไร? มาตรฐานไหน?</h2>
+        <h3 class="frag">ตัวต้านทานปรับค่าได้ · แบบ ANSI</h3>
+        <p class="frag">IEC เขียนเป็นกล่อง + ลูกศร</p>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ ปิดบทเรียน ============ -->
+<section class="slide sec-0" data-tag="สรุปบทเรียน" data-title="เกณฑ์การประเมินใบงาน 25 คะแนน">
+  <div class="body">
+    <div class="kicker reveal">การประเมินผลใบงานที่ 2.1</div>
+    <h2 class="title reveal d1">25 คะแนน · ผ่าน <span class="hl">20</span> คะแนน (80%)</h2>
+    <table class="t left compact reveal d2" style="width:100%">
+      <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนน</th></tr>
+      <tr><td>1</td><td>เขียนสัญลักษณ์ได้ถูกต้องตามมาตรฐาน (ตอนที่ 1)</td><td class="mono">8</td></tr>
+      <tr><td>2</td><td>ระบุหน้าที่ของอุปกรณ์ในวงจรได้ถูกต้อง (ตอนที่ 1)</td><td class="mono">4</td></tr>
+      <tr><td>3</td><td>จำแนกจุดต่อสายกับสายไขว้ได้ถูกต้อง (ตอนที่ 2)</td><td class="mono">4</td></tr>
+      <tr><td>4</td><td>ตรวจสอบและระบุจุดที่ต้องแก้ไขได้ถูกต้อง (ตอนที่ 3)</td><td class="mono">4</td></tr>
+      <tr><td>5</td><td>ความละเอียด รอบคอบ และส่งงานตรงเวลา</td><td class="mono">5</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบงานที่ 2.1 ข้อ 9 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="✏️ คำถามท้ายใบความรู้ ข้อ 3">
+  <div class="body">
+    <div><span class="act-badge">✏️ วาดบนกระดาษ</span><span class="act-meta">รายบุคคล · 2 นาที แล้วกดเฉลย</span></div>
+    <h2 class="title" style="font-size:56px">ข้อ 3: เขียนสัญลักษณ์ของแบตเตอรี่ สวิตช์ ฟิวส์ และหลอดไฟ</h2>
+    <div class="st">
+      <div class="box frag"><span data-sym="cell"></span><h3>แบตเตอรี่</h3></div>
+      <div class="box frag"><span data-sym="sw"></span><h3>สวิตช์</h3></div>
+      <div class="box frag"><span data-sym="fuse"></span><h3>ฟิวส์</h3></div>
+      <div class="box frag"><span data-sym="lamp"></span><h3>หลอดไฟ</h3></div>
+    </div>
+    <div style="margin-top:22px;display:flex;gap:30px;align-items:center"><div data-timer="120" class="sm"></div><p class="small" style="margin:0">ถูกครบ 4 ตัว ยกมือ! 🙌</p></div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 ข้อ 7 คำถามที่ 3 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="สรุปบทเรียน">
+  <div class="body">
+    <div class="kicker reveal">สรุป</div>
+    <h2 class="title reveal d1">สิ่งที่เราได้เรียนในสัปดาห์นี้</h2>
+    <div class="grid g2" style="gap:26px">
+      <div class="box orange reveal d2"><h3 class="c-orange">5.1 ภาษากลางของช่าง</h3><p class="small">ใช้แทนรูปจริง · <b>IEC</b> (ยุโรป ไทย) · <b>ANSI</b> (สหรัฐฯ) · ห้ามปน</p></div>
+      <div class="box tint reveal d3"><h3>5.2 อุปกรณ์ไฟฟ้า</h3><p class="small">แบตเตอรี่ <b>เส้นยาว = +</b> · ฟิวส์มีเส้นผ่า · หลอดไฟ ✕ · มอเตอร์ M</p></div>
+      <div class="box blue reveal d4"><h3 class="c-blue">5.3 อิเล็กทรอนิกส์</h3><p class="small">R กล่อง · C แผ่นเท่ากัน · L ขดลวด · D ลูกศร = ทางกระแส · LED ลูกศรออก · Q 3 ขา</p></div>
+      <div class="box rose reveal d5"><h3 class="c-rose">5.4 ข้อควรระวัง</h3><p class="small"><b>จุดทึบ = ต่อ</b> · ขั้ว + − · ชื่อ + ค่า <b>R1 = 220 Ω</b> · สัดส่วนเท่ากัน</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="📱 แบบทดสอบหลังเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">📱 แบบทดสอบหลังเรียน</span><span class="act-meta">รายบุคคล · 10 นาที</span></div>
+    <h2 class="title">20 ข้อชุดเดิม ดูซิว่าเก่งขึ้นกี่ข้อ!</h2>
+    <p>เปิด <b>แบบทดสอบ</b> → เลือก “<b>หลังเรียน</b>” → ทำ 20 ข้อ → กดส่ง → พิมพ์ใบคะแนนส่ง Classroom</p>
+    <p class="small"><a href="quiz.html">quiz.html</a></p>
+    <div style="margin-top:20px"><div data-timer="600"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="กิจกรรมต่อไป">
+  <div class="body center" style="text-align:center">
+    <div class="kicker reveal">กิจกรรมต่อไป</div>
+    <h2 class="title reveal d1">ทบทวนแล้วลองทำดู!</h2>
+    <div class="grid g3 reveal d2" style="gap:26px">
+      <a class="box tint" href="exercises.html" style="text-decoration:none;color:inherit"><div class="icon">✏️</div><h3>แบบฝึกหัด</h3><p class="small">4 ชุด ตรวจคำตอบทันที</p></a>
+      <a class="box orange" href="quiz.html" style="text-decoration:none;color:inherit"><div class="icon">📝</div><h3 class="c-orange">แบบทดสอบ 20 ข้อ</h3><p class="small">ก่อนเรียน / หลังเรียน</p></a>
+      <a class="box green" href="worksheet.html" style="text-decoration:none;color:inherit"><div class="icon">🖨️</div><h3 class="c-green">ใบงานที่ 2.1</h3><p class="small">พิมพ์คนละ 1 ชุด</p></a>
+    </div>
+    <p class="small reveal d3" style="margin-top:36px">📖 การบ้าน: อ่านล่วงหน้าใบความรู้ที่ 2.2 เรื่อง <b>การอ่านแบบวงจร (Schematic Diagram)</b> (สัปดาห์ที่ 4)
+      · ลองหาสัญลักษณ์บนฉลากหรือคู่มือเครื่องใช้ไฟฟ้าที่บ้าน ถ่ายรูปมาให้เพื่อนทาย 📸</p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="refs" data-tag="เอกสารอ้างอิง" data-title="เอกสารอ้างอิง และเครดิตภาพ">
+  <div class="body" style="top:100px;font-size:23px;line-height:1.4">
+    <h2 class="title" style="font-size:52px;margin-bottom:12px">เอกสารอ้างอิง</h2>
+    <ol style="margin:0;padding-left:56px">
+      <li style="margin-bottom:8px">จิรกิตติ์ วราภรณ์. <i>แผนการจัดการเรียนรู้ วิชา 20100-1005 งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น</i> (หลักสูตร ปวช. 2567) หน่วยที่ 2 ใบความรู้ที่ 2.1 และใบงานที่ 2.1. วิทยาลัยเทคนิคอุตรดิตถ์. (เอกสารต้นฉบับของบทเรียนนี้)</li>
+      <li style="margin-bottom:8px">International Electrotechnical Commission. <i>IEC 60617 DB: Graphical symbols for diagrams</i>. https://std.iec.ch/iec60617</li>
+      <li style="margin-bottom:8px">Institute of Electrical and Electronics Engineers. (1975, reaffirmed 1993). <i>IEEE Std 315-1975 (ANSI Y32.2-1975): Graphic symbols for electrical and electronics diagrams</i>. IEEE. (สถานะ inactive ตั้งแต่ปี 2019)</li>
+      <li style="margin-bottom:8px">Wikipedia contributors. <i>Electronic symbol</i>. Wikipedia, The Free Encyclopedia. https://en.wikipedia.org/wiki/Electronic_symbol</li>
+      <li style="margin-bottom:8px">Wikipedia contributors. <i>Reference designator</i>. Wikipedia, The Free Encyclopedia. https://en.wikipedia.org/wiki/Reference_designator</li>
+      <li style="margin-bottom:8px">Wikipedia contributors. <i>Circuit diagram</i>. Wikipedia, The Free Encyclopedia. https://en.wikipedia.org/wiki/Circuit_diagram</li>
+    </ol>
+    <div class="box" style="margin-top:12px;padding:10px 24px;font-size:20px;line-height:1.4">
+      <b>เครดิตภาพ</b> · สัญลักษณ์ทั้งหมด ภาพเปิดเรื่อง แบบวงจรจับผิด และกริดวาดภาพ วาดขึ้นใหม่ตามแบบ IEC 60617 (และ ANSI/IEEE 315 สำหรับภาพเปรียบเทียบ)
+    </div>
+    <p class="tiny" style="margin-top:8px">เข้าถึงแหล่งข้อมูลออนไลน์เมื่อ 3 พฤศจิกายน 2569</p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="videos" data-title="วิดีโอประกอบการสอน">
+  <div class="body" style="top:112px;font-size:25px;line-height:1.42">
+    <h2 class="title" style="font-size:52px;margin-bottom:12px">วิดีโอประกอบการสอน (YouTube)</h2>
+    <ol style="margin:0;padding-left:70px;list-style:none">
+      <li style="margin-bottom:8px"><b>[V1]</b> Newtun engineering. (2565). <i>สัญลักษณ์ในวงจรไฟฟ้า</i>. https://www.youtube.com/watch?v=tdiO3xSDKS4</li>
+      <li style="margin-bottom:8px"><b>[V2]</b> CAD Auto. (2568). <i>การเขียนแบบไฟฟ้าตามมาตรฐานต่างๆ IEC, IEC60617, IEEE, NFPA, JIS, GB Ep.12</i>. https://www.youtube.com/watch?v=k8ElIK5epew (ดู 3 นาทีแรก)</li>
+      <li style="margin-bottom:8px"><b>[V3]</b> Siripong Srisuwan. (2563). <i>บทเรียนที่ 1 | อุปกรณ์อิเล็กทรอนิกส์เบื้องต้น</i>. https://www.youtube.com/watch?v=jkqcAF_J4qc</li>
+      <li style="margin-bottom:8px"><b>[V4]</b> JEK DIY. (2565). <i>สัญลักษณ์อิเล็กทรอนิกส์เบื้องต้น</i>. https://www.youtube.com/watch?v=O1cUze2QjNY</li>
+    </ol>
+    <p class="tiny" style="margin-top:12px">ฝังจากช่องผู้เผยแพร่โดยตรง ไม่ได้ดาวน์โหลดหรือตัดต่อ · ตรวจว่ายังเปิดดูได้เมื่อ 3 พฤศจิกายน 2569 · ครูควรดูก่อนสอนทุกครั้ง เพราะคลิปอาจถูกลบหรือย้าย
+      · บางคลิปวาดสัญลักษณ์แบบ ANSI ปน IEC ใช้เป็นโอกาสให้นักเรียนฝึกแยกมาตรฐานได้</p>
+  </div>
+</section>
+
+</main>
+</div>
+<script src="../assets/js/symbols.js"></script>
+<script src="../assets/js/sims.js"></script>
+<script src="../assets/js/deck.js"></script>
+</body>
+</html>
