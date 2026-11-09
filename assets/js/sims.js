@@ -99,7 +99,7 @@
         el.classList.add('picker');
         const label = el.dataset.label || 'เลขที่';
         el.innerHTML = `<label>${esc(label)} 1 ถึง <input type="number" min="2" max="60" value="${+el.dataset.picker || 40}"></label>
-            <button type="button">🎲 สุ่ม${esc(label)}</button><div class="pk-num">?</div>`;
+            <button type="button">สุ่ม${esc(label)}</button><div class="pk-num">?</div>`;
         const out = el.querySelector('.pk-num');
         el.querySelector('button').addEventListener('click', e => {
             const max = Math.max(2, +el.querySelector('input').value || 40);
@@ -127,7 +127,7 @@
         const poster = () => {
             frame.innerHTML = `<button type="button" class="vd-poster" aria-label="เล่นวิดีโอ: ${esc(title)}">
                 <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy">
-                <span class="vd-play" aria-hidden="true">▶</span><span class="vd-t">🎬 ${esc(title)}</span></button>`;
+                <span class="vd-play" aria-hidden="true">▶</span><span class="vd-t">${esc(title)}</span></button>`;
         };
         poster();
         frame.addEventListener('click', ev => {

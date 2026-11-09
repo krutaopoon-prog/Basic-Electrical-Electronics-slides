@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ใบงานที่ 2.2 การอ่านแบบวงจรและเขียนแบบวงจรอย่างง่าย</title>
+<meta name="description" content="ใบงานที่ 2.2 การอ่านแบบวงจรและเขียนแบบวงจรอย่างง่าย วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น สำหรับพิมพ์ A4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+    .ws h2 { font-size: 20px; margin: 18px 0 6px; color: var(--teal); }
+    .ws h3 { font-size: 17px; margin: 12px 0 4px; }
+    .ws p, .ws li { margin: 2px 0; }
+    .ws ol, .ws ul { margin: 2px 0 6px; padding-left: 26px; }
+    .ws table.grid { width: 100%; border-collapse: collapse; margin: 6px 0 10px; background: #fff; }
+    .ws table.grid th, .ws table.grid td { border: 1px solid #555; padding: 4px 8px; vertical-align: top; }
+    .ws table.grid th { background: var(--cream); font-family: var(--font-display); font-weight: 500; text-align: center; }
+    .ws table.grid td.n { text-align: center; width: 2.4em; }
+    .ws table.grid.blank td { height: 13mm; }
+    .ws table.score td:nth-child(3), .ws table.score td:nth-child(4) { text-align: center; width: 6em; }
+    .ws .lines div { border-bottom: 1px dotted #000; height: 9mm; }
+    .ws .head { border: 1.5px solid #000; padding: 8px 12px; margin-bottom: 10px; background: #fff; }
+    .ws .head .line { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .ws .head .line span { white-space: nowrap; }
+    .ws .warn { border-left: 4px solid var(--rose); background: var(--rose-soft); padding: 6px 12px; border-radius: 0 10px 10px 0; }
+    .ws .note { font-size: 14px; color: var(--ink-soft); }
+    .ws .schem { max-width: 150mm; margin: 6px auto; }
+    .reals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 6px 0; }
+    .reals figure { margin: 0; text-align: center; }
+    .reals figcaption { font-family: var(--font-display); font-size: 15px; }
+    .drawbox { height: 95mm; border: 1.5px solid #000; background:
+        linear-gradient(#e7e1d6 1px, transparent 1px) 0 0 / 5mm 5mm, linear-gradient(90deg, #e7e1d6 1px, transparent 1px) 0 0 / 5mm 5mm, #fff; }
+    @media print {
+        .ws h2 { color: #000; font-size: 14.5pt; margin: 4mm 0 1.5mm; }
+        .ws h3 { font-size: 13.5pt; }
+        .ws table.grid th { background: #eee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .ws table.grid th, .ws table.grid td { border-color: #000; font-size: 12.5pt; }
+        .ws .top p, .ws .top li { font-size: 11.5pt; line-height: 1.3; }
+        .ws .warn { background: none; border: 1px solid #000; border-radius: 0; }
+        body.doc { font-size: 12pt; line-height: 1.4; }
+        .ws .avoid { break-inside: avoid; }
+        .ws table.grid { break-inside: avoid; }
+        .ws h2, .ws h3 { break-after: avoid; }
+        .ws table.grid.blank td { height: 10.5mm; }
+        .ws .lines div { height: 7.5mm; }
+        .ws .head { font-size: 11.5pt; }
+        .ws .note { font-size: 10.5pt; color: #333; }
+        .drawbox { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .page { break-before: page; }
+        .reals figcaption { font-size: 11.5pt; }
+    }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar no-print">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="trace.html">ฝึกไล่กระแส</a> · <a href="exercises.html">แบบฝึกหัด</a> · <a href="quiz.html">แบบทดสอบ</a>
+    </nav>
+
+    <section class="card no-print">
+        <span class="chip orange">สัปดาห์ที่ 4 · ปฏิบัติ 3 ชั่วโมง</span>
+        <h1 style="margin-top:8px">ใบงานที่ 2.2 สำหรับพิมพ์</h1>
+        <p class="muted" style="margin:0 0 10px">พิมพ์คนละ 1 ชุด A4 · ใช้ดินสอ ยางลบ ไม้บรรทัด · ตอนที่ 3 ใช้ภาพการต่อจริงแทนชุดวงจร ถ้ามีชุดจริงให้เขียนลงกรอบเดียวกัน</p>
+        <div class="btn-row"><button class="btn" type="button" onclick="window.print()">พิมพ์ใบงาน (A4)</button><a class="btn ghost" href="slides.html#sheet">สไลด์อธิบายใบงาน</a></div>
+    </section>
+
+    <main class="ws card">
+        <div class="head">
+            <b>ใบงานที่ 2.2 การอ่านแบบวงจรและเขียนแบบวงจรอย่างง่าย</b><br>
+            วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) · หน่วยที่ 2 งานอ่านสัญลักษณ์ไฟฟ้าและอิเล็กทรอนิกส์ · สอนครั้งที่ 4 (ทฤษฎี 1 ชม. ปฏิบัติ 3 ชม.)
+            <div class="line" style="margin-top:4px"><span>ชื่อ-สกุล ..................................................................</span><span>ชั้น ...............</span><span>เลขที่ ........</span></div>
+            <div class="line"><span>วันที่ ......../......../........</span><span>คะแนน ............ / 25</span></div>
+        </div>
+
+        <div class="top">
+        <h2>1. ผลลัพธ์การเรียนรู้จากการปฏิบัติงาน</h2>
+        <p>ผู้เรียนสามารถอ่านแบบวงจรที่กำหนดให้ ระบุอุปกรณ์ในวงจรได้ครบถ้วน ไล่เส้นทางการไหลของกระแสได้ถูกต้อง และเขียนแบบวงจรอย่างง่ายจากวงจรจริงได้</p>
+
+        <h2>2. จุดประสงค์เชิงพฤติกรรม</h2>
+        <p>4.3 อธิบายความหมายของแบบวงจรและส่วนประกอบของแบบได้ถูกต้อง (K2) · 4.4 อธิบายความแตกต่างระหว่างแบบวงจรกับแบบการเดินสายจริงได้ถูกต้อง (K2) · 4.6 อ่านแบบวงจรและระบุอุปกรณ์ในวงจรได้ครบถ้วนตามแบบที่กำหนด (S2)
+            · 4.7 เตรียมวัสดุอุปกรณ์ให้สอดคล้องกับงาน และปฏิบัติงานด้วยความรับผิดชอบ ตรงต่อเวลา ตามหลักปรัชญาของเศรษฐกิจพอเพียง (A2, Ap1)</p>
+
+        <h2>3. เครื่องมือ วัสดุ และอุปกรณ์</h2>
+        <ul>
+            <li>ใบความรู้ที่ 2.2 และแบบวงจรในใบงานนี้</li>
+            <li>ดินสอ ยางลบ ไม้บรรทัด</li>
+            <li>ภาพการต่อจริงในตอนที่ 3 (ถ้ามีชุดวงจรจริง ใช้ชุดนั้นแทนได้)</li>
+        </ul>
+
+        <h2>4. คำแนะนำ / ข้อควรระวัง</h2>
+        <div class="warn avoid">
+            <ol style="margin:0">
+                <li>ไล่วงจรจากแหล่งจ่ายไฟเสมอ และไล่ให้ครบจนกลับมาที่แหล่งจ่ายอีกขั้วหนึ่ง</li>
+                <li>สังเกตจุดทึบทุกจุด อย่าเข้าใจผิดว่าสายที่ไขว้กันคือสายที่ต่อถึงกัน</li>
+                <li>อุปกรณ์ที่มีขั้วต้องเขียนขั้วให้ถูกต้อง</li>
+                <li>ชุดวงจรจริงใช้แรงดันต่ำจากแบตเตอรี่เท่านั้น ห้ามนำไปต่อกับไฟฟ้าจากเต้ารับโดยเด็ดขาด</li>
+            </ol>
+        </div>
+        </div>
+
+        <div class="page">
+        <h2>5. ขั้นตอนการปฏิบัติงาน</h2>
+        <h3>ตอนที่ 1 การอ่านแบบวงจรและระบุอุปกรณ์</h3>
+        <ol>
+            <li>อ่านแบบวงจรด้านล่าง</li>
+            <li>ระบุชื่ออุปกรณ์ทุกตัวในวงจร พร้อมชื่อกำกับและค่าที่ระบุไว้ในแบบ (ถ้าแบบไม่ได้ระบุค่า ให้เขียนว่า "ไม่ระบุ")</li>
+            <li>บันทึกลงในตาราง</li>
+        </ol>
+        <div class="schem"><span data-circuit="c5"></span></div>
+        <table class="grid blank">
+            <tr><th>ที่</th><th style="width:16%">ชื่อกำกับ</th><th style="width:26%">ชื่ออุปกรณ์</th><th style="width:16%">ค่าที่ระบุ</th><th>หน้าที่ในวงจร</th></tr>
+            <tr><td class="n">1</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="n">2</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="n">3</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="n">4</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="n">5</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="n">6</td><td></td><td></td><td></td><td></td></tr>
+        </table>
+        </div>
+
+        <div class="page">
+        <h3>ตอนที่ 2 การไล่เส้นทางการไหลของกระแส (ใช้แบบวงจรในตอนที่ 1)</h3>
+        <ol>
+            <li>เริ่มจากขั้วบวกของแหล่งจ่ายไฟ ไล่ตามเส้นสายไฟไปทีละอุปกรณ์</li>
+            <li>บันทึกลำดับอุปกรณ์ที่กระแสไหลผ่านจนกลับมาถึงขั้วลบ วงจรนี้มี 2 ทาง ให้เขียนทางละบรรทัด</li>
+            <li>ระบุว่าเมื่อสวิตช์อยู่ตำแหน่ง OFF กระแสจะไหลได้หรือไม่ เพราะเหตุใด</li>
+        </ol>
+        <p><b>ลำดับเส้นทางการไหลของกระแส</b></p>
+        <div class="lines"><div></div><div></div></div>
+        <p style="margin-top:8px"><b>เมื่อสวิตช์อยู่ตำแหน่ง OFF</b></p>
+        <div class="lines"><div></div><div></div></div>
+
+        <h3>ตอนที่ 3 การเขียนแบบวงจรจากวงจรจริง</h3>
+        <ol>
+            <li>ดูภาพการต่อจริงตามชุดของตัวเอง (เลขที่ 1, 4, 7, … ชุด ก · เลขที่ 2, 5, 8, … ชุด ข · เลขที่ 3, 6, 9, … ชุด ค) สังเกตว่ามีอุปกรณ์อะไรบ้าง</li>
+            <li>ตรวจสอบว่าอุปกรณ์แต่ละตัวต่อกันอย่างไร โดยไล่ตามสายต่อจริง</li>
+            <li>เขียนแบบวงจรลงในกรอบด้านล่าง พร้อมกำกับชื่อและค่าของอุปกรณ์ให้ครบ</li>
+        </ol>
+        <div class="reals">
+            <figure><span data-real="ก"></span><figcaption>ชุด ก</figcaption></figure>
+            <figure><span data-real="ข"></span><figcaption>ชุด ข</figcaption></figure>
+            <figure><span data-real="ค"></span><figcaption>ชุด ค</figcaption></figure>
+        </div>
+        <p>ชุดที่ทำ: ................ · แบตเตอรี่ใช้ชื่อ BT1 สวิตช์ SW1 ตัวต้านทาน R1 หลอดไฟ LP1</p>
+        <div class="drawbox"></div>
+        </div>
+
+        <div class="page">
+            <div class="avoid">
+                <h2>6. สรุปและวิจารณ์ผล</h2>
+                <p class="muted" style="margin:0">ตอนไล่วงจรหรือเขียนแบบ นักเรียนพลาดตรงไหน และครั้งหน้าจะเลี่ยงอย่างไร</p>
+                <div class="lines"><div></div><div></div><div></div><div></div></div>
+            </div>
+
+            <div class="avoid">
+                <h2>7. การประเมินผล (คะแนนเต็ม 25 ผ่านที่ 20 คะแนน ร้อยละ 80)</h2>
+                <table class="grid score">
+                    <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนนเต็ม</th><th>คะแนนที่ได้</th></tr>
+                    <tr><td class="n">1</td><td>ระบุชื่ออุปกรณ์และค่าในแบบวงจรได้ครบถ้วนถูกต้อง (ตอนที่ 1)</td><td>6</td><td></td></tr>
+                    <tr><td class="n">2</td><td>ไล่เส้นทางการไหลของกระแสได้ถูกต้องครบวงจร (ตอนที่ 2)</td><td>5</td><td></td></tr>
+                    <tr><td class="n">3</td><td>อธิบายกรณีสวิตช์ OFF ได้ถูกต้อง (ตอนที่ 2)</td><td>4</td><td></td></tr>
+                    <tr><td class="n">4</td><td>เขียนแบบวงจรจากวงจรจริงได้ถูกต้องตามมาตรฐาน (ตอนที่ 3)</td><td>5</td><td></td></tr>
+                    <tr><td class="n">5</td><td>ความละเอียด รอบคอบ และส่งงานตรงเวลา</td><td>5</td><td></td></tr>
+                    <tr><th colspan="2" style="text-align:right">รวม</th><td style="text-align:center"><b>25</b></td><td></td></tr>
+                </table>
+                <p class="muted" style="font-size:13px">ที่มา: ใบงานที่ 2.2 ในแผนการจัดการเรียนรู้ วิชา 20100-1005 (นายจิรกิตติ์ วราภรณ์) · แบบวงจรและภาพการต่อจริงวาดขึ้นใหม่ ใช้แทนชุดวงจรจริง</p>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="../assets/js/symbols.js"></script>
+<script src="circuits.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ฝึกไล่กระแส สัปดาห์ที่ 4</title>
+<meta name="description" content="ฝึกไล่เส้นทางกระแสในแบบวงจร แตะอุปกรณ์ตามลำดับจากขั้วบวกกลับถึงขั้วลบ วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น สัปดาห์ที่ 4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 12px; }
+    .tabs button { font: 500 16px var(--font-display); padding: 6px 14px; border-radius: 10px; border: 1.5px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; }
+    .tabs button.cur { border-color: var(--teal); background: var(--teal-soft); }
+    .tabs button.done::after { content: ' ✓'; color: var(--green); }
+    #board { max-width: 620px; margin: 0 auto; touch-action: manipulation; }
+    #board .cp { cursor: pointer; }
+    #msg { min-height: 3.2em; margin: 10px 0; padding: 8px 12px; border-radius: 10px; background: var(--cream); }
+    #msg.bad { background: var(--rose-soft); }
+    #msg.good { background: var(--green-soft); }
+    #seq { font-family: var(--font-mono); font-size: 16px; line-height: 1.7; }
+    #seq div { padding: 2px 0; }
+    .follow { display: none; margin-top: 12px; }
+    .follow.on { display: block; }
+    .follow .opts { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 6px; }
+    .follow button { font: 400 16px var(--font-body); text-align: left; padding: 8px 12px; border-radius: 10px; border: 1.5px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; }
+    .follow button.right { border-color: var(--green); background: var(--green-soft); }
+    .follow button.wrong { border-color: var(--rose); background: var(--rose-soft); }
+    .follow .why { margin-top: 8px; display: none; }
+    .follow.answered .why { display: block; }
+</style>
+</head>
+<body class="doc">
+<div class="doc-wrap">
+    <nav class="topbar">
+        <a href="../index.html">← หน้าแรก</a> · <a href="slides.html">สไลด์</a> · <a href="worksheet.html">ใบงาน</a>
+    </nav>
+
+    <section class="card">
+        <span class="chip orange">สัปดาห์ที่ 4 · ใบงานที่ 2.2 ตอนที่ 2</span>
+        <h1 style="margin-top:8px">ฝึกไล่กระแส</h1>
+        <p class="muted" style="margin:0">เริ่มจากขั้วบวกของแบตเตอรี่ แตะอุปกรณ์ตัวที่กระแสผ่านเป็นตัวแรก แล้วไล่ไปเรื่อย ๆ จนกลับถึงขั้วลบ ตัวไหนแตะผิดจะมีคำอธิบายให้ แตะใหม่ได้เรื่อย ๆ หน้านี้ไม่เก็บคะแนน</p>
+    </section>
+
+    <main class="card">
+        <div class="tabs" id="tabs"></div>
+        <h2 id="title" style="margin:0 0 6px"></h2>
+        <div id="board"></div>
+        <div id="msg" aria-live="polite"></div>
+        <div id="seq"></div>
+        <div class="follow" id="follow">
+            <b id="fq"></b>
+            <div class="opts" id="fopts"></div>
+            <div class="why note" id="fwhy"></div>
+        </div>
+        <div class="btn-row">
+            <button class="btn ghost" type="button" id="again">เริ่มข้อนี้ใหม่</button>
+            <button class="btn" type="button" id="next">ข้อถัดไป</button>
+        </div>
+    </main>
+</div>
+
+<script src="../assets/js/symbols.js"></script>
+<script src="circuits.js"></script>
+<script>
+/* ===========================================
+   ฝึกไล่กระแส: แตะอุปกรณ์ตามลำดับ
+   วงจรมีหลายทางได้ เลือกไล่ทางไหนก่อนก็ได้ ทางไหนไล่ครบแล้วจะเริ่มทางถัดไปให้
+   =========================================== */
+(function () {
+    const CIR = Circuits.CIR;
+    const ITEMS = [
+        { id: 'c4', q: 'ถ้าฟิวส์ F1 ขาด จะเกิดอะไรกับมอเตอร์', a: ['มอเตอร์หยุดหมุน', 'มอเตอร์หมุนช้าลง', 'มอเตอร์หมุนต่อ เพราะ SW1 ยังเป็น ON'], ok: 0, why: 'F1 อยู่บนเส้นทางเดียวของกระแส ขาดแล้ววงจรขาดทั้งเส้น' },
+        { id: 'c6', q: 'ถ้าถอด R1 ออก D2 จะเป็นอย่างไร', a: ['ติดสว่างขึ้น', 'ดับ', 'ติดเหมือนเดิม'], ok: 1, why: 'R1 กับ D2 อยู่ทางเดียวกัน ถอด R1 ออกแล้วทางนี้ขาด' },
+        { id: 'c5', q: 'ถ้า SW1 อยู่ตำแหน่ง OFF LP1 และ D1 เป็นอย่างไร', a: ['LP1 ดับ D1 ติด', 'LP1 ติด D1 ดับ', 'ดับทั้งคู่'], ok: 2, why: 'SW1 อยู่ก่อนถึงทางแยก กระแสจึงไปไม่ถึงทั้งสองทาง' },
+        { id: 'c7', q: 'ถ้า SW1 อยู่ตำแหน่ง OFF D1 เป็นอย่างไร', a: ['ดับ', 'ติด', 'ติดหรี่ลง'], ok: 0, why: 'SW1 อยู่ก่อนถึงทั้งสองทาง กระแสจึงเข้า R1 และ R2 ไม่ได้' },
+        { id: 'c8a', q: 'ถ้าถอด LP1 ออก LP2 กับ LP3 เป็นอย่างไร', a: ['ยังติดทั้งคู่', 'ดับทั้งคู่', 'LP2 ติด LP3 ดับ'], ok: 0, why: 'แต่ละหลอดมีทางของตัวเอง ถอดดวงหนึ่ง อีกสองทางยังครบ' }
+    ];
+    const $ = id => document.getElementById(id);
+    let idx = 0, done = new Set();
+    let remaining, prefix, finished;
+
+    function tabs() {
+        $('tabs').innerHTML = ITEMS.map((it, i) => `<button type="button" data-i="${i}" class="${i === idx ? 'cur' : ''} ${done.has(i) ? 'done' : ''}">ข้อ ${i + 1}</button>`).join('');
+    }
+
+    function start() {
+        const it = ITEMS[idx], c = CIR[it.id];
+        remaining = c.paths.map(p => p.slice());
+        prefix = [];
+        finished = [];
+        $('title').textContent = `ข้อ ${idx + 1} ${c.name}`;
+        $('board').innerHTML = Circuits.svg(it.id);
+        const msg = $('msg');
+        msg.className = '';
+        msg.textContent = 'เริ่มจากขั้วบวกของ ' + c.parts[0].ref + ' กระแสไปถึงอุปกรณ์ตัวไหนก่อน';
+        $('seq').innerHTML = '';
+        $('follow').className = 'follow';
+        tabs();
+    }
+
+    const startsWith = (p, pre) => pre.every((x, i) => p[i] === x);
+    const nextRefs = () => [...new Set(remaining.filter(p => startsWith(p, prefix) && p.length > prefix.length).map(p => p[prefix.length]))];
+    const part = ref => document.querySelector(`#board .cp[data-ref="${ref}"]`);
+    const showLine = line => `BT1 (+) → ${line.join(' → ')} → BT1 (−)`;
+
+    function renderSeq() {
+        const parts = finished.map((l, i) => `<div class="ok">ทางที่ ${i + 1}: ${showLine(l)}</div>`);
+        if (prefix.length && remaining.length) parts.push(`<div>กำลังไล่: BT1 (+) → ${prefix.join(' → ')} → …</div>`);
+        $('seq').innerHTML = parts.join('');
+    }
+
+    function tap(ref) {
+        const c = CIR[ITEMS[idx].id];
+        if (!remaining.length) return;
+        if (ref === c.parts[0].ref) { say('เริ่มที่ขั้วบวกของแหล่งจ่ายอยู่แล้ว ให้แตะอุปกรณ์ตัวถัดไปตามสาย', 'bad'); return; }
+        const opts = nextRefs();
+        if (!opts.includes(ref)) {
+            const el = part(ref);
+            el.classList.add('bad');
+            setTimeout(() => el.classList.remove('bad'), 500);
+            const hint = (c.hints && c.hints[ref]) || `ยังไม่ถึง ${ref} ลองตามสายจาก${prefix.length ? ' ' + prefix[prefix.length - 1] : 'ขั้วบวก'}ไปดูอีกที`;
+            say(hint, 'bad');
+            return;
+        }
+        prefix.push(ref);
+        part(ref).classList.add('on');
+        const hit = remaining.findIndex(p => p.length === prefix.length && startsWith(p, prefix));
+        if (hit >= 0) {
+            finished.push(remaining[hit]);
+            remaining.splice(hit, 1);
+            if (remaining.length) {
+                // เริ่มทางถัดไปจากจุดที่แยกออกมา
+                const n = remaining[0];
+                let k = 0;
+                while (k < n.length && k < prefix.length && n[k] === prefix[k]) k++;
+                prefix = n.slice(0, k);
+                renderSeq();
+                say(`ครบทางที่ ${finished.length} แล้ว ยังมีอีกทาง กลับไปที่จุดแยกแล้วไล่ต่อ`, 'good');
+            } else {
+                renderSeq();
+                say('กลับถึงขั้วลบแล้ว ครบวงจร', 'good');
+                done.add(idx);
+                tabs();
+                showFollow();
+            }
+            return;
+        }
+        renderSeq();
+        say(`ถูกแล้ว กระแสผ่าน ${ref} ตัวต่อไปคืออะไร`, '');
+    }
+
+    function say(s, cls) { const m = $('msg'); m.textContent = s; m.className = cls || ''; }
+
+    function showFollow() {
+        const it = ITEMS[idx];
+        $('fq').textContent = it.q;
+        $('fopts').innerHTML = it.a.map((a, i) => `<button type="button" data-a="${i}">${a}</button>`).join('');
+        $('fwhy').textContent = it.why;
+        $('follow').className = 'follow on';
+    }
+
+    $('board').addEventListener('click', e => {
+        const g = e.target.closest('.cp');
+        if (g) tap(g.dataset.ref);
+    });
+    $('tabs').addEventListener('click', e => {
+        const b = e.target.closest('button[data-i]');
+        if (b) { idx = +b.dataset.i; start(); }
+    });
+    $('fopts').addEventListener('click', e => {
+        const b = e.target.closest('button[data-a]');
+        if (!b) return;
+        const it = ITEMS[idx], ok = +b.dataset.a === it.ok;
+        b.classList.add(ok ? 'right' : 'wrong');
+        if (ok) { $('follow').classList.add('answered'); }
+        else say('ลองคิดใหม่ ดูว่าอุปกรณ์ตัวนั้นอยู่บนเส้นทางไหน', 'bad');
+    });
+    $('again').addEventListener('click', start);
+    $('next').addEventListener('click', () => { idx = (idx + 1) % ITEMS.length; start(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    window.addEventListener('DOMContentLoaded', start);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สัปดาห์ที่ 4 การอ่านแบบวงจรไฟฟ้าและอิเล็กทรอนิกส์</title>
+<meta name="description" content="สไลด์ประกอบการสอน วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) สัปดาห์ที่ 4 หน่วยที่ 2 การอ่านแบบวงจร ระดับ ปวช.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@400;700&family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="../assets/css/deck.css">
+<link rel="stylesheet" href="../assets/css/sims.css">
+<style>
+    h2.title { font-size: 58px; margin-bottom: 20px; }
+    .fig { background: #fff; border: 3px solid var(--line); border-radius: 24px; padding: 14px 22px; }
+    .fig h3 { font: 500 34px var(--font-display); margin: 0 0 4px; color: var(--ink); }
+    .fig p.cap { font-size: 28px; line-height: 1.35; margin: 6px 0 0; color: var(--ink-soft); }
+    .split { display: grid; grid-template-columns: 960px 1fr; gap: 44px; align-items: start; }
+    .split.wide { grid-template-columns: 1080px 1fr; }
+    .side { display: flex; flex-direction: column; gap: 18px; font-size: 34px; line-height: 1.4; }
+    .side p { margin: 0; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .seq { font: 500 36px var(--font-mono); color: var(--orange); background: var(--orange-soft); border-radius: 16px; padding: 10px 20px; line-height: 1.45; }
+    .seq.t { color: var(--teal); background: var(--teal-soft); }
+    table.plan td, table.plan th { font-size: 29px; padding: 8px 18px; }
+    table.plan td:first-child { font-family: var(--font-mono); white-space: nowrap; }
+    table.plan tr.brk td { background: var(--cream); color: var(--ink-soft); }
+    table.t.cmp td, table.t.cmp th { font-size: 36px; padding: 16px 22px; vertical-align: top; line-height: 1.35; }
+    .ex3 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 30px; grid-template-areas: "real sch" "st st"; }
+    .ex3 .fig > div { width: 590px; margin: auto; }
+    .ex3 ol.steps { grid-area: st; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 36px; margin: 0; }
+    .ex3 ol.steps > li { font-size: 34px; margin: 0; }
+    table.t.cmp td:first-child { font-family: var(--font-display); font-weight: 500; }
+    .vrow { grid-template-columns: 720px 1fr; }
+    .vrow .sit { font-size: 37px; }
+    .vrow { margin-bottom: 30px; }
+    .vrow .sit svg.sym { width: 96px; height: 64px; margin-right: 8px; }
+    .vote.tri { grid-template-columns: 1fr 1fr 1fr auto; gap: 12px; align-items: center; }
+    .vote.tri .opt { font-size: 28px; padding: 10px 12px; text-align: center; }
+    .vote.tri .reveal { grid-column: auto; }
+    .vote .why { font-size: 28px; }
+    .diagram svg { max-height: 240px; }
+    .blk rect { fill: #fff; stroke: var(--teal); stroke-width: 4; }
+    .blk text { font: 500 30px var(--font-display); fill: var(--ink); text-anchor: middle; }
+    .note-line { font-size: 30px; line-height: 1.4; color: var(--ink-soft); margin: 0; }
+    .ws-row td { font-size: 30px; }
+    .read-note { font-size: 30px; background: var(--sun-soft); border-radius: 14px; padding: 8px 20px; margin-bottom: 12px; line-height: 1.4; }
+    ol.steps > li { margin-bottom: 26px; font-size: 44px; line-height: 1.35; }
+    ol.steps.sm > li { margin-bottom: 18px; font-size: 37px; }
+</style>
+</head>
+<body>
+<!--
+  วิธีใช้: ← → / Space เลื่อนสไลด์และแสดงทีละขั้น · T สารบัญ · F เต็มจอ
+  แบบวงจรทุกรูปวาดจาก w04/circuits.js (<span data-circuit="ชื่อ">)
+-->
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage" data-head="สัปดาห์ที่ 4 · หน่วยที่ 2" data-foot="">
+
+<!-- ============ เปิดบทเรียน ============ -->
+<section class="slide cover" data-title="ปก: สัปดาห์ที่ 4">
+  <div class="body center" style="top:0;bottom:0;right:760px">
+    <div class="chapter reveal d1">สัปดาห์ที่ 4 · หน่วยที่ 2</div>
+    <h1 class="reveal d2" style="font-size:96px">การอ่านแบบวงจรไฟฟ้า<br>และอิเล็กทรอนิกส์</h1>
+    <div class="sub reveal d3">วิชางานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น (20100-1005) · ระดับ ปวช.</div>
+    <div class="tiny reveal d4" style="margin-top:40px">เรียบเรียงจากแผนการจัดการเรียนรู้ ใบความรู้ที่ 2.2 และใบงานที่ 2.2</div>
+  </div>
+  <div class="reveal d3" style="position:absolute;right:110px;top:290px;width:640px"><span data-circuit="c2"></span></div>
+</section>
+
+<section class="slide sec-0" data-tag="แผนการเรียนวันนี้" data-title="แผนการเรียน 4 ชั่วโมง">
+  <div class="body" style="top:112px">
+    <h2 class="title reveal">แผนวันนี้ ทฤษฎี 1 ชั่วโมง ปฏิบัติ 3 ชั่วโมง</h2>
+    <table class="t left plan reveal d1" style="width:100%">
+      <tr><th>เวลา</th><th>ช่วง</th><th>นักเรียนทำอะไร</th></tr>
+      <tr><td>0:00–0:10</td><td>เปิดเรื่อง</td><td>โหวตทบทวน · ดูแบบวงจรกาต้มน้ำ</td></tr>
+      <tr><td>0:10–0:25</td><td>แบบทดสอบก่อนเรียน</td><td>ทำ 20 ข้อบนมือถือ</td></tr>
+      <tr><td>0:25–0:35</td><td>5.1 แบบวงจรคืออะไร</td><td>หาว่าแบบขาดอะไร</td></tr>
+      <tr><td>0:35–0:50</td><td>5.2 หลักการอ่านแบบวงจร</td><td>ไล่กระแสพร้อมกัน · ทายผล</td></tr>
+      <tr><td>0:50–1:00</td><td>5.3 ชนิดของแบบ</td><td>เลือกแบบให้ตรงกับงาน</td></tr>
+      <tr><td>1:00–1:10</td><td>5.4 ข้อผิดพลาดที่พบบ่อย</td><td>จับผิดการอ่านของเพื่อน</td></tr>
+      <tr class="brk"><td>1:10–1:20</td><td>พัก</td><td></td></tr>
+      <tr><td>1:20–2:10</td><td>ใบงาน ตอนที่ 1</td><td>อ่านแบบ กรอกตารางอุปกรณ์</td></tr>
+      <tr><td>2:10–3:00</td><td>ใบงาน ตอนที่ 2</td><td>ไล่เส้นทางกระแสบนมือถือแล้วเขียนลงใบงาน</td></tr>
+      <tr><td>3:00–3:40</td><td>ใบงาน ตอนที่ 3</td><td>เขียนแบบวงจรจากภาพการต่อจริง</td></tr>
+      <tr><td>3:40–4:00</td><td>สรุป + แบบทดสอบหลังเรียน</td><td>ตอบคำถาม · ทำ 20 ข้อ</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-tag="เปิดเรื่อง" data-title="ทบทวนสัปดาห์ที่ 3">
+  <div class="body center">
+    <div><span class="act-badge">ทบทวน</span><span class="act-meta">ทั้งห้องโหวต ข้อละ 1 นาที</span></div>
+    <h2 class="title">เรื่องสัญลักษณ์จากสัปดาห์ที่แล้ว ยังจำได้ไหม</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span><span data-sym="cell"></span>ด้านเส้นยาวคือขั้วบวก</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">จริง</button><button type="button" class="opt">ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">จริง เส้นยาวคือขั้วบวก เส้นสั้นหนาคือขั้วลบ</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span><span data-sym="fuse"></span>สัญลักษณ์นี้คือตัวต้านทาน</div>
+      <div class="vote pair" data-answer="1"><button type="button" class="opt">จริง</button><button type="button" class="opt">ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">ไม่จริง นี่คือฟิวส์ สังเกตเส้นที่ลากผ่านกลางกล่อง</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">3</span><span data-sym="junction"></span>สายสองเส้นนี้ต่อถึงกัน</div>
+      <div class="vote pair" data-answer="0"><button type="button" class="opt">จริง</button><button type="button" class="opt">ไม่จริง</button><button type="button" class="reveal">เฉลย</button>
+        <div class="why">จริง เพราะมีจุดทึบตรงที่สายมาเจอกัน</div></div></div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="แบบวงจรกาต้มน้ำ เริ่มอ่านตรงไหน">
+  <div class="body">
+    <div><span class="act-badge">คิด-คู่-แชร์</span><span class="act-meta">คุยกับเพื่อนข้าง ๆ 4 นาที</span></div>
+    <h2 class="title">กาต้มน้ำไฟฟ้าข้างในต่อกันแบบนี้</h2>
+    <div class="split">
+      <div class="fig"><span data-circuit="c0"></span><p class="cap">แบบวงจรย่อเพื่อการสอน AC1 คือไฟบ้าน H1 คือขดลวดทำความร้อน</p></div>
+      <div class="side">
+        <div class="qbox"><h3>คุยกันว่า</h3><ol>
+          <li>มีอุปกรณ์กี่ตัว</li>
+          <li>ถ้าจะอ่านแบบนี้ เริ่มตรงไหนก่อน</li>
+          <li>หลอด LP1 ติด แต่น้ำไม่ร้อน น่าจะเสียที่ตัวไหน</li>
+        </ol></div>
+        <div data-timer="240" class="sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="แบบทดสอบก่อนเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">แบบทดสอบก่อนเรียน</span><span class="act-meta">รายบุคคล · 15 นาที</span></div>
+    <h2 class="title">ยังไม่รู้ก็ไม่เป็นไร ตอบตามที่คิด</h2>
+    <p>เปิด <b>แบบทดสอบ</b> เลือก "<b>ก่อนเรียน</b>" ทำ 20 ข้อ แล้วกดส่ง</p>
+    <p class="small"><a href="quiz.html">quiz.html</a> (ลิงก์อยู่ในหน้าแรกของวิชา สัปดาห์ที่ 4)</p>
+    <div style="margin-top:20px"><div data-timer="900"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-tag="เป้าหมาย" data-title="จบวันนี้ต้องทำอะไรได้">
+  <div class="body">
+    <h2 class="title reveal">จบวันนี้ นักเรียนต้องทำสิ่งเหล่านี้ได้</h2>
+    <ol class="steps">
+      <li class="reveal d1">อธิบายความหมายของแบบวงจร (Schematic Diagram) และส่วนประกอบของแบบได้ <span class="small c-sec">(4.3)</span></li>
+      <li class="reveal d2">อธิบายความแตกต่างระหว่างแบบวงจรกับแบบการเดินสายจริงได้ <span class="small c-sec">(4.4)</span></li>
+      <li class="reveal d3">อ่านแบบวงจรและระบุอุปกรณ์ในวงจรได้ครบถ้วนตามแบบที่กำหนด <span class="small c-sec">(4.6)</span></li>
+      <li class="reveal d4">เตรียมวัสดุอุปกรณ์ให้สอดคล้องกับงาน ทำงานด้วยความรับผิดชอบ ตรงต่อเวลา <span class="small c-sec">(4.7)</span></li>
+    </ol>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.2 ข้อ 4 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ============ 5.1 ============ -->
+<section class="slide section sec-1" data-tag="5.1 แบบวงจร" data-title="5.1 แบบวงจรคืออะไร">
+  <div class="big-no">5.1</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.1</div>
+    <h2 class="reveal d1">แบบวงจรคืออะไร</h2>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="แบบวงจรบอกว่าอะไรต่อกับอะไร">
+  <div class="body">
+    <h2 class="title reveal">แบบวงจรบอกว่าอุปกรณ์ตัวไหนต่อกับตัวไหน</h2>
+    <div class="two reveal d1">
+      <div class="fig"><span data-circuit="c2"></span></div>
+      <div class="fig"><span data-circuit="c2b"></span></div>
+    </div>
+    <p class="frag" style="margin-top:18px;font-size:36px;line-height:1.4">สองรูปนี้คือวงจรเดียวกัน เพราะต่อเรียงกันเหมือนเดิม คือ BT1 ไป SW1 ไป R1 ไป LP1 แบบวงจรไม่ได้บอกว่าของจริงวางอยู่ตรงไหนบนแผง</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.2 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1" data-title="แบบวงจรที่สมบูรณ์มี 5 ส่วน">
+  <div class="body">
+    <h2 class="title reveal">แบบวงจรที่สมบูรณ์ต้องมีครบ 5 ส่วน</h2>
+    <div class="split">
+      <div class="fig reveal d1"><span data-circuit="c2"></span></div>
+      <ol class="steps sm">
+        <li class="frag">สัญลักษณ์ แทนอุปกรณ์แต่ละตัว</li>
+        <li class="frag">ชื่อกำกับ เช่น SW1, R1, LP1 ไว้เรียกถึงกันได้</li>
+        <li class="frag">ค่าของอุปกรณ์ เช่น 220 Ω, 12 V</li>
+        <li class="frag">เส้นสายไฟ พร้อมจุดทึบที่จุดต่อสาย</li>
+        <li class="frag">แหล่งจ่ายไฟ ที่บอกขั้วบวกและขั้วลบ</li>
+      </ol>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.2 ข้อ 5.1 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-1 act" data-title="แบบนี้ขาดอะไร">
+  <div class="body">
+    <div><span class="act-badge">หาให้เจอ</span><span class="act-meta">จับคู่ 3 นาที แล้วครูสุ่มเลขที่มาชี้</span></div>
+    <h2 class="title">แบบนี้เขียนไม่ครบ ขาดอะไร 3 อย่าง</h2>
+    <div class="split">
+      <div class="fig"><span data-circuit="c2" data-no-ref="SW1" data-no-val="R1" data-no-pol="1"></span></div>
+      <div class="side">
+        <p class="frag">สวิตช์<b>ไม่มีชื่อกำกับ</b> ถ้าต้องบอกเพื่อนว่าตัวไหน จะเรียกยังไง</p>
+        <p class="frag">R1 <b>ไม่บอกค่า</b> ซื้อของมาใส่ไม่ถูก</p>
+        <p class="frag">แบตเตอรี่<b>ไม่บอกขั้ว</b> ไม่รู้จะเริ่มไล่จากด้านไหน</p>
+        <div style="display:flex;gap:20px;align-items:center"><div data-timer="180" class="sm"></div></div>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-1 act watch" data-title="คลิป แบบวงจรกับแผงจริง">
+  <div class="body">
+    <div><span class="act-badge vd">ดูคลิป</span><span class="act-meta">4 นาที</span></div>
+    <h2 class="title">ช่างซ่อมใช้แบบวงจรยังไงตอนอยู่หน้าแผงจริง</h2>
+    <div class="row" style="gap:36px">
+      <div style="flex:0 0 1000px"><div data-video="OpylUQxB6ag" data-title="วิธีใช้ Schematic ไล่วงจรบน PCB สำหรับมือใหม่" data-credit="RNG Knosense" data-len="4:07"></div></div>
+      <div class="side">
+        <div class="qbox"><h3>ดูแล้วตอบ</h3><ol>
+          <li>Schematic กับ PCB Layout ต่างกันตรงไหน</li>
+          <li>ช่างเริ่มไล่จากจุดไหน</li>
+        </ol></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ: ช่อง YouTube RNG Knosense <sup class="ref"><a href="#videos">[V1]</a></sup></div>
+  </div>
+</section>
+
+<!-- ============ 5.2 ============ -->
+<section class="slide section sec-2" data-tag="5.2 หลักการอ่าน" data-title="5.2 หลักการอ่านแบบวงจร">
+  <div class="big-no">5.2</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.2</div>
+    <h2 class="reveal d1">หลักการอ่านแบบวงจร</h2>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="อ่านแบบวงจรตามลำดับ 5 ขั้น">
+  <div class="body">
+    <h2 class="title reveal">อ่านตามลำดับนี้ทุกครั้ง จะไม่หลงในวงจรใหญ่</h2>
+    <ol class="steps">
+      <li class="frag">หา<b>แหล่งจ่ายไฟ</b> ดูว่าขั้วบวกกับขั้วลบอยู่ด้านไหน</li>
+      <li class="frag">เริ่มจาก<b>ขั้วบวก</b> ไล่ไปตามสาย จดว่ากระแสผ่านอุปกรณ์อะไรบ้าง</li>
+      <li class="frag">ระหว่างทาง ดู<b>จุดทึบ</b>ทุกจุด ถ้ามีจุดทึบ สายต่อกัน ถ้าไม่มี สายแค่ไขว้ผ่าน</li>
+      <li class="frag">ไล่จนกลับมาถึง<b>ขั้วลบ</b> ถึงจะนับว่าครบวงจร</li>
+      <li class="frag">อ่าน<b>ชื่อและค่า</b>ของอุปกรณ์ทุกตัว จะได้รู้ว่าต้องใช้ตัวไหน</li>
+    </ol>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.2 ข้อ 5.2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="ตัวอย่างการไล่กระแส ภาพที่ 2.3">
+  <div class="body">
+    <h2 class="title reveal">ลองไล่ด้วยกัน กดทีละครั้ง แล้วพูดพร้อมกันว่าถึงตัวไหน</h2>
+    <div class="split">
+      <div class="fig"><span data-circuit="c2" data-flow="1"></span></div>
+      <div class="side">
+        <p>เริ่มที่ขั้วบวกของ BT1 ลูกศรคือทิศทางที่เราไล่กระแส</p>
+        <div class="seq frag">BT1 (+) → SW1 → R1 → LP1 → BT1 (−)</div>
+        <p class="frag">กลับมาถึงขั้วลบ จึงครบวงจร</p>
+      </div>
+    </div>
+    <div class="src">ดัดแปลงจากภาพที่ 2.3 ใบความรู้ที่ 2.2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="ไล่เอง วงจร LED">
+  <div class="body">
+    <div><span class="act-badge">ลงมือไล่</span><span class="act-meta">รายบุคคล 2 นาที เขียนลงกระดาษ</span></div>
+    <h2 class="title">รอบนี้ไล่เอง เขียนลำดับลงกระดาษก่อนครูเฉลย</h2>
+    <div class="split">
+      <div class="fig"><span data-circuit="c3" data-flow="1"></span></div>
+      <div class="side">
+        <div class="seq frag">BT1 (+) → SW1 → R1 → D1 → BT1 (−)</div>
+        <div data-timer="120" class="sm"></div>
+        <div data-picker="40"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="ทายผล สวิตช์ OFF">
+  <div class="body">
+    <div><span class="act-badge">ทายก่อนเฉลย</span><span class="act-meta">โหวต 1 นาที</span></div>
+    <h2 class="title">SW1 อยู่ตำแหน่ง OFF กระแสจะเป็นยังไง</h2>
+    <div class="split" style="grid-template-columns:720px 1fr">
+      <div class="fig"><span data-circuit="c1"></span><p class="cap">OFF คือหน้าสัมผัสแยกจากกัน ทางเดินของกระแสขาดตรงนั้น</p></div>
+      <div class="vote one" data-answer="1">
+        <button type="button" class="opt"><b>ก</b>ไหลเหมือนเดิม แต่หลอดหรี่ลง</button>
+        <button type="button" class="opt"><b>ข</b>หยุดไหลทั้งวงจร</button>
+        <button type="button" class="opt"><b>ค</b>ไหลจาก BT1 ไปค้างอยู่ที่ SW1</button>
+        <button type="button" class="opt"><b>ง</b>ไหลเฉพาะด้านขั้วลบ</button>
+        <button type="button" class="reveal">เฉลย</button>
+        <div class="why">วงจรขาดจุดเดียว กระแสหยุดทั้งเส้น ไม่มีการไหลไปค้างครึ่งทาง</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-2 act" data-title="ทายผล ต่างกันแค่จุดเดียว">
+  <div class="body">
+    <div><span class="act-badge">ทายก่อนเฉลย</span><span class="act-meta">โหวต 2 นาที</span></div>
+    <h2 class="title" style="margin-bottom:12px">สองแบบนี้ต่างกันแค่จุดเดียว SW1 อยู่ ON หลอดไหนติด</h2>
+    <div class="two">
+      <div class="fig" style="padding:6px 16px"><h3>แบบ ก</h3><div style="width:540px;margin:auto"><span data-circuit="c8a"></span></div></div>
+      <div class="fig" style="padding:6px 16px"><h3>แบบ ข</h3><div style="width:540px;margin:auto"><span data-circuit="c8b"></span></div></div>
+    </div>
+    <div class="vote" data-answer="1" style="margin-top:12px;gap:10px 20px">
+      <button type="button" class="opt" style="font-size:28px;padding:8px 18px"><b>1</b>ทั้งสองแบบ ติด 3 ดวง</button>
+      <button type="button" class="opt" style="font-size:28px;padding:8px 18px"><b>2</b>แบบ ก ติด 3 ดวง แบบ ข ติดแค่ LP2</button>
+      <button type="button" class="opt" style="font-size:28px;padding:8px 18px"><b>3</b>แบบ ก ติดแค่ LP2 แบบ ข ติด 3 ดวง</button>
+      <button type="button" class="opt" style="font-size:28px;padding:8px 18px"><b>4</b>ทั้งสองแบบ ติดแค่ LP2</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">แบบ ข ไม่มีจุดทึบ สายนอนจึงไม่ได้รับไฟจากสายตั้ง LP1 กับ LP3 เลยไม่มีทางให้กระแสไหล</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-2" data-title="เจอทางแยก ไล่ทีละทาง">
+  <div class="body">
+    <h2 class="title reveal">ถ้าจุดทึบทำให้สายแยก ให้ไล่ทีละทางจนครบ</h2>
+    <div class="split">
+      <div class="fig"><span data-circuit="c11" data-flow="1"></span></div>
+      <div class="side">
+        <div class="seq frag">ทางที่ 1: BT1 (+) → SW1 → R1 → LP1 → BT1 (−)</div>
+        <div class="seq t frag">ทางที่ 2: BT1 (+) → SW1 → R1 → LP2 → BT1 (−)</div>
+        <p class="frag">SW1 กับ R1 อยู่ทั้งสองทาง ถ้า SW1 เป็น OFF หลอดดับทั้งคู่</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5.3 ============ -->
+<section class="slide section sec-3" data-tag="5.3 ชนิดของแบบ" data-title="5.3 ชนิดของแบบ">
+  <div class="big-no">5.3</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.3</div>
+    <h2 class="reveal d1">ชนิดของแบบ<br>ที่ใช้ในงานไฟฟ้า</h2>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ไฟฉายกระบอกเดียว เขียนได้ 3 แบบ">
+  <div class="body">
+    <h2 class="title reveal">ไฟฉายกระบอกเดียว เขียนได้ 3 แบบ</h2>
+    <div class="three">
+      <div class="fig frag"><h3>แบบวงจร</h3><span data-circuit="c1"></span><p class="cap">Schematic Diagram ดูว่าอะไรต่อกับอะไร</p></div>
+      <div class="fig frag"><h3>แบบการเดินสาย</h3><span data-real="ไฟฉาย"></span><p class="cap">Wiring Diagram ดูว่าของจริงอยู่ตรงไหน สายวิ่งยังไง</p></div>
+      <div class="fig frag"><h3>บล็อกไดอะแกรม</h3>
+        <svg viewBox="0 0 500 334" role="img" aria-label="บล็อกไดอะแกรมไฟฉาย แหล่งจ่าย ไป ตัวควบคุม ไป ตัวให้แสง" style="display:block;width:100%">
+          <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2a2733"/></marker></defs>
+          <g class="blk"><rect x="130" y="10" width="240" height="72" rx="12"/><text x="250" y="57">แหล่งจ่ายไฟ</text></g>
+          <g class="blk"><rect x="130" y="130" width="240" height="72" rx="12"/><text x="250" y="177">สวิตช์ เปิด-ปิด</text></g>
+          <g class="blk"><rect x="130" y="250" width="240" height="72" rx="12"/><text x="250" y="297">หลอดให้แสง</text></g>
+          <path d="M250 82 V126" stroke="#2a2733" stroke-width="4" marker-end="url(#ah)"/>
+          <path d="M250 202 V246" stroke="#2a2733" stroke-width="4" marker-end="url(#ah)"/>
+        </svg>
+        <p class="cap">Block Diagram ดูภาพรวมว่าระบบทำงานยังไง</p></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.2 ข้อ 5.3 <sup class="ref"><a href="#refs">[1]</a></sup> · ภาพวาดขึ้นใหม่</div>
+  </div>
+</section>
+
+<section class="slide sec-3" data-title="ตารางที่ 2.2 เปรียบเทียบชนิดของแบบ">
+  <div class="body">
+    <h2 class="title reveal">แต่ละแบบใช้คนละงาน</h2>
+    <table class="t left cmp reveal d1" style="width:100%">
+      <tr><th style="width:24%">ชนิดของแบบ</th><th>แสดงอะไร</th><th>ใช้เมื่อใด</th></tr>
+      <tr><td>แบบวงจร<br><small>Schematic Diagram</small></td><td>ความสัมพันธ์ทางไฟฟ้าว่าอุปกรณ์ใดต่อกับอุปกรณ์ใด โดยไม่สนตำแหน่งจริง</td><td>ออกแบบวงจร วิเคราะห์การทำงาน และตรวจซ่อม</td></tr>
+      <tr><td>แบบการเดินสาย<br><small>Wiring Diagram</small></td><td>ตำแหน่งจริงของอุปกรณ์และเส้นทางเดินสายไฟจริง</td><td>ติดตั้งงานจริงหน้างาน และเดินสายในตู้ควบคุม</td></tr>
+      <tr><td>บล็อกไดอะแกรม<br><small>Block Diagram</small></td><td>ภาพรวมการทำงานเป็นบล็อก ไม่ลงรายละเอียดอุปกรณ์</td><td>อธิบายหลักการทำงานของระบบโดยรวม</td></tr>
+    </table>
+    <div class="src">ที่มา: ตารางที่ 2.2 ใบความรู้ที่ 2.2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act watch" data-title="คลิป แบบ 3 ชนิด">
+  <div class="body">
+    <div><span class="act-badge vd">ดูคลิป</span><span class="act-meta">3 นาที · ภาษาอังกฤษ ครูอธิบายประกอบ</span></div>
+    <h2 class="title">ดูของจริงบนเรือ ว่าแบบทั้งสามหน้าตาเป็นยังไง</h2>
+    <div class="row" style="gap:36px">
+      <div style="flex:0 0 1000px"><div data-video="lrqiRpH_0Bk" data-title="Block, Wiring and Circuit Diagrams Explained" data-credit="Marine Electrical made Easy" data-len="3:22"></div></div>
+      <div class="side">
+        <div class="qbox"><h3>ดูแล้วตอบ</h3><ol>
+          <li>แบบไหนมีรายละเอียดน้อยที่สุด</li>
+          <li>แบบไหนเอาไปเดินสายได้เลย</li>
+        </ol></div>
+      </div>
+    </div>
+    <div class="src">วิดีโอ: ช่อง YouTube Marine Electrical made Easy <sup class="ref"><a href="#videos">[V2]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-3 act" data-title="เลือกแบบให้ตรงกับงาน">
+  <div class="body center">
+    <div><span class="act-badge">เลือกแบบ</span><span class="act-meta">ทั้งห้องโหวต ข้อละ 1 นาที</span></div>
+    <h2 class="title">งานนี้ควรหยิบแบบไหนมาดู</h2>
+    <div class="vrow"><div class="sit"><span class="no">1</span>พัดลมเสีย อยากรู้ว่า R ตัวนี้ต่อกับอะไร</div>
+      <div class="vote tri" data-answer="0"><button type="button" class="opt">แบบวงจร</button><button type="button" class="opt">เดินสาย</button><button type="button" class="opt">บล็อก</button><button type="button" class="reveal">เฉลย</button><div class="why">แบบวงจร เพราะเป็นแบบที่ใช้ตรวจซ่อมและดูว่าอะไรต่อกับอะไร</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">2</span>ต้องเดินสายในตู้ควบคุมที่หน้างาน</div>
+      <div class="vote tri" data-answer="1"><button type="button" class="opt">แบบวงจร</button><button type="button" class="opt">เดินสาย</button><button type="button" class="opt">บล็อก</button><button type="button" class="reveal">เฉลย</button><div class="why">แบบการเดินสาย เพราะบอกตำแหน่งจริงและทางเดินสายจริง</div></div></div>
+    <div class="vrow"><div class="sit"><span class="no">3</span>เล่าให้ลูกค้าฟังว่าเครื่องเสียงมีภาคอะไรบ้าง</div>
+      <div class="vote tri" data-answer="2"><button type="button" class="opt">แบบวงจร</button><button type="button" class="opt">เดินสาย</button><button type="button" class="opt">บล็อก</button><button type="button" class="reveal">เฉลย</button><div class="why">บล็อกไดอะแกรม เพราะอธิบายภาพรวม ไม่ต้องลงรายละเอียดอุปกรณ์</div></div></div>
+  </div>
+</section>
+
+<!-- ============ 5.4 ============ -->
+<section class="slide section sec-4" data-tag="5.4 ข้อผิดพลาด" data-title="5.4 ข้อผิดพลาดที่พบบ่อย">
+  <div class="big-no">5.4</div>
+  <div class="body center">
+    <div class="label reveal">หัวข้อที่ 5.4</div>
+    <h2 class="reveal d1">ข้อผิดพลาดที่พบบ่อย<br>ในการอ่านแบบ</h2>
+  </div>
+</section>
+
+<section class="slide sec-4" data-title="พลาด 4 แบบ และผลที่ตามมา">
+  <div class="body">
+    <h2 class="title reveal">คนอ่านแบบมักพลาด 4 เรื่องนี้</h2>
+    <table class="t left cmp" style="width:100%">
+      <tr><th style="width:36%">พลาดแบบไหน</th><th>แล้วเกิดอะไรขึ้น</th></tr>
+      <tr class="frag"><td>อ่านจุดต่อสายผิด</td><td>เห็นสายไขว้แล้วเข้าใจว่าต่อกัน ต่อวงจรผิดตั้งแต่ต้น</td></tr>
+      <tr class="frag"><td>ไล่วงจรไม่ครบ</td><td>หยุดกลางทาง ไม่กลับถึงแหล่งจ่าย เลยไม่รู้ว่าวงจรครบหรือขาดตรงไหน</td></tr>
+      <tr class="frag"><td>สับสนขั้วของอุปกรณ์</td><td>ไดโอดและตัวเก็บประจุบางชนิดมีขั้ว ต่อกลับแล้วอาจเสียหาย</td></tr>
+      <tr class="frag"><td>ไม่อ่านค่าที่กำกับ</td><td>เลือกอุปกรณ์ผิดค่า วงจรทำงานไม่ถูก แม้ต่อสายถูกทุกเส้น</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.2 ข้อ 5.4 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="ทายผล สลับขั้ว LED">
+  <div class="body">
+    <div><span class="act-badge">ทายก่อนเฉลย</span><span class="act-meta">โหวต 1 นาที</span></div>
+    <h2 class="title">รูปขวาต่อ LED กลับด้าน SW1 อยู่ ON จะเป็นยังไง</h2>
+    <div class="two" style="margin-bottom:18px">
+      <div class="fig" style="padding:6px 16px"><div style="width:560px;margin:auto"><span data-circuit="c3"></span></div></div>
+      <div class="fig" style="padding:6px 16px"><div style="width:560px;margin:auto"><span data-circuit="c3" data-flip="D1"></span></div></div>
+    </div>
+    <div class="vote" data-answer="2" style="gap:10px 20px">
+      <button type="button" class="opt" style="font-size:28px;padding:8px 18px"><b>ก</b>ติดเหมือนกัน</button>
+      <button type="button" class="opt" style="font-size:28px;padding:8px 18px"><b>ข</b>ติดสว่างกว่าเดิม</button>
+      <button type="button" class="opt" style="font-size:28px;padding:8px 18px"><b>ค</b>รูปขวาไม่ติด</button>
+      <button type="button" class="opt" style="font-size:28px;padding:8px 18px"><b>ง</b>รูปซ้ายไม่ติด</button>
+      <button type="button" class="reveal">เฉลย</button>
+      <div class="why">LED ให้กระแสผ่านทางเดียว ต่อกลับด้านจึงไม่ติด และอาจทำให้อุปกรณ์เสียหาย</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-4 act" data-title="จับผิดการอ่านของเพื่อน">
+  <div class="body" style="top:108px">
+    <div><span class="act-badge">จับผิด</span><span class="act-meta">กลุ่มละ 3–4 คน 5 นาที แล้วออกมาแตะจุดนั้น</span></div>
+    <h2 class="title" style="font-size:48px;margin-bottom:8px">เพื่อนอ่านแบบนี้แล้วพลาด 4 จุด</h2>
+    <div class="read-note">เพื่อนจดว่า: "กระแสมีทางเดียว · R2 = 220 Ω · D1 ติดแน่นอน · ไล่ถึง LP1 ก็จบ"</div>
+    <div class="hunt">
+      <span data-circuit="c10" data-flip="D1" data-spots="560,60,48;740,140,72;740,320,72;300,400,52"></span>
+      <div class="hunt-side">
+        <div class="hunt-score">พบแล้ว <span class="hunt-n">0 / 4</span></div>
+        <ol class="hunt-list">
+          <li>มี<b>จุดทึบ</b> กระแสแยก 2 ทาง</li>
+          <li>แบบเขียน <b>2.2 kΩ</b> ไม่ใช่ 220 Ω</li>
+          <li>D1 <b>ต่อกลับด้าน</b> จึงไม่ติด</li>
+          <li>ต้องไล่<b>กลับถึงขั้วลบ</b> ของ BT1</li>
+        </ol>
+        <div class="hunt-btns"><button type="button" data-a="all">เฉลยทั้งหมด</button><button type="button" data-a="reset">เริ่มใหม่</button></div>
+        <div data-timer="300" class="sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-tag="พัก" data-title="พัก 10 นาที">
+  <div class="body center" style="text-align:center">
+    <h2 class="title">พัก 10 นาที</h2>
+    <p>กลับมาแล้วเตรียมใบงานที่ 2.2 ดินสอ ยางลบ ไม้บรรทัด</p>
+    <div style="margin-top:20px"><div data-timer="600"></div></div>
+  </div>
+</section>
+
+<!-- ============ ใบงาน ============ -->
+<section class="slide sec-0" id="sheet" data-tag="ใบงานที่ 2.2" data-title="ใบงานที่ 2.2 การอ่านและเขียนแบบวงจร">
+  <div class="body">
+    <div class="kicker reveal">ใบงานที่ 2.2 · ปฏิบัติ 3 ชั่วโมง</div>
+    <h2 class="title reveal d1">การอ่านแบบวงจรและเขียนแบบวงจรอย่างง่าย</h2>
+    <table class="t left cmp reveal d2" style="width:100%">
+      <tr><th style="width:18%">ตอน</th><th>ทำอะไร</th><th style="width:18%">เวลา</th></tr>
+      <tr><td>ตอนที่ 1</td><td>อ่านแบบวงจร กรอกชื่อกำกับ ชื่ออุปกรณ์ ค่า และหน้าที่</td><td>50 นาที</td></tr>
+      <tr><td>ตอนที่ 2</td><td>ไล่เส้นทางกระแส และอธิบายกรณีสวิตช์อยู่ตำแหน่ง OFF</td><td>50 นาที</td></tr>
+      <tr><td>ตอนที่ 3</td><td>เขียนแบบวงจรจากภาพการต่อจริง</td><td>40 นาที</td></tr>
+    </table>
+    <p class="note-line reveal d3" style="margin-top:20px">ถ้ามีชุดวงจรจริง ใช้แบตเตอรี่แรงดันต่ำเท่านั้น ห้ามนำไปต่อกับไฟจากเต้ารับโดยเด็ดขาด</p>
+    <div class="src">ที่มา: ใบงานที่ 2.2 ข้อ 6–7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="ตอนที่ 1 ดูวิธีกรอกตาราง">
+  <div class="body">
+    <h2 class="title reveal">ตอนที่ 1 กรอกตารางแบบนี้</h2>
+    <div class="split" style="grid-template-columns:640px 1fr">
+      <div class="fig reveal d1"><span data-circuit="c2"></span></div>
+      <div>
+        <table class="t left cmp reveal d2" style="width:100%">
+          <tr><th>ชื่อกำกับ</th><th>ชื่ออุปกรณ์</th><th>ค่าที่ระบุ</th><th>หน้าที่ในวงจร</th></tr>
+          <tr class="ws-row"><td>R1</td><td>ตัวต้านทาน</td><td>220 Ω</td><td>จำกัดกระแสในวงจร</td></tr>
+          <tr class="ws-row frag"><td>SW1</td><td>สวิตช์</td><td>ไม่ระบุ</td><td>เปิด-ปิดวงจร</td></tr>
+        </table>
+        <p class="frag" style="margin-top:16px;font-size:32px;line-height:1.4">ถ้าแบบไม่ได้เขียนค่า ให้เขียนว่า "ไม่ระบุ" อย่าเว้นว่าง</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="ลงมือ ตอนที่ 1">
+  <div class="body">
+    <div><span class="act-badge">ลงมือทำ</span><span class="act-meta">ตอนที่ 1 · รายบุคคล</span></div>
+    <h2 class="title">อ่านแบบนี้แล้วกรอกตารางในใบงาน</h2>
+    <div class="split">
+      <div class="fig"><span data-circuit="c5"></span></div>
+      <div class="side">
+        <p>ครบ 6 ตัวแล้ว แลกกับเพื่อนข้าง ๆ ตรวจกันก่อนส่ง</p>
+        <p class="note-line">เสร็จก่อนเวลา ไปทำแบบฝึกหัดชุดที่ 1 และ 2 ต่อ</p>
+        <div data-timer="2400" class="sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="ตอนที่ 2 เขียนลำดับแบบนี้">
+  <div class="body center">
+    <h2 class="title reveal">ตอนที่ 2 เขียนคำตอบลงใบงานแบบนี้</h2>
+    <ul class="pts">
+      <li class="frag">เริ่มที่ขั้วบวก จบที่ขั้วลบ ใช้ชื่อกำกับแทนชื่อเต็ม เช่น <span class="mono">BT1 (+) → SW1 → R1 → LP1 → BT1 (−)</span></li>
+      <li class="frag">ถ้ามีทางแยก เขียนแยกบรรทัด ทางละบรรทัด</li>
+      <li class="frag">กรณีสวิตช์อยู่ตำแหน่ง OFF ตอบ 2 อย่าง คือกระแสไหลหรือไม่ และเพราะอะไร</li>
+    </ul>
+    <div class="src">ที่มา: ใบงานที่ 2.2 ตอนที่ 2 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="ลงมือ ตอนที่ 2">
+  <div class="body">
+    <div><span class="act-badge">ลงมือทำ</span><span class="act-meta">ตอนที่ 2 · รายบุคคล บนมือถือแล้วเขียนลงกระดาษ</span></div>
+    <h2 class="title">เปิดหน้าฝึกไล่กระแส แตะอุปกรณ์ตามลำดับ</h2>
+    <div class="split" style="grid-template-columns:1fr 520px">
+      <ol class="steps sm">
+        <li>เปิด <a href="trace.html">trace.html</a> (ปุ่ม "ฝึกไล่กระแส" ในหน้าแรก)</li>
+        <li>ฝึกวงจรข้อ 1 และ 2 ให้คล่องก่อน</li>
+        <li>ข้อ 3 คือวงจรในใบงาน ไล่ได้แล้วเขียนลงตอนที่ 2</li>
+        <li>เสร็จก่อนเวลา ลองข้อ 4–5 แล้วทำแบบฝึกหัดชุดที่ 3 และ 4</li>
+      </ol>
+      <div class="side" style="align-items:center"><div data-timer="2400" class="sm"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="ตอนที่ 3 เขียนแบบจากการต่อจริง">
+  <div class="body">
+    <h2 class="title reveal">ตอนที่ 3 จากของจริงมาเป็นแบบวงจร</h2>
+    <div class="ex3">
+      <div class="fig reveal d1" style="grid-area:real"><div><span data-real="ไฟฉาย"></span></div></div>
+      <ol class="steps">
+        <li class="frag">นับอุปกรณ์ก่อน รูปนี้มี 3 ตัว</li>
+        <li class="frag">เริ่มที่ขั้วบวก ตามสายทีละเส้น จดลำดับไว้</li>
+        <li class="frag">วางสัญลักษณ์เป็นกรอบสี่เหลี่ยม ใช้ไม้บรรทัดตีสาย</li>
+        <li class="frag">ใส่ชื่อกำกับและค่าให้ครบ</li>
+      </ol>
+      <div class="fig frag" style="grid-area:sch"><div><span data-circuit="c1"></span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="ลงมือ ตอนที่ 3">
+  <div class="body">
+    <div><span class="act-badge">ลงมือทำ</span><span class="act-meta">ตอนที่ 3 · รายบุคคล ครูเดินตรวจ</span></div>
+    <h2 class="title" style="margin-bottom:10px">เลือกชุดตามเลขที่ แล้วเขียนแบบวงจรลงกรอบในใบงาน</h2>
+    <div class="three" style="margin-bottom:14px">
+      <div class="fig" style="padding:6px 12px"><h3>ชุด ก · เลขที่ 1, 4, 7, …</h3><span data-real="ก"></span></div>
+      <div class="fig" style="padding:6px 12px"><h3>ชุด ข · เลขที่ 2, 5, 8, …</h3><span data-real="ข"></span></div>
+      <div class="fig" style="padding:6px 12px"><h3>ชุด ค · เลขที่ 3, 6, 9, …</h3><span data-real="ค"></span></div>
+    </div>
+    <div style="display:flex;gap:30px;align-items:center"><div data-timer="2100" class="sm"></div><p class="note-line" style="flex:1">ถ้ามีชุดวงจรจริง ใช้ชุดนั้นแทนภาพได้ และเขียนลงกรอบเดียวกัน</p></div>
+  </div>
+</section>
+
+<!-- ============ ปิดบทเรียน ============ -->
+<section class="slide sec-0" data-tag="สรุป" data-title="เกณฑ์การประเมินใบงาน 25 คะแนน">
+  <div class="body">
+    <h2 class="title reveal">เกณฑ์ใบงาน คะแนนเต็ม 25 ผ่านที่ 20 คะแนน</h2>
+    <table class="t left cmp reveal d1" style="width:100%">
+      <tr><th>ที่</th><th>รายการประเมิน</th><th>คะแนน</th></tr>
+      <tr><td>1</td><td>ระบุชื่ออุปกรณ์และค่าในแบบวงจรได้ครบถ้วนถูกต้อง (ตอนที่ 1)</td><td class="mono">6</td></tr>
+      <tr><td>2</td><td>ไล่เส้นทางการไหลของกระแสได้ถูกต้องครบวงจร (ตอนที่ 2)</td><td class="mono">5</td></tr>
+      <tr><td>3</td><td>อธิบายกรณีสวิตช์ OFF ได้ถูกต้อง (ตอนที่ 2)</td><td class="mono">4</td></tr>
+      <tr><td>4</td><td>เขียนแบบวงจรจากวงจรจริงได้ถูกต้องตามมาตรฐาน (ตอนที่ 3)</td><td class="mono">5</td></tr>
+      <tr><td>5</td><td>ความละเอียด รอบคอบ และส่งงานตรงเวลา</td><td class="mono">5</td></tr>
+    </table>
+    <div class="src">ที่มา: ใบงานที่ 2.2 ข้อ 9 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="คำถามท้ายใบความรู้">
+  <div class="body">
+    <div><span class="act-badge">ตอบคำถาม</span><span class="act-meta">ครูสุ่มเลขที่ ตอบด้วยคำพูดของตัวเอง</span></div>
+    <h2 class="title">คำถามท้ายใบความรู้ที่ 2.2</h2>
+    <div class="split" style="grid-template-columns:1fr 440px">
+      <ol class="steps sm">
+        <li>แบบวงจรคืออะไร และแสดงข้อมูลอะไรบ้าง</li>
+        <li>ส่วนประกอบที่ต้องมีเสมอ บอกมาอย่างน้อย 3 อย่าง</li>
+        <li>ควรเริ่มอ่านจากจุดใด และไล่ไปอย่างไรจึงจะครบวงจร</li>
+        <li>แบบวงจรกับแบบการเดินสายต่างกันอย่างไร แต่ละแบบใช้เมื่อใด</li>
+        <li>ข้อผิดพลาดที่พบบ่อยในการอ่านแบบ บอกมา 2 ข้อ</li>
+      </ol>
+      <div data-picker="40"></div>
+    </div>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.2 ข้อ 7 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="สรุปบทเรียน">
+  <div class="body center">
+    <h2 class="title reveal">จำไว้เรื่องเดียว</h2>
+    <p class="lead reveal d1" style="max-width:1500px">อ่านแบบวงจรให้เริ่มจากแหล่งจ่าย ไล่จากขั้วบวกผ่านอุปกรณ์ทีละตัว จนกลับถึงขั้วลบ</p>
+    <p class="small reveal d2" style="max-width:1500px">ส่วนจะหยิบแบบไหนมาดู ขึ้นกับงาน ซ่อมและวิเคราะห์ใช้แบบวงจร ติดตั้งหน้างานใช้แบบการเดินสาย อธิบายภาพรวมใช้บล็อกไดอะแกรม</p>
+    <div class="src">ที่มา: ใบความรู้ที่ 2.2 ข้อ 6 <sup class="ref"><a href="#refs">[1]</a></sup></div>
+  </div>
+</section>
+
+<section class="slide sec-0 act" data-title="แบบทดสอบหลังเรียน">
+  <div class="body center" style="text-align:center">
+    <div><span class="act-badge">แบบทดสอบหลังเรียน</span><span class="act-meta">รายบุคคล · 10 นาที</span></div>
+    <h2 class="title">ชุดเดิม 20 ข้อ ลองดูว่าทำได้มากขึ้นไหม</h2>
+    <p>เปิด <b>แบบทดสอบ</b> เลือก "<b>หลังเรียน</b>" ทำ 20 ข้อ กดส่ง แล้วพิมพ์ใบคะแนนส่ง Classroom</p>
+    <p class="small"><a href="quiz.html">quiz.html</a></p>
+    <div style="margin-top:20px"><div data-timer="600"></div></div>
+  </div>
+</section>
+
+<section class="slide sec-0" data-title="งานต่อจากคาบนี้">
+  <div class="body center">
+    <h2 class="title reveal">งานต่อจากคาบนี้</h2>
+    <ul class="pts reveal d1">
+      <li><a href="exercises.html">แบบฝึกหัด 4 ชุด</a> ทำให้ครบแล้วพิมพ์ใบคะแนนส่ง</li>
+      <li><a href="trace.html">ฝึกไล่กระแส</a> ทำซ้ำได้จนคล่อง</li>
+      <li>สัปดาห์หน้าเริ่มหน่วยที่ 3 วงจรไฟฟ้าเบื้องต้นและการคำนวณ อ่านใบความรู้ที่ 3.1 มาก่อน</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide sec-0" id="refs" data-tag="เอกสารอ้างอิง" data-title="เอกสารอ้างอิง">
+  <div class="body" style="top:112px;font-size:27px;line-height:1.45">
+    <h2 class="title" style="font-size:52px;margin-bottom:12px">เอกสารอ้างอิง</h2>
+    <ol style="margin:0;padding-left:56px">
+      <li style="margin-bottom:10px">จิรกิตติ์ วราภรณ์. <i>แผนการจัดการเรียนรู้ วิชา 20100-1005 งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น</i> (หลักสูตร ปวช. 2567) หน่วยที่ 2 ใบความรู้ที่ 2.2 และใบงานที่ 2.2. วิทยาลัยเทคนิคอุตรดิตถ์. (เอกสารต้นฉบับของบทเรียนนี้)</li>
+      <li style="margin-bottom:10px">International Electrotechnical Commission. <i>IEC 60617: Graphical symbols for diagrams</i>. https://std.iec.ch/iec60617</li>
+    </ol>
+    <p class="tiny" style="margin-top:16px">แบบวงจรและภาพการต่อจริงทั้งหมด วาดขึ้นใหม่เพื่อการสอน แบบวงจรกาต้มน้ำเป็นแบบย่อ ไม่ใช่แบบของผลิตภัณฑ์ยี่ห้อใด</p>
+  </div>
+</section>
+
+<section class="slide sec-0" id="videos" data-title="วิดีโอประกอบการสอน">
+  <div class="body" style="top:112px;font-size:27px;line-height:1.45">
+    <h2 class="title" style="font-size:52px;margin-bottom:12px">วิดีโอประกอบการสอน (YouTube)</h2>
+    <ol style="margin:0;padding-left:0;list-style:none">
+      <li style="margin-bottom:10px"><b>[V1]</b> RNG Knosense. (2569). <i>EP.21: วิธีใช้ Schematic ไล่วงจรบน PCB สำหรับมือใหม่</i>. https://www.youtube.com/watch?v=OpylUQxB6ag</li>
+      <li style="margin-bottom:10px"><b>[V2]</b> Marine Electrical made Easy. (2569). <i>Confused by Electrical Diagrams? Block, Wiring &amp; Circuit Diagrams Explained!</i> https://www.youtube.com/watch?v=lrqiRpH_0Bk</li>
+    </ol>
+    <p class="tiny" style="margin-top:16px">ฝังจากช่องผู้เผยแพร่โดยตรง ไม่ได้ดาวน์โหลดหรือตัดต่อ · ตรวจว่ายังเปิดดูได้เมื่อ 9 พฤศจิกายน 2569 · ครูควรดูก่อนสอนทุกครั้ง เพราะคลิปอาจถูกลบหรือย้าย</p>
+  </div>
+</section>
+
+</main>
+</div>
+<script src="../assets/js/symbols.js"></script>
+<script src="circuits.js"></script>
+<script src="../assets/js/sims.js"></script>
+<script src="../assets/js/deck.js"></script>
+</body>
+</html>
